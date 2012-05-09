@@ -60,7 +60,7 @@ public class AuthenticationPincodeActivity extends AbstractPincodeActivity {
 	@Override
 	public void process(final View v) {
 		_hideSoftKeyboard(pincode);
-		_showProgressDialog("Authenticating");
+		_showProgressDialog(getString(R.string.authenticating));
 		
 		try {
 			_login();

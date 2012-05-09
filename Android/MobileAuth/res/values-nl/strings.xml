@@ -18,9 +18,14 @@
     <string name="authentication_failure_title">Login mislukt</string>
     <string name="authentication_success_title">Login succesvol</string>
     <string name="authentication_success_message" formatted="false">Je bent succesvol ingelogd als %s voor %s</string>
+    <string name="account_ready">Je account is klaar voor gebruik</string>
+    <string name="account_activated">Je account is geactiveerd!</string>
     <string name="enrollment_confirm_button">OK</string>
     <string name="remember_pincode_notice">Onthoud je PIN, deze kan niet veranderd worden!</string>
     <string name="enter_the_following">Voer de volgende gegevens in:</string>
+    <string name="full_name">Volledige naam</string>
+    <string name="id">ID</string>
+    <string name="information">Informatie</string>
     <string name="cancel_button">Annuleren</string>
     <string name="ok_button">OK</string>
     <string name="retry_button">Opnieuw</string>
@@ -43,6 +48,9 @@
     <string name="main_title_welcome">Welkom bij tiqr</string>
     <string name="main_title_instructions">Uitleg</string>
     <string name="main_title_blocked">tiqr is geblokkeerd</string>
+    <string name="confirm_account_activation">Bevestig account activatie</string>
+    <string name="activate_following_account">Wil je het volgende account activeren?</string>
+    <string name="enroll_following_domain">Je zult je aanmelden bij het volgende domein:</string>
     
     <string name="menu_enroll_shortcut">t</string>
     <string name="menu_rearrange_label">Sorteren</string>
@@ -54,11 +62,18 @@
     <string name="verification_label">Uw controle:</string>
     <string name="login_title">Login</string>
     <string name="login_intro">Voer je PIN in: </string>
+    <string name="login_verify_intro">Bevestig PIN: </string>
+    <string name="successfully_logged_in">Inloggen geslaagd!</string>
+    <string name="loggedin_with_account">Je bent ingelogd met het volgende account</string>
+    <string name="are_you_sure_you_want_to">Weet je zeker dat ... ?</string>
+    <string name="you_will_be_as">Je zult ... als:</string>
     <string name="choose_password_title">Selecteer een PIN</string>
     <string name="choose_password_intro">Verzin een PIN code om deze identiteit te beveiligen, en onthoud hem goed.</string>
     <string name="passwords_dont_match_title">PINs komen niet overeen.</string>
     <string name="passwords_dont_match">De 2 PIN codes komen niet met elkaar overeen, probeer het opnieuw.\nKies een PIN code die je kan onthouden.</string>
     <string name="password_incorrect">Ongeldige PIN.</string>
+    <string name="enrolling">Aanmelden</string>
+    <string name="authenticating">Authoriseren</string>
     <string name="provided_by_title">tiqr wordt aangeboden door:</string>
     <string name="developed_by_title">Ontwikkeld door:</string>
     <string name="powered_by_title">Powered by:</string>
@@ -76,6 +91,7 @@
 
     <string name="authentication_confirmation_title">Weet je zeker dat je wilt inloggen?</string>
     <string name="authentication_confirmation_description">Je wordt ingelogd als:</string>
+    <string name="authentication_pincode_title">Login</string>
 
     <string name="authentication_fallback_title">Je lijkt offline te zijn</string>
     <string name="authentication_fallback_description">Geen paniek! Klik op de QR tag op de\nwebsite. Je zal gevraagd worden om de volgende\neenmalige gegevens in te geven:</string>
@@ -121,5 +137,9 @@
     <string name="error_enroll_failed_to_generate_secret">Genereren geheim mislukt. Neem contact op met support.</string>
     <string name="error_title">Fout</string>
     <string name="error_device_incompatible_with_security_standards">Telefoon is niet compatible met de vereiste beveiligingsstandaarden.</string>
-
+    <string name="error_message">Foutbericht</string>
+    <string name="error_title">Fouttitel</string>
+    
+	<string name="www_tiqr_org">www.tiqr.org</string>
+    <string name="provided_by">aangeboden door:</string>
 </resources>
