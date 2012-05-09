@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/tiqr/!svn/ver/6/trunk/Android/MobileAuth/src/org/tiqr/authenticator/qr/camera
+END
+CameraManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/tiqr/!svn/ver/6/trunk/Android/MobileAuth/src/org/tiqr/authenticator/qr/camera/CameraManager.java
+END
+AutoFocusCallback.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/tiqr/!svn/ver/6/trunk/Android/MobileAuth/src/org/tiqr/authenticator/qr/camera/AutoFocusCallback.java
+END
+CameraConfigurationManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/tiqr/!svn/ver/6/trunk/Android/MobileAuth/src/org/tiqr/authenticator/qr/camera/CameraConfigurationManager.java
+END
+PreviewCallback.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/tiqr/!svn/ver/6/trunk/Android/MobileAuth/src/org/tiqr/authenticator/qr/camera/PreviewCallback.java
+END

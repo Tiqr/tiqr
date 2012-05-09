@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/XML/Shib13
+END
+AuthnResponse.php
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/XML/Shib13/AuthnResponse.php
+END
+AuthnRequest.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/XML/Shib13/AuthnRequest.php
+END

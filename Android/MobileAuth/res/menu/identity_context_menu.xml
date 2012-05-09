@@ -1,0 +1,6 @@
+<menu 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/delete"
+    android:title="@string/menu_delete_label"
+    android:alphabeticShortcut="@string/menu_delete_shortcut" />
+</menu>

@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/tiqr/!svn/ver/103/trunk/Android/MobileAuth/res/layout
+END
+pincode.xml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/tiqr/!svn/ver/86/trunk/Android/MobileAuth/res/layout/pincode.xml
+END
+view_error.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/tiqr/!svn/ver/83/trunk/Android/MobileAuth/res/layout/view_error.xml
+END
+main.xml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/tiqr/!svn/ver/84/trunk/Android/MobileAuth/res/layout/main.xml
+END
+view_footer.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/tiqr/!svn/ver/84/trunk/Android/MobileAuth/res/layout/view_footer.xml
+END
+identity.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/tiqr/!svn/ver/76/trunk/Android/MobileAuth/res/layout/identity.xml
+END
+error.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/tiqr/!svn/ver/87/trunk/Android/MobileAuth/res/layout/error.xml
+END
+enrollment_summary.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/tiqr/!svn/ver/85/trunk/Android/MobileAuth/res/layout/enrollment_summary.xml
+END
+authentication_summary.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/tiqr/!svn/ver/85/trunk/Android/MobileAuth/res/layout/authentication_summary.xml
+END
+footer.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/tiqr/!svn/ver/6/trunk/Android/MobileAuth/res/layout/footer.xml
+END
+fallback.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/tiqr/!svn/ver/84/trunk/Android/MobileAuth/res/layout/fallback.xml
+END
+identity_listitem.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/tiqr/!svn/ver/76/trunk/Android/MobileAuth/res/layout/identity_listitem.xml
+END
+confirmation_enroll.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/tiqr/!svn/ver/103/trunk/Android/MobileAuth/res/layout/confirmation_enroll.xml
+END
+capture.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/tiqr/!svn/ver/6/trunk/Android/MobileAuth/res/layout/capture.xml
+END
+titlebar.xml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/tiqr/!svn/ver/6/trunk/Android/MobileAuth/res/layout/titlebar.xml
+END
+login.xml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/tiqr/!svn/ver/6/trunk/Android/MobileAuth/res/layout/login.xml
+END
+confirmation_auth.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/tiqr/!svn/ver/76/trunk/Android/MobileAuth/res/layout/confirmation_auth.xml
+END
+about.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/tiqr/!svn/ver/84/trunk/Android/MobileAuth/res/layout/about.xml
+END
+identity_detail.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/tiqr/!svn/ver/76/trunk/Android/MobileAuth/res/layout/identity_detail.xml
+END
+capture_intro.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/tiqr/!svn/ver/6/trunk/Android/MobileAuth/res/layout/capture_intro.xml
+END

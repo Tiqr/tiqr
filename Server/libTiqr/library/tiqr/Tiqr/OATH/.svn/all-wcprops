@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/tiqr/!svn/ver/33/trunk/Server/libTiqr/library/tiqr/Tiqr/OATH
+END
+HOTP.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/tiqr/!svn/ver/33/trunk/Server/libTiqr/library/tiqr/Tiqr/OATH/HOTP.php
+END
+OCRA.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/tiqr/!svn/ver/33/trunk/Server/libTiqr/library/tiqr/Tiqr/OATH/OCRA.php
+END
+OCRAWrapper.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/tiqr/!svn/ver/33/trunk/Server/libTiqr/library/tiqr/Tiqr/OATH/OCRAWrapper.php
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/casserver/www
+END
+validate.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/casserver/www/validate.php
+END
+serviceValidate.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/casserver/www/serviceValidate.php
+END
+proxy.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/casserver/www/proxy.php
+END
+cas.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/casserver/www/cas.php
+END
+tickets.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/casserver/www/tickets.php
+END
+login.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/casserver/www/login.php
+END

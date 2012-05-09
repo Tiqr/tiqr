@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/tiqr/!svn/ver/121/trunk/iPhone/Tiqr/Resources/Views/nl.lproj
+END
+ScanView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/tiqr/!svn/ver/14/trunk/iPhone/Tiqr/Resources/Views/nl.lproj/ScanView.xib
+END
+AuthenticationIdentityView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/tiqr/!svn/ver/14/trunk/iPhone/Tiqr/Resources/Views/nl.lproj/AuthenticationIdentityView.xib
+END
+AboutView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/tiqr/!svn/ver/17/trunk/iPhone/Tiqr/Resources/Views/nl.lproj/AboutView.xib
+END
+AuthenticationConfirmView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/tiqr/!svn/ver/14/trunk/iPhone/Tiqr/Resources/Views/nl.lproj/AuthenticationConfirmView.xib
+END
+AuthenticationSummaryView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/tiqr/!svn/ver/56/trunk/iPhone/Tiqr/Resources/Views/nl.lproj/AuthenticationSummaryView.xib
+END
+EnrollmentConfirmView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/tiqr/!svn/ver/121/trunk/iPhone/Tiqr/Resources/Views/nl.lproj/EnrollmentConfirmView.xib
+END
+EnrollmentSummaryView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/tiqr/!svn/ver/14/trunk/iPhone/Tiqr/Resources/Views/nl.lproj/EnrollmentSummaryView.xib
+END
+AuthenticationFallbackView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/tiqr/!svn/ver/58/trunk/iPhone/Tiqr/Resources/Views/nl.lproj/AuthenticationFallbackView.xib
+END
+IdentityEditView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/tiqr/!svn/ver/26/trunk/iPhone/Tiqr/Resources/Views/nl.lproj/IdentityEditView.xib
+END
+FooterChildView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/tiqr/!svn/ver/17/trunk/iPhone/Tiqr/Resources/Views/nl.lproj/FooterChildView.xib
+END

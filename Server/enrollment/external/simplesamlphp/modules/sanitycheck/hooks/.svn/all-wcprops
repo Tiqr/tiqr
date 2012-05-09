@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/sanitycheck/hooks
+END
+hook_cron.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/sanitycheck/hooks/hook_cron.php
+END
+hook_moduleinfo.php
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/sanitycheck/hooks/hook_moduleinfo.php
+END
+hook_frontpage.php
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/sanitycheck/hooks/hook_frontpage.php
+END
+hook_sanitycheck.php
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/sanitycheck/hooks/hook_sanitycheck.php
+END

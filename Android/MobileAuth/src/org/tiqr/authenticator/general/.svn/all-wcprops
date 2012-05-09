@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/tiqr/!svn/ver/108/trunk/Android/MobileAuth/src/org/tiqr/authenticator/general
+END
+AbstractCaptureIntroActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/tiqr/!svn/ver/6/trunk/Android/MobileAuth/src/org/tiqr/authenticator/general/AbstractCaptureIntroActivity.java
+END
+AbstractPincodeActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/tiqr/!svn/ver/108/trunk/Android/MobileAuth/src/org/tiqr/authenticator/general/AbstractPincodeActivity.java
+END
+ErrorView.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/tiqr/!svn/ver/83/trunk/Android/MobileAuth/src/org/tiqr/authenticator/general/ErrorView.java
+END
+ErrorActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/tiqr/!svn/ver/87/trunk/Android/MobileAuth/src/org/tiqr/authenticator/general/ErrorActivity.java
+END
+AbstractConfirmationActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/tiqr/!svn/ver/76/trunk/Android/MobileAuth/src/org/tiqr/authenticator/general/AbstractConfirmationActivity.java
+END
+FooterView.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/tiqr/!svn/ver/84/trunk/Android/MobileAuth/src/org/tiqr/authenticator/general/FooterView.java
+END
+AbstractActivityGroup.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/tiqr/!svn/ver/76/trunk/Android/MobileAuth/src/org/tiqr/authenticator/general/AbstractActivityGroup.java
+END

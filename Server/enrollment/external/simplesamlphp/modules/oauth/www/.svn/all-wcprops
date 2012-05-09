@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/oauth/www
+END
+requestToken.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/oauth/www/requestToken.php
+END
+authorize.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/oauth/www/authorize.php
+END
+getUserInfo.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/oauth/www/getUserInfo.php
+END
+registry.edit.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/oauth/www/registry.edit.php
+END
+accessToken.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/oauth/www/accessToken.php
+END
+registry.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/oauth/www/registry.php
+END

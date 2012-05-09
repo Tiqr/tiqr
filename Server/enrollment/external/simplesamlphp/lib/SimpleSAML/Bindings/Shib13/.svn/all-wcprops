@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Bindings/Shib13
+END
+Artifact.php
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Bindings/Shib13/Artifact.php
+END
+HTTPPost.php
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Bindings/Shib13/HTTPPost.php
+END

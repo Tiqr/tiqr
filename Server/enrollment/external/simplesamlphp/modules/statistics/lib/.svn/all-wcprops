@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/statistics/lib
+END
+DateHandler.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/statistics/lib/DateHandler.php
+END
+LogCleaner.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/statistics/lib/LogCleaner.php
+END
+LogParser.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/statistics/lib/LogParser.php
+END
+AccessCheck.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/statistics/lib/AccessCheck.php
+END
+DateHandlerMonth.php
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/statistics/lib/DateHandlerMonth.php
+END
+StatDataset.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/statistics/lib/StatDataset.php
+END
+Aggregator.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/statistics/lib/Aggregator.php
+END
+Ruleset.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/statistics/lib/Ruleset.php
+END
+RatioDataset.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/statistics/lib/RatioDataset.php
+END

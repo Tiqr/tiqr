@@ -1,0 +1,10 @@
+<div id="tekst_login">
+	<strong>You are now logged in!</strong><br />
+<hr/>
+<p><br/>
+<p>Welcome to your online piggybank account. 
+<p><br/>
+<h2>You are logged in as: <strong><?php echo htmlspecialchars($data["displayName"]); ?></strong> (<?php echo htmlspecialchars($data["uid"]); ?>)</h2>
+<p><br/>
+<a href="<?php echo $data["logoutUrl"]; ?>">Logout</a>
+</div>

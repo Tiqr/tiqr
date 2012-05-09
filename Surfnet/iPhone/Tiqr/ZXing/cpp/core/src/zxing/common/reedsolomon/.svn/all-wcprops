@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/1506/trunk/cpp/core/src/zxing/common/reedsolomon
+END
+GF256.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/1506/trunk/cpp/core/src/zxing/common/reedsolomon/GF256.h
+END
+ReedSolomonDecoder.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/1506/trunk/cpp/core/src/zxing/common/reedsolomon/ReedSolomonDecoder.h
+END
+GF256Poly.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/1506/trunk/cpp/core/src/zxing/common/reedsolomon/GF256Poly.h
+END
+ReedSolomonException.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/1092/trunk/cpp/core/src/zxing/common/reedsolomon/ReedSolomonException.cpp
+END
+GF256.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/1404/trunk/cpp/core/src/zxing/common/reedsolomon/GF256.cpp
+END
+ReedSolomonException.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/1506/trunk/cpp/core/src/zxing/common/reedsolomon/ReedSolomonException.h
+END
+ReedSolomonDecoder.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/1092/trunk/cpp/core/src/zxing/common/reedsolomon/ReedSolomonDecoder.cpp
+END
+GF256Poly.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/1092/trunk/cpp/core/src/zxing/common/reedsolomon/GF256Poly.cpp
+END

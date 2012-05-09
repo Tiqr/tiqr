@@ -1,0 +1,163 @@
+10
+
+dir
+147
+https://svn.surfnet.nl/svn/tiqr/trunk/Server/enrollment/external/simplesamlphp/modules
+https://svn.surfnet.nl/svn/tiqr
+
+
+
+2012-01-24T13:53:20.575007Z
+136
+petercv
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5b51e652-636f-4e27-ac9e-bd9e99c16056
+
+ldap
+dir
+
+oauth
+dir
+
+sqlauth
+dir
+
+consentAdmin
+dir
+
+aggregator
+dir
+
+authmyspace
+dir
+
+InfoCard
+dir
+
+authX509
+dir
+
+core
+dir
+
+openidProvider
+dir
+
+statistics
+dir
+
+authfacebook
+dir
+
+authwindowslive
+dir
+
+aggregator2
+dir
+
+sanitycheck
+dir
+
+metarefresh
+dir
+
+cas
+dir
+
+smartnameattribute
+dir
+
+multiauth
+dir
+
+exampleauth
+dir
+
+openid
+dir
+
+authlinkedin
+dir
+
+aselect
+dir
+
+authtwitter
+dir
+
+saml2debug
+dir
+
+logpeek
+dir
+
+radius
+dir
+
+cdc
+dir
+
+modinfo
+dir
+
+consentSimpleAdmin
+dir
+
+saml
+dir
+
+metaedit
+dir
+
+casserver
+dir
+
+cron
+dir
+
+portal
+dir
+
+preprodwarning
+dir
+
+authYubiKey
+dir
+
+themefeidernd
+dir
+
+exampleattributeserver
+dir
+
+autotest
+dir
+
+consent
+dir
+
+memcacheMonitor
+dir
+
+authorize
+dir
+
+adfs
+dir
+
+discopower
+dir
+

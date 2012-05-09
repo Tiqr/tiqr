@@ -1,0 +1,6 @@
+<div id="tekst_login">
+<strong>Log-in</strong><br />
+<hr />
+Please click on the tiqr logo to log in<br /><br />
+<a href="secured.php"><img src="../img/tiqrRGB.png" /></a>					
+</div>

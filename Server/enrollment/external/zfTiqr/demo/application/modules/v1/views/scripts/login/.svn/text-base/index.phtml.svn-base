@@ -1,0 +1,31 @@
+<?php
+    $script = "
+       function verifyLogin() {
+           jQuery.get('" . $this->verifyURL . "', function(data) {
+               if (data == 'NO') {
+                   window.setTimeout(verifyLogin, 1500);
+               } else if (data.substring(0, 4) == 'URL:') {
+                   document.location.href = data.substring(4);
+               }
+            });
+       }
+
+       jQuery(document).ready(verifyLogin);                       
+    ";
+
+    $this->headScript()->prependFile($this->baseUrl().'/scripts/jquery.js')
+                       ->appendScript($script);
+?>
+<p>
+    Scan the QR code below to login:
+</p>
+
+<p>
+    <a href="<?php echo $this->authenticationURL ?>">
+        <img src="<?php echo $this->qrURL ?>" border="0" />
+    </a>
+</p>
+
+<p>
+    No account yet? Click <a href="<?php echo $this->enrollmentURL ?>">here</a> to enroll.
+</p>

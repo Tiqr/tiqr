@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/tiqr/!svn/ver/142/trunk/Server/simplesamlphp-modules/authTiqr/templates
+END
+loginuserpass.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/tiqr/!svn/ver/134/trunk/Server/simplesamlphp-modules/authTiqr/templates/loginuserpass.php
+END
+newuser_complete.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/tiqr/!svn/ver/41/trunk/Server/simplesamlphp-modules/authTiqr/templates/newuser_complete.php
+END
+newuser_result.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/tiqr/!svn/ver/111/trunk/Server/simplesamlphp-modules/authTiqr/templates/newuser_result.php
+END
+inline_error.php
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/tiqr/!svn/ver/134/trunk/Server/simplesamlphp-modules/authTiqr/templates/inline_error.php
+END
+login.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/tiqr/!svn/ver/142/trunk/Server/simplesamlphp-modules/authTiqr/templates/login.php
+END
+newuser.php
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/tiqr/!svn/ver/109/trunk/Server/simplesamlphp-modules/authTiqr/templates/newuser.php
+END

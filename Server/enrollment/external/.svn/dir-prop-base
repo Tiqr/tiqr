@@ -1,0 +1,7 @@
+K 13
+svn:externals
+V 122
+libTiqr https://svn.surfnet.nl/svn/tiqr/trunk/Server/libTiqr/
+zfTiqr https://svn.surfnet.nl/svn/tiqr/trunk/Server/zfTiqr/
+
+END

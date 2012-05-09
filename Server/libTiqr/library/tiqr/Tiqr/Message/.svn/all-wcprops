@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/tiqr/!svn/ver/33/trunk/Server/libTiqr/library/tiqr/Tiqr/Message
+END
+Exception.php
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/tiqr/!svn/ver/33/trunk/Server/libTiqr/library/tiqr/Tiqr/Message/Exception.php
+END
+APNS.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/tiqr/!svn/ver/33/trunk/Server/libTiqr/library/tiqr/Tiqr/Message/APNS.php
+END
+Abstract.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/tiqr/!svn/ver/33/trunk/Server/libTiqr/library/tiqr/Tiqr/Message/Abstract.php
+END
+C2DM.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/tiqr/!svn/ver/33/trunk/Server/libTiqr/library/tiqr/Tiqr/Message/C2DM.php
+END

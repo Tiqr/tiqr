@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/memcacheMonitor/hooks
+END
+hook_frontpage.php
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/memcacheMonitor/hooks/hook_frontpage.php
+END
+hook_sanitycheck.php
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/memcacheMonitor/hooks/hook_sanitycheck.php
+END

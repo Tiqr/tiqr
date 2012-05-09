@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/tiqr/!svn/ver/114/trunk/Server/simplesamlphp-demo/www/templates
+END
+loggedin.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/tiqr/!svn/ver/114/trunk/Server/simplesamlphp-demo/www/templates/loggedin.phtml
+END
+intro.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/tiqr/!svn/ver/45/trunk/Server/simplesamlphp-demo/www/templates/intro.phtml
+END
+piggybank.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/tiqr/!svn/ver/34/trunk/Server/simplesamlphp-demo/www/templates/piggybank.phtml
+END

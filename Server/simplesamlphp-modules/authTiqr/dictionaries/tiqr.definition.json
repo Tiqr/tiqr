@@ -1,0 +1,119 @@
+{
+    "header": {
+        "en": "Authentication"
+    },  
+    "header_enrollment": {
+        "en": "Enrollment"
+    },
+    "verify_login_error": {
+        "en": "Login timeout. Please try again by refreshing this page."
+    },
+    "verify_enrollment_error": {
+        "en": "Enrollment timeout. Please try again by refreshing this page."
+    },
+    "intro": {
+        "en": "A service provider requested authentication."
+    },
+    "intro_2f": {
+        "en": "You are authenticated as [user]. To prove your identity you have to perform additional authentication using your phone."
+    },    
+    "intro_enrollment": {
+        "en": "Enter the following data to create a new user:"
+    },
+    "instruction_tap": {
+        "en": "To authenticate, scan the QR code (or if the app is on this device, simply tap the QR code):"
+    },
+    "instruction_tap_push": {
+        "en": "We have sent you a push notification to authenticate. If you didn't receive the push notification scan the QR code (or if the app is on this device, simply tap the QR code):"
+    },
+    "instruction_qr": {
+        "en": "To authenticate, open the authentication app on your phone and scan the QR code below:"
+    },
+    "instruction_qr_push": {
+        "en": "We have sent you a push notification to authenticate. If you don't receive the push notification open the authentication app on your phone and scan the QR code below:"
+    },
+    "instruction_userpass": {
+        "en": "Or you can login with your username/password using the form below:"
+    },
+    "instruction_qr_enroll": {
+        "en": "Scan this code to enroll your phone with this new account."
+    },
+    "intro_mustenroll_2f": {
+        "en": "You are authenticated as [user]. Since this is your first login, you have to connect your mobile phone to your account."
+    },
+    "instruction_enroll_proceed_manually": {
+        "en": "If your phone indicates succesful enrollment but nothing happens in the browser, [link]click here to manually proceed[/link]."
+    },
+    "instruction_no_account": {
+        "en": "No account yet? [link]Enroll here[/link]."
+    },
+    "link_enroll_2f": {
+        "en": "Click to enroll"
+    },
+    "alternative_otp": {
+        "en": "If the instructions on your phone instruct you to login manually, [link]click here[/link]."
+    },
+    "alternative_userpass": {
+        "en": "To login with your username/password, [link]click here[/link]."    
+    },
+    "go": {
+        "en": "Go"
+    },
+    "title_error_wrongotp": {
+        "en": "Not the correct OTP code"
+    },
+    "descr_error_wrongotp": {
+        "en": "The correct OTP code was not entered. Please scan a new QR code and try again."
+    },
+    "title_error_userexists": {
+        "en": "Account already exists"
+    },
+    "descr_error_userexists": { 
+        "en": "The userid you entered already exists. Please use a different one."
+    },
+    "title_error_createfailed": { 
+        "en": "Account creation failed"
+    },
+    "descr_error_createfailed": {
+        "en": "There was an error while creating the new user account. Please try again later."
+    },
+    "title_error_userdatarequired": {
+        "en": "Missing data."
+    },
+    "descr_error_userdatarequired": {
+        "en": "Userid and full name are required fields."
+    },
+    "title_error_invaliduserid": {
+        "en": "Invalid user ID"
+    },
+    "descr_error_invaliduserid": {
+        "en": "The user ID may only contain letters, digits, dots and underscores"
+    },
+    "enrollment_success": {
+        "en": "You have succesfully been enrolled. Please [link]proceed to log in[/link]."
+    },
+    "important": {
+        "en": "Important"
+    },
+    "qr_youreyesonly": {
+        "en": "In the next screen you will be shown a QR code that is <strong>for your eyes only</strong>. <br/>Please make sure you are in a safe environment before you proceed."
+    },
+    "label_userid": {
+        "en": "User ID"
+    },
+    "label_displayname": {
+        "en": "Full name"
+    },
+    "label_otp": {
+        "en": "One time password"
+    },
+    "attemptsleft": {
+        "en": "You have [attempts] attempts left before your account will be blocked!"
+    },
+    "attemptsleft_zero": {
+        "en": "Your account is now blocked. Please contact an administrator."
+    },
+    "close_this_window": {
+        "en": "You have succesfully been enrolled. Please [link]close this window[/link]."
+    } 
+}

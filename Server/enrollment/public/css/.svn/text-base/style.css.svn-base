@@ -1,0 +1,118 @@
+body {
+	margin:0;
+	padding:0;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+	font-size:0.8em;
+	color:black;
+	background:white;
+}
+
+p {
+	margin:0 0 10px 0;
+}
+
+div.wrapper {
+    position: relative;
+    margin: 0 auto 0 auto;
+    padding: 15px 0 30px 30px;
+    width: 994px;
+    background: url(http://www.surfnet.nl/Style%20Library/SURFnet/img/body_bck.gif) no-repeat;
+}
+
+div.header span {
+	float:left;
+	margin:0;
+	padding:8px 0 0 40px;
+	font-size:1.9em;
+	color:black;
+	font-weight:bold;
+}
+
+div.header span.left, div.header span.right {
+	position:absolute;
+	top:56px;
+	display:block;
+	z-index:2;
+	width:10px;
+	height:10px;
+	background:url(http://www.surfnet.nl/Style%20Library/SURFnet/img/header_img_left_bck.gif) no-repeat;
+	margin:0;
+	padding:0;
+}
+
+div.header img {
+	position:relative;
+	margin:12px 0 0 0;
+	z-index:1;
+}
+
+div.header img.logo, div.red div.header img.logo {
+	float:left;margin:-3px 0 0 3px;border:0;
+}
+
+
+div.header ul {
+	position:relative;
+	list-style:none;
+	margin:-5px 0 0 0;
+	padding:0;
+	background:url(http://www.surfnet.nl/Style%20Library/SURFnet/img/header_ul_bck.gif) bottom no-repeat #55A6DE;
+	width:960px;
+	z-index:10;
+}
+
+div.main {
+	font-size:0.9em;
+}
+
+div.header {
+	position:relative;
+}
+
+div.column {
+	float:left;
+}
+
+div.item {
+	padding:0 10px 10px 10px;
+	margin:15px 15px 0 0;
+	background-repeat:no-repeat;
+	background-position:bottom;
+}
+
+div.content div.item {
+	width:920px;
+	background-image:url(https://www.surfguest.nl/img/item_content_bck_full.gif);
+	padding:0 20px 20px 20px;
+}
+
+div.content div.item span.h2 {
+	background-image:url(https://www.surfguest.nl/img/h2_content_bck_full.gif);margin:0 -20px 20px -20px;
+}
+
+div.item h2, div.item span.h2 {
+	margin:0 -10px 10px -10px;
+	padding:7px 10px;
+	font-size:1.25em;
+	color:white;
+	background-position:top left;
+	background-repeat:no-repeat;
+	background-color:#F18A32;
+	height: 14px;
+}
+
+div.item span.h2 span {
+	margin: 0px;
+	color:white;
+}
+
+div.item {
+	padding:0 10px 10px 10px;
+	margin:15px 15px 0 0;
+	background-repeat:no-repeat;
+	background-position:bottom;
+}
+
+span {
+	display: block;
+}

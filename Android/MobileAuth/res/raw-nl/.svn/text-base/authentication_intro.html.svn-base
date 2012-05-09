@@ -1,0 +1,20 @@
+<html>
+<head>
+<style>
+BODY { margin: 10pt }
+LI { margin-bottom: 8pt }
+</style>
+</head>
+<body>
+Ga naar de website waar u wilt inloggen en doe de volgende stappen:
+
+<ul>
+  <li>Scan de getoonde QR tag op het loginscherm van de website of dienst waar u wilt inloggen.
+  <li>Indien u meerdere identiteiten heeft, selecteert u uw identiteit.
+  <li>Bevestig uw identiteit door het invoeren van uw PIN.
+  <li>U bent ingelogd!
+</ul>
+
+Druk op <strong>scan</strong> om het inloggen te starten.
+</body>
+</html>

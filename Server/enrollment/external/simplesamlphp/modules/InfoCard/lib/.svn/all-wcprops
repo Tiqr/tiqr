@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/lib
+END
+STS.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/lib/STS.php
+END
+Utils.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/lib/Utils.php
+END
+UserFunctions.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/lib/UserFunctions.php
+END

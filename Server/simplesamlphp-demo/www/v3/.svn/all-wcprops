@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/tiqr/!svn/ver/46/trunk/Server/simplesamlphp-demo/www/v3
+END
+secured.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/tiqr/!svn/ver/46/trunk/Server/simplesamlphp-demo/www/v3/secured.php
+END
+securelogin.php
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/tiqr/!svn/ver/34/trunk/Server/simplesamlphp-demo/www/v3/securelogin.php
+END
+simplesaml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/tiqr/!svn/ver/34/trunk/Server/simplesamlphp-demo/www/v3/simplesaml
+END
+include.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/tiqr/!svn/ver/34/trunk/Server/simplesamlphp-demo/www/v3/include.php
+END
+index.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/tiqr/!svn/ver/42/trunk/Server/simplesamlphp-demo/www/v3/index.php
+END

@@ -1,0 +1,15 @@
+<html>
+<head>
+<style>
+BODY { margin: 10pt }
+LI { margin-bottom: 8pt }
+</style>
+</head>
+<body>
+With tiqr you can use your smartphone for safe and secure authentication to services from SURFnet.
+<p>
+This application does not yet contain active accounts. To make use of tiqr you need an activated account. On www.tiqr.org you will find a list of identity providers.
+<p>
+After registration you will receive an activation-code and instructions for activation. During the activation process you will have to scan a QR tag. Tap the <strong>scan</strong> button when asked.
+</body>
+</html>

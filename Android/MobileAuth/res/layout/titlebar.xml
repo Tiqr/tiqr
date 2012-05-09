@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:id="@+id/screen"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true"
+    android:padding="4dip" >
+    <Button android:id="@+id/left_button"
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/scan_button"/>
+    <TextView android:id="@+id/title_text_view"
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_centerInParent="true"
+            style="@style/SurfnetWindowTitle"
+            android:text="@string/main_title_welcome"/>  
+    <ImageButton android:id="@+id/right_button"
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/icon_identities"
+            android:layout_alignParentRight="true"/>
+</RelativeLayout>

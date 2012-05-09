@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/1957/trunk/iphone/Barcodes/Classes
+END
+Scan.m
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/1709/trunk/iphone/Barcodes/Classes/Scan.m
+END
+ScanCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/1661/trunk/iphone/Barcodes/Classes/ScanCell.m
+END
+ArchiveController.m
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/1957/trunk/iphone/Barcodes/Classes/ArchiveController.m
+END
+Database.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/1691/trunk/iphone/Barcodes/Classes/Database.h
+END
+ZXMainViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/1709/trunk/iphone/Barcodes/Classes/ZXMainViewController.h
+END
+Database.m
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/1709/trunk/iphone/Barcodes/Classes/Database.m
+END
+BarcodesAppDelegate.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/1691/trunk/iphone/Barcodes/Classes/BarcodesAppDelegate.h
+END
+MessageViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/1656/trunk/iphone/Barcodes/Classes/MessageViewController.h
+END
+BarcodesAppDelegate.m
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/1691/trunk/iphone/Barcodes/Classes/BarcodesAppDelegate.m
+END
+ScanViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/1654/trunk/iphone/Barcodes/Classes/ScanViewController.h
+END
+ScanCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/1654/trunk/iphone/Barcodes/Classes/ScanCell.h
+END
+Scan.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/1654/trunk/iphone/Barcodes/Classes/Scan.h
+END
+ArchiveController.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/1691/trunk/iphone/Barcodes/Classes/ArchiveController.h
+END
+ModalViewControllerDelegate.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/1656/trunk/iphone/Barcodes/Classes/ModalViewControllerDelegate.h
+END
+ZXMainViewController.mm
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/1957/trunk/iphone/Barcodes/Classes/ZXMainViewController.mm
+END
+MessageViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/1656/trunk/iphone/Barcodes/Classes/MessageViewController.m
+END
+ScanViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/1957/trunk/iphone/Barcodes/Classes/ScanViewController.m
+END

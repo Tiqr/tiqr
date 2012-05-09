@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/www/shib13/sp
+END
+idpdisco.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/www/shib13/sp/idpdisco.php
+END
+metadata.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/www/shib13/sp/metadata.php
+END
+AssertionConsumerService.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/www/shib13/sp/AssertionConsumerService.php
+END
+initSSO.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/www/shib13/sp/initSSO.php
+END

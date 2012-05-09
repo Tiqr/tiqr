@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/openidProvider/hooks
+END
+hook_frontpage.php
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/openidProvider/hooks/hook_frontpage.php
+END

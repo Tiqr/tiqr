@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/authX509/lib/Auth/Source
+END
+X509userCert.php
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/authX509/lib/Auth/Source/X509userCert.php
+END

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/tiqr/!svn/ver/6/trunk/Android/ZXing
+END
+default.properties
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/tiqr/!svn/ver/6/trunk/Android/ZXing/default.properties
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/tiqr/!svn/ver/6/trunk/Android/ZXing/.classpath
+END
+proguard.cfg
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/tiqr/!svn/ver/6/trunk/Android/ZXing/proguard.cfg
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/tiqr/!svn/ver/6/trunk/Android/ZXing/.project
+END
+AndroidManifest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/tiqr/!svn/ver/6/trunk/Android/ZXing/AndroidManifest.xml
+END

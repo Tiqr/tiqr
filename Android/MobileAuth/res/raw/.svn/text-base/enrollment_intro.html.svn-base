@@ -1,0 +1,18 @@
+<html>
+<head>
+<style>
+BODY { margin: 5pt }
+LI { margin-bottom: 8pt }
+</style>
+</head>
+<body>
+Perform the following steps for enrollment:
+
+<ul>
+  <li>Scan the enrollment QR-code from your screen.</li>
+  <li>Confirm enrollment.</li>
+</ul>
+
+Press <strong>scan</strong> to start enrollment.
+</body>
+</html>

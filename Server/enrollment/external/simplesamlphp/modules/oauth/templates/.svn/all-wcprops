@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/oauth/templates
+END
+consent.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/oauth/templates/consent.php
+END
+registry.saved.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/oauth/templates/registry.saved.php
+END
+registry.edit.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/oauth/templates/registry.edit.tpl.php
+END
+authorized.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/oauth/templates/authorized.php
+END
+registry.list.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/oauth/templates/registry.list.php
+END

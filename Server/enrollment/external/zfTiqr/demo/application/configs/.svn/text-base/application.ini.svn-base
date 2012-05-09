@@ -1,0 +1,50 @@
+[production]
+phpSettings.display_startup_errors = 0
+phpSettings.display_errors = 0
+includePaths.library = APPLICATION_PATH "/../library"
+bootstrap.path = APPLICATION_PATH "/Bootstrap.php"
+bootstrap.class = "Bootstrap"
+resources.frontController.controllerDirectory = APPLICATION_PATH "/controllers"
+resources.layout.layoutPath = APPLICATION_PATH "/layouts/scripts/"
+resources.frontController.moduleDirectory = APPLICATION_PATH "/modules"
+pluginPaths.Tiqr_Resource = "Tiqr/Resource"
+
+resources.cachemanager.user.frontend.name = Core
+resources.cachemanager.user.frontend.customFrontendNaming = false
+resources.cachemanager.user.frontend.options.lifetime = 86400
+resources.cachemanager.user.frontend.options.automatic_serialization = true
+resources.cachemanager.user.backend.name = File
+resources.cachemanager.user.backend.customBackendNaming = false
+resources.cachemanager.user.backend.options.cache_dir = "../tmp"
+resources.cachemanager.user.backend.options.read_control = false
+resources.cachemanager.user.frontendBackendAutoload = false
+
+resources.tiqr.identifier = "zeus.local"
+resources.tiqr.name = "Zeus"
+resources.tiqr.auth.protocol = "surfauth"
+resources.tiqr.enroll.protocol = "surfenroll"
+resources.tiqr.logoUrl  = "http://zeus.local/img/surfmedia-logo.png"
+resources.tiqr.phpqrcode.path = "phpqrcode"
+resources.tiqr.apns.path = "apns-php"
+resources.tiqr.apns.certificate = "../../certificates/nl.surfnet.authenticator.pem"
+resources.tiqr.apns.environment = "sandbox"
+resources.tiqr.c2dm.username = "username for your android c2dm account"
+resources.tiqr.c2dm.password = "password for your android c2dm account"
+resources.tiqr.c2dm.application = "nl.surfnet.authenticator"
+resources.tiqr.session.secret = "enter something truly random here, preferably generated using openssl"
+resources.tiqr.statestorage.type = "file"
+resources.tiqr.devicestorage.type = "tokenexchange"
+resources.tiqr.devicestorage.url = "https://mobi.surfnet.nl/tokenexchange/"
+resources.tiqr.devicestorage.appid = "SURFauth"
+resources.tiqr.userstorage.type = "file"
+resources.tiqr.userstorage.path = "/tmp"
+
+[staging : production]
+
+[testing : production]
+phpSettings.display_startup_errors = 1
+phpSettings.display_errors = 1
+
+[development : production]
+phpSettings.display_startup_errors = 1
+phpSettings.display_errors = 1

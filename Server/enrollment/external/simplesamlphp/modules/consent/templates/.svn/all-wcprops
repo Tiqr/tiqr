@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/consent/templates
+END
+consentform.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/consent/templates/consentform.php
+END
+noconsent.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/consent/templates/noconsent.php
+END

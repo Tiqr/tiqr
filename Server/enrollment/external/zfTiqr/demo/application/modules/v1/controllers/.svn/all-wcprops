@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/tiqr/!svn/ver/68/trunk/Server/zfTiqr/demo/application/modules/v1/controllers
+END
+IndexController.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/tiqr/!svn/ver/68/trunk/Server/zfTiqr/demo/application/modules/v1/controllers/IndexController.php
+END
+LoginController.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/tiqr/!svn/ver/68/trunk/Server/zfTiqr/demo/application/modules/v1/controllers/LoginController.php
+END
+EnrollController.php
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/tiqr/!svn/ver/68/trunk/Server/zfTiqr/demo/application/modules/v1/controllers/EnrollController.php
+END

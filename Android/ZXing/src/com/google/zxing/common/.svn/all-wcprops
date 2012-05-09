@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/2281/trunk/core/src/com/google/zxing/common
+END
+BitSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/2269/trunk/core/src/com/google/zxing/common/BitSource.java
+END
+BitMatrix.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/2050/trunk/core/src/com/google/zxing/common/BitMatrix.java
+END
+GlobalHistogramBinarizer.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/2244/trunk/core/src/com/google/zxing/common/GlobalHistogramBinarizer.java
+END
+DecoderResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/common/DecoderResult.java
+END
+PerspectiveTransform.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/2191/trunk/core/src/com/google/zxing/common/PerspectiveTransform.java
+END
+HybridBinarizer.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/2277/trunk/core/src/com/google/zxing/common/HybridBinarizer.java
+END
+StringUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/2157/trunk/core/src/com/google/zxing/common/StringUtils.java
+END
+DetectorResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/1668/trunk/core/src/com/google/zxing/common/DetectorResult.java
+END
+GridSampler.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/common/GridSampler.java
+END
+CharacterSetECI.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/2184/trunk/core/src/com/google/zxing/common/CharacterSetECI.java
+END
+BitArray.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/2051/trunk/core/src/com/google/zxing/common/BitArray.java
+END
+DefaultGridSampler.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/common/DefaultGridSampler.java
+END

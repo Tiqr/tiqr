@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Logger
+END
+LoggingHandlerErrorLog.php
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Logger/LoggingHandlerErrorLog.php
+END
+LoggingHandlerFile.php
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Logger/LoggingHandlerFile.php
+END
+LoggingHandlerSyslog.php
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Logger/LoggingHandlerSyslog.php
+END

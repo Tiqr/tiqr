@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/ldap/lib/Auth/Process
+END
+AttributeAddFromLDAP.php
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/ldap/lib/Auth/Process/AttributeAddFromLDAP.php
+END

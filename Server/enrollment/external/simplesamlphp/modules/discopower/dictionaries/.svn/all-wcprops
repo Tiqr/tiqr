@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/discopower/dictionaries
+END
+tabs.definition.json
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/discopower/dictionaries/tabs.definition.json
+END
+tabs.translation.json
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/discopower/dictionaries/tabs.translation.json
+END

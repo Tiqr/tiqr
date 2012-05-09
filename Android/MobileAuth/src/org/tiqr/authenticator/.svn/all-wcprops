@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/tiqr/!svn/ver/113/trunk/Android/MobileAuth/src/org/tiqr/authenticator
+END
+Prefs.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/tiqr/!svn/ver/6/trunk/Android/MobileAuth/src/org/tiqr/authenticator/Prefs.java
+END
+IncompatibilityDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/tiqr/!svn/ver/6/trunk/Android/MobileAuth/src/org/tiqr/authenticator/IncompatibilityDialog.java
+END
+MainActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/tiqr/!svn/ver/85/trunk/Android/MobileAuth/src/org/tiqr/authenticator/MainActivity.java
+END
+NotificationRegistration.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/tiqr/!svn/ver/6/trunk/Android/MobileAuth/src/org/tiqr/authenticator/NotificationRegistration.java
+END
+AboutActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/tiqr/!svn/ver/84/trunk/Android/MobileAuth/src/org/tiqr/authenticator/AboutActivity.java
+END
+LoginDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/tiqr/!svn/ver/6/trunk/Android/MobileAuth/src/org/tiqr/authenticator/LoginDialog.java
+END
+C2DMReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/tiqr/!svn/ver/6/trunk/Android/MobileAuth/src/org/tiqr/authenticator/C2DMReceiver.java
+END
+ActivityDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/tiqr/!svn/ver/92/trunk/Android/MobileAuth/src/org/tiqr/authenticator/ActivityDialog.java
+END
+TiqrActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/tiqr/!svn/ver/76/trunk/Android/MobileAuth/src/org/tiqr/authenticator/TiqrActivity.java
+END

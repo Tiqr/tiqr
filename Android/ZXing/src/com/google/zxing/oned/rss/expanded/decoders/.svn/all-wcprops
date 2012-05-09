@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders
+END
+FieldParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/FieldParser.java
+END
+AbstractExpandedDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/AbstractExpandedDecoder.java
+END
+AI013x0xDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/AI013x0xDecoder.java
+END
+AI01392xDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/AI01392xDecoder.java
+END
+AI01393xDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/AI01393xDecoder.java
+END
+CurrentParsingState.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/CurrentParsingState.java
+END
+DecodedNumeric.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/1350/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/DecodedNumeric.java
+END
+AI01AndOtherAIs.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/AI01AndOtherAIs.java
+END
+AI013x0x1xDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/AI013x0x1xDecoder.java
+END
+DecodedObject.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/DecodedObject.java
+END
+AI01decoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/AI01decoder.java
+END
+GeneralAppIdDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/GeneralAppIdDecoder.java
+END
+DecodedChar.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/1350/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/DecodedChar.java
+END
+AI013103decoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/AI013103decoder.java
+END
+AnyAIDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/AnyAIDecoder.java
+END
+BlockParsedResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/BlockParsedResult.java
+END
+AI01weightDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/AI01weightDecoder.java
+END
+DecodedInformation.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/DecodedInformation.java
+END
+AI01320xDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/oned/rss/expanded/decoders/AI01320xDecoder.java
+END

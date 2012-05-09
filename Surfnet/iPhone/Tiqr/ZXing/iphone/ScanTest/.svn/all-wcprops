@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1980/trunk/iphone/ScanTest
+END
+RootViewController.xib
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/1354/trunk/iphone/ScanTest/RootViewController.xib
+END
+.gitignore
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/1745/trunk/iphone/ScanTest/.gitignore
+END
+ScanTest-Info.plist
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/1516/trunk/iphone/ScanTest/ScanTest-Info.plist
+END
+beep-beep.aiff
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/1361/trunk/iphone/ScanTest/beep-beep.aiff
+END
+ScanTest_Prefix.pch
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/1354/trunk/iphone/ScanTest/ScanTest_Prefix.pch
+END
+Icon.png
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/1957/trunk/iphone/ScanTest/Icon.png
+END
+main.mm
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/1354/trunk/iphone/ScanTest/main.mm
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1384/trunk/iphone/ScanTest/README
+END
+MainWindow.xib
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/1354/trunk/iphone/ScanTest/MainWindow.xib
+END

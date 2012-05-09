@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/tiqr/!svn/ver/127/trunk/Server/libTiqr/library/tiqr/Tiqr/StateStorage
+END
+File.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/tiqr/!svn/ver/127/trunk/Server/libTiqr/library/tiqr/Tiqr/StateStorage/File.php
+END
+Memcache.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/tiqr/!svn/ver/33/trunk/Server/libTiqr/library/tiqr/Tiqr/StateStorage/Memcache.php
+END
+Abstract.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/tiqr/!svn/ver/33/trunk/Server/libTiqr/library/tiqr/Tiqr/StateStorage/Abstract.php
+END

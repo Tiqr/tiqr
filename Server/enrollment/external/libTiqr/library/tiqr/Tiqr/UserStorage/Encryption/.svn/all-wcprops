@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/tiqr/!svn/ver/142/trunk/Server/libTiqr/library/tiqr/Tiqr/UserStorage/Encryption
+END
+Dummy.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/tiqr/!svn/ver/142/trunk/Server/libTiqr/library/tiqr/Tiqr/UserStorage/Encryption/Dummy.php
+END
+Mcrypt.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/tiqr/!svn/ver/142/trunk/Server/libTiqr/library/tiqr/Tiqr/UserStorage/Encryption/Mcrypt.php
+END
+Interface.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/tiqr/!svn/ver/142/trunk/Server/libTiqr/library/tiqr/Tiqr/UserStorage/Encryption/Interface.php
+END

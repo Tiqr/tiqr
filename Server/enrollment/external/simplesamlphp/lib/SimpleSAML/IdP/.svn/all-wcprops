@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/IdP
+END
+LogoutIFrame.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/IdP/LogoutIFrame.php
+END
+LogoutTraditional.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/IdP/LogoutTraditional.php
+END
+LogoutHandler.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/IdP/LogoutHandler.php
+END

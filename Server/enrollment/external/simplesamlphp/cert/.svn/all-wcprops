@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/cert
+END
+server.pem
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/cert/server.pem
+END
+server.crt
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/cert/server.crt
+END

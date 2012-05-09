@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/tiqr/!svn/ver/33/trunk/Server/libTiqr/library/tiqr/Tiqr/Message/Exception
+END
+AuthFailure.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/tiqr/!svn/ver/33/trunk/Server/libTiqr/library/tiqr/Tiqr/Message/Exception/AuthFailure.php
+END
+InvalidAddress.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/tiqr/!svn/ver/33/trunk/Server/libTiqr/library/tiqr/Tiqr/Message/Exception/InvalidAddress.php
+END
+SendFailure.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/tiqr/!svn/ver/33/trunk/Server/libTiqr/library/tiqr/Tiqr/Message/Exception/SendFailure.php
+END

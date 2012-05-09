@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/dictionaries
+END
+disco.definition.json
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/dictionaries/disco.definition.json
+END
+errors.translation.json
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/dictionaries/errors.translation.json
+END
+status.definition.json
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/dictionaries/status.definition.json
+END
+attributes.definition.json
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/dictionaries/attributes.definition.json
+END
+disco.translation.json
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/dictionaries/disco.translation.json
+END
+admin.definition.json
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/dictionaries/admin.definition.json
+END
+login.definition.json
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/dictionaries/login.definition.json
+END
+logout.definition.json
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/dictionaries/logout.definition.json
+END
+status.translation.json
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/dictionaries/status.translation.json
+END
+attributes.translation.json
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/dictionaries/attributes.translation.json
+END
+errors.definition.json
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/dictionaries/errors.definition.json
+END
+admin.translation.json
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/dictionaries/admin.translation.json
+END
+login.translation.json
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/dictionaries/login.translation.json
+END
+logout.translation.json
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/dictionaries/logout.translation.json
+END

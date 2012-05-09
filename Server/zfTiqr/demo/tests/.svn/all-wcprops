@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/tiqr/!svn/ver/68/trunk/Server/zfTiqr/demo/tests
+END
+phpunit.xml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/tiqr/!svn/ver/68/trunk/Server/zfTiqr/demo/tests/phpunit.xml
+END

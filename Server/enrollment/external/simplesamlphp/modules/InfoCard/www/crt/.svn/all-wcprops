@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/www/crt
+END
+sts.crt
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/www/crt/sts.crt
+END
+idp.crt
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/www/crt/idp.crt
+END
+CA.crt
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/www/crt/CA.crt
+END

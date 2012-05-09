@@ -1,0 +1,43 @@
+<form action="<?php echo $this->processURL ?>" method="post">
+
+<?php if (count($this->messages) > 0): ?>
+<p style="color: green; font-size: 120%; padding-bottom: 5px">
+    <?php foreach ($this->messages as $message): ?>
+    	<b><?php echo $this->escape($message) ?><br/></b>
+    <?php endforeach; ?>
+</p>
+<?php endif; ?>
+
+<p>
+	<b>Selecteer een gebruiker:</b><br/>
+	<label for="userId">Gebruiker:</label>
+    <select name="userId" id="userId">
+        <optgroup label="Nieuwe gebruikers">
+            <?php foreach ($this->users as $id => $name): ?>
+            	<option value="<?php echo $this->escape($id) ?>">
+            	    <?php echo $this->escape($name) ?>
+            	</option>
+            <?php endforeach; ?>
+        </optgroup>
+        <optgroup label="Reeds geregistreerde gebruikers">
+            <?php foreach ($this->enrolledUsers as $id => $name): ?>
+            	<option value="<?php echo $this->escape($id) ?>">
+            	    <?php echo $this->escape($name) ?>
+            	</option>
+            <?php endforeach; ?>
+     	</optgroup>	            
+    </select>
+</p>
+
+<p>
+    <b>Belangrijk:</b><br/>
+    In het volgende scherm wordt een QR code getoond die alleen <b>voor jouw ogen</b> is bedoeld.<br/>
+    Zorg ervoor dat je in een veilige omgeving bent voor je verder gaat.<br/></br>
+    Indien je een reeds <b>geregistreerde gebruiker</b> kiest wordt de enrollment hiervan <b>overschreven</b>, <b>zonder</b> bevestiging!
+</p>
+
+<p>
+    <input type="submit" value="Volgende" />
+</p>
+
+</form>

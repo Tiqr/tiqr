@@ -1,0 +1,533 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes
+END
+ScanCell.m
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/ScanCell.m
+END
+GeoResultParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/GeoResultParser.m
+END
+NSString+HTML.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/NSString+HTML.h
+END
+MeCardParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/MeCardParser.h
+END
+ResultAction.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/ResultAction.h
+END
+NSString+HTML.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/NSString+HTML.m
+END
+MeCardParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/MeCardParser.m
+END
+URLTOResultParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/URLTOResultParser.h
+END
+ResultAction.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/ResultAction.m
+END
+BookmarkDoCoMoResultParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/BookmarkDoCoMoResultParser.h
+END
+MessageViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/MessageViewController.h
+END
+Scan.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/Scan.h
+END
+EmailAction.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/EmailAction.h
+END
+URLTOResultParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/URLTOResultParser.m
+END
+BookmarkDoCoMoResultParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/BookmarkDoCoMoResultParser.m
+END
+MessageViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/MessageViewController.m
+END
+Scan.m
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/Scan.m
+END
+EmailAction.m
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/EmailAction.m
+END
+QRCodeFormatReader.mm
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/QRCodeFormatReader.mm
+END
+DoCoMoResultParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/DoCoMoResultParser.h
+END
+URIParsedResult.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/URIParsedResult.h
+END
+DoCoMoResultParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/DoCoMoResultParser.m
+END
+AddContactAction.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/AddContactAction.h
+END
+TwoDDecoderResult.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/TwoDDecoderResult.h
+END
+URIParsedResult.m
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/URIParsedResult.m
+END
+AddContactAction.m
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/AddContactAction.m
+END
+TwoDDecoderResult.m
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/TwoDDecoderResult.m
+END
+ScannedImageView.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/ScannedImageView.h
+END
+GrayBytesMonochromeBitmapSource.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/GrayBytesMonochromeBitmapSource.cpp
+END
+ParsedResult.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/ParsedResult.h
+END
+ScannedImageView.m
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/ScannedImageView.m
+END
+ParsedResult.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/ParsedResult.m
+END
+OpenUrlAction.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/OpenUrlAction.h
+END
+TelParsedResult.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/TelParsedResult.h
+END
+ScanViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/ScanViewController.h
+END
+ArchiveController.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/ArchiveController.h
+END
+TelParsedResult.m
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/TelParsedResult.m
+END
+OpenUrlAction.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/OpenUrlAction.m
+END
+PlainEmailResultParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/PlainEmailResultParser.h
+END
+ScanViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/ScanViewController.m
+END
+ArchiveController.m
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/ArchiveController.m
+END
+ResultParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/ResultParser.h
+END
+PlainEmailResultParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/PlainEmailResultParser.m
+END
+FormatReader.mm
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/FormatReader.mm
+END
+ResultParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/ResultParser.m
+END
+SMSParsedResult.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/SMSParsedResult.h
+END
+TelResultParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/TelResultParser.h
+END
+SMSAction.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/SMSAction.h
+END
+DecodingView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/DecodingView.xib
+END
+Database.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/Database.h
+END
+DecoderViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/DecoderViewController.h
+END
+EmailDoCoMoResultParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/EmailDoCoMoResultParser.h
+END
+SMSAction.m
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/SMSAction.m
+END
+SMSParsedResult.m
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/SMSParsedResult.m
+END
+TelResultParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/TelResultParser.m
+END
+MultiFormatReader.mm
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/MultiFormatReader.mm
+END
+CallAction.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/CallAction.h
+END
+EmailDoCoMoResultParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/EmailDoCoMoResultParser.m
+END
+DecoderViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/DecoderViewController.m
+END
+Database.m
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/Database.m
+END
+SMSResultParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/SMSResultParser.h
+END
+CallAction.m
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/CallAction.m
+END
+GrayBytesMonochromeBitmapSource.h
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/GrayBytesMonochromeBitmapSource.h
+END
+TextParsedResult.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/TextParsedResult.h
+END
+BusinessCardParsedResult.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/BusinessCardParsedResult.h
+END
+SMSResultParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/SMSResultParser.m
+END
+EmailParsedResult.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/EmailParsedResult.h
+END
+TextParsedResult.m
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/TextParsedResult.m
+END
+BusinessCardParsedResult.m
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/BusinessCardParsedResult.m
+END
+EmailParsedResult.m
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/EmailParsedResult.m
+END
+ZXingAppDelegate.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/ZXingAppDelegate.h
+END
+DecoderDelegate.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/DecoderDelegate.h
+END
+TextResultParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/TextResultParser.h
+END
+ZXingAppDelegate.m
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/ZXingAppDelegate.m
+END
+Decoder.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/Decoder.h
+END
+TextResultParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/TextResultParser.m
+END
+GeoParsedResult.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/GeoParsedResult.h
+END
+FormatReader.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/FormatReader.h
+END
+ShowMapAction.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/ShowMapAction.h
+END
+GeoParsedResult.m
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/GeoParsedResult.m
+END
+URLResultParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/URLResultParser.h
+END
+SMSTOResultParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/SMSTOResultParser.h
+END
+ShowMapAction.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/ShowMapAction.m
+END
+URLResultParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/URLResultParser.m
+END
+ScanCell.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/ScanCell.h
+END
+GeoResultParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/GeoResultParser.h
+END
+SMSTOResultParser.m
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/SMSTOResultParser.m
+END
+Decoder.mm
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/1646/trunk/iphone/legacy/Barcodes_original/Classes/Decoder.mm
+END

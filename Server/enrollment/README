@@ -1,0 +1,33 @@
+Tiqr LDAP Enrollment Portal
+===========================
+The Tiqr LDAP Enrollment Portal is a Zend Framework (PHP) application for
+Tiqr enrollment of existing LDAP users. 
+
+Setup
+=====
+To setup the Tiqr Enrollment Portal you have to install this code on a
+webserver with PHP 5.3 support with the LDAP module enabled.
+
+Next you have to edit the application's configuration located here:
+application/configs/application.ini
+
+Important options to look at:
+
+- resources.tiqr.*
+- enrollment.*
+- enrollment.ldap.*
+
+The LDAP user you specify should have read and write access for the 
+LDAP attributes specified in the configuration. For an LDAP schema
+file please checkout the authTiqr SimpleSAML module.
+
+The enrollment portal uses SimpleSAML for login purposes. It is by default
+configured to login using an external SimpleSAML setup. To change the
+SimpleSAML settings you probably need to edit at least the following files:
+
+- external/simplesamlphp/config/authsources.php
+- external/simplesamlphp/metadata/saml20-idp-remote.php
+
+The login is only used to validate if the user can login or not. The 
+application doesn't care which user logs in nor does it do any extra
+validation of user rights etc.

@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <style>
+            body { font: 11pt Arial; margin:10px; padding: 0px; background: transparent }
+            div { background-color: #fff; -webkit-border-radius: 10pt; border: 1pt #999 solid; padding: 8pt; margin: 0px } 
+            li { margin-bottom: 10px }
+        </style>
+    </head>
+    <body>
+        <div>
+            Using tiqr you can use your smartphone to easily and securely
+            login to several websites.
+            <br/><br/>
+            The application does not yet have an active account. You need an
+            active account to use tiqr. You can find a a list of identity providers
+            at <a href="https://tiqr.org">tiqr.org</a>.
+            <br/><br/>
+            After registering, you will receive an activation code and instructions for
+            activating your account. During the activation process you will need to scan
+            a QR tag. Press <b>Scan</b> if asked.
+        </div>
+    </body>
+</html>

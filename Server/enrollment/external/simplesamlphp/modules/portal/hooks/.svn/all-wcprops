@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/portal/hooks
+END
+hook_htmlinject.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/portal/hooks/hook_htmlinject.php
+END

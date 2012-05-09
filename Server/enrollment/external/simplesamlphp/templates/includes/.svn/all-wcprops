@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/templates/includes
+END
+footer.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/templates/includes/footer.php
+END
+header-embed.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/templates/includes/header-embed.php
+END
+footer-embed.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/templates/includes/footer-embed.php
+END
+header.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/templates/includes/header.php
+END

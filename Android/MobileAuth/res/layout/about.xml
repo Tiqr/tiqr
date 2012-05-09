@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:paddingLeft="5dp" android:paddingRight="5dp"
+	android:paddingTop="20dp" android:paddingBottom="60dp">
+	<TableRow android:layout_height="fill_parent"
+		android:layout_width="fill_parent" android:layout_weight="2">
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:orientation="vertical" android:layout_width="fill_parent"
+			android:layout_height="fill_parent">
+			<ImageView android:src="@drawable/tiqr_logo" android:id="@+id/logo_tiqr"
+				android:paddingBottom="40dp" android:layout_width="fill_parent"
+				android:layout_height="wrap_content" />
+			<TextView android:layout_width="fill_parent"
+				android:gravity="center" android:layout_height="wrap_content"
+				android:text="@string/provided_by_title" android:paddingBottom="15dp"
+				android:textStyle="bold" android:textColor="#666" android:textSize="14dp" />
+
+			<ImageView android:id="@+id/logo_surfnet"
+				android:layout_height="60dp" android:scaleType="fitCenter"
+				android:layout_width="fill_parent" android:src="@drawable/logo_surfnet" />
+		</LinearLayout>
+	</TableRow>
+
+	<TableRow android:layout_height="fill_parent"
+		android:layout_width="fill_parent" android:layout_weight="2">
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:orientation="vertical" android:layout_width="fill_parent"
+			android:layout_height="fill_parent">
+			<TextView android:layout_width="fill_parent"
+				android:gravity="center" android:layout_height="wrap_content"
+				android:text="@string/developed_by_title" android:paddingBottom="10dp"
+				android:textStyle="bold" android:textColor="#666" android:textSize="14dp" />
+
+			<ImageView android:id="@+id/logo_egeniq"
+				android:layout_height="50dp" android:scaleType="fitCenter"
+				android:layout_width="fill_parent" android:src="@drawable/logo_egeniq" />
+		</LinearLayout>
+	</TableRow>
+
+
+	<TableRow android:layout_height="fill_parent"
+		android:layout_width="fill_parent" android:layout_weight="0">
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:orientation="vertical" android:layout_width="fill_parent"
+			android:layout_height="fill_parent">
+			<TextView android:layout_width="fill_parent"
+				android:gravity="center" android:layout_height="wrap_content"
+				android:text="@string/interaction_by_title" android:textStyle="bold"
+				android:paddingBottom="10dp" android:textSize="14dp"
+				android:textColor="#666" />
+
+			<ImageView android:id="@+id/logo_stroomt"
+				android:layout_height="wrap_content" android:scaleType="fitCenter"
+				android:layout_width="fill_parent" android:src="@drawable/stroomt_logo" />
+		</LinearLayout>
+	</TableRow>
+</TableLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:orientation="vertical"
+    android:paddingTop="1dip"
+    android:paddingBottom="3dip"
+    android:paddingLeft="20dip"
+    android:paddingRight="20dip">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="#CCCCCC"
+    android:id="@+id/message"
+    android:paddingTop="1dip"
+/>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="#CCCCCC"
+    android:id="@+id/password_label"
+    android:text="@string/password_label"
+/>
+<EditText
+    android:id="@+id/password"
+    android:layout_height="wrap_content"
+    android:layout_width="250px"
+    android:layout_centerHorizontal="true"
+    android:layout_below="@+id/password_label"
+    android:singleLine="true"
+    android:numeric="integer"
+    android:password="true"
+    />
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:visibility="invisible"
+    android:textColor="#CCCCCC"
+    android:id="@+id/password_verify_label"
+    android:text="@string/password_verify_label"
+/>
+<EditText
+    android:id="@+id/password_verify"
+    android:visibility="invisible"
+    android:layout_height="wrap_content"
+    android:layout_width="250px"
+    android:layout_below="@+id/password_verify_label"
+    android:singleLine="true"
+    android:numeric="integer"
+    android:password="true"
+    />
+    
+</LinearLayout>

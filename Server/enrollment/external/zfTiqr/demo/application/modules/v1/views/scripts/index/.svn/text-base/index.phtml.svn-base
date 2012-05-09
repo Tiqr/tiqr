@@ -1,0 +1,12 @@
+<p>
+    Welcome to the Tiqr direct mobile authentication demo.
+</p>
+
+<p>
+    <?php if (isset($this->user)): ?>
+        Welcome <b><?php echo $this->user->displayName; ?></b>!<br/>
+        Click <a href="<?php echo $this->logoutURL ?>">here</a> to logout.        
+    <?php else: ?>
+        Click <a href="<?php echo $this->loginURL ?>">here</a> to login.
+    <?php endif; ?>
+</p>

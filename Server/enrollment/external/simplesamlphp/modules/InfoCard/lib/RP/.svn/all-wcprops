@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/lib/RP
+END
+LICENSE.txt
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/lib/RP/LICENSE.txt
+END
+Zend_InfoCard_Xml_Security_Transform_EnvelopedSignature.php
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/lib/RP/Zend_InfoCard_Xml_Security_Transform_EnvelopedSignature.php
+END
+Zend_InfoCard_Xml_Security.php
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/lib/RP/Zend_InfoCard_Xml_Security.php
+END
+Zend_InfoCard_Claims.php
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/lib/RP/Zend_InfoCard_Claims.php
+END
+Zend_InfoCard_Xml_Security_Transform_XmlExcC14N.php
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/lib/RP/Zend_InfoCard_Xml_Security_Transform_XmlExcC14N.php
+END
+InfoCard.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/lib/RP/InfoCard.php
+END
+Zend_InfoCard_Xml_Security_Transform.php
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/lib/RP/Zend_InfoCard_Xml_Security_Transform.php
+END
+Zend_InfoCard_Xml_Assertion_Saml.php
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/lib/RP/Zend_InfoCard_Xml_Assertion_Saml.php
+END

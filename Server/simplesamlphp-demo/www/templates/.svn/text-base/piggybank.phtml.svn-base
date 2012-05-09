@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+	<head>
+	    <title>Piggy Bank ::: Secure Saving Accounts</title>
+	    <style type="text/css" media="screen">@import "../css/piggybank.css";</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="login">
+				<?php if (!isset($data["logoutUrl"])) { ?>
+				<a href="secured.php" title="Log in">Online Banking</a> 
+				<?php } else { ?>
+				<a href="<?php echo $data["logoutUrl"]; ?>" title="Log out">Log out</a> 
+				<?php } ?></div>
+			<div id="logo"></div>
+			<div id="menu"><a href="index.php">About Piggy Bank</a> | <a href="secured.php">Financial Services</a> | <a href="secured.php">Social Commitment</a> | <a href="secured.php">Press Room</a></div>
+			<div id="header_login"></div>
+			<div id="main">
+				<div id="tekst_links">
+					<strong>Secure Log-in</strong><br />
+					<hr />
+					PiggyBank uses tiqr for authentication. To learn more about tiqr, <a href="https://tiqr.org/">click here</a><br />
+				</div>
+<?php echo $data["content"]; ?>
+			</div>
+			<div id="footer"><a href="secured.php">Disclaimer</a> | <a href="secured.php">Privacy</a> | <a href="secured.php">Security</a> | <a href="secured.php">Accessibility</a> | <a href="secured.php">Site Map</a></div>
+		</div>
+	</body>
+</html>

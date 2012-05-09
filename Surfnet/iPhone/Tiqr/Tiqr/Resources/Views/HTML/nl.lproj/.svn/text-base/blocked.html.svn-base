@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <style>
+            body { font: 11pt Arial; margin:10px; padding: 0px; background: transparent }
+            div { background-color: #fff; -webkit-border-radius: 10pt; border: 1pt #999 solid; padding: 8pt; margin: 0px } 
+            </style>
+    </head>
+    <body>
+        <div>
+            <b>Wat nu?</b><br/>
+            Vraag bij uw identeitverstrekker(s) om een nieuwe activatiecode. Een link
+            naar uw identiteitverstrekker(s) is beschikbaar vanuit het account overzicht 
+            (rechtsboven).
+            <br/><br/>
+            Bij uw nieuwe activatiecode ontvangt u instructies. Zodra u daar om gevraagd wordt
+            klikt u op "Scan".
+        </div>
+    </body>
+</html>

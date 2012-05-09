@@ -1,0 +1,138 @@
+body{
+	margin: auto;
+	font-family: verdana;
+	font-size: 11px;
+}
+
+a {
+	color: #000000;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#wrapper {
+	background: url(../img/8er.jpg) right 10px no-repeat;
+	margin: auto;
+	width: 955px;
+	border: 0px;
+}
+
+
+
+#logo {
+	background: url(../img/logo.jpg) 0px 10px no-repeat;
+	width: 297px;
+	height: 90px;
+}
+
+#menu {
+	background: url(../img/menu.png) 0px 0px no-repeat;
+	width: 925px;
+	height: 31px;
+	color: #ffffff;
+	font-weight: bold;
+	padding-top: 10px;
+	padding-left: 18px;
+}
+
+#menu a {
+	color: #ffffff;
+}
+
+
+#login {
+	float: right;
+	position: relative;
+	top: 100px;
+	margin-top: 0px;
+	padding-left: 45px;
+	background: url(../img/sleutel.png) left 0px no-repeat;
+	width: 140px;
+	text-align: left;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+#login a {
+	color: #ffffff;
+}
+
+#header {
+	background: url(../img/header.jpg) center 0px no-repeat;
+	margin-top: 15px;
+	width: 940px;
+	height: 326px;
+}
+
+#header_login {
+	background: url(../img/header_login.jpg) center 0px no-repeat;
+	margin-top: 15px;
+	width: 940px;
+	height: 159px;
+}
+
+#main {
+	margin-left: 16px;
+	margin-top: 15px;
+	width: 910px;
+}
+
+#tekst_links, #tekst_rechts {
+	float: left;
+}
+
+#tekst_midden {
+	float: left;
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
+#tekst_login {
+	float: left;
+	margin-left: 30px;
+	width: 594px;
+}
+
+#tekst_links, #tekst_midden, #tekst_rechts {
+	width: 282px;
+}
+
+#tekst_links strong, #tekst_midden strong, #tekst_rechts strong, #tekst_login strong {
+	color: #797a7e;
+}
+
+#tekst_links hr, #tekst_midden hr, #tekst_rechts hr, #tekst_login hr {
+	color: #be1011;
+	background-color: #be1011;
+	height: 3px;
+	border: 0px;
+	margin-top: 2px;
+	margin-bottom: 12px;
+}
+
+#footer {
+	background: url(../img/slogan.jpg) right 2px no-repeat;
+	color: #be1011;
+	font-weight: bold;
+	margin-top: 15px;
+	margin-left: 16px;
+	padding-top: 5px;
+	width: 906px;
+	height: 20px;
+	clear: both;
+	float: left;
+	border-top: 2px solid #be1011;
+}
+
+#footer a {
+	color: #be1011;
+}
+
+#submit {
+	float: right;
+	background-color: #FFFFFF;  
+	border-style: solid; 
+	border-color: #797a7e;
+	color: #797a7e;
+
+}

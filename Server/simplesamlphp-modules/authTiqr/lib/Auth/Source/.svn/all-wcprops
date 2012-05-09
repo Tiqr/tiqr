@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/tiqr/!svn/ver/146/trunk/Server/simplesamlphp-modules/authTiqr/lib/Auth/Source
+END
+Tiqr.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/tiqr/!svn/ver/146/trunk/Server/simplesamlphp-modules/authTiqr/lib/Auth/Source/Tiqr.php
+END
+TiqrUserPass.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/tiqr/!svn/ver/146/trunk/Server/simplesamlphp-modules/authTiqr/lib/Auth/Source/TiqrUserPass.php
+END

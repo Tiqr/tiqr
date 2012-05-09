@@ -1,0 +1,58 @@
+ConditionalAuth module
+======================
+
+The ConditionalAuth module provides a method for automatically switching
+between authentication sources based on conditions. There is only one 
+authentication module:
+
+`conditionalAuth:ConditionalAuth`
+: Authenticate the user against a conditional selected authentication source.
+
+
+`conditionalAuth:ConditionalAuth`
+---------------------------------
+
+This module is useful if you have certain conditions that have to be 
+met before a certain authentication source is available.
+
+To create a ConditionalAuth authentication source, open
+`config/authsources.php` in a text editor, and add an entry for the
+authentication source:
+
+    'default' => array(
+        'conditionalAuth:ConditionalAuth',
+
+        /*
+         * The available authentication sources.
+         * They must be defined in this authsources.php file.
+         */
+        'sources' => array(
+            'x509' => function() { return !empty($_SERVER['SSL_CLIENT_CERT']); },
+            'tiqrUserPass' => function() { return substr($_SERVER['REMOTE_ADDR'], 0, 10) == '192.168.0.'; },
+            'tiqr' => null
+        ),
+    ),
+
+    'x509' => array(
+        ...
+    ),
+    
+    'tiqrUserPass' => array(
+        ...
+    ),
+    
+    'tiqr' => array(
+        ...
+    )
+    
+You should update the name of this authentication source (`default`), and 
+the authentication sources it references, to have a name which makes 
+sense to your organization.
+
+The ConditionalAuth authentication sources only has one option: the `sources`
+option, and it is required. It is an array with the keys of other authentication 
+sources defined in the `config/authsources.php` file and as value a callback
+function that checks if a certain condition has been met, or null for the default
+fallback rule. The order in this array is significant. Conditions will be validated
+from top to bottom and the first source which condition callback returns true is
+used.

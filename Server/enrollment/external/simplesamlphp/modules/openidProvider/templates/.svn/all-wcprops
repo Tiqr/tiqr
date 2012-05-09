@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/openidProvider/templates
+END
+user.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/openidProvider/templates/user.tpl.php
+END
+trust.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/openidProvider/templates/trust.tpl.php
+END

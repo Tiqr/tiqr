@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Metadata
+END
+MetaDataStorageHandlerDynamicXML.php
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Metadata/MetaDataStorageHandlerDynamicXML.php
+END
+SAMLParser.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Metadata/SAMLParser.php
+END
+MetaDataStorageHandlerFlatFile.php
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Metadata/MetaDataStorageHandlerFlatFile.php
+END
+MetaDataStorageHandlerSerialize.php
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Metadata/MetaDataStorageHandlerSerialize.php
+END
+MetaDataStorageHandler.php
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Metadata/MetaDataStorageHandler.php
+END
+SAMLBuilder.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Metadata/SAMLBuilder.php
+END
+MetaDataStorageHandlerXML.php
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Metadata/MetaDataStorageHandlerXML.php
+END
+MetaDataStorageSource.php
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Metadata/MetaDataStorageSource.php
+END
+Signer.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Metadata/Signer.php
+END

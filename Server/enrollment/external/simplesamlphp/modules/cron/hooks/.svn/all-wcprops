@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/cron/hooks
+END
+hook_cron.php
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/cron/hooks/hook_cron.php
+END
+hook_frontpage.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/cron/hooks/hook_frontpage.php
+END

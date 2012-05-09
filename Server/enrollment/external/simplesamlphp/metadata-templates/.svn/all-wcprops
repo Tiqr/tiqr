@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/metadata-templates
+END
+adfs-idp-hosted.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/metadata-templates/adfs-idp-hosted.php
+END
+wsfed-idp-remote.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/metadata-templates/wsfed-idp-remote.php
+END
+saml20-idp-hosted.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/metadata-templates/saml20-idp-hosted.php
+END
+shib13-idp-remote.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/metadata-templates/shib13-idp-remote.php
+END
+wsfed-sp-hosted.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/metadata-templates/wsfed-sp-hosted.php
+END
+shib13-sp-hosted.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/metadata-templates/shib13-sp-hosted.php
+END
+saml20-idp-remote.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/metadata-templates/saml20-idp-remote.php
+END
+shib13-sp-remote.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/metadata-templates/shib13-sp-remote.php
+END
+adfs-sp-remote.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/metadata-templates/adfs-sp-remote.php
+END
+saml20-sp-remote.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/metadata-templates/saml20-sp-remote.php
+END
+shib13-idp-hosted.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/metadata-templates/shib13-idp-hosted.php
+END

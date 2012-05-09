@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/2090/trunk/core/src/com/google/zxing/multi/qrcode/detector
+END
+MultiDetector.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/2090/trunk/core/src/com/google/zxing/multi/qrcode/detector/MultiDetector.java
+END
+MultiFinderPatternFinder.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/multi/qrcode/detector/MultiFinderPatternFinder.java
+END

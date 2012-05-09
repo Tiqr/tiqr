@@ -1,0 +1,18 @@
+<html>
+<body>
+
+<h1>Demo</h1>
+
+<ul>
+  <li><a href="v1/">V1 - Direct mobile authentication</a>
+  <li>V2 - Enrollment (see V1, follow the 'no account  yet' link)
+  <li><a href="v3/">V3 - Step Up authentication</a>
+  <li><a href="v4/">V4 - Direct authentication, step up enrollment</a>
+</ul>
+
+<h1>News</h1>
+<ul><li>March 22, 2011: The server was upgraded today to a newer version. We've removed all identities. To use the demo, you need
+a new client application (ask <a href="mailto:joost.vandijk@surfnet.nl">Joost van Dijk</a>) and you need to re-enroll all identities that have been created before March 22.</li></ul>
+
+</body>
+</html>

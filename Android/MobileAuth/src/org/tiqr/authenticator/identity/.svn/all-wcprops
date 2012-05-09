@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/tiqr/!svn/ver/76/trunk/Android/MobileAuth/src/org/tiqr/authenticator/identity
+END
+IdentityAdminActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/tiqr/!svn/ver/76/trunk/Android/MobileAuth/src/org/tiqr/authenticator/identity/IdentityAdminActivity.java
+END
+IdentityActivityGroup.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/tiqr/!svn/ver/76/trunk/Android/MobileAuth/src/org/tiqr/authenticator/identity/IdentityActivityGroup.java
+END
+AbstractIdentityListActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/tiqr/!svn/ver/76/trunk/Android/MobileAuth/src/org/tiqr/authenticator/identity/AbstractIdentityListActivity.java
+END
+IdentityCursorAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/tiqr/!svn/ver/76/trunk/Android/MobileAuth/src/org/tiqr/authenticator/identity/IdentityCursorAdapter.java
+END
+IdentityDetailActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tiqr/!svn/ver/76/trunk/Android/MobileAuth/src/org/tiqr/authenticator/identity/IdentityDetailActivity.java
+END

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/tiqr/!svn/ver/146/trunk/Server/libTiqr/library/tiqr/Tiqr
+END
+Random.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/tiqr/!svn/ver/95/trunk/Server/libTiqr/library/tiqr/Tiqr/Random.php
+END
+Service.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/tiqr/!svn/ver/53/trunk/Server/libTiqr/library/tiqr/Tiqr/Service.php
+END
+UserStorage.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/tiqr/!svn/ver/142/trunk/Server/libTiqr/library/tiqr/Tiqr/UserStorage.php
+END
+DeviceStorage.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/tiqr/!svn/ver/33/trunk/Server/libTiqr/library/tiqr/Tiqr/DeviceStorage.php
+END
+StateStorage.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/tiqr/!svn/ver/33/trunk/Server/libTiqr/library/tiqr/Tiqr/StateStorage.php
+END

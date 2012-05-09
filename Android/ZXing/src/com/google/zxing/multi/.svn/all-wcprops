@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/2183/trunk/core/src/com/google/zxing/multi
+END
+GenericMultipleBarcodeReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/multi/GenericMultipleBarcodeReader.java
+END
+ByQuadrantReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/multi/ByQuadrantReader.java
+END
+MultipleBarcodeReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/multi/MultipleBarcodeReader.java
+END

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/templates
+END
+temp-login.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/templates/temp-login.php
+END
+temp-getcardform.php
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/modules/InfoCard/templates/temp-getcardform.php
+END

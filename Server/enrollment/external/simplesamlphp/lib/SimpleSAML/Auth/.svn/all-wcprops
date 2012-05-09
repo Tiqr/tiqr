@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Auth
+END
+Simple.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Auth/Simple.php
+END
+BWC.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Auth/BWC.php
+END
+ProcessingChain.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Auth/ProcessingChain.php
+END
+LDAP.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Auth/LDAP.php
+END
+Source.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Auth/Source.php
+END
+State.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Auth/State.php
+END
+ProcessingFilter.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Auth/ProcessingFilter.php
+END
+Default.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Auth/Default.php
+END
+TimeLimitedToken.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/SimpleSAML/Auth/TimeLimitedToken.php
+END

@@ -1,0 +1,179 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID
+END
+Consumer.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/Consumer.php
+END
+URINorm.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/URINorm.php
+END
+FileStore.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/FileStore.php
+END
+CryptUtil.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/CryptUtil.php
+END
+Interface.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/Interface.php
+END
+SReg.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/SReg.php
+END
+MDB2Store.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/MDB2Store.php
+END
+Nonce.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/Nonce.php
+END
+KVForm.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/KVForm.php
+END
+DumbStore.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/DumbStore.php
+END
+Server.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/Server.php
+END
+HMAC.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/HMAC.php
+END
+AX.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/AX.php
+END
+Parse.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/Parse.php
+END
+BigMath.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/BigMath.php
+END
+Extension.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/Extension.php
+END
+Association.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/Association.php
+END
+SQLStore.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/SQLStore.php
+END
+Discover.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/Discover.php
+END
+SQLiteStore.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/SQLiteStore.php
+END
+ServerRequest.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/ServerRequest.php
+END
+PostgreSQLStore.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/PostgreSQLStore.php
+END
+MySQLStore.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/MySQLStore.php
+END
+MemcachedStore.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/MemcachedStore.php
+END
+DatabaseConnection.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/DatabaseConnection.php
+END
+Message.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/Message.php
+END
+PAPE.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/PAPE.php
+END
+TrustRoot.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/TrustRoot.php
+END
+DiffieHellman.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/tiqr/!svn/ver/136/trunk/Server/enrollment/external/simplesamlphp/lib/Auth/OpenID/DiffieHellman.php
+END

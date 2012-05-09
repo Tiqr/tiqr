@@ -1,0 +1,113 @@
+10
+
+dir
+147
+https://svn.surfnet.nl/svn/tiqr/trunk/Server/enrollment/external/simplesamlphp
+https://svn.surfnet.nl/svn/tiqr
+
+
+
+2012-01-24T13:53:20.575007Z
+136
+petercv
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5b51e652-636f-4e27-ac9e-bd9e99c16056
+
+metadata
+dir
+
+log
+dir
+
+schemas
+dir
+
+extra
+dir
+
+www
+dir
+
+docs
+dir
+
+cert
+dir
+
+templates
+dir
+
+config-templates
+dir
+
+attributemap
+dir
+
+config
+dir
+
+lib
+dir
+
+modules
+dir
+
+bin
+dir
+
+COPYING
+file
+
+
+
+
+2012-05-09T12:40:00.000000Z
+523e05fe987d1fd8397f18c7b404ffd3
+2012-01-24T13:53:20.575007Z
+136
+petercv
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+26709
+
+data
+dir
+
+metadata-templates
+dir
+
+dictionaries
+dir
+

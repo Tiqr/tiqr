@@ -1,0 +1,74 @@
+authTiqr module
+================
+
+The authTiqr module provides support for logging in using tiqr 
+(http://tiqr.org). There are two authentication modules:
+
+`authTiqr:Tiqr`
+: Authenticate the user using tiqr.
+
+`authTiqr:TiqrUserPass`
+: Authenticate the user using tiqr or one of the user/pass modules.
+
+
+`authTiqr:Tiqr`
+---------------
+
+This module is useful if you want to allow a user to login with a tiqr
+identity stored on their mobile phone.
+
+To create a TiqrUserPass authentication source, open
+`config/authsources.php` in a text editor, and add an entry for the
+authentication source:
+
+    'tiqr' => array(
+    	'authTiqr:Tiqr'
+    ),
+
+Configuration for tiqr takes place in a separate configuration file
+called module_tiqr.php for which an example can be found in the 
+config-templates/ directory.
+
+`authTiqr:TiqrUserPass`
+-----------------------
+
+This module is useful if you want to allow a user to login using either a 
+traditional username/password authentication source like LDAP or using
+their tiqr identity stored on their mobile phone. 
+
+To create a TiqrUserPass authentication source, open
+`config/authsources.php` in a text editor, and add an entry for the
+authentication source:
+
+    'tiqrUserPass' => array(
+    	'authTiqr:TiqrUserPass',
+    	'userPassSource' => 'ldap'
+    ),
+    
+You should update the name of this authentication source (`tiqrUserpass`), 
+and the username/password authentication source it references, to have a 
+name which makes sense to your organization.
+
+The TiqrUserPass authentication sources only has one option: the 
+`userPassSource` option, and it is required. It is a simple string which
+contains the name of the configured username/password authentication source
+you want to combine with the tiqr login.
+
+Configuration for tiqr takes place in a separate configuration file
+called module_tiqr.php for which an example can be found in the 
+config-templates/ directory.
+
+NOTE:
+You currently have to make a small change in the SimpleSAML PHP sources
+to be able to use the TiqrUserPass authentication source. Open the file
+`modules/core/lib/Auth/UserPassBase.php` and change the following line:
+
+	abstract protected function login($username, $password);
+	
+To:
+
+	abstract public function login($username, $password);
+
+You have to make the same change for the username/password authentication
+source of your choice. For example, in case of ldap authentication you
+have to apply this change to the file `/ldap/lib/Auth/Source/LDAP.php'.

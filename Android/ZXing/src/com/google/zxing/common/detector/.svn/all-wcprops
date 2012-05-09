@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/common/detector
+END
+WhiteRectangleDetector.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/1866/trunk/core/src/com/google/zxing/common/detector/WhiteRectangleDetector.java
+END
+MonochromeRectangleDetector.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/2002/trunk/core/src/com/google/zxing/common/detector/MonochromeRectangleDetector.java
+END

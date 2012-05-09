@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="con" path="org.eclipse.dltk.USER_LIBRARY/Zend"/>
+	<buildpathentry kind="src" path="external/zfTiqr/demo/tests/application"/>
+	<buildpathentry kind="src" path="external/zfTiqr/demo/public"/>
+	<buildpathentry kind="src" path="external/zfTiqr/demo/tests/library"/>
+	<buildpathentry kind="src" path="application"/>
+	<buildpathentry kind="src" path="external/zfTiqr/library/tiqr-zf/Tiqr/Auth"/>
+	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+	<buildpathentry kind="src" path="external/zfTiqr/demo/application"/>
+	<buildpathentry kind="src" path="external/zfTiqr/library/tiqr-zf/Tiqr/Resource"/>
+	<buildpathentry kind="src" path="public"/>
+	<buildpathentry kind="src" path="tests"/>
+	<buildpathentry kind="src" path="external/zfTiqr/library/tiqr-zf/Tiqr/Controller"/>
+	<buildpathentry kind="src" path="external/libTiqr/library/tiqr/Tiqr"/>
+	<buildpathentry kind="src" path="external/libTiqr/library/tiqr/tests"/>
+</buildpath>
