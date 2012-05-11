@@ -35,12 +35,6 @@ class sspmod_authTiqr_Auth_Tiqr
     const SESSIONKEYID = 'sspmod_authTiqr_Auth_Tiqr.sessionkey';
     
     /**
-     * The maximum number a user may do an authentication before being blocked.
-     */
-    const MAX_ATTEMPTS = 3;
-    
-    
-    /**
      * User storage instance.
      */
     private static $_userStorage = null;
@@ -300,17 +294,24 @@ class sspmod_authTiqr_Auth_Tiqr
     /**
      * 
      * Enter description here ...
-     * @param unknown_type $request
+     * @param string $userId
+     * @param string $response
+     * @param string $sessionKey
      * @return String an all-caps string indicating the authentication result.
      */
     protected static function _processLogin($userId, $response, $sessionKey)
     {
         try {
             $server = self::getServer();
-                
-            $store = self::getUserStorage();
-            if ($store->isBlocked($userId)) {
-                return "ACCOUNT_BLOCKED";
+            $store  = self::getUserStorage();
+            $config = SimpleSAML_Configuration::getConfig('module_tiqr.php')->toArray();
+            
+            $tempBlockDuration = array_key_exists('temporaryBlockDuration', $config) ? $config['temporaryBlockDuration'] : 0;
+            $maxTempBlocks = array_key_exists('maxTemporaryBlocks', $config) ? $config['maxTemporaryBlocks'] : 0;
+            $maxAttempts = array_key_exists('maxAttempts', $config) ? $config['maxAttempts'] : 3;
+            
+            if ($store->isBlocked($userId, $tempBlockDuration)) {
+                return "ACCOUNT_BLOCKED".($tempBlockDuration > 0 ? ':'.$tempBlockDuration : '');
             } else if ($store->userExists($userId)) {
                 $secret = $store->getSecret($userId);
                 $result = $server->authenticate($userId, $secret, $sessionKey, $response); 
@@ -332,16 +333,36 @@ class sspmod_authTiqr_Auth_Tiqr
                     case Tiqr_Service::AUTH_RESULT_INVALID_REQUEST:
                         return "INVALID_REQUEST";
                     case Tiqr_Service::AUTH_RESULT_INVALID_RESPONSE:
-                        
                         $attempts = $store->getLoginAttempts($userId);
-                        if ($attempts < (self::MAX_ATTEMPTS-1)) {
+                        if (0 == $maxAttempts) {
+                            return "INVALID_RESPONSE";
+                        }
+                        else if ($attempts < ($maxAttempts-1)) {
                             $store->setLoginAttempts($userId, $attempts+1);
                         } else {
-                            // This is the 3d attempt. Block user and destroy secret
+                            // Block user and destroy secret
                             $store->setBlocked($userId, true);
                             $store->setSecret($userId, NULL);
+                            $store->setLoginAttempts($userId, 0);
+                            
+                            if ($tempBlockDuration > 0) {
+                                $tempAttempts = $store->getTemporaryBlockAttempts($userId);
+                                if (0 == $maxTempBlocks) {
+                                    // always a temporary block
+                                    $store->setTemporaryBlockTimestamp($userId, date("Y-m-d H:i:s"));
+                                }
+                                else if ($tempAttempts < ($maxTempBlocks - 1)) {
+                                    // temporary block which could turn into a permanent block
+                                    $store->setTemporaryBlockAttempts($userId, $tempAttempts+1);
+                                    $store->setTemporaryBlockTimestamp($userId, date("Y-m-d H:i:s"));
+                                } 
+                                else {
+                                    // remove timestamp to make this a permanent block
+                                    $store->setTemporaryBlockTimestamp($userId, false);
+                                }
+                            }
                         }
-                        return "INVALID_RESPONSE:".((self::MAX_ATTEMPTS-1)-$attempts);
+                        return "INVALID_RESPONSE:".(($maxAttempts-1)-$attempts);
                     case Tiqr_Service::AUTH_RESULT_INVALID_USERID:
                         return "INVALID_USERID";
                     default:
@@ -394,6 +415,14 @@ class sspmod_authTiqr_Auth_Tiqr
                 $store->setSecret($userId, $request["secret"]);
                 $store->setBlocked($userId, false); // remove any pending blocks upon re-enrollment.
                 $store->setLoginAttempts($userId, 0);
+                
+                if (method_exists($store, 'setTemporaryBlockAttempt')) {
+                    $store->setTemporaryBlockAttempt($userId, 0);
+                }
+                
+                if (method_exists($store, 'setTemporaryBlockTimestamp')) {
+                    $store->setTemporaryBlockTimestamp($userId, false);
+                }
                 
                 if (isset($request["notificationType"])) {
                     $store->setNotificationType($userId, $request["notificationType"]);
