@@ -37,6 +37,12 @@
 @property (nonatomic, retain) AuthenticationChallenge *challenge;
 @property (nonatomic, copy) NSString *response;
 @property (nonatomic, retain) FooterController *footerController;
+@property (nonatomic, retain) IBOutlet UILabel *errorTitleLabel;
+@property (nonatomic, retain) IBOutlet UILabel *errorInstructionLabel;
+@property (nonatomic, retain) IBOutlet UILabel *yourIdLabel;
+@property (nonatomic, retain) IBOutlet UILabel *oneTimeLoginCodeLabel;
+@property (nonatomic, retain) IBOutlet UILabel *unverifiedPinLabel;
+@property (nonatomic, retain) IBOutlet UILabel *retryLabel;
 
 @end
 
@@ -48,6 +54,13 @@
 @synthesize footerController=footerController_;
 @synthesize identityIdentifierLabel=identityIdentifierLabel_;
 @synthesize oneTimePasswordLabel=oneTimePasswordLabel_;
+
+@synthesize errorTitleLabel=errorTitleLabel_;
+@synthesize errorInstructionLabel=errorInstructionLabel_;
+@synthesize yourIdLabel=yourIdLabel_;
+@synthesize oneTimeLoginCodeLabel=oneTimeLoginCodeLabel_;
+@synthesize unverifiedPinLabel=unverifiedPinLabel_;
+@synthesize retryLabel=retryLabel_;
 
 - (id)initWithAuthenticationChallenge:(AuthenticationChallenge *)challenge response:(NSString *)response {
     self = [super initWithNibName:@"AuthenticationFallbackView" bundle:nil];   
@@ -63,7 +76,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-    self.title = NSLocalizedString(@"Login", @"Login title");
+    self.errorTitleLabel.text = NSLocalizedString(@"authentication_fallback_title", @"You appear to be offline");
+    self.errorInstructionLabel.text = NSLocalizedString(@"authentication_fallback_description", @"Don\'t worry! Click the QR tag on the\nwebsite. You will be asked to enter the\nfollowing one-time credentials:");
+    self.yourIdLabel.text = NSLocalizedString(@"fallback_identifier_label", @"Your ID is:");
+    self.oneTimeLoginCodeLabel.text = NSLocalizedString(@"otp_label", @"One time password:");
+    self.unverifiedPinLabel.text = NSLocalizedString(@"note_pin_not_verified_title", @"Note: your PIN has not been verified yet.");
+    self.retryLabel.text = NSLocalizedString(@"note_pin_not_verified", @"If you can\'t login with the credentials above, scan\nagain and enter the correct PIN code.");
+    
+    self.title = NSLocalizedString(@"authentication_title", @"Login title");
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)] autorelease];        
 	
 	self.identityIdentifierLabel.text = self.challenge.identity.identifier;
@@ -79,6 +99,12 @@
 - (void)resetOutlets {
     self.identityIdentifierLabel = nil;
     self.oneTimePasswordLabel = nil;
+    self.errorTitleLabel = nil;
+    self.errorInstructionLabel = nil;
+    self.yourIdLabel = nil;
+    self.oneTimeLoginCodeLabel = nil;
+    self.unverifiedPinLabel = nil;
+    self.retryLabel = nil;
 }
 
 - (void)viewDidUnload {

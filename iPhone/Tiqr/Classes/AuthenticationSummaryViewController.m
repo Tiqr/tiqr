@@ -37,6 +37,10 @@
 @property (nonatomic, retain) AuthenticationChallenge *challenge;
 @property (nonatomic, retain) FooterController *footerController;
 
+@property (nonatomic, retain) IBOutlet UILabel *loginConfirmLabel;
+@property (nonatomic, retain) IBOutlet UILabel *loginInformationLabel;
+@property (nonatomic, retain) IBOutlet UILabel *toLabel;
+
 @end
 
 @implementation AuthenticationSummaryViewController
@@ -46,6 +50,10 @@
 @synthesize managedObjectContext=managedObjectContext_;
 @synthesize identityProviderLogoImageView=identityProviderLogoImageView_, identityDisplayNameLabel=identityDisplayNameLabel_, identityProviderDisplayNameLabel=identityProviderDisplayNameLabel_, serviceProviderDisplayNameLabel=serviceProviderDisplayNameLabel_, serviceProviderIdentifierLabel=serviceProviderIdentifierLabel_;
 @synthesize returnButton=returnButton_;
+
+@synthesize loginConfirmLabel=loginConfirmLabel_;
+@synthesize loginInformationLabel=loginInformationLabel_;
+@synthesize toLabel=toLabel_;
 
 - (id)initWithAuthenticationChallenge:(AuthenticationChallenge *)challenge {
     self = [super initWithNibName:@"AuthenticationSummaryView" bundle:nil];
@@ -60,7 +68,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = NSLocalizedString(@"Login", @"Login title");
+    self.loginConfirmLabel.text = NSLocalizedString(@"successfully_logged_in", @"Login succes confirmation message");
+    self.loginInformationLabel.text = NSLocalizedString(@"loggedin_with_account", @"Login information message");
+    self.toLabel.text = NSLocalizedString(@"to_service_provider", @"to:");
+    
+    self.title = NSLocalizedString(@"authentication_title", @"Login title");
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)] autorelease];        
     
 	self.identityProviderLogoImageView.image = [[UIImage alloc] initWithData:self.challenge.identityProvider.logo];
@@ -70,7 +82,7 @@
 	self.serviceProviderIdentifierLabel.text = self.challenge.serviceProviderIdentifier;
     
     if (self.challenge.returnUrl != nil) {
-        [self.returnButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"Return to %@", @"Return to button title"), self.challenge.serviceProviderDisplayName] forState:UIControlStateNormal];
+        [self.returnButton setTitle:NSLocalizedString(@"return_button", @"Return to button title") forState:UIControlStateNormal];
         self.returnButton.hidden = NO;
     }
     
@@ -94,6 +106,9 @@
 	self.serviceProviderDisplayNameLabel = nil;
 	self.serviceProviderIdentifierLabel = nil;
     self.returnButton = nil;
+    self.loginConfirmLabel = nil;
+    self.loginInformationLabel = nil;
+    self.toLabel = nil;
 }
 
 - (void)viewDidUnload {

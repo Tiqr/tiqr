@@ -6,8 +6,6 @@
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
 	<string>Example</string>
-	<key>CFBundleDocumentTypes</key>
-	<array/>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFiles</key>
@@ -59,25 +57,21 @@
 	<key>SANotificationRegistrationURL</key>
 	<string>https://www.example.org/tokenexchange/?appId=${PRODUCT_NAME}</string>
 	<key>TIQRAuthenticationURLScheme</key>
-	<string>exampleauth</string>
+	<string>tiqrauth</string>
 	<key>TIQREnrollmentURLScheme</key>
-	<string>exampleenroll</string>
+	<string>tiqrenroll</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>animals.ttf</string>
 	</array>
 	<key>UIApplicationExitsOnSuspend</key>
 	<true/>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleBlackOpaque</string>
-	<key>UTExportedTypeDeclarations</key>
-	<array/>
-	<key>UTImportedTypeDeclarations</key>
-	<array/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>still-camera</string>
 		<string>video-camera</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleBlackOpaque</string>
 </dict>
 </plist>

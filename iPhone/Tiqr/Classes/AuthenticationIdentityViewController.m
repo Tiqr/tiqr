@@ -36,6 +36,7 @@
 @interface AuthenticationIdentityViewController ()
 
 @property (nonatomic, retain) AuthenticationChallenge *challenge;
+@property (nonatomic, retain) IBOutlet UILabel *selectAccountLabel;
 
 @end
 
@@ -44,6 +45,7 @@
 @synthesize challenge=challenge_;
 @synthesize managedObjectContext=managedObjectContext_;
 @synthesize tableView=tableView_;
+@synthesize selectAccountLabel=selectAccountLabel_;
 
 - (id)initWithAuthenticationChallenge:(AuthenticationChallenge *)challenge {
     self = [super initWithNibName:@"AuthenticationIdentityView" bundle:nil];
@@ -57,8 +59,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = NSLocalizedString(@"Login", @"Login title");
-    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Identity", @"Identity select back button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];        
+    self.selectAccountLabel.text = NSLocalizedString(@"select_identity_title", @"Select Identity");
+    
+    self.title = NSLocalizedString(@"authentication_title", @"Login title");
+    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"identity_title", @"Identity select back button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];        
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -108,6 +112,7 @@
     self.tableView = nil;
     self.challenge = nil;
     self.managedObjectContext = nil;
+    self.selectAccountLabel = nil;
     [super dealloc];
 }
 
