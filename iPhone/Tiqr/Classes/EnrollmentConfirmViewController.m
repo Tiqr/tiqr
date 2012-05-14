@@ -34,6 +34,10 @@
 @interface EnrollmentConfirmViewController ()
 
 @property (nonatomic, retain) EnrollmentChallenge *challenge;
+@property (nonatomic, retain) IBOutlet UILabel *confirmAccountLabel;
+@property (nonatomic, retain) IBOutlet UILabel *activateAccountLabel;
+@property (nonatomic, retain) IBOutlet UILabel *enrollDomainLabel;
+@property (nonatomic, retain) IBOutlet UIButton *okButton;
 
 @end
 
@@ -42,6 +46,7 @@
 @synthesize challenge=challenge_;
 @synthesize managedObjectContext=managedObjectContext_;
 @synthesize identityProviderLogoImageView=identityProviderLogoImageView_, identityDisplayNameLabel=identityDisplayNameLabel_, identityProviderDisplayNameLabel=identityProviderDisplayNameLabel_, enrollmentURLDomainLabel=enrollmentURLDomainLabel_;
+@synthesize confirmAccountLabel=confirmAccountLabel_,activateAccountLabel=activateAccountLabel_,enrollDomainLabel=enrollDomainLabel_,okButton=okButton_;
 
 - (id)initWithEnrollmentChallenge:(EnrollmentChallenge *)challenge {
     self = [super initWithNibName:@"EnrollmentConfirmView" bundle:nil];
@@ -55,8 +60,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = NSLocalizedString(@"Account activation", @"Account activation title");
-    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Confirm", @"Enrollment confirm back button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];        
+    self.confirmAccountLabel.text = NSLocalizedString(@"confirm_account_activation", @"Confirm account activation");
+    self.activateAccountLabel.text = NSLocalizedString(@"activate_following_account", @"Do you want to activate the following account");
+    self.enrollDomainLabel.text = NSLocalizedString(@"enroll_following_domain", @"You will enroll to the following domain");
+    [self.okButton setTitle:NSLocalizedString(@"ok_button", @"OK") forState:UIControlStateNormal];
+    
+    self.title = NSLocalizedString(@"enrollment_confirmation_header_title", @"Account activation title");
+    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"enrollment_confirmation_title", @"Enrollment confirm back button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];        
 
     self.identityProviderLogoImageView.image = [[UIImage alloc] initWithData:self.challenge.identityProviderLogo];
     self.identityDisplayNameLabel.text = self.challenge.identityDisplayName;
@@ -75,6 +85,10 @@
 	self.identityProviderLogoImageView = nil;
 	self.identityDisplayNameLabel = nil;
 	self.identityProviderDisplayNameLabel = nil;
+    self.confirmAccountLabel = nil;
+    self.activateAccountLabel = nil;
+    self.enrollDomainLabel = nil;
+    self.okButton = nil;
 }
 
 - (void)viewDidUnload {

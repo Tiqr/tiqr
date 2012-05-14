@@ -46,6 +46,8 @@
 @property (nonatomic, assign, getter=isDecoding) BOOL decoding;
 @property (nonatomic, retain) UIBarButtonItem *identitiesButtonItem;
 
+@property (nonatomic, retain) IBOutlet UILabel *instructionLabel;
+
 - (void)initCapture;
 - (void)stopCapture;
 - (void)processChallenge:(NSString *)rawResult;
@@ -66,6 +68,8 @@
 @synthesize decoding=decoding_;
 @synthesize audioPlayer=audioPlayer_;
 @synthesize identitiesButtonItem=identitiesButtonItem_;
+
+@synthesize instructionLabel=instructionLabel_;
 
 - (id)init {
     self = [super initWithNibName:@"ScanView" bundle:nil];
@@ -117,6 +121,11 @@
     } else {
         self.navigationItem.rightBarButtonItem = nil;
     }
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.instructionLabel.text = NSLocalizedString(@"msg_default_status", @"QR Code scan instruction");
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -347,8 +356,8 @@
             errorTitle = challenge.isValid ? nil : [challenge.error localizedDescription];        
             errorMessage = challenge.isValid ? nil : [challenge.error localizedFailureReason];                
         } else {
-            errorTitle = NSLocalizedString(@"Invalid QR tag", @"Invalid QR tag title");
-            errorMessage = NSLocalizedString(@"Unable to interpret the scanned QR tag. Please try again. If the problem persists, please contact the website adminstrator.", @"Invalid QR tag message");
+            errorTitle = NSLocalizedString(@"error_auth_invalid_qr_code", @"Invalid QR tag title");
+            errorMessage = NSLocalizedString(@"error_auth_invalid_challenge_message", @"Unable to interpret the scanned QR tag. Please try again. If the problem persists, please contact the website adminstrator");
         }        
         
 		dispatch_async(dispatch_get_main_queue(), ^{
@@ -380,6 +389,7 @@
     self.previewView = nil;
     self.instructionsView = nil;
     self.overlayView = nil;
+    self.instructionLabel = nil;
 }
 
 - (void)viewDidUnload {

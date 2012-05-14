@@ -51,8 +51,8 @@
 - (id)init {
     self = [super initWithNibName:@"IdentityListView" bundle:nil];
     if (self != nil) {
-        self.title = NSLocalizedString(@"Your accounts", @"Accounts navigation item title");
-        self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Accounts", @"Accounts back button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];                
+        self.title = NSLocalizedString(@"your_accounts", @"Accounts navigation item title");
+        self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"accounts", @"Accounts back button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];                
         self.navigationItem.rightBarButtonItem = self.editButtonItem;	
     }
     
@@ -137,9 +137,9 @@
             }
         } else {
             NSLog(@"Unexpected error: %@", error);
-            NSString *title = NSLocalizedString(@"Error", "Alert title for error");		
-            NSString *message = NSLocalizedString(@"An unexpected error occurred. Please contact support.", "Unexpected error message");		        
-            NSString *okTitle = NSLocalizedString(@"OK", "OK button title");		
+            NSString *title = NSLocalizedString(@"error", "Alert title for error");		
+            NSString *message = NSLocalizedString(@"error_auth_unknown_error", "Unexpected error message");		        
+            NSString *okTitle = NSLocalizedString(@"ok_button", "OK button title");		
             UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:okTitle otherButtonTitles:nil] autorelease];
             [alertView show];
             [alertView release];
@@ -169,9 +169,9 @@
     NSError *error = nil;
     if (![context save:&error]) {
         NSLog(@"Unexpected error: %@", error);
-		NSString *title = NSLocalizedString(@"Error", "Alert title for error");		
-		NSString *message = NSLocalizedString(@"An unexpected error occurred. Please contact support.", "Unexpected error message");		        
-		NSString *okTitle = NSLocalizedString(@"OK", "OK button title");		
+        NSString *title = NSLocalizedString(@"error", "Alert title for error");		
+        NSString *message = NSLocalizedString(@"error_auth_unknown_error", "Unexpected error message");		        
+        NSString *okTitle = NSLocalizedString(@"ok_button", "OK button title");			
 		UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:okTitle otherButtonTitles:nil] autorelease];
 		[alertView show];
         [alertView release];
@@ -209,9 +209,9 @@
     NSError *error = nil;
     if (![fetchedResultsController_ performFetch:&error]) {
         NSLog(@"Unexpected error: %@", error);
-		NSString *title = NSLocalizedString(@"Error", "Alert title for error");		
-		NSString *message = NSLocalizedString(@"An unexpected error occurred. Please contact support.", "Unexpected error message");		        
-		NSString *okTitle = NSLocalizedString(@"OK", "OK button title");		
+        NSString *title = NSLocalizedString(@"error", "Alert title for error");		
+        NSString *message = NSLocalizedString(@"error_auth_unknown_error", "Unexpected error message");		        
+        NSString *okTitle = NSLocalizedString(@"ok_button", "OK button title");			
 		UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:okTitle otherButtonTitles:nil] autorelease];
 		[alertView show];
         [alertView release];

@@ -99,8 +99,8 @@ static const int powers10[] = { 1, 10, 100, 1000, 10000, 100000, 1000000, 100000
 
     // The codeDigits variable is used later on as an index to the powers10 array, and thus cannot be larger than 10
     if (codeDigits > 10) {
-        NSString *errorTitle = NSLocalizedString(@"Server incompatible", @"Server incompatible title");
-        NSString *errorMessage = NSLocalizedString(@"The server is incompatible with this version of the app.", @"Server incompatible message");
+        NSString *errorTitle = NSLocalizedString(@"error_auth_server_incompatible_title", @"Server incompatible title");
+        NSString *errorMessage = NSLocalizedString(@"error_auth_server_incompatible", @"Server incompatible message");
         NSDictionary *details = [NSDictionary dictionaryWithObjectsAndKeys:errorTitle, NSLocalizedDescriptionKey, errorMessage, NSLocalizedFailureReasonErrorKey, nil];
         *error = [[[NSError alloc] initWithDomain: @"org.example.tiqr.ErrorDomain" code:OCRAServerIncompatibleError userInfo:details] autorelease];
         return nil;

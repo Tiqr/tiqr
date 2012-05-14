@@ -65,10 +65,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = NSLocalizedString(@"Account activation", @"Account activation title");
-    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Verify PIN", @"Enrollment PIN verification back button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];        
-    self.subtitle = NSLocalizedString(@"Verify your PIN", @"Enrollment PIN verification title");
-    self.description = NSLocalizedString(@"Enter your PIN code again for verification. Please note the animal icon. This will help you remember your PIN code.", @"Enrollment PIN verification description"); 
+    self.title = NSLocalizedString(@"enrollment_confirmation_header_title", @"Account activation title");
+    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"password_verify_back_button", @"Enrollment PIN verification back button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];        
+    self.subtitle = NSLocalizedString(@"login_verify_intro", @"Enrollment PIN verification title");
+    self.description = NSLocalizedString(@"login_verify_message", @"Enter your PIN code again for verification. Please note the animal icon. This will help you remember your PIN code."); 
 }
 
 - (BOOL)storeProviderAndIdentity {
@@ -151,8 +151,8 @@
 - (void)PINViewController:(PINViewController *)viewController didFinishWithPIN:(NSString *)PIN {
     if (![PIN isEqualToString:self.PIN]) {
         [self clear];
-        NSString *errorTitle = NSLocalizedString(@"PINs don't match", @"Error title if PIN's don't match");
-        NSString *errorMessage = NSLocalizedString(@"The entered PINs don't match. Try again. Choose a PIN you can remember.", @"Error message if PINs don't match");
+        NSString *errorTitle = NSLocalizedString(@"passwords_dont_match_title", @"Error title if PIN's don't match");
+        NSString *errorMessage = NSLocalizedString(@"passwords_dont_match", @"Error message if PINs don't match");
         [self showErrorWithTitle:errorTitle message:errorMessage];
         return;
     }
@@ -161,8 +161,8 @@
 	self.challenge.identityPIN = PIN;
     
     if (![self storeProviderAndIdentity]) {
-        NSString *errorTitle = NSLocalizedString(@"Account cannot be saved", @"Account cannot be saved title");
-        NSString *errorMessage = NSLocalizedString(@"Failed to store your account information. Please contact support.", @"Account cannot be saved message");
+        NSString *errorTitle = NSLocalizedString(@"error_enroll_failed_to_store_identity_title", @"Account cannot be saved title");
+        NSString *errorMessage = NSLocalizedString(@"error_enroll_failed_to_store_identity", @"Account cannot be saved message");
         UIViewController *viewController = [[ErrorViewController alloc] initWithTitle:self.title errorTitle:errorTitle errorMessage:errorMessage];
         [self.navigationController pushViewController:viewController animated:YES];
         [viewController release];
@@ -170,8 +170,8 @@
     }
     
     if (![self storeSecret]) {
-        NSString *errorTitle = NSLocalizedString(@"Account cannot be saved", @"Account cannot be saved title");
-        NSString *errorMessage = NSLocalizedString(@"Failed to store your account information. Please contact support.", @"Account cannot be saved message");
+        NSString *errorTitle = NSLocalizedString(@"error_enroll_failed_to_store_identity_title", @"Account cannot be saved title");
+        NSString *errorMessage = NSLocalizedString(@"error_enroll_failed_to_generate_secret", @"Failed to generate identity secret. Please contact support.");
         UIViewController *viewController = [[ErrorViewController alloc] initWithTitle:self.title errorTitle:errorTitle errorMessage:errorMessage];
         [self.navigationController pushViewController:viewController animated:YES];
         [viewController release];

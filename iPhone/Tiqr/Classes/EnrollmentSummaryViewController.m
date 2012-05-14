@@ -36,6 +36,9 @@
 
 @property (nonatomic, retain) EnrollmentChallenge *challenge;
 @property (nonatomic, retain) FooterController *footerController;
+@property (nonatomic, retain) IBOutlet UILabel *accountActivatedLabel;
+@property (nonatomic, retain) IBOutlet UILabel *accountReadyLabel;
+@property (nonatomic, retain) IBOutlet UILabel *rememberPinLabel;
 
 @end
 
@@ -46,6 +49,7 @@
 @synthesize managedObjectContext=managedObjectContext_;
 @synthesize identityProviderLogoImageView=identityProviderLogoImageView_, identityDisplayNameLabel=identityDisplayNameLabel_, identityProviderDisplayNameLabel=identityProviderDisplayNameLabel_;
 @synthesize returnButton=returnButton_;
+@synthesize accountReadyLabel=accountReadyLabel_,accountActivatedLabel=accountActivationLabel_,rememberPinLabel=rememberPinLabel_;
 
 - (id)initWithEnrollmentChallenge:(EnrollmentChallenge *)challenge {
     self = [super initWithNibName:@"EnrollmentSummaryView" bundle:nil];
@@ -60,7 +64,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = NSLocalizedString(@"Account activation", @"Account activation title");
+    self.accountReadyLabel.text = NSLocalizedString(@"account_ready", @"Your account is ready to be used.");
+    self.accountActivatedLabel.text = NSLocalizedString(@"account_activated", @"Your account is activated!");
+    self.rememberPinLabel.text = NSLocalizedString(@"remember_pincode_notice", @"Remember your PIN, it cannot be changed!");
+    
+    self.title = NSLocalizedString(@"account_activation_title", @"Account activation title");
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)] autorelease];        
     
     self.identityProviderLogoImageView.image = [[UIImage alloc] initWithData:self.challenge.identityProviderLogo];
@@ -68,7 +76,7 @@
     self.identityProviderDisplayNameLabel.text = self.challenge.identityProviderDisplayName;
     
     if (self.challenge.returnUrl != nil) {
-        [self.returnButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"Return to %@", @"Return to button title"), self.challenge.identityProviderDisplayName] forState:UIControlStateNormal];
+        [self.returnButton setTitle:NSLocalizedString(@"return_button", @"Return to button title") forState:UIControlStateNormal];
         self.returnButton.hidden = NO;
     }   
     
@@ -90,6 +98,9 @@
 	self.identityDisplayNameLabel = nil;
 	self.identityProviderDisplayNameLabel = nil;
     self.returnButton = nil;
+    self.accountReadyLabel = nil;
+    self.accountActivatedLabel = nil;
+    self.rememberPinLabel = nil;
 }
 
 - (void)viewDidUnload {

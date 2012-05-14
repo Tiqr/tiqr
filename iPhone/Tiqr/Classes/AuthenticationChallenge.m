@@ -47,8 +47,8 @@ NSString *const TIQRACErrorDomain = @"org.tiqr.ac";
 	NSURL *url = [NSURL URLWithString:self.rawChallenge];
         
 	if (url == nil || ![url.scheme isEqualToString:scheme] || [url.pathComponents count] < 3) {
-        NSString *errorTitle = NSLocalizedString(@"Invalid QR tag", @"Invalid QR tag title");
-        NSString *errorMessage = NSLocalizedString(@"Unable to interpret the scanned QR tag. Please try again. If the problem persists, please contact the website administrator.", @"Invalid QR tag message");
+        NSString *errorTitle = NSLocalizedString(@"error_auth_invalid_qr_code", @"Invalid QR tag title");
+        NSString *errorMessage = NSLocalizedString(@"error_auth_invalid_challenge_message", @"Invalid QR tag message");
         NSDictionary *details = [NSDictionary dictionaryWithObjectsAndKeys:errorTitle, NSLocalizedDescriptionKey, errorMessage, NSLocalizedFailureReasonErrorKey, nil];
         self.error = [NSError errorWithDomain:TIQRACErrorDomain code:TIQRACInvalidQRTagError userInfo:details];        
 		return;
@@ -56,8 +56,8 @@ NSString *const TIQRACErrorDomain = @"org.tiqr.ac";
 
 	IdentityProvider *identityProvider = [IdentityProvider findIdentityProviderWithIdentifier:url.host inManagedObjectContext:self.managedObjectContext];
 	if (identityProvider == nil) {
-        NSString *errorTitle = NSLocalizedString(@"No account", @"No account title");
-        NSString *errorMessage = NSLocalizedString(@"You have no activated account for this identity provider. Please try again after activating your account.", @"No account message");
+        NSString *errorTitle = NSLocalizedString(@"error_auth_unknown_identity", @"No account title");
+        NSString *errorMessage = NSLocalizedString(@"error_auth_no_identities_for_identity_provider", @"No account message");
         NSDictionary *details = [NSDictionary dictionaryWithObjectsAndKeys:errorTitle, NSLocalizedDescriptionKey, errorMessage, NSLocalizedFailureReasonErrorKey, nil];
         self.error = [NSError errorWithDomain:TIQRACErrorDomain code:TIQRACUnknownIdentityProviderError userInfo:details];        
 		return;
@@ -66,8 +66,8 @@ NSString *const TIQRACErrorDomain = @"org.tiqr.ac";
 	if (url.user != nil) {
 		Identity *identity = [Identity findIdentityWithIdentifier:url.user forIdentityProvider:identityProvider inManagedObjectContext:self.managedObjectContext];
 		if (identity == nil) {
-            NSString *errorTitle = NSLocalizedString(@"Unknown account", @"Unknown account title");
-            NSString *errorMessage = NSLocalizedString(@"The given account is not activated on this device. Please try again after activating or transferring the account.", @"Unknown account message");
+            NSString *errorTitle = NSLocalizedString(@"error_auth_invalid_account", @"Unknown account title");
+            NSString *errorMessage = NSLocalizedString(@"error_auth_invalid_account_message", @"Unknown account message");
             NSDictionary *details = [NSDictionary dictionaryWithObjectsAndKeys:errorTitle, NSLocalizedDescriptionKey, errorMessage, NSLocalizedFailureReasonErrorKey, nil];
             self.error = [NSError errorWithDomain:TIQRACErrorDomain code:TIQRACUnknownIdentityError userInfo:details];        
             return;
@@ -78,8 +78,8 @@ NSString *const TIQRACErrorDomain = @"org.tiqr.ac";
 	} else {
 		NSArray *identities = [Identity findIdentitiesForIdentityProvider:identityProvider inManagedObjectContext:self.managedObjectContext];
 		if (identities == nil || [identities count] == 0) {
-            NSString *errorTitle = NSLocalizedString(@"No account", @"No account title");
-            NSString *errorMessage = NSLocalizedString(@"You have no activated account for this identity provider. Please try again after activating your account.", @"No account message");
+            NSString *errorTitle = NSLocalizedString(@"error_auth_invalid_account", @"No account title");
+            NSString *errorMessage = NSLocalizedString(@"error_auth_invalid_account_message", @"No account message");
             NSDictionary *details = [NSDictionary dictionaryWithObjectsAndKeys:errorTitle, NSLocalizedDescriptionKey, errorMessage, NSLocalizedFailureReasonErrorKey, nil];
             self.error = [NSError errorWithDomain:TIQRACErrorDomain code:TIQRACZeroIdentitiesForIdentityProviderError userInfo:details];        
             return;
@@ -90,8 +90,8 @@ NSString *const TIQRACErrorDomain = @"org.tiqr.ac";
 	}
 	
     if (self.identity != nil && [self.identity.blocked boolValue]) {
-        NSString *errorTitle = NSLocalizedString(@"Account blocked", @"Account blocked title");
-        NSString *errorMessage = NSLocalizedString(@"This account has been blocked. Please contact your identity provider for instructions on how to reactivate your account.", @"Account blocked message");
+        NSString *errorTitle = NSLocalizedString(@"error_auth_account_blocked_title", @"Account blocked title");
+        NSString *errorMessage = NSLocalizedString(@"error_auth_account_blocked_message", @"Account blocked message");
         NSDictionary *details = [NSDictionary dictionaryWithObjectsAndKeys:errorTitle, NSLocalizedDescriptionKey, errorMessage, NSLocalizedFailureReasonErrorKey, nil];
         self.error = [NSError errorWithDomain:TIQRACErrorDomain code:TIQRACIdentityBlockedError userInfo:details];        
     }
@@ -102,7 +102,7 @@ NSString *const TIQRACErrorDomain = @"org.tiqr.ac";
     if ([url.pathComponents count] > 3) {
         self.serviceProviderDisplayName = [url.pathComponents objectAtIndex:3];
     } else {
-        self.serviceProviderDisplayName = NSLocalizedString(@"Unknown", @"Unknown");
+        self.serviceProviderDisplayName = NSLocalizedString(@"error_auth_unknown_identity_provider", @"Unknown");
     }
     self.serviceProviderIdentifier = @"";
 

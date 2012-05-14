@@ -34,6 +34,10 @@
 @interface AuthenticationConfirmViewController ()
 
 @property (nonatomic, retain) AuthenticationChallenge *challenge;
+@property (nonatomic, retain) IBOutlet UILabel *loginConfirmLabel;
+@property (nonatomic, retain) IBOutlet UILabel *loggedInAsLabel;
+@property (nonatomic, retain) IBOutlet UILabel *toLabel;
+@property (nonatomic, retain) IBOutlet UIButton *okButton;
 
 @end
 
@@ -42,6 +46,7 @@
 @synthesize challenge=challenge_;
 @synthesize managedObjectContext=managedObjectContext_;
 @synthesize identityProviderLogoImageView=identityProviderLogoImageView_, identityDisplayNameLabel=identityDisplayNameLabel_, identityProviderDisplayNameLabel=identityProviderDisplayNameLabel_, serviceProviderDisplayNameLabel=serviceProviderDisplayNameLabel_, serviceProviderIdentifierLabel=serviceProviderIdentifierLabel_;
+@synthesize loginConfirmLabel=loginConfirmLabel_, loggedInAsLabel=loggedInAsLabel_,toLabel=toLabel_, okButton=okButton_;
 
 - (id)initWithAuthenticationChallenge:(AuthenticationChallenge *)challenge {
     self = [super initWithNibName:@"AuthenticationConfirmView" bundle:nil];
@@ -55,8 +60,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-    self.title = NSLocalizedString(@"Login", @"Login title");
-    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Confirm", @"Authentication confirm back button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];        
+    self.loginConfirmLabel.text = NSLocalizedString(@"confirm_authentication", @"Are you sure you want to login?");
+    self.loggedInAsLabel.text = NSLocalizedString(@"you_will_be_logged_in_as", @"You will be logged in as:");
+    self.toLabel.text = NSLocalizedString(@"to_service_provider", @"to:");
+    [self.okButton setTitle:NSLocalizedString(@"ok_button", @"OK") forState:UIControlStateNormal];
+    
+    self.title = NSLocalizedString(@"authentication_title", @"Login title");
+    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"confirm_authentication_title", @"Authentication confirm back button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];        
 
 	self.identityProviderLogoImageView.image = [[UIImage alloc] initWithData:self.challenge.identityProvider.logo];
 	self.identityDisplayNameLabel.text = self.challenge.identity.displayName;
@@ -78,6 +88,10 @@
 	self.identityProviderDisplayNameLabel = nil;
 	self.serviceProviderDisplayNameLabel = nil;
 	self.serviceProviderIdentifierLabel = nil;
+    self.loggedInAsLabel = nil;
+    self.loginConfirmLabel = nil;
+    self.toLabel = nil;
+    self.okButton = nil;
 }
 
 - (void)viewDidUnload {
