@@ -4,7 +4,7 @@
         <item name="android:background">#ABBD26</item>
     </style>
      
-    <style name="SurfnetWindowTitle" parent="android:WindowTitle">
+    <style name="SurfnetWindowTitle"> 
         <item name="android:shadowDx">0</item>
         <item name="android:shadowDy">0</item>
         <item name="android:shadowRadius">2</item>

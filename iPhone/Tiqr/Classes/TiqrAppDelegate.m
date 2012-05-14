@@ -136,7 +136,7 @@
 	AuthenticationChallenge *challenge = [[AuthenticationChallenge alloc] initWithRawChallenge:rawChallenge managedObjectContext:self.managedObjectContext];
 	if (!challenge.isValid) {
         NSError *error = challenge.error;
-        NSString *title = NSLocalizedString(@"Login", @"Login navigation title");        
+        NSString *title = NSLocalizedString(@"login_title", @"Login navigation title");        
         ErrorViewController *viewController = [[ErrorViewController alloc] initWithTitle:title errorTitle:[error localizedDescription] errorMessage:[error localizedFailureReason]];
         [self.navigationController pushViewController:viewController animated:NO];
         [viewController release];
@@ -162,7 +162,7 @@
 	EnrollmentChallenge *challenge = [[EnrollmentChallenge alloc] initWithRawChallenge:rawChallenge managedObjectContext:self.managedObjectContext];
 	if (!challenge.isValid) {
         NSError *error = challenge.error;
-        NSString *title = NSLocalizedString(@"Account activation", @"Account activation navigation title");        
+        NSString *title = NSLocalizedString(@"enrollment_confirmation_header_title", @"Account activation title");        
         ErrorViewController *viewController = [[ErrorViewController alloc] initWithTitle:title errorTitle:[error localizedDescription] errorMessage:[error localizedFailureReason]];
         [self.navigationController pushViewController:viewController animated:NO];
         [viewController release];

@@ -18,9 +18,14 @@
     <string name="authentication_failure_title">Login failed</string>
     <string name="authentication_success_title">Login successful</string>
     <string name="authentication_success_message" formatted="false">You\'ve been successfully logged in as %s to %s</string>
+    <string name="account_ready">Your account is ready to be used</string>
+    <string name="account_activated">Your account is activated!</string>
     <string name="enrollment_confirm_button">OK</string>
     <string name="remember_pincode_notice">Remember your PIN, it cannot be changed!</string>
     <string name="enter_the_following">Enter the following info:</string>
+    <string name="full_name">Full Name</string>
+    <string name="id">ID</string>
+    <string name="information">Information</string>
     <string name="cancel_button">Cancel</string>
     <string name="ok_button">OK</string>
     <string name="retry_button">Retry</string>
@@ -43,6 +48,9 @@
     <string name="main_title_welcome">Welcome to tiqr</string>
     <string name="main_title_instructions">Instructions</string>
     <string name="main_title_blocked">tiqr is blocked</string>
+    <string name="confirm_account_activation">Confirm account activation</string>
+    <string name="activate_following_account">Do you want to activate the following account?</string>
+    <string name="enroll_following_domain">You will enroll to the following domain:</string>
     <string name="menu_enroll_shortcut">a</string>
     <string name="menu_rearrange_label">Rearrange</string>
     <string name="menu_rearrange_shortcut">r</string>
@@ -54,11 +62,17 @@
     <string name="login_title">Login</string>
     <string name="login_intro">Please enter your pin: </string>
     <string name="login_verify_intro">Please verify your pin: </string>
+    <string name="successfully_logged_in">You have successfully logged in!</string>
+    <string name="loggedin_with_account">You are logged in with the following account</string>
+    <string name="are_you_sure_you_want_to">Are you sure you want to ...?</string>
+    <string name="you_will_be_as">You will be ... as:</string>
     <string name="choose_password_title">Please select a PIN</string>
     <string name="choose_password_intro">Please choose a PIN to secure this identity and remember it.</string>
     <string name="passwords_dont_match_title">PINs don\'t match</string>
     <string name="passwords_dont_match">The entered PINs don\'t match. Try again.\nChoose a PIN you can remember.</string>
     <string name="password_incorrect">Incorrect PIN.</string>
+    <string name="enrolling">Enrolling</string>
+    <string name="authenticating">Authenticating</string>
     <string name="provided_by_title">tiqr is provided by:</string>
     <string name="developed_by_title">Developed by:</string>
     <string name="powered_by_title">Powered by:</string>
@@ -123,4 +137,9 @@
     <string name="error_enroll_failed_to_generate_secret">Failed to generate identity secret. Please contact support.</string>
     <string name="error_title">Error</string>
     <string name="error_device_incompatible_with_security_standards">Device is not compatible with required security standards.</string>
+    <string name="error_message">Error message</string>
+    <string name="error_title">Error title</string>
+    
+    <string name="www_tiqr_org">www.tiqr.org</string>
+    <string name="provided_by">provided by:</string>
 </resources>

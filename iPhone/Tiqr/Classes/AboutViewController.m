@@ -30,9 +30,20 @@
 #import "AboutViewController.h"
 #import "AboutViewController-Protected.h"
 
+@interface AboutViewController ()
+
+@property (nonatomic, retain) IBOutlet UILabel *tiqrProvidedByLabel;
+@property (nonatomic, retain) IBOutlet UILabel *developedByLabel;
+@property (nonatomic, retain) IBOutlet UILabel *interactionDesignLabel;
+
+@end
+
 @implementation AboutViewController
 
 @synthesize versionLabel;
+@synthesize tiqrProvidedByLabel=tiqrProvidedByLabel_;
+@synthesize developedByLabel=developedByLabel_;
+@synthesize interactionDesignLabel=interactionDesignLabel_;
 
 - (id)init {
     
@@ -46,6 +57,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = NSLocalizedString(@"about_title", @"About tiqr");
+    self.tiqrProvidedByLabel.text = NSLocalizedString(@"provided_by_title", @"tiqr is provided by:");
+    self.developedByLabel.text = NSLocalizedString(@"developed_by_title", @"Developed by:");
+    self.interactionDesignLabel.text = NSLocalizedString(@"interaction_by_title", @"Interaction design:");
     
     NSString *version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
     self.versionLabel.text = [self.versionLabel.text stringByAppendingFormat:@" %@", version];
@@ -73,6 +89,9 @@
 
 - (void)dealloc {
     
+    self.tiqrProvidedByLabel = nil;
+    self.developedByLabel = nil;
+    self.interactionDesignLabel = nil;
     self.versionLabel = nil;
     
     [super dealloc];

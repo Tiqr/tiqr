@@ -32,9 +32,16 @@
 #import "AboutViewController.h"
 #import "TiqrAppDelegate.h"
 
+@interface FooterController ()
+
+@property (nonatomic, retain) IBOutlet UILabel *providedByLabel;
+
+@end;
+
 @implementation FooterController
 
 @synthesize view=view_;
+@synthesize providedByLabel=providedByLabel_;
 
 - (id)init {
     self = [super init];
@@ -48,6 +55,8 @@
 
 - (void)addToView:(UIView *)view {
     [self.view removeFromSuperview];
+    
+    self.providedByLabel.text = NSLocalizedString(@"provided_by", @"provided by:");
     self.view.frame = CGRectMake(0.0, view.frame.size.height - self.view.frame.size.height, view.frame.size.width, self.view.frame.size.height);
     self.view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
     [view addSubview:self.view];
@@ -70,6 +79,7 @@
 
 - (void)dealloc {
     self.view = nil;
+    self.providedByLabel = nil;
     [super dealloc];
 }
 
