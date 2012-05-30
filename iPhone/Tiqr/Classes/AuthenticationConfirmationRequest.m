@@ -90,7 +90,7 @@ NSString *const TIQRACRAttemptsLeftErrorKey = @"AttempsLeftErrorKey";
 		[self.delegate authenticationConfirmationRequestDidFinish:self];
 	} else {
         NSInteger code = TIQRACRUnknownError;
-        NSString *title = NSLocalizedString(@"unkown_error", @"Unknown error title");
+        NSString *title = NSLocalizedString(@"unknown_error", @"Unknown error title");
         NSString *message = NSLocalizedString(@"error_auth_unknown_error", @"Unknown error message");
         NSNumber *attemptsLeft = nil;
 

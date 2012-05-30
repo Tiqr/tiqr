@@ -104,8 +104,8 @@ NSString *const TIQRECRErrorDomain = @"org.tiqr.ecr";
         [self.delegate enrollmentConfirmationRequestDidFinish:self];
 	} else {
         // TODO: server should return different error codes
-        NSString *title = NSLocalizedString(@"unkown_error", @"Unknown error title");
-        NSString *message = NSLocalizedString(@"unkown_enroll_error_message", @"Unknown error message");
+        NSString *title = NSLocalizedString(@"unknown_error", @"Unknown error title");
+        NSString *message = NSLocalizedString(@"unknown_enroll_error_message", @"Unknown error message");
         NSMutableDictionary *details = [NSMutableDictionary dictionary];
         [details setValue:title forKey:NSLocalizedDescriptionKey];
         [details setValue:message forKey:NSLocalizedFailureReasonErrorKey];    
