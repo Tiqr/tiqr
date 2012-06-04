@@ -69,7 +69,7 @@ public class EnrollmentPincodeVerificationActivity extends AbstractPincodeActivi
 		
 		_hideSoftKeyboard(pincode);
 		try {
-			_showProgressDialog("Enrolling");
+			_showProgressDialog(getString(R.string.enrolling));
 			SecretKey sessionKey = Encryption.keyFromPassword(getParent(), secondPin);
 			_enroll(sessionKey);
 		} catch (SecurityFeaturesException e) {

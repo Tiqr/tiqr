@@ -54,8 +54,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Start", @"Start button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];                
-    NSString *scanButtonTitle = NSLocalizedString(@"Scan", @"Scan button title");
+    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"start_button", @"Start button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];                
+    NSString *scanButtonTitle = NSLocalizedString(@"scan_button", @"Scan button title");
     UIBarButtonItem *scanButtonItem = [[UIBarButtonItem alloc] initWithTitle:scanButtonTitle style:UIBarButtonItemStyleBordered target:self action:@selector(scan)];
     self.navigationItem.leftBarButtonItem = scanButtonItem;
     [scanButtonItem release];
@@ -85,19 +85,19 @@
     if ([Identity allIdentitiesBlockedInManagedObjectContext:self.managedObjectContext]) {
         self.webView.frame = CGRectMake(0.0, self.errorController.view.frame.size.height, self.webView.frame.size.width, self.view.frame.size.height - self.errorController.view.frame.size.height - self.footerController.view.frame.size.height);
         self.errorController.view.hidden = NO;
-        self.title = NSLocalizedString(@"tiqr is blocked", @"Blocked navigation title");
+        self.title = NSLocalizedString(@"main_title_blocked", @"Blocked navigation title");
         self.navigationItem.rightBarButtonItem = self.identitiesButtonItem;
-        self.errorController.title = NSLocalizedString(@"Your accounts have been blocked!", @"Accounts blocked error title");
-        self.errorController.message = NSLocalizedString(@"Because you entered an incorrect PIN too many times, all your accounts have been blocked. You can't login anymore.", @"Accounts blocked error message");        
+        self.errorController.title = NSLocalizedString(@"error_auth_account_blocked_title", @"Accounts blocked error title");
+        self.errorController.message = NSLocalizedString(@"to_many_attempts", @"Accounts blocked error message");        
         NSURL *URL = [[NSBundle mainBundle] URLForResource:@"blocked" withExtension:@"html"];
         [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
     } else if ([Identity countInManagedObjectContext:self.managedObjectContext] > 0) {
-        self.title = NSLocalizedString(@"Instructions", @"Instructions navigation title");
+        self.title = NSLocalizedString(@"main_title_instructions", @"Instructions navigation title");
         self.navigationItem.rightBarButtonItem = self.identitiesButtonItem;
         NSURL *URL = [[NSBundle mainBundle] URLForResource:@"instructions" withExtension:@"html"];
         [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
     } else {
-        self.title = NSLocalizedString(@"Welcome to tiqr", @"Welcome navigation title");
+        self.title = NSLocalizedString(@"main_title_welcome", @"Welcome navigation title");
         self.navigationItem.rightBarButtonItem = nil;
         NSURL *URL = [[NSBundle mainBundle] URLForResource:@"welcome" withExtension:@"html"];
         [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
@@ -117,9 +117,9 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];	
     if ([Identity countInManagedObjectContext:self.managedObjectContext] > 0 &&
         [defaults objectForKey:@"show_instructions_preference"] == nil) {
-		NSString *message = NSLocalizedString(@"Do you want to see these instructions when you start the application in the future? You can always open the instructions from the Scan window or change this behavior in Settings.", @"Alert for skipping the instructions in the future");		
-		NSString *yesTitle = NSLocalizedString(@"Yes", @"Yes button title");
-		NSString *noTitle = NSLocalizedString(@"No", @"No button title");		
+		NSString *message = NSLocalizedString(@"show_instructions_preference_message", @"Do you want to see these instructions when you start the application in the future? You can always open the instructions from the Scan window or change this behavior in Settings.");		
+		NSString *yesTitle = NSLocalizedString(@"yes_button", @"Yes button title");
+		NSString *noTitle = NSLocalizedString(@"no_button", @"No button title");		
 		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:message delegate:self cancelButtonTitle:nil otherButtonTitles:yesTitle, noTitle, nil];
 		[alertView show];
 		[alertView release];

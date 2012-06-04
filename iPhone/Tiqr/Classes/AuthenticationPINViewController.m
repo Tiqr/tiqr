@@ -62,10 +62,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = NSLocalizedString(@"Login", @"Login title");
-    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Enter PIN", @"Enrollment PIN back button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];        
-    self.subtitle = NSLocalizedString(@"Enter your PIN", @"Authentication PIN title");
-    self.description = NSLocalizedString(@"You need to enter your 4-digit PIN to login.", @"Authentication PIN description"); 
+    self.title = NSLocalizedString(@"authentication_title", @"Login title");
+    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"enter_pin", @"Enrollment PIN back button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];        
+    self.subtitle = NSLocalizedString(@"login_intro", @"Authentication PIN title");
+    self.description = NSLocalizedString(@"enter_four_digit_pin", @"You need to enter your 4-digit PIN to login."); 
 }
 
 - (void)showFallback {

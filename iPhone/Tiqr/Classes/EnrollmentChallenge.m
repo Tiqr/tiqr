@@ -98,8 +98,8 @@ NSString *const TIQRECErrorDomain = @"org.tiqr.ec";
 		NSError *error = nil;		
 		NSData *logo = [self downloadSynchronously:logoUrl error:&error];
 		if (error != nil) {
-            NSString *errorTitle = NSLocalizedString(@"No identity provider logo", @"No identity provider logo title");
-            NSString *errorMessage = NSLocalizedString(@"Cannot retrieve the identity provider logo. Please contact the identity provider and try again later.", @"No identity provider logo message");
+            NSString *errorTitle = NSLocalizedString(@"error_enroll_logo_error_title", @"No identity provider logo");
+            NSString *errorMessage = NSLocalizedString(@"error_enroll_logo_error", @"No identity provider logo message");
             NSDictionary *details = [NSDictionary dictionaryWithObjectsAndKeys:errorTitle, NSLocalizedDescriptionKey, errorMessage, NSLocalizedFailureReasonErrorKey, error, NSUnderlyingErrorKey, nil];
             self.error = [NSError errorWithDomain:TIQRECErrorDomain code:TIQRECIdentityProviderLogoError userInfo:details];        
 			return NO;
@@ -125,8 +125,8 @@ NSString *const TIQRECErrorDomain = @"org.tiqr.ec";
 		if (identity != nil && [identity.blocked boolValue]) {
             self.identity = identity;
         } else if (identity != nil) {
-            NSString *errorTitle = NSLocalizedString(@"Account already activated", @"Account already activated title");
-            NSString *errorMessage = NSLocalizedString(@"This account has already been activated and is ready to be used.", @"Account already activated message");
+            NSString *errorTitle = NSLocalizedString(@"error_enroll_already_enrolled_title", @"Account already activated");
+            NSString *errorMessage = [NSString stringWithFormat:NSLocalizedString(@"error_enroll_already_enrolled", @"Account already activated message"), self.identityDisplayName, self.identityProviderDisplayName];
             NSDictionary *details = [NSDictionary dictionaryWithObjectsAndKeys:errorTitle, NSLocalizedDescriptionKey, errorMessage, NSLocalizedFailureReasonErrorKey, nil];
             self.error = [NSError errorWithDomain:TIQRECErrorDomain code:TIQRECAccountAlreadyExistsError userInfo:details];        
 			return NO;			
@@ -140,8 +140,8 @@ NSString *const TIQRECErrorDomain = @"org.tiqr.ec";
     NSString *scheme = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"TIQREnrollmentURLScheme"]; 
     NSURL *fullURL = [NSURL URLWithString:self.rawChallenge];
     if (fullURL == nil || ![fullURL.scheme isEqualToString:scheme]) {
-        NSString *errorTitle = NSLocalizedString(@"Invalid QR tag", @"Invalid QR tag title");
-        NSString *errorMessage = NSLocalizedString(@"Unable to interpret the scanned QR tag. Please try again. If the problem persists, please contact the website administrator.", @"Invalid QR tag message");
+        NSString *errorTitle = NSLocalizedString(@"error_enroll_invalid_qr_code", @"Invalid QR tag title");
+        NSString *errorMessage = NSLocalizedString(@"error_enroll_invalid_response", @"Invalid QR tag message");
         NSDictionary *details = [NSDictionary dictionaryWithObjectsAndKeys:errorTitle, NSLocalizedDescriptionKey, errorMessage, NSLocalizedFailureReasonErrorKey, nil];
         self.error = [NSError errorWithDomain:TIQRECErrorDomain code:TIQRECInvalidQRTagError userInfo:details];        
 		return;        
@@ -149,22 +149,22 @@ NSString *const TIQRECErrorDomain = @"org.tiqr.ec";
     
 	NSURL *url = [NSURL URLWithString:[self.rawChallenge substringFromIndex:13]];
     if (url == nil) {
-        NSString *errorTitle = NSLocalizedString(@"Invalid QR tag", @"Invalid QR tag title");
-        NSString *errorMessage = NSLocalizedString(@"Unable to interpret the scanned QR tag. Please try again. If the problem persists, please contact the website administrator.", @"Invalid QR tag message");
+        NSString *errorTitle = NSLocalizedString(@"error_enroll_invalid_qr_code", @"Invalid QR tag title");
+        NSString *errorMessage = NSLocalizedString(@"error_enroll_invalid_response", @"Invalid QR tag message");
         NSDictionary *details = [NSDictionary dictionaryWithObjectsAndKeys:errorTitle, NSLocalizedDescriptionKey, errorMessage, NSLocalizedFailureReasonErrorKey, nil];
         self.error = [NSError errorWithDomain:TIQRECErrorDomain code:TIQRECInvalidQRTagError userInfo:details];        
 		return;        
     }
     
 	if (![url.scheme isEqualToString:@"http"] && ![url.scheme isEqualToString:@"https"] && ![url.scheme isEqualToString:@"file"]) {
-        NSString *errorTitle = NSLocalizedString(@"Invalid QR tag", @"Invalid QR tag title");
-        NSString *errorMessage = NSLocalizedString(@"Unable to interpret the scanned QR tag. Please try again. If the problem persists, please contact the website administrator.", @"Invalid QR tag message");
+        NSString *errorTitle = NSLocalizedString(@"error_enroll_invalid_qr_code", @"Invalid QR tag title");
+        NSString *errorMessage = NSLocalizedString(@"error_enroll_invalid_response", @"Invalid QR tag message");
         NSDictionary *details = [NSDictionary dictionaryWithObjectsAndKeys:errorTitle, NSLocalizedDescriptionKey, errorMessage, NSLocalizedFailureReasonErrorKey, nil];
         self.error = [NSError errorWithDomain:TIQRECErrorDomain code:TIQRECInvalidQRTagError userInfo:details];        
 		return;
 	} else if ([url.scheme isEqualToString:@"file"] && !self.allowFiles) {
-        NSString *errorTitle = NSLocalizedString(@"Invalid QR tag", @"Invalid QR tag title");
-        NSString *errorMessage = NSLocalizedString(@"Unable to interpret the scanned QR tag. Please try again. If the problem persists, please contact the website administrator.", @"Invalid QR tag message");
+        NSString *errorTitle = NSLocalizedString(@"error_enroll_invalid_qr_code", @"Invalid QR tag title");
+        NSString *errorMessage = NSLocalizedString(@"error_enroll_invalid_response", @"Invalid QR tag message");
         NSDictionary *details = [NSDictionary dictionaryWithObjectsAndKeys:errorTitle, NSLocalizedDescriptionKey, errorMessage, NSLocalizedFailureReasonErrorKey, nil];
         self.error = [NSError errorWithDomain:TIQRECErrorDomain code:TIQRECInvalidQRTagError userInfo:details];        
 		return;
@@ -174,8 +174,8 @@ NSString *const TIQRECErrorDomain = @"org.tiqr.ec";
 	NSError *error = nil;
 	NSData *data = [self downloadSynchronously:url error:&error];
 	if (error != nil) {
-        NSString *errorTitle = NSLocalizedString(@"No connection", @"No connection title");
-        NSString *errorMessage = NSLocalizedString(@"You need an Internet connection to activate your account. Please try again later.", @"No connection message");
+        NSString *errorTitle = NSLocalizedString(@"no_connection", @"No connection title");
+        NSString *errorMessage = NSLocalizedString(@"internet_connection_required", @"You need an Internet connection to activate your account. Please try again later.");
         NSDictionary *details = [NSDictionary dictionaryWithObjectsAndKeys:errorTitle, NSLocalizedDescriptionKey, errorMessage, NSLocalizedFailureReasonErrorKey, error, NSUnderlyingErrorKey, nil];
         self.error = [NSError errorWithDomain:TIQRECErrorDomain code:TIQRECConnectionError userInfo:details];        
 		return;
@@ -193,8 +193,8 @@ NSString *const TIQRECErrorDomain = @"org.tiqr.ec";
     } 
 
 	if (metadata == nil || error != nil || ![self isValidMetadata:metadata]) {
-        NSString *errorTitle = NSLocalizedString(@"Invalid response", @"Invalid response title");
-        NSString *errorMessage = NSLocalizedString(@"The identity provider returned an invalid response. Please contact the identity provider and try again later.", @"Invalid response message");
+        NSString *errorTitle = NSLocalizedString(@"error_enroll_invalid_response_title", @"Invalid response title");
+        NSString *errorMessage = NSLocalizedString(@"error_enroll_invalid_response", @"Invalid response message");
         NSDictionary *details = [NSDictionary dictionaryWithObjectsAndKeys:errorTitle, NSLocalizedDescriptionKey, errorMessage, NSLocalizedFailureReasonErrorKey, error, NSUnderlyingErrorKey, nil];
         self.error = [NSError errorWithDomain:TIQRECErrorDomain code:TIQRECInvalidResponseError userInfo:details];        
 		return;        

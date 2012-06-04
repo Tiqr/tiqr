@@ -36,6 +36,7 @@
 @interface IdentityEditViewController ()
 
 @property (nonatomic, retain) Identity *identity;
+@property (nonatomic, retain) IBOutlet UIButton *deleteButton;
 
 @end
 
@@ -47,6 +48,8 @@
 @synthesize identityProviderDisplayNameLabel=identityProviderDisplayNameLabel_;
 @synthesize blockedWarningLabel=blockedWarningLabel_;
 @synthesize tableView=tableView_;
+@synthesize deleteButton=deleteButton_;
+
 
 - (id)initWithIdentity:(Identity *)identity {
     self = [super initWithNibName:@"IdentityEditView" bundle:nil];
@@ -60,7 +63,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = NSLocalizedString(@"Account details", @"Account details navigation title");
+    [self.deleteButton setTitle:NSLocalizedString(@"delete_button", @"Delete") forState:UIControlStateNormal];
+    self.blockedWarningLabel.text = NSLocalizedString(@"identity_blocked_message", @"Warning this account is blocked and needs to be reactivated.");
+    
+    self.title = NSLocalizedString(@"account_details_title", @"Account details navigation title");
     
     self.identityProviderLogoImageView.image = [UIImage imageWithData:self.identity.identityProvider.logo];
     self.identityProviderIdentifierLabel.text = self.identity.identityProvider.identifier;
@@ -89,13 +95,13 @@
     cell.accessoryType = UITableViewCellAccessoryNone;    
     
     if (indexPath.row == 0) {
-        cell.textLabel.text = NSLocalizedString(@"Full Name", @"Username label");
+        cell.textLabel.text = NSLocalizedString(@"full_name", @"Username label");
         cell.detailTextLabel.text = self.identity.displayName;
     } else if (indexPath.row == 1) {
-        cell.textLabel.text = NSLocalizedString(@"ID", @"User ID label");
+        cell.textLabel.text = NSLocalizedString(@"id", @"User ID label");
         cell.detailTextLabel.text = self.identity.identifier;
     } else if (indexPath.row == 2) {
-        cell.textLabel.text = NSLocalizedString(@"Information", @"Info label");
+        cell.textLabel.text = NSLocalizedString(@"information", @"Info label");
         cell.detailTextLabel.text = self.identity.identityProvider.infoUrl;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
@@ -136,9 +142,9 @@
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         NSLog(@"Unexpected error: %@", error);
-		NSString *title = NSLocalizedString(@"Error", "Alert title for error");		
-		NSString *message = NSLocalizedString(@"An unexpected error occurred. Please contact support.", "Unexpected error message");		        
-		NSString *okTitle = NSLocalizedString(@"OK", "OK button title");		
+		NSString *title = NSLocalizedString(@"error", "Alert title for error");		
+		NSString *message = NSLocalizedString(@"error_auth_unknown_error", "Unexpected error message");		        
+		NSString *okTitle = NSLocalizedString(@"ok_button", "OK button title");		
 		UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:okTitle otherButtonTitles:nil] autorelease];
 		[alertView show];
         [alertView release];
@@ -151,6 +157,7 @@
     self.identityProviderDisplayNameLabel = nil;
     self.blockedWarningLabel = nil;
     self.tableView = nil;
+    self.deleteButton = nil;
 }
 
 - (void)viewDidUnload {

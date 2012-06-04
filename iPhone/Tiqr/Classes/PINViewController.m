@@ -36,6 +36,7 @@
 
 @property (nonatomic, retain) NSTimer *pin4Timer;
 @property (nonatomic, retain) ErrorController *errorController;
+@property (nonatomic, retain) IBOutlet UIButton *confirmButton;
 
 @end
 
@@ -50,6 +51,7 @@
 @synthesize okButton=okButton_;
 @synthesize pin4Timer=pin4Timer_;
 @synthesize errorController=errorController_;
+@synthesize confirmButton=confirmButton_;
 
 - (id)init {
     self = [super initWithNibName:@"PINView" bundle:nil];
@@ -77,6 +79,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.confirmButton setTitle:NSLocalizedString(@"ok_button", @"OK Button") forState:UIControlStateNormal];
     
     self.pinField.delegate = self;
     self.pin1Field.font = [UIFont fontWithName:@"Afrika Wildlife B Mammals2" size:24.0];

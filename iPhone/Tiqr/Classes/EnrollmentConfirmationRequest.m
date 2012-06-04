@@ -85,8 +85,8 @@ NSString *const TIQRECRErrorDomain = @"org.tiqr.ecr";
     [connection release];
     self.data = nil;
     
-    NSString *title = NSLocalizedString(@"No connection", @"No connection error title");
-    NSString *message = NSLocalizedString(@"To activate your account you need to have an active Internet connection. Please try again later.", @"No connection error message");
+    NSString *title = NSLocalizedString(@"no_connection", @"No connection error title");
+    NSString *message = NSLocalizedString(@"internet_connection_required", @"No connection error message");
     NSMutableDictionary *details = [NSMutableDictionary dictionary];
     [details setValue:title forKey:NSLocalizedDescriptionKey];
     [details setValue:message forKey:NSLocalizedFailureReasonErrorKey];    
@@ -104,8 +104,8 @@ NSString *const TIQRECRErrorDomain = @"org.tiqr.ecr";
         [self.delegate enrollmentConfirmationRequestDidFinish:self];
 	} else {
         // TODO: server should return different error codes
-        NSString *title = NSLocalizedString(@"Unknown error", @"Unknown error title");
-        NSString *message = NSLocalizedString(@"An unknown error occured. Please contact support.", @"Unknown error message");
+        NSString *title = NSLocalizedString(@"unkown_error", @"Unknown error title");
+        NSString *message = NSLocalizedString(@"unkown_enroll_error_message", @"Unknown error message");
         NSMutableDictionary *details = [NSMutableDictionary dictionary];
         [details setValue:title forKey:NSLocalizedDescriptionKey];
         [details setValue:message forKey:NSLocalizedFailureReasonErrorKey];    
