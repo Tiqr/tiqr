@@ -286,8 +286,9 @@ class sspmod_authTiqr_Auth_Tiqr
     
     public static function processMobileLogin($request)
     {
+        $response = self::getResponse();
         if (!isset($request["sessionKey"]) || !isset($request["userId"]) || !isset($request["response"])) {
-            return "INVALID_REQUEST";
+            return $response->getInvalidRequestResponse();
         } 
             
         $key = $request["sessionKey"];
@@ -305,12 +306,13 @@ class sspmod_authTiqr_Auth_Tiqr
      */
     protected static function _processLogin($userId, $response, $sessionKey)
     {
+        $response = self::getResponse();
         try {
             $server = self::getServer();
                 
             $store = self::getUserStorage();
             if ($store->isBlocked($userId)) {
-                return "ACCOUNT_BLOCKED";
+                return $response->getAccountBlockedResponse();
             } else if ($store->userExists($userId)) {
                 $secret = $store->getSecret($userId);
                 $result = $server->authenticate($userId, $secret, $sessionKey, $response); 
@@ -326,11 +328,11 @@ class sspmod_authTiqr_Auth_Tiqr
                                 $store->setNotificationAddress($userId, $request["notificationAddress"]);                    
                             }
                         }
-                        return "OK";
+                        return $response->getLoginResponse();
                     case Tiqr_Service::AUTH_RESULT_INVALID_CHALLENGE:
-                        return "INVALID_CHALLENGE";
+                        return $response->getInvalidChallengeResponse();
                     case Tiqr_Service::AUTH_RESULT_INVALID_REQUEST:
-                        return "INVALID_REQUEST";
+                        return $response->getInvalidRequestResponse();
                     case Tiqr_Service::AUTH_RESULT_INVALID_RESPONSE:
                         
                         $attempts = $store->getLoginAttempts($userId);
@@ -341,20 +343,20 @@ class sspmod_authTiqr_Auth_Tiqr
                             $store->setBlocked($userId, true);
                             $store->setSecret($userId, NULL);
                         }
-                        return "INVALID_RESPONSE:".((self::MAX_ATTEMPTS-1)-$attempts);
+                        return $response->getInvalidResponse((self::MAX_ATTEMPTS-1)-$attempts);
                     case Tiqr_Service::AUTH_RESULT_INVALID_USERID:
-                        return "INVALID_USERID";
+                        return $response->getInvalidUserResponse();
                     default:
-                        return "ERROR"; // Shouldn't happen
+                        return $response->getErrorResponse(); // Shouldn't happen
                 }
             }
-            return "INVALID_RESPONSE"; 
+            return $response->getInvalidResponse(); 
         }
         catch (Exception $error) {
             // If anything goes wrong, we should return a generic error.
-            return "ERROR";
+            return $response->getErrorResponse();
         }
-        
+    
     }
     
     public static function getEnrollmentMetadata($request)
@@ -427,6 +429,18 @@ class sspmod_authTiqr_Auth_Tiqr
             return $state[self::CONFIGID];
         }
         return array();
+    }
+    
+    /**
+     * Get the response object
+     * 
+     * @return object 
+     */
+    public static function getResponse()
+    {
+        require_once "Tiqr/Response/Abstract.php";
+        // @todo: check the headers/get params to know which type of response to give
+        return Tiqr_Response_Abstract::createResponse();
     }
     
     protected static function _validateAuthState($authStateId)
