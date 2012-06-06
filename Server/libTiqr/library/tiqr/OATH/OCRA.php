@@ -353,7 +353,7 @@ class OATH_OCRA {
 
 		if ($this->T) {
 			if ($this->TDataInput === NULL) {
-				$this->setTimestamp(time() / $t_length);
+				$this->setTimestamp(time() / $this->TLength);
 			}
 
 			$msg .= str_pad($this->TDataInput, 8, "\0", STR_PAD_LEFT);
