@@ -8,7 +8,7 @@ class OATH_OCRATest extends PHPUnit_Framework_TestCase {
 	 * @dataProvider RFCVectorsProvider
 	 */
 	public function testRFCVectors($ocrasuite, $key, $datainput, $expected_result) {
-        $ocra = new OATH_OCRA($ocrasuite, $key, NULL, $datainput['Q']);
+		$ocra = new OATH_OCRA($ocrasuite, $key, NULL, $datainput['Q']);
 		if (isset($datainput['C'])) {
 			$ocra->setCounter($datainput['C']);
 		}
