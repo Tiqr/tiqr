@@ -1,5 +1,7 @@
 <?php
 
+require_once 'Tiqr/Response/Interface.php';
+
 /**
  * This file is part of the tiqr project.
  *
@@ -29,23 +31,12 @@ abstract class Tiqr_Response_Abstract implements Tiqr_Response_Interface
     /**
      * Create the response class
      * 
-     * @param string $type The type of response (json or plain supported)
-     * 
      * @return object Tiqr response class
      */
-    public function createResponse($type = 'plain') 
+    public function createResponse() 
     {
-        switch ($type) {
-            case 'json':
-                require_once("Tiqr/Response/JSON.php");
-                $instance = new Tiqr_Response_JSON();
-                break;
-            case 'plain':
-            default: 
-                require_once("Tiqr/Response/Plain.php");
-                $instance = new Tiqr_Response_Plain();
-        }
-        
+        require_once("Tiqr/Response/V1.php");
+        $instance = new Tiqr_Response_V1();
         return $instance;
     }
 }

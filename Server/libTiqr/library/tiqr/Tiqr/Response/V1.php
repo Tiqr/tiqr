@@ -19,12 +19,12 @@
  */
 
 /**
- * The JSON implementation of the response.
+ * The version 1 implementation of the response object.
  *
  * @author Lineke Kerckhoffs-Willems <lineke@egeniq.com>
  *
  */
-class Tiqr_Response_JSON extends Tiqr_Response_Abstract
+class Tiqr_Response_V1 extends Tiqr_Response_Abstract
 {
     const RESPONSE_OK = 1;
     const RESPONSE_ERROR = 200;
@@ -41,81 +41,83 @@ class Tiqr_Response_JSON extends Tiqr_Response_Abstract
      */
     public function getErrorResponse()
     {
-        $json['responseCode'] = self::RESPONSE_ERROR;
-        return json_encode($json);
+        $result['responseCode'] = self::RESPONSE_ERROR;
+        return $result;
     }
     
     /**
-     * Get the Tiqr invalid response in the correct format
+     * Get the Tiqr invalid response
      * 
      * @param int $attemptsLeft Number of login attempts left before a block
-     * @return string The response
+     * 
+     * @return array The response object
      */
     public function getInvalidResponse($attemptsLeft = null)
     {
-        $json['responseCode'] = self::RESPONSE_INVALID;
+        $result['responseCode'] = self::RESPONSE_INVALID;
         if (!is_null($attemptsLeft)) {
-            $json['attemptsLeft'] = $attemptsLeft;
+            $result['attemptsLeft'] = $attemptsLeft;
         }
-        return json_encode($json);
+        return $result;
     }
     
     /**
-     * Get the Tiqr invalid userid response in the correct format
+     * Get the Tiqr invalid userid response
      * 
-     * @return string The response
+     * @return array The response object
      */
     public function getInvalidUserResponse()
     {
-        $json['responseCode'] = self::RESPONSE_INVALID_USER;
-        return json_encode($json);
+        $result['responseCode'] = self::RESPONSE_INVALID_USER;
+        return $result;
     }
     
     /**
-     * Get the Tiqr invalid request response in the correct format
+     * Get the Tiqr invalid request response
      * 
-     * @return string The response
+     * @return array The response object
      */
     public function getInvalidRequestResponse()
     {
-        $json['responseCode'] = self::RESPONSE_INVALID_REQUEST;
-        return json_encode($json);
+        $result['responseCode'] = self::RESPONSE_INVALID_REQUEST;
+        return $result;
     }
     
     /**
-     * Get the Tiqr invalid challenge response in the correct format
+     * Get the Tiqr invalid challenge response
      * 
-     * @return string The response
+     * @return array The response object
      */
     public function getInvalidChallengeResponse()
     {
-        $json['responseCode'] = self::RESPONSE_INVALID_CHALLENGE;
-        return json_encode($json);
+        $result['responseCode'] = self::RESPONSE_INVALID_CHALLENGE;
+        return $result;
     }
     
     /**
-     * Get the Tiqr invalid userid response in the correct format
+     * Get the Tiqr invalid userid response
      * 
      * @param int $duration The duration of the block (only for temporary blocks)
-     * @return string The response
+     * 
+     * @return array The response object
      */
     public function getAccountBlockedResponse($duration = null)
     {
-        $json['responseCode'] = self::RESPONSE_ACCOUNT_BLOCKED;
+        $result['responseCode'] = self::RESPONSE_ACCOUNT_BLOCKED;
         if (!is_null($duration)) {
-            $json['duration'] = $duration;
+            $result['duration'] = $duration;
         }
-        return json_encode($json);
+        return $result;
     }
     
     /**
-     * Get the Tiqr logged in response in the correct format
+     * Get the Tiqr logged in response
      * 
-     * @return string The response
+     * @return array The response object
      */
     public function getLoginResponse()
     {
-        $json['responseCode'] = self::RESPONSE_OK;
-        return json_encode($json);
+        $result['responseCode'] = self::RESPONSE_OK;
+        return $result;
     }
 }
