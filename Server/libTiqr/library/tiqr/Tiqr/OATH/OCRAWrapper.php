@@ -73,8 +73,9 @@ class Tiqr_OCRAWrapper
      */
     public function calculateResponse($secret, $challenge, $sessionKey)
     {
-        $this->ocra->setKey(pack('H*', $secret));
+        $this->ocra->setKey($secret, 'hexstring');
         $this->ocra->setQuestion($challenge);
+        // FIXME: temporary converting from hex, to not brake current Tiqr clients
         $this->ocra->setSessionInformation(pack('H*', $sessionKey));
         
         return $this->ocra->generateOCRA($key, $dataInput);
@@ -90,7 +91,7 @@ class Tiqr_OCRAWrapper
      */
     public function verifyResponse($response, $secret, $challenge, $sessionKey)
     {
-        $this->ocra->setKey(pack('H*', $secret));
+        $this->ocra->setKey($secret, 'hexstring');
         $this->ocra->setQuestion($challenge);
         // FIXME: temporary converting from hex, to not brake current Tiqr clients
         $this->ocra->setSessionInformation(pack('H*', $sessionKey));
