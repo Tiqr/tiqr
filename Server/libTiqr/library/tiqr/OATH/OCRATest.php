@@ -9,6 +9,8 @@ class OATH_OCRATest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testRFCVectors($ocrasuite, $key, $datainput, $expected_result) {
 		$ocra = new OATH_OCRA($ocrasuite, $key, NULL, $datainput['Q']);
+		$ocra->setKey($key, 'hexstring');
+		$ocra->setQuestion($datainput['Q']);
 		if (isset($datainput['C'])) {
 			$ocra->setCounter($datainput['C']);
 		}
@@ -111,7 +113,6 @@ class OATH_OCRATest extends PHPUnit_Framework_TestCase {
 
 		foreach($tests as $test) {
 			$ocrasuite = $test['ocrasuite'];
-			$key = pack('H*', $test['key']);
 			foreach($test['vectors'] as $vector) {
 				$datainput = $vector['params'];
 				if (isset($test['pin'])) {
@@ -119,7 +120,7 @@ class OATH_OCRATest extends PHPUnit_Framework_TestCase {
 				} elseif (isset($test['pin_sha1'])) {
 					$datainput['P:hexdigest'] = $test['pin_sha1'];
 				}
-				$data[] = array($ocrasuite, $key, $datainput, $vector['result']);
+				$data[] = array($ocrasuite, $test['key'], $datainput, $vector['result']);
 			}
 		}
 
