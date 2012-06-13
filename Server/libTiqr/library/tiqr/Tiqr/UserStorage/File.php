@@ -212,14 +212,62 @@ class Tiqr_UserStorage_File extends Tiqr_UserStorage_Abstract
      * (non-PHPdoc)
      * @see simplesamlphp-module/authTiqr/lib/User/sspmod_authTiqr_User_Interface::isBlocked()
      */
-    public function isBlocked($userId)
+    public function isBlocked($userId, $duration)
     {
         if ($data = $this->_loadUser($userId)) {
-            if (!isset($data["blocked"]) || $data["blocked"]==false) {
+            $timestamp = $this->getTemporaryBlockTimestamp($userId);
+            // if not blocked or block is expired, return false
+            if (!isset($data["blocked"]) || $data["blocked"]==false || (false !== $timestamp && false != $duration && (strtotime($timestamp) + duration * 60) < time())) {
                 return false;
             }
         }
         return true;
+    }
+    
+    /**
+     * (non-PHPdoc)
+     * @see libTiqr/library/tiqr/Tiqr/UserStorage/Tiqr_UserStorage_Interface::setTemporaryBlockAttempts()
+     */
+    public function setTemporaryBlockAttempts($userId, $amount) {
+        $data = $this->_loadUser($userId);
+        $data["temporaryBlockAttempts"] = $amount;
+        $this->_saveUser($userId, $data);
+    }
+    
+    /**
+     * (non-PHPdoc)
+     * @see libTiqr/library/tiqr/Tiqr/UserStorage/Tiqr_UserStorage_Interface::getTemporaryBlockAttempts()
+     */
+    public function getTemporaryBlockAttempts($userId) {
+        if ($data = $this->_loadUser($userId)) {
+            if (isset($data["temporaryBlockAttempts"])) {
+                return $data["temporaryBlockAttempts"];
+            }
+        }
+        return 0;
+    }
+    
+    /**
+     * (non-PHPdoc)
+     * @see libTiqr/library/tiqr/Tiqr/UserStorage/Tiqr_UserStorage_Interface::setTemporaryBlockTimestamp()
+     */
+    public function setTemporaryBlockTimestamp($userId, $timestamp) {
+        $data = $this->_loadUser($userId);
+        $data["temporaryBlockTimestamp"] = $timestamp;
+        $this->_saveUser($userId, $data);
+    }
+    
+    /**
+     * (non-PHPdoc)
+     * @see libTiqr/library/tiqr/Tiqr/UserStorage/Tiqr_UserStorage_Interface::getTemporaryBlockTimestamp()
+     */
+    public function getTemporaryBlockTimestamp($userId) {
+        if ($data = $this->_loadUser($userId)) {
+            if (isset($data["temporaryBlockTimestamp"])) {
+                return $data["temporaryBlockTimestamp"];
+            }
+        }
+        return false;
     }
     
     /**
