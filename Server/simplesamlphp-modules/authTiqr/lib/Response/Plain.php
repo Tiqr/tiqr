@@ -89,4 +89,24 @@ class Response_Plain extends Tiqr_Response_Abstract
     {
         return 'OK';
     }
+    
+    /**
+     * Get the response when enrollment was succesful
+     * 
+     * @return array The response object 
+     */
+    public function getEnrollmentOkResponse() 
+    {
+        return 'OK';
+    }
+    
+    /**
+     * Get the response when enrollment had an error 
+     * 
+     * @return array The response object
+     */
+    public function getEnrollmentErrorResponse()
+    {
+        return 'There was an error';
+    }
 }

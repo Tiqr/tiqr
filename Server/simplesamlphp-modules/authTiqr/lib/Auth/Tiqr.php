@@ -411,6 +411,7 @@ class sspmod_authTiqr_Auth_Tiqr
             return false;
         }
         $server = self::getServer(); 
+        $responseObj = self::getResponse();
         
         $userId = $server->validateEnrollmentSecret($request["key"]);
         if ($userId !== false) {
@@ -435,10 +436,10 @@ class sspmod_authTiqr_Auth_Tiqr
                     }
                 }
                 $server->finalizeEnrollment($request["key"]);
-                return true;
+                return $responseObj->getEnrollmentOkResponse();
             }
         }
-        return false;
+        return $responseObj->getEnrollmentErrorResponse();
     } 
     
     /**
