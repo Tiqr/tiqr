@@ -26,13 +26,15 @@
  */
 class Tiqr_Response_V1 extends Tiqr_Response_Abstract
 {
-    const RESPONSE_OK = 1;
-    const RESPONSE_ERROR = 200;
+    const RESPONSE_LOGIN_OK = 1;
+    const RESPONSE_LOGIN_ERROR = 200;
     const RESPONSE_INVALID = 201;
     const RESPONSE_INVALID_USER = 201;
     const RESPONSE_INVALID_REQUEST = 202;
     const RESPONSE_INVALID_CHALLENGE = 203;
     const RESPONSE_ACCOUNT_BLOCKED = 204;
+    const RESPONSE_ENROLLMENT_OK = 0;
+    const RESPONSE_ENROLLMENT_ERROR = 101;
     
     /**
      * Get the Tiqr error response in the correct format
@@ -41,7 +43,7 @@ class Tiqr_Response_V1 extends Tiqr_Response_Abstract
      */
     public function getErrorResponse()
     {
-        $result['responseCode'] = self::RESPONSE_ERROR;
+        $result['responseCode'] = self::RESPONSE_LOGIN_ERROR;
         return $result;
     }
     
@@ -117,7 +119,29 @@ class Tiqr_Response_V1 extends Tiqr_Response_Abstract
      */
     public function getLoginResponse()
     {
-        $result['responseCode'] = self::RESPONSE_OK;
+        $result['responseCode'] = self::RESPONSE_LOGIN_OK;
+        return $result;
+    }
+    
+    /**
+     * Get the response when enrollment was succesful
+     * 
+     * @return array The response object 
+     */
+    public function getEnrollmentOkResponse() 
+    {
+        $result['responseCode'] = self::RESPONSE_ENROLLMENT_OK;
+        return $result;
+    }
+    
+    /**
+     * Get the response when enrollment had an error 
+     * 
+     * @return array The response object
+     */
+    public function getEnrollmentErrorResponse()
+    {
+        $result['responseCode'] = self::RESPONSE_ENROLLMENT_ERROR;
         return $result;
     }
 }

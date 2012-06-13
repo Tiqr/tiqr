@@ -91,4 +91,18 @@ interface Tiqr_Response_Interface
      * @return array The response object
      */
     public function getLoginResponse();
+    
+    /**
+     * Get the response when enrollment was succesful
+     * 
+     * @return array The response object 
+     */
+    public function getEnrollmentOkResponse();
+    
+    /**
+     * Get the response when enrollment had an error 
+     * 
+     * @return array The response object
+     */
+    public function getEnrollmentErrorResponse();
 }
