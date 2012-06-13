@@ -18,5 +18,11 @@
  *
  */
 
-echo sspmod_authTiqr_Auth_Tiqr::processMobileLogin($_REQUEST);
+$result = sspmod_authTiqr_Auth_Tiqr::processMobileLogin($_REQUEST);
 
+if (is_array($result)) {
+    header('Content-type: application/json');
+    echo json_encode($result);
+} else {
+    echo $result;
+}
