@@ -40,18 +40,20 @@ class sspmod_authTiqr_Auth_Tiqr
     private static $_userStorage = null;
     
     /**
-     * Adjust include path.
+     * Class autoloader.
      */
-    public static function adjustIncludePath() 
+    public static function classAutoLoader()
     {
-        $config = SimpleSAML_Configuration::getConfig('module_tiqr.php')->toArray();
-        
-        $tiqrPath = dirname(__FILE__)."/../../../../library/tiqr";
-        if (isset($config["tiqr.path"])) {
-             $tiqrPath = $config["tiqr.path"];
+        $moduleConfig = SimpleSAML_Configuration::getConfig('module_tiqr.php');
+        $tiqrPath = $moduleConfig->getString('tiqr.path', NULL);
+
+        if ($tiqrPath === NULL) {
+            $tiqrPath = SimpleSAML_Module::getModuleDir('authTiqr') . '/extlibinc/tiqr';
         }
         
-        ini_set('include_path', ini_get('include_path').':'.$tiqrPath);
+        require_once($tiqrPath . '/Tiqr/AutoLoader.php');
+        $autoloader = Tiqr_AutoLoader::getInstance($moduleConfig->toArray());
+        $autoloader->setIncludePath();
     }
     
     /**
@@ -59,8 +61,6 @@ class sspmod_authTiqr_Auth_Tiqr
      */ 
     public static function getUserStorage() 
     {
-        require_once 'Tiqr/UserStorage.php';
-
         if (self::$_userStorage == null) {
             $config = SimpleSAML_Configuration::getConfig('module_tiqr.php')->toArray();
             self::$_userStorage = Tiqr_UserStorage::getStorage($config["userstorage"]["type"], $config["userstorage"]);
@@ -96,9 +96,8 @@ class sspmod_authTiqr_Auth_Tiqr
             // Not logged in yet, ajax call can silently stop.
         
         } else {
-            
-            $url = SimpleSAML_Module::getModuleURL('authTiqr/complete.php');
-            echo 'URL:'.$url.'?'.http_build_query(array('AuthState' => $authStateId));
+            $url = SimpleSAML_Module::getModuleURL('authTiqr/complete.php', array('AuthState' => $authStateId));
+            echo 'URL:'.$url;
         }
         
     }
@@ -115,8 +114,8 @@ class sspmod_authTiqr_Auth_Tiqr
 
         $status = $server->getEnrollmentStatus($sessionId);
         if ($status==Tiqr_Service::ENROLLMENT_STATUS_FINALIZED) {
-            $url = SimpleSAML_Module::getModuleURL('authTiqr/complete_enrollment.php');
-            echo 'URL:'.$url.'?'.http_build_query(array('AuthState' => $authStateId));
+            $url = SimpleSAML_Module::getModuleURL('authTiqr/complete_enrollment.php', array('AuthState' => $authStateId));
+            echo 'URL:'.$url;
         } else {
             echo "NO";
         }
@@ -237,7 +236,7 @@ class sspmod_authTiqr_Auth_Tiqr
             $url = $state['SimpleSAML_Auth_Default.ReturnURL'];
         } else {
             // Nothing to go by. Fall back to our own hostname.
-            $url =  "http".(isset($_SERVER['HTTPS'])?'s':'')."://".$_SERVER["HTTP_HOST"];
+            $url = SimpleSAML_Utilities::selfURLhost();
         }
         
         $host = parse_url($url, PHP_URL_HOST);
@@ -268,7 +267,7 @@ class sspmod_authTiqr_Auth_Tiqr
         $sessionId = $session->getSessionId();
         $enrollmentKey = $server->startEnrollmentSession($userid, $fullname, $sessionId);
         
-        $metadataUrl = SimpleSAML_Module::getModuleURL('authTiqr/metadata.php')."?key=".$enrollmentKey;
+        $metadataUrl = SimpleSAML_Module::getModuleURL('authTiqr/metadata.php', array('key' => $enrollmentKey));
         
         $server->generateEnrollmentQR($metadataUrl);
     }
@@ -394,7 +393,7 @@ class sspmod_authTiqr_Auth_Tiqr
 
         $enrollmentSecret = $server->getEnrollmentSecret($request["key"]);
         
-        $enrollmentUrl = SimpleSAML_Module::getModuleURL('authTiqr/enroll.php').'?key='.$enrollmentSecret;
+        $enrollmentUrl = SimpleSAML_Module::getModuleURL('authTiqr/enroll.php', array('key' => $enrollmentSecret));
         
         $metadata = $server->getEnrollmentMetadata($request["key"], $authenticationUrl, $enrollmentUrl);
         
@@ -448,9 +447,8 @@ class sspmod_authTiqr_Auth_Tiqr
     public static function getServer()
     {
         $config = SimpleSAML_Configuration::getConfig('module_tiqr.php')->toArray();
-        
-        require_once "Tiqr/Service.php";
         $server = new Tiqr_Service($config);
+
         return $server;
     }
     
@@ -472,12 +470,10 @@ class sspmod_authTiqr_Auth_Tiqr
     {
         // check if the client supports json, if not fallback to the plain text
         if (stristr('json', $_SERVER['HTTP_ACCEPT'])) {
-            require_once "Tiqr/Response/Abstract.php";
             return Tiqr_Response_Abstract::createResponse();
         }
         else {
-            require_once SimpleSAML_Module::getModuleDir('authTiqr')."/lib/Response/Plain.php";
-            return new Response_Plain();
+            return new sspmod_authTiqr_Response_Plain();
         }
     }
     
@@ -491,4 +487,4 @@ class sspmod_authTiqr_Auth_Tiqr
     }
 }
 
-sspmod_authTiqr_Auth_Tiqr::adjustIncludePath();
+sspmod_authTiqr_Auth_Tiqr::classAutoLoader();
