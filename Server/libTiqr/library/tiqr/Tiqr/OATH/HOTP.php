@@ -25,7 +25,7 @@
  * @author ivo
  *
  */
-class Tiqr_HOTP
+class Tiqr_OATH_HOTP
 {
     /**
      * Calculate a HOTP response 
@@ -95,4 +95,3 @@ class Tiqr_HOTP
          ) % pow(10,$length);
     }
 }
-  
