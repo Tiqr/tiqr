@@ -19,7 +19,10 @@
 
 
 /** @internal includes */
-require_once("Tiqr/Message/Abstract.php");
+require_once('Tiqr/Message/Abstract.php');
+
+require_once('Zend/Mobile/Push/Apns.php');
+require_once('Zend/Mobile/Push/Message/Apns.php');
 
 /**
  * Apple Push Notification Service message class.
@@ -28,17 +31,6 @@ require_once("Tiqr/Message/Abstract.php");
 class Tiqr_Message_APNS extends Tiqr_Message_Abstract
 {
     private static $_services = array();
-    private static $_libraryImported = false;
-    
-    /**
-     * Import library classes.
-     *
-     * @param array $options configuration options     
-     */
-    private static function _importLibrary($options)
-    {
-        require_once $options['apns.path'].'/ApnsPHP/Autoload.php';        
-    }
     
     /**
      * Factory method for returning a C2DM service instance for the given 
@@ -53,12 +45,14 @@ class Tiqr_Message_APNS extends Tiqr_Message_Abstract
     private static function _getService($options)
     {
         $certificate = $options['apns.certificate'];
-        $env = $options['apns.environment'] == 'production' ? ApnsPHP_Abstract::ENVIRONMENT_PRODUCTION : ApnsPHP_Abstract::ENVIRONMENT_SANDBOX;
+        $uri = $options['apns.environment'] == 'production' ? Zend_Mobile_Push_Apns::SERVER_PRODUCTION_URI : Zend_Mobile_Push_Apns::SERVER_SANDBOX_URI;
         
-        $key = "{$certificate}@{$env}";
+        $key = "{$certificate}@{$uri}";
         
         if (!isset(self::$_services[$key])) {
-            $service = new ApnsPHP_Push($env, $certificate);            
+            $service = new Zend_Mobile_Push_Apns();
+            $service->setCertificate($certificate);
+            $service->connect($uri);
             self::$_services[$key] = $service;
         }
         
@@ -72,48 +66,35 @@ class Tiqr_Message_APNS extends Tiqr_Message_Abstract
      * @throws Tiqr_Message_Exception_SendFailure
      * @throws Tiqr_Message_Exception_InvalidDevice    
      *
-     * @todo Improve error handling. 
      */
     public function send()
     {
-        self::_importLibrary($this->getOptions());
-        
-        ob_start(); // todo: we don't have an apns logger yet, so it dumps to stdout. 
+        $service = self::_getService($this->getOptions());
 
-        $result = false;
-        
-        try {
-            $service = self::_getService($this->getOptions());
-            
-            // @todo: use root certification
-            //$service->setRootCertificationAuthority('entrust_root_certification_authority.pem');
-           
-            $service->connect();
-    
-            $message = new ApnsPHP_Message($this->getAddress());
-            $message->setCustomIdentifier($this->getId());
-            $message->setText($this->getText());
-            $message->setSound();
-            $message->setExpiry(30);
-            foreach ($this->getCustomProperties() as $name => $value) {
-                $message->setCustomProperty($name, $value);
-            }
-            
-            $service->add($message);
-            $service->send();
-            $service->disconnect();
-    
-            $errorQueue = $service->getErrors();
-            if (!empty($errorQueue)) {
-                throw new Tiqr_Message_Exception_SendFailure("General send error", false);
-            }
-        } catch (Tiqr_Message_Exception_SendFailure $e) {
-            throw $e;
-        } catch (Exception $e) {
-            ob_end_clean();               
-            throw new Tiqr_Message_Exception_SendFailure("General send error", false, $e->getMessage());
+        $message = new Zend_Mobile_Push_Message_Apns();
+        $message->setToken($this->getAddress());
+        $message->setId($this->getId());
+        $message->setAlert($this->getText());
+        $message->setSound('default');
+        $message->setExpire(30);
+        foreach ($this->getCustomProperties() as $name => $value) {
+            $message->addCustomProperty($name, $value);
         }
-        
-        ob_end_clean();        
+
+        try {
+            $service->send($message);
+        } catch (Zend_Mobile_Push_Exception_ServerUnavailable $e) {
+            throw new Tiqr_Message_Exception_SendFailure("Server unavailable", true, $e);
+        } catch (Zend_Mobile_Push_Exception_InvalidToken $e) {
+            throw new Tiqr_Message_Exception_InvalidDevice("Invalid token", $e);
+        } catch (Zend_Mobile_Push_Exception_InvalidPayload $e) {
+            throw new Tiqr_Message_Exception_SendFailure("Invalid payload", false, $e);
+        } catch (Zend_Mobile_Push_Exception_InvalidTopic $e) {
+            throw new Tiqr_Message_Exception_SendFailure("Invalid topic", false, $e);
+        } catch (Zend_Mobile_Push_Exception $e) {
+            throw new Tiqr_Message_Exception_SendFailure("General send error", false, $e);
+        }
+
+        $service->close();
     }
 }
