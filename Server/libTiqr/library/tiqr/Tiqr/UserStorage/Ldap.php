@@ -97,6 +97,20 @@ class Tiqr_UserStorage_Ldap extends Tiqr_UserStorage_Abstract
      * @var string
      */
     protected $_loginAttemptsAttr;
+    
+    /**
+     * Temporary block attempts LDAP attribute
+     * 
+     * @var string
+     */
+    protected $_temporaryBlockAttemptsAttr;
+    
+    /**
+     * Temporary block timestamp LDAP attribute
+     * 
+     * @var string
+     */
+    protected $_temporaryBlockTimestampAttr;
 
     /**
      * LDAP attributes that need to be retrieved.
@@ -124,7 +138,9 @@ class Tiqr_UserStorage_Ldap extends Tiqr_UserStorage_Abstract
         $this->_notificationTypeAttr = isset($config['notificationTypeAttr']) ? $config['notificationTypeAttr'] : 'tiqrNotificationType';        
         $this->_notificationAddressAttr = isset($config['notificationAddressAttr']) ? $config['notificationAddressAttr'] : 'tiqrNotificationAddress';        
         $this->_isBlockedAttr = isset($config['isBlockedAttr']) ? $config['isBlockedAttr'] : 'tiqrIsBlocked';                
-        $this->_loginAttemptsAttr = isset($config['loginAttemptsAttr']) ? $config['loginAttemptsAttr'] : 'tiqrLoginAttempts';                
+        $this->_loginAttemptsAttr = isset($config['loginAttemptsAttr']) ? $config['loginAttemptsAttr'] : 'tiqrLoginAttempts';  
+        $this->_temporaryBlockAttemptAttr = isset($config['temporaryBlockAttemptsAttr']) ? $config['temporaryBlockAttemptsAttr'] : 'tiqrTemporaryBlockAttempts';
+        $this->_temporaryBlockTimestampAttr = isset($config['temporaryBlockTimestampAttr']) ? $config['temporaryBlockTimestampAttr'] : 'tiqrTemporaryBlockTimestamp';
         $this->_attributes = isset($config['attributes']) ? $config['attributes'] : null;
         
         $ldapOptions = array(
@@ -343,11 +359,14 @@ class Tiqr_UserStorage_Ldap extends Tiqr_UserStorage_Abstract
      * (non-PHPdoc)
      * @see simplesamlphp-module/authTiqr/lib/User/sspmod_authTiqr_User_Interface::isBlocked()
      */
-    public function isBlocked($userId)
+    public function isBlocked($userId, $duration)
     {
         if ($user = $this->_loadUser($userId)) {
             $isBlocked = $this->_getLDAPAttribute($user, $this->_isBlockedAttr);
-            return (bool) $isBlocked;
+            $timestamp = $this->getTemporaryBlockTimestamp($userId);
+            if (false === (bool) $isBlocked || (false !== $timestamp && false != $duration && (strtotime($timestamp) + duration * 60) < time())) {
+                return false;
+            }
         }
         return true;
     }
@@ -361,6 +380,51 @@ class Tiqr_UserStorage_Ldap extends Tiqr_UserStorage_Abstract
         $user = $this->_loadUser($userId);
         $this->_setLDAPAttribute($user, $this->_isBlockedAttr, $blocked);
         $this->_saveUser($userId, $user);
+    }
+    
+    /**
+     * (non-PHPdoc)
+     * @see libTiqr/library/tiqr/Tiqr/UserStorage/Tiqr_UserStorage_Interface::setTemporaryBlockAttempts()
+     */
+    public function setTemporaryBlockAttempts($userId, $amount) {
+        $data = $this->_loadUser($userId);
+        $this->_setLDAPAttribute($user, $this->_temporaryBlockAttemptsAttr, $amount);
+        $this->_saveUser($userId, $data);
+    }
+    
+    /**
+     * (non-PHPdoc)
+     * @see libTiqr/library/tiqr/Tiqr/UserStorage/Tiqr_UserStorage_Interface::getTemporaryBlockAttempts()
+     */
+    public function getTemporaryBlockAttempts($userId) {
+        if ($user = $this->_loadUser($userId)) {
+            return $this->_getLDAPAttribute($user, $this->_temporaryBlockAttemptsAttr);
+        }
+        return 0;
+    }
+    
+    /**
+     * (non-PHPdoc)
+     * @see libTiqr/library/tiqr/Tiqr/UserStorage/Tiqr_UserStorage_Interface::setTemporaryBlockTimestamp()
+     */
+    public function setTemporaryBlockTimestamp($userId, $timestamp) {
+        $data = $this->_loadUser($userId);
+        $this->_setLDAPAttribute($user, $this->_temporaryBlockTimestampAttr, $timestamp);
+        $this->_saveUser($userId, $data);
+    }
+    
+    /**
+     * (non-PHPdoc)
+     * @see libTiqr/library/tiqr/Tiqr/UserStorage/Tiqr_UserStorage_Interface::getTemporaryBlockTimestamp()
+     */
+    public function getTemporaryBlockTimestamp($userId) {
+        if ($data = $this->_loadUser($userId)) {
+            $timestamp = $this->_getLDAPAttribute($user, $this->_temporaryBlockTimestampAttr);
+            if (null !== $timestamp) {
+                return $timestamp;
+            } 
+        }
+        return false;
     }
 
     /**

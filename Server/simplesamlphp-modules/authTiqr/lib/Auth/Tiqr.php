@@ -35,12 +35,6 @@ class sspmod_authTiqr_Auth_Tiqr
     const SESSIONKEYID = 'sspmod_authTiqr_Auth_Tiqr.sessionkey';
     
     /**
-     * The maximum number a user may do an authentication before being blocked.
-     */
-    const MAX_ATTEMPTS = 3;
-    
-    
-    /**
      * User storage instance.
      */
     private static $_userStorage = null;
@@ -286,8 +280,9 @@ class sspmod_authTiqr_Auth_Tiqr
     
     public static function processMobileLogin($request)
     {
+        $responseObj = self::getResponse();
         if (!isset($request["sessionKey"]) || !isset($request["userId"]) || !isset($request["response"])) {
-            return "INVALID_REQUEST";
+            return $responseObj->getInvalidRequestResponse();
         } 
             
         $key = $request["sessionKey"];
@@ -300,17 +295,27 @@ class sspmod_authTiqr_Auth_Tiqr
     /**
      * 
      * Enter description here ...
-     * @param unknown_type $request
-     * @return String an all-caps string indicating the authentication result.
+     * @param string $userId
+     * @param string $response
+     * @param string $sessionKey
+     * @return string|array an all-caps string indicating the authentication result or an array.
      */
     protected static function _processLogin($userId, $response, $sessionKey)
     {
+        $responseObj = self::getResponse();
+        
         try {
             $server = self::getServer();
                 
-            $store = self::getUserStorage();
-            if ($store->isBlocked($userId)) {
-                return "ACCOUNT_BLOCKED";
+            $store  = self::getUserStorage();
+            $config = SimpleSAML_Configuration::getConfig('module_tiqr.php')->toArray();
+            
+            $tempBlockDuration = array_key_exists('temporaryBlockDuration', $config) ? $config['temporaryBlockDuration'] : 0;
+            $maxTempBlocks = array_key_exists('maxTemporaryBlocks', $config) ? $config['maxTemporaryBlocks'] : 0;
+            $maxAttempts = array_key_exists('maxAttempts', $config) ? $config['maxAttempts'] : 3;
+            
+            if ($store->isBlocked($userId, $tempBlockDuration)) {
+                return $responseObj->getAccountBlockedResponse($tempBlockDuration);
             } else if ($store->userExists($userId)) {
                 $secret = $store->getSecret($userId);
                 $result = $server->authenticate($userId, $secret, $sessionKey, $response); 
@@ -326,35 +331,55 @@ class sspmod_authTiqr_Auth_Tiqr
                                 $store->setNotificationAddress($userId, $request["notificationAddress"]);                    
                             }
                         }
-                        return "OK";
+                        return $responseObj->getLoginResponse();
                     case Tiqr_Service::AUTH_RESULT_INVALID_CHALLENGE:
-                        return "INVALID_CHALLENGE";
+                        return $responseObj->getInvalidChallengeResponse();
                     case Tiqr_Service::AUTH_RESULT_INVALID_REQUEST:
-                        return "INVALID_REQUEST";
+                        return $responseObj->getInvalidRequestResponse();
                     case Tiqr_Service::AUTH_RESULT_INVALID_RESPONSE:
-                        
                         $attempts = $store->getLoginAttempts($userId);
-                        if ($attempts < (self::MAX_ATTEMPTS-1)) {
+                        if (0 == $maxAttempts) {
+                            return $responseObj->getInvalidResponse();
+                        }
+                        else if ($attempts < ($maxAttempts-1)) {
                             $store->setLoginAttempts($userId, $attempts+1);
                         } else {
-                            // This is the 3d attempt. Block user and destroy secret
+                            // Block user and destroy secret
                             $store->setBlocked($userId, true);
                             $store->setSecret($userId, NULL);
+                            $store->setLoginAttempts($userId, 0);
+                            
+                            if ($tempBlockDuration > 0) {
+                                $tempAttempts = $store->getTemporaryBlockAttempts($userId);
+                                if (0 == $maxTempBlocks) {
+                                    // always a temporary block
+                                    $store->setTemporaryBlockTimestamp($userId, date("Y-m-d H:i:s"));
+                                }
+                                else if ($tempAttempts < ($maxTempBlocks - 1)) {
+                                    // temporary block which could turn into a permanent block
+                                    $store->setTemporaryBlockAttempts($userId, $tempAttempts+1);
+                                    $store->setTemporaryBlockTimestamp($userId, date("Y-m-d H:i:s"));
+                                } 
+                                else {
+                                    // remove timestamp to make this a permanent block
+                                    $store->setTemporaryBlockTimestamp($userId, false);
+                                }
+                            }
                         }
-                        return "INVALID_RESPONSE:".((self::MAX_ATTEMPTS-1)-$attempts);
+                        return $responseObj->getInvalidResponse(($maxAttempts-1)-$attempts);
                     case Tiqr_Service::AUTH_RESULT_INVALID_USERID:
-                        return "INVALID_USERID";
+                        return $responseObj->getInvalidUserResponse();
                     default:
-                        return "ERROR"; // Shouldn't happen
+                        return $responseObj->getErrorResponse(); // Shouldn't happen
                 }
             }
-            return "INVALID_RESPONSE"; 
+            return $responseObj->getInvalidResponse(); 
         }
         catch (Exception $error) {
             // If anything goes wrong, we should return a generic error.
-            return "ERROR";
+            return $responseObj->getErrorResponse();
         }
-        
+    
     }
     
     public static function getEnrollmentMetadata($request)
@@ -368,7 +393,7 @@ class sspmod_authTiqr_Auth_Tiqr
         $server = self::getServer();
 
         $enrollmentSecret = $server->getEnrollmentSecret($request["key"]);
-
+        
         $enrollmentUrl = SimpleSAML_Module::getModuleURL('authTiqr/enroll.php').'?key='.$enrollmentSecret;
         
         $metadata = $server->getEnrollmentMetadata($request["key"], $authenticationUrl, $enrollmentUrl);
@@ -386,6 +411,7 @@ class sspmod_authTiqr_Auth_Tiqr
             return false;
         }
         $server = self::getServer(); 
+        $responseObj = self::getResponse();
         
         $userId = $server->validateEnrollmentSecret($request["key"]);
         if ($userId !== false) {
@@ -395,6 +421,14 @@ class sspmod_authTiqr_Auth_Tiqr
                 $store->setBlocked($userId, false); // remove any pending blocks upon re-enrollment.
                 $store->setLoginAttempts($userId, 0);
                 
+                if (method_exists($store, 'setTemporaryBlockAttempt')) {
+                    $store->setTemporaryBlockAttempt($userId, 0);
+                }
+                
+                if (method_exists($store, 'setTemporaryBlockTimestamp')) {
+                    $store->setTemporaryBlockTimestamp($userId, false);
+                }
+                
                 if (isset($request["notificationType"])) {
                     $store->setNotificationType($userId, $request["notificationType"]);
                     if (isset($request['notificationAddress'])) {
@@ -402,10 +436,10 @@ class sspmod_authTiqr_Auth_Tiqr
                     }
                 }
                 $server->finalizeEnrollment($request["key"]);
-                return true;
+                return $responseObj->getEnrollmentOkResponse();
             }
         }
-        return false;
+        return $responseObj->getEnrollmentErrorResponse();
     } 
     
     /**
@@ -427,6 +461,24 @@ class sspmod_authTiqr_Auth_Tiqr
             return $state[self::CONFIGID];
         }
         return array();
+    }
+    
+    /**
+     * Get the response object
+     * 
+     * @return object 
+     */
+    public static function getResponse()
+    {
+        // check if the client supports json, if not fallback to the plain text
+        if (stristr('json', $_SERVER['HTTP_ACCEPT'])) {
+            require_once "Tiqr/Response/Abstract.php";
+            return Tiqr_Response_Abstract::createResponse();
+        }
+        else {
+            require_once SimpleSAML_Module::getModuleDir('authTiqr')."/lib/Response/Plain.php";
+            return new Response_Plain();
+        }
     }
     
     protected static function _validateAuthState($authStateId)

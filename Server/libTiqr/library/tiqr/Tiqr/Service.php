@@ -466,7 +466,7 @@ class Tiqr_Service
         $this->_setEnrollmentStatus($data["sessionId"], self::ENROLLMENT_STATUS_RETRIEVED);
         return $metadata;
     }
-
+    
     /** 
      * Get a temporary enrollment secret to be able to securely post a user 
      * secret.
