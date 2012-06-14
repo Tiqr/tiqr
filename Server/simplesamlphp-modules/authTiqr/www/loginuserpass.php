@@ -58,7 +58,7 @@ if ($type == 'otp' && !empty($username) && !empty($otp)) {
 	} else {
 	    $errorCode = "wrongotp";
 	    if (strpos($result, ":")!==false) {
-	        $elems = split(":", $result);
+	        $elems = explode(":", $result);
             $attemptsLeft = $elems[1];
 	    }
 	}
@@ -85,7 +85,7 @@ if ($attemptsLeft != NULL) {
     $t->data['attemptsLeft'] = $attemptsLeft;
 }
 
-$t->data['verifyLoginUrl'] = SimpleSAML_Module::getModuleURL('authTiqr/verify.php').'?'.http_build_query($t->data['stateparams']);
+$t->data['verifyLoginUrl'] = SimpleSAML_Module::getModuleURL('authTiqr/verify.php', $t->data['stateparams']);
 $t->data['mobileDevice'] = (preg_match('/iphone/i', $_SERVER["HTTP_USER_AGENT"]) || preg_match('/android/i', $_SERVER["HTTP_USER_AGENT"]));
 
 if ($t->data['mobileDevice']) {
@@ -93,7 +93,7 @@ if ($t->data['mobileDevice']) {
     $t->data['authenticateUrl'] = sspmod_authTiqr_Auth_Tiqr::getAuthenticateUrl($state[sspmod_authTiqr_Auth_Tiqr::SESSIONKEYID]).'?'.urlencode($returnUrl);
 }
 
-$t->data['qrUrl'] = SimpleSAML_Module::getModuleURL('authTiqr/qr.php').'?'.http_build_query($t->data['stateparams']);
+$t->data['qrUrl'] = SimpleSAML_Module::getModuleURL('authTiqr/qr.php', $t->data['stateparams']);
 
 if (isset($state['SPMetadata'])) {
 	$t->data['SPMetadata'] = $state['SPMetadata'];

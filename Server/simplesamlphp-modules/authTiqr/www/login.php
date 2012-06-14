@@ -35,7 +35,6 @@ if (array_key_exists('userId', $_REQUEST)) {
     $userId = $_REQUEST['userId'];
 } else if (isset($state["tiqrUser"])) {
     $userId = $state["tiqrUser"]["userId"]; // two factor
-    
 } else {
     $userId = '';
 }
@@ -53,7 +52,7 @@ if (!empty($otp)) {
 	} else {
 	    $errorCode = "wrongotp";
 	    if (strpos($result, ":")!==false) {
-	        $elems = split(":", $result);
+	        $elems = explode(":", $result);
             $attemptsLeft = $elems[1];
 	    }
 	}
@@ -83,15 +82,14 @@ if (isset($state["tiqrUser"])) {
     
     // 2 factor authentication
     if (!sspmod_authTiqr_Auth_Tiqr::isEnrolled($state["tiqrUser"]["userId"])) { 
-        $enrollUrl = SimpleSAML_Module::getModuleURL('authTiqr/newuser.php');
-        $enrollUrl.='?'.http_build_query(array('AuthState' => $authState));    
+        $enrollUrl = SimpleSAML_Module::getModuleURL('authTiqr/newuser.php', array('AuthState' => $authState));
         $enroll = true;
     } else {    
         // we have a user. Send notification.
         $push = sspmod_authTiqr_Auth_Tiqr::sendAuthNotification($authState);
     }
 } else {
-    $enrollUrl = SimpleSAML_Module::getModuleURL('authTiqr/newuser.php').'?'.http_build_query($t->data['stateparams']);
+    $enrollUrl = SimpleSAML_Module::getModuleURL('authTiqr/newuser.php', $t->data['stateparams']);
 }
 
 $t->data['errorcode'] = $errorCode;
@@ -103,15 +101,15 @@ $t->data['enroll'] = $enroll;
 $t->data['enrollUrl'] = $enrollUrl;
 $t->data['mayCreate'] = $mayCreate;
 
-$t->data['verifyLoginUrl'] = SimpleSAML_Module::getModuleURL('authTiqr/verify.php').'?'.http_build_query($t->data['stateparams']);
+$t->data['verifyLoginUrl'] = SimpleSAML_Module::getModuleURL('authTiqr/verify.php', $t->data['stateparams']);
 $t->data['mobileDevice'] = (preg_match('/iphone/i', $_SERVER["HTTP_USER_AGENT"]) || preg_match('/android/i', $_SERVER["HTTP_USER_AGENT"]));
 
 if ($t->data['mobileDevice']) {
-    $returnUrl = SimpleSAML_Module::getModuleURL('authTiqr/complete.php').'?'.http_build_query($t->data['stateparams']);
+    $returnUrl = SimpleSAML_Module::getModuleURL('authTiqr/complete.php', $t->data['stateparams']);
     $t->data['authenticateUrl'] = sspmod_authTiqr_Auth_Tiqr::getAuthenticateUrl($state[sspmod_authTiqr_Auth_Tiqr::SESSIONKEYID]).'?'.urlencode($returnUrl);
 }
 
-$t->data['qrUrl'] = SimpleSAML_Module::getModuleURL('authTiqr/qr.php').'?'.http_build_query($t->data['stateparams']);
+$t->data['qrUrl'] = SimpleSAML_Module::getModuleURL('authTiqr/qr.php', $t->data['stateparams']);
 
 
 if (isset($state["tiqrUser"])) {
