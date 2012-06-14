@@ -23,27 +23,27 @@ $this->data['jquery'] = array('version' => '1.6', 'core' => true);
 
 $this->includeAtTemplateBase('includes/header.php');
 
-?>
+$verify_login_error = json_encode($this->t('{authTiqr:tiqr:verify_login_error}'));
 
+$this->data['htmlinject']['htmlContentPost'][] = <<<JAVASCRIPT
 <script type="text/javascript">
 function verifyEnrollment() {
-  jQuery.get('<?php echo $this->data['verifyEnrollUrl'] ?>', function(data) {
+  jQuery.get('{$this->data['verifyEnrollUrl']}', function(data) {
     if (data == 'NO') {
       window.setTimeout(verifyEnrollment, 1500);
     } else if (data.substring(0, 4) == 'URL:') {
       document.location.href = data.substring(4);
     } else {
-      alert(<?php echo json_encode($this->t('{authTiqr:tiqr:verify_login_error}')); ?>);
+      alert({$verify_login_error});
     }
   });
 }
-
 jQuery(document).ready(verifyEnrollment);
 </script>
+JAVASCRIPT;
 
-<?php
-if ($this->data['errorcode'] !== NULL) {
-    include("inline_error.php");
+if (isset($this->data['errorcode'])) {
+    $this->includeAtTemplateBase("authTiqr:includes/inline_error.php");
 }
 ?>
 
