@@ -20,7 +20,7 @@
 /** 
  * @internal includes of utility classes
  */
-require_once("Tiqr/OATH/OCRAWrapper.php");
+require_once("Tiqr/OCRAWrapper.php");
 require_once("Tiqr/StateStorage.php");
 require_once("Tiqr/DeviceStorage.php");
 require_once("Tiqr/Random.php");
@@ -47,10 +47,11 @@ class Tiqr_Service
     protected $_name = "";
     protected $_logoUrl = "";
     protected $_infoUrl = "";
-    protected $_phpqrcodePath = "../phpqrcode/";
     
     protected $_stateStorage = NULL;
     protected $_deviceStorage = NULL;
+
+    protected $_ocraWrapper;
     
     /**
      * Enrollment status codes
@@ -181,10 +182,6 @@ class Tiqr_Service
             $this->_infoUrl = $options["infoUrl"];
         }
         
-        if (isset($options["phpqrcode.path"])) { 
-            $this->_phpqrcodePath = $options["phpqrcode.path"];
-        }
-                
         if (isset($options["statestorage"])) {
             $type = $options["statestorage"]["type"];
             $storageOptions = $options["statestorage"];
@@ -205,6 +202,7 @@ class Tiqr_Service
         
         $this->_deviceStorage = Tiqr_DeviceStorage::getStorage($type, $storageOptions);
         
+        $this->_ocraWrapper = new Tiqr_OCRAWrapper($this->_ocraSuite);
     }
     
     /**
@@ -231,10 +229,7 @@ class Tiqr_Service
         // TODO
         $challengeUrl = $this->_getChallengeUrl($sessionKey);  
         
-        // using phpqrcode.php instead of qrlib.php because we don't want caching.
-        require_once($this->_getPhpQrCodePath()."phpqrcode.php");
         QRcode::png($challengeUrl, false, 4, 5);
-        
     }
     
     /**
@@ -250,18 +245,18 @@ class Tiqr_Service
     public function sendAuthNotification($sessionKey, $notificationType, $notificationAddress)
     {
         try {
-            if (!@include_once("Tiqr/Message/{$notificationType}.php")) {
+            $class = "Tiqr_Message_{$notificationType}";
+            if (!class_exists($class)) {
                 return false;
             }
-         
-            $class = "Tiqr_Message_{$notificationType}";
+
             $message = new $class($this->_options);
             $message->setId($sessionKey);
             $message->setText("Please authenticate for " . $this->_name);
             $message->setAddress($notificationAddress);
             $message->setCustomProperty('challenge', $this->_getChallengeUrl($sessionKey));
             $message->send();
-            
+
             return true;
         } catch (Exception $ex) {
             return false;
@@ -310,8 +305,7 @@ class Tiqr_Service
 
         $sessionKey = $this->_uniqueSessionKey("challenge");
     
-        $ocra = new Tiqr_OCRAWrapper();
-        $challenge = $ocra->getChallenge($this->_ocraSuite);
+        $challenge = $this->_ocraWrapper->generateChallenge();
         
         $data = array("sessionId"=>$sessionId, "challenge"=>$challenge, "spIdentifier" => $spIdentifier);
         
@@ -409,11 +403,8 @@ class Tiqr_Service
      */
     public function generateEnrollmentQR($metadataUrl) 
     { 
-        
         $enrollmentString = $this->_protocolEnroll."://".$metadataUrl;
         
-        // using phpqrcode.php instead of qrlib.php because we don't want caching.
-        require_once($this->_getPhpQrCodePath()."phpqrcode.php");
         QRcode::png($enrollmentString, false, 4, 5);
     }
     
@@ -466,7 +457,7 @@ class Tiqr_Service
         $this->_setEnrollmentStatus($data["sessionId"], self::ENROLLMENT_STATUS_RETRIEVED);
         return $metadata;
     }
-    
+
     /** 
      * Get a temporary enrollment secret to be able to securely post a user 
      * secret.
@@ -572,11 +563,9 @@ class Tiqr_Service
             return self::AUTH_RESULT_INVALID_USERID; // only allowed to authenticate against the user that's authenticated in the first factor
         }
         
-        $ocra = new Tiqr_OCRAWrapper();
-        
-        $expected = $ocra->calculateResponse($this->_ocraSuite, $userSecret, $challenge, $sessionKey);
+        $equal = $this->_ocraWrapper->verifyResponse($response, $userSecret, $challenge, $sessionKey);
                 
-        if ($expected == $response) {
+        if ($equal) {
             $this->_stateStorage->setValue("authenticated_".$sessionId, $userId, self::LOGIN_EXPIRE);
             
             // Clean up the challenge.
@@ -678,7 +667,7 @@ class Tiqr_Service
     {      
         $value = 1;
         while ($value!=NULL) {
-            $sessionKey = Tiqr_Random::randomHexString(self::SESSIONKEY_SIZE);
+            $sessionKey = $this->_ocraWrapper->generateSessionKey();
             $value = $this->_stateStorage->getValue($prefix.$sessionKey);
         }
         return $sessionKey;
@@ -693,16 +682,5 @@ class Tiqr_Service
     protected function _setEnrollmentStatus($sessionId, $status)
     {
        $this->_stateStorage->setValue("enrollstatus".$sessionId, $status, self::ENROLLMENT_EXPIRE);
-    }
-
-    /**
-     * Get the path of the phpqrcode library
-     * @return String The path
-     */
-    protected function _getPhpQrCodePath()
-    {
-        $path = $this->_phpqrcodePath;
-        if (substr($path,-1)!="/") $path.="/";
-        return $path;
     }
 }
