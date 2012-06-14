@@ -19,7 +19,11 @@
 
 
 /** @internal base includes */
-require_once("Tiqr/Message/Abstract.php");
+require_once('Tiqr/Message/Abstract.php');
+
+require_once('Zend/Gdata/ClientLogin.php');
+require_once 'Zend/Mobile/Push/C2dm.php';
+require_once 'Zend/Mobile/Push/Message/C2dm.php';
 
 /**
  * Android Cloud To Device Messaging message.
@@ -28,24 +32,6 @@ require_once("Tiqr/Message/Abstract.php");
 class Tiqr_Message_C2DM extends Tiqr_Message_Abstract
 {
     private static $_services = array();
-    private static $_libraryImported = false;
-    
-    /**
-     * Import library classes.
-     *
-     * @param array $options configuration options     
-     */
-    private static function _importLibrary($options)
-    {
-        if (self::$_libraryImported) {
-            return;
-        }
-        
-        ini_set('include_path', ini_get('include_path').':'.dirname(__FILE__).'/../../../zend/'.':'.dirname(__FILE__).'/../../../c2dm/');
-        require_once 'Zend/GData/ClientLogin.php';
-        require_once 'Zend/Service/Google/C2dm.php';            
-        self::$_libraryImported = true;
-    }
     
     /**
      * Factory method for returning a C2DM service instance for the given 
@@ -67,14 +53,14 @@ class Tiqr_Message_C2DM extends Tiqr_Message_Abstract
         
         if (!isset(self::$_services[$key])) {
             try {
-                $client = Zend_GData_ClientLogin::getHttpClient($username, $password, Zend_Service_Google_C2dm::AUTH_SERVICE_NAME, null, $application);
+                $client = Zend_GData_ClientLogin::getHttpClient($username, $password, Zend_Mobile_Push_C2dm::AUTH_SERVICE_NAME, null, $application);
             } catch (Zend_Gdata_App_CaptchaRequiredException $e) {
                 throw new Tiqr_Message_Exception_AuthFailure("Manual login required", $e);
             } catch (Zend_Gdata_App_AuthException $e) {
                 throw new Tiqr_Message_Exception_AuthFailure("Problem authenticating", $e);                
             }            
             
-            $service = new Zend_Service_Google_C2dm();
+            $service = new Zend_Mobile_Push_C2dm();
             $service->setLoginToken($client->getClientLoginToken());        
             self::$_services[$key] = $service;
         }
@@ -91,25 +77,31 @@ class Tiqr_Message_C2DM extends Tiqr_Message_Abstract
      */
     public function send()
     {
-        self::_importLibrary($this->getOptions());
-        
         $service = self::_getService($this->getOptions());
         
         $data = $this->getCustomProperties();
         $data['text'] = $this->getText();
-        $message = new Zend_Service_Google_C2dm_Message($this->getAddress(), $this->getId(), $data);
+
+        $message = new Zend_Mobile_Push_Message_C2dm();
+        $message->setToken($this->getAddress());
+        $message->setId($this->getId());
+        $message->setData($data);
 
         try {
-            $service->sendMessage($message);
-        } catch (Zend_Service_Google_C2dm_Exception_QuotaExceeded $e) {
+            $service->send($message);
+        } catch (Zend_Mobile_Push_Exception_QuotaExceeded $e) {
+            throw new Tiqr_Message_Exception_SendFailure("Device quota exceeded", true, $e);
+        } catch (Zend_Mobile_Push_Exception_DeviceQuotaExceeded $e) {
             throw new Tiqr_Message_Exception_SendFailure("Quota exceeded", true, $e);
-        } catch (Zend_Service_Google_C2dm_Exception_ServerUnavailable $e) {
+        } catch (Zend_Mobile_Push_Exception_ServerUnavailable $e) {
             throw new Tiqr_Message_Exception_SendFailure("Server unavailable", true, $e);
-        } catch (Zend_Service_Google_C2dm_Exception_InvalidRegistration $e) {
-            throw new Tiqr_Message_Exception_InvalidDevice("Invalid registration", $e);
-        } catch (Zend_Service_Google_C2dm_Exception_NotRegistered $e) {
-            throw new Tiqr_Message_Exception_InvalidDevice("Not registered", $e);
-        } catch (Zend_Service_Google_C2dm_Exception $e) {
+        } catch (Zend_Mobile_Push_Exception_InvalidToken $e) {
+            throw new Tiqr_Message_Exception_InvalidDevice("Invalid token", $e);
+        } catch (Zend_Mobile_Push_Exception_InvalidPayload $e) {
+            throw new Tiqr_Message_Exception_SendFailure("Invalid payload", false, $e);
+        } catch (Zend_Mobile_Push_Exception_InvalidTopic $e) {
+            throw new Tiqr_Message_Exception_SendFailure("Invalid topic", false, $e);
+        } catch (Zend_Mobile_Push_Exception $e) {
             throw new Tiqr_Message_Exception_SendFailure("General send error", false, $e);
         }
     }
