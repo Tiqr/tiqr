@@ -469,7 +469,7 @@ class sspmod_authTiqr_Auth_Tiqr
     public static function getResponse()
     {
         // check if the client supports json, if not fallback to the plain text
-        if (stristr('json', $_SERVER['HTTP_ACCEPT'])) {
+        if (isset($_SERVER['HTTP_ACCEPT']) && stristr('json', $_SERVER['HTTP_ACCEPT'])) {
             return Tiqr_Response_Abstract::createResponse();
         }
         else {
