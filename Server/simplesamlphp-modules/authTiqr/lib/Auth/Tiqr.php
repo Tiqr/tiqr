@@ -45,14 +45,15 @@ class sspmod_authTiqr_Auth_Tiqr
     public static function classAutoLoader()
     {
         $moduleConfig = SimpleSAML_Configuration::getConfig('module_tiqr.php');
-        $tiqrPath = $moduleConfig->getString('tiqr.path', NULL);
+        $moduleDir = SimpleSAML_Module::getModuleDir('authTiqr');
+        $path = array(
+            'tiqr.path' => $moduleConfig->getString('tiqr.path', $moduleDir . '/extlibinc/tiqr'),
+            'phpqrcode.path' => $moduleConfig->getString('phpqrcode.path', $moduleDir . '/extlibinc/phpqrcode'),
+            'zend.path' => $moduleConfig->getString('zend.path', $moduleDir . '/extlibinc/zend'),
+        );
 
-        if ($tiqrPath === NULL) {
-            $tiqrPath = SimpleSAML_Module::getModuleDir('authTiqr') . '/extlibinc/tiqr';
-        }
-        
-        require_once($tiqrPath . '/Tiqr/AutoLoader.php');
-        $autoloader = Tiqr_AutoLoader::getInstance($moduleConfig->toArray());
+        require_once($path['tiqr.path'] . '/Tiqr/AutoLoader.php');
+        $autoloader = Tiqr_AutoLoader::getInstance($path);
         $autoloader->setIncludePath();
     }
     
