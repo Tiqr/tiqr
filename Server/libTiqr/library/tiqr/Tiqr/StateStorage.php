@@ -54,6 +54,16 @@ class Tiqr_StateStorage
                 require_once("Tiqr/StateStorage/Memcache.php");
                 $instance = new Tiqr_StateStorage_Memcache($options);
                 break;
+            case "class":
+                if (!isset($options['name'])) {
+                    throw new Exception('Class name not set');
+                } elseif (!class_exists($options['name'])) {
+                    throw new Exception('Class not found: ' . var_export($options['name'], TRUE));
+                } elseif (!is_subclass_of($options['name'], 'Tiqr_StateStorage_Abstract')) {
+                    throw new Exception('Class ' . $options['name'] . ' not subclass of Tiqr_StateStorage_Abstract');
+                }
+                $instance = new $options['name']($options);
+                break;
             default: 
                 $instance = NULL;
         }
