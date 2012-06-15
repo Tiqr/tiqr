@@ -55,11 +55,7 @@ class Tiqr_OCRAWrapper
      */
     public function generateSessionKey()
     {
-        $alphanum = $this->ocra->generateSessionInformation();
-        // FIXME: temporary converted to hex, to not brake current Tiqr clients
-        $hex = implode("", unpack('H*', $alphanum));
-
-        return $hex;
+        return $this->ocra->generateSessionInformation();
     }
 
     /**
@@ -75,10 +71,9 @@ class Tiqr_OCRAWrapper
     {
         $this->ocra->setKey($secret, 'hexstring');
         $this->ocra->setQuestion($challenge);
-        // FIXME: temporary converting from hex, to not brake current Tiqr clients
-        $this->ocra->setSessionInformation(pack('H*', $sessionKey));
+        $this->ocra->setSessionInformation($sessionKey);
         
-        return $this->ocra->generateOCRA($key, $dataInput);
+        return $this->ocra->generateOCRA();
     }
 
     /**
@@ -93,8 +88,7 @@ class Tiqr_OCRAWrapper
     {
         $this->ocra->setKey($secret, 'hexstring');
         $this->ocra->setQuestion($challenge);
-        // FIXME: temporary converting from hex, to not brake current Tiqr clients
-        $this->ocra->setSessionInformation(pack('H*', $sessionKey));
+        $this->ocra->setSessionInformation($sessionKey);
 
         return $this->ocra->verifyResponse($response);
     }
