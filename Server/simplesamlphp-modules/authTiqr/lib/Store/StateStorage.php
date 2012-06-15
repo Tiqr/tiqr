@@ -8,6 +8,8 @@ class sspmod_authTiqr_Store_StateStorage extends Tiqr_StateStorage_Abstract {
 
 
 	public function __construct($config) {
+		parent::__construct($config);
+
 		$this->store = SimpleSAML_Store::getInstance();
 
 		if ($this->store === FALSE) {
