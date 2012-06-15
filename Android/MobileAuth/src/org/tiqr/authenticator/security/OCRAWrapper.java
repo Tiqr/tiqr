@@ -16,7 +16,7 @@ public class OCRAWrapper
             ocra.setSessionInformation(sessionKey);
             otp = ocra.generateOCRA();
         } catch (Exception e) {
-            throw new InvalidChallengeException(e);
+            throw new InvalidChallengeException();
         }
 
         return otp;
