@@ -48,6 +48,13 @@ class Tiqr_UserStorage
                 $instance = new Tiqr_UserStorage_Ldap($options);
                 break;
             default: 
+                if (!isset($type)) {
+                    throw new Exception('Class name not set');
+                } elseif (!class_exists($type)) {
+                    throw new Exception('Class not found: ' . var_export($type, TRUE));
+                } elseif (!is_subclass_of($type, 'Tiqr_UserStorage_Abstract')) {
+                    throw new Exception('Class ' . $type . ' not subclass of Tiqr_UserStorage_Abstract');
+                }
                 $instance = new $type($options);
         }
         
