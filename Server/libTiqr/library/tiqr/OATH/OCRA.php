@@ -315,6 +315,9 @@ class OATH_OCRA {
 					for ($i = 0; $i < count($match[1]); $i++) {
 						$length += intval($match[1][$i]) * $this->TPeriods[$match[2][$i]];
 					}
+					if ($length <= 0) {
+						throw new Exception('Invalid OCRA suite data input timestamp: ' . var_export($elem, TRUE));
+					}
 
 					$this->T = TRUE;
 					$this->TLength = $length;
