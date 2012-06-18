@@ -394,6 +394,9 @@ public class OCRA {
 						t_len += (Integer.parseInt(mat.group(1)) * TPeriods.get(mat.group(2)));
 						t_dupl += mat.group(2);
 					}
+					if (t_len <= 0) {
+						throw new Exception("Invalid OCRA suite data input timestamp: " + elem);
+					}
 
 					T = true;
 					TLength = t_len;
