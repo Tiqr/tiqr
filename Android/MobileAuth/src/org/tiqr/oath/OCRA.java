@@ -109,37 +109,37 @@ public class OCRA {
 	}
 
 
-    public void setKey(String hexKey) throws Exception {
-        if (hexKey == null || hexKey.length() == 0) {
-            throw new Exception("Invalid key value");
-        }
+	public void setKey(String hexKey) throws Exception {
+		if (hexKey == null || hexKey.length() == 0) {
+			throw new Exception("Invalid key value");
+		}
 
-        setKey(hexKey, "hexstring");
-    }
-
-
-    public void setKey(byte[] rawKey) throws Exception {
-        if (rawKey == null || rawKey.length == 0) {
-            throw new Exception("Invalid key value");
-        }
-
-        Key = rawKey;
-    }
+		setKey(hexKey, "hexstring");
+	}
 
 
-    public void setKey(String key, String format) throws Exception {
-        if (key == null || key.length() == 0) {
-            throw new Exception("Invalid key value");
-        }
+	public void setKey(byte[] rawKey) throws Exception {
+		if (rawKey == null || rawKey.length == 0) {
+			throw new Exception("Invalid key value");
+		}
+
+		Key = rawKey;
+	}
+
+
+	public void setKey(String key, String format) throws Exception {
+		if (key == null || key.length() == 0) {
+			throw new Exception("Invalid key value");
+		}
 
 		if (format == null) {
 			Key = key.getBytes();
 		} else if (format.equals("hexstring")) {
 			Key = hexStringToBytes(key);
 		} else {
-            throw new Exception("Unknown input format: " + format);
+			throw new Exception("Unknown input format: " + format);
 		}
-    }
+	}
 
 
 	public void setCounter(Long counter) throws Exception {
@@ -291,7 +291,7 @@ public class OCRA {
 		if (cf.length != 3) {
 			throw new Exception("Invalid OCRA suite crypto function: " + s[1]);
 		}
-		
+
 		if (!cf[0].equals("HOTP")) {
 			throw new Exception("Unsopported OCRA suite crypto function: " + cf[0]);
 		}
@@ -324,7 +324,7 @@ public class OCRA {
 			if (elem.length() == 0) {
 				throw new Exception("Invalid OCRA suite data input");
 			}
-			
+
 			String letter = elem.substring(0, 1);
 
 			if (data_inputs.indexOf(letter) >= 0) {
@@ -423,7 +423,7 @@ public class OCRA {
 			setTimestamp();
 		}
 
-        byte[] b_ocra = OCRASuite.concat("\0").getBytes();
+		byte[] b_ocra = OCRASuite.concat("\0").getBytes();
 
 		int msg_len = b_ocra.length;
 		msg_len += CDataInputLength;
@@ -436,7 +436,7 @@ public class OCRA {
 
 		int pos = 0;
 		System.arraycopy(b_ocra, 0, msg, 0, b_ocra.length);
-        pos += b_ocra.length;
+		pos += b_ocra.length;
 
 		if (C) {
 			if (CDataInput == null) {
@@ -529,7 +529,7 @@ public class OCRA {
 			((raw[offset + 1] & 0xff) << 16) |
 			((raw[offset + 2] & 0xff) << 8) |
 			(raw[offset + 3] & 0xff);
-	
+
 		return binary.toString();
 	}
 
@@ -552,11 +552,11 @@ public class OCRA {
 
 
 	public static byte[] decStringToBytes(String s) {
-        String hexStr = new BigInteger(s, 10).toString(16);
+		String hexStr = new BigInteger(s, 10).toString(16);
 
-        if ((hexStr.length() % 2) == 1) {
-            hexStr += "0";
-        }
+		if ((hexStr.length() % 2) == 1) {
+			hexStr += "0";
+		}
 
 		byte[] ba = hexStringToBytes(hexStr);
 
