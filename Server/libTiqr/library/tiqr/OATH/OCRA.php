@@ -376,7 +376,7 @@ class OATH_OCRA {
 
 		if ($this->T) {
 			if ($this->TDataInput === NULL) {
-				$this->setTimestamp(time() / $this->TLength);
+				$this->setTimestamp(intval(time() / $this->TLength));
 			}
 
 			$msg .= $this->TDataInput;
