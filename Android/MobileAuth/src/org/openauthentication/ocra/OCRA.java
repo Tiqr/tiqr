@@ -51,8 +51,8 @@ public class OCRA {
 
 
     private static final int[] DIGITS_POWER
-    // 0 1  2   3    4     5      6       7        8
-    = {1,10,100,1000,10000,100000,1000000,10000000,100000000 };
+    // 0 1  2   3    4     5      6       7        8         9          10
+    = {1,10,100,1000,10000,100000,1000000,10000000,100000000,1000000000,10000000000 };
 
     /**
      * This method converts HEX string to Byte[]
@@ -115,13 +115,13 @@ public class OCRA {
         int sessionInformationLength = 0;
         int timeStampLength = 0;
 
-        if(ocraSuite.toLowerCase().indexOf("sha1") > 1)
+        if(ocraSuite.toLowerCase().indexOf("sha1") > 1) {
             crypto = "HmacSHA1";
-        if(ocraSuite.toLowerCase().indexOf("sha256") > 1)
+        } else if(ocraSuite.toLowerCase().indexOf("sha256") > 1) {
             crypto = "HmacSHA256";
-        if(ocraSuite.toLowerCase().indexOf("sha512") > 1)
+        } else if(ocraSuite.toLowerCase().indexOf("sha512") > 1) {
             crypto = "HmacSHA512";
-        else {
+        } else {
         	crypto = "HmacSHA1";
         }
 

@@ -204,7 +204,7 @@ class OCRA {
         // Put the bytes of "time" to the message
         // Input is text value of minutes
         if($timeStampLength > 0){
-            $bArray = self::_hexStr2Bytes($timestamp);
+            $bArray = self::_hexStr2Bytes($timeStamp);
             for ($i=0;$i<strlen($bArray);$i++) {
                 $msg [$i + $ocraSuiteLength + 1 + $counterLength + $questionLength + $passwordLength + $sessionInformationLength] = $bArray[$i];
             }
@@ -224,7 +224,7 @@ class OCRA {
     /**
      * Truncate a result to a certain length
      */    
-    function _oath_truncate($hash, $length = 6)
+    static function _oath_truncate($hash, $length = 6)
     {
         // Convert to dec
         foreach(str_split($hash,2) as $hex)
@@ -233,16 +233,17 @@ class OCRA {
         }
     
         // Find offset
-        $offset = $hmac_result[19] & 0xf;
+        $offset = $hmac_result[count($hmac_result) - 1] & 0xf;
     
-        // Algorithm from RFC
-        return
-        (
+        $v = strval(
             (($hmac_result[$offset+0] & 0x7f) << 24 ) |
             (($hmac_result[$offset+1] & 0xff) << 16 ) |
             (($hmac_result[$offset+2] & 0xff) << 8 ) |
             ($hmac_result[$offset+3] & 0xff)
-        ) % pow(10,$length);
+        );
+        $v = substr($v, strlen($v) - $length);
+
+        return $v;
     }
     
 }
