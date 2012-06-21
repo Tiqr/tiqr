@@ -102,8 +102,9 @@ class OATH_OCRA {
 			throw new Exception('Invalid question value');
 		}
 
-		if (strlen($q) > $this->QLength) {
-			throw new Exception('Invalid question value length: ' . var_export($q, TRUE));
+		$q_len = strlen($q);
+		if ($q_len < 4 || $q_len > $this->QLength) {
+			throw new Exception('Invalid question value length: ' . var_export($q_len, TRUE));
 		}
 
 		switch($this->QType) {
@@ -172,8 +173,9 @@ class OATH_OCRA {
 			return;
 		}
 
-		if (strlen($s) != $this->SLength) {
-			throw new Exception('Invalid session information value length: ' . var_export($s, TRUE));
+		$s_len = strlen($s);
+		if ($s_len != $this->SLength) {
+			throw new Exception('Invalid session information value length: ' . var_export($s_len, TRUE));
 		}
 
 		$this->SDataInput = $s;
@@ -222,7 +224,7 @@ class OATH_OCRA {
 		}
 
 		if ($algo[1] !== '1') {
-			throw new Exception('Unsupported OCRA OCRA version: ' . var_export($algo[1], TRUE));
+			throw new Exception('Unsupported OCRA version: ' . var_export($algo[1], TRUE));
 		}
 		$this->OCRAVersion = $algo[1];
 
@@ -266,12 +268,13 @@ class OATH_OCRA {
 				if (strlen($elem) == 1) {
 					$this->Q = TRUE;
 				} elseif (preg_match('/^Q([AHN])(\d+)$/', $elem, $match)) {
-					if ($match[2] < 4 || $match[2] > 64) {
-						throw new Exception('Invalid OCRA suite data input question length: ' . var_export($match[2], TRUE));
+					$q_len = intval($match[2]);
+					if ($q_len < 4 || $q_len > 64) {
+						throw new Exception('Invalid OCRA suite data input question length: ' . var_export($q_len, TRUE));
 					}
 					$this->Q = TRUE;
 					$this->QType = $match[1];
-					$this->QLength = intval($match[2]);
+					$this->QLength = $q_len;
 				} else {
 					throw new Exception('Invalid OCRA suite data input question: ' . var_export($elem, TRUE));
 				}
