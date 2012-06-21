@@ -70,11 +70,11 @@ public class OCRA {
 	}
 
 
-	public OCRA(String ocraSuite, String rawKey, Long counter, String question, String plainPin, String sessionInformation, Long timestamp) throws Exception {
+	public OCRA(String ocraSuite, String hexKey, Long counter, String question, String plainPin, String sessionInformation, Long timestamp) throws Exception {
 		init(ocraSuite);
 
-		if (rawKey != null) {
-			setKey(rawKey);
+		if (hexKey != null) {
+			setKey(hexKey);
 		}
 		if (counter != null) {
 			setCounter(counter);
@@ -157,7 +157,7 @@ public class OCRA {
 
 
 	public void setQuestion(String question) throws Exception {
-		if (question == null || question.length() > QLength) {
+		if (question == null || question.length() < 4 || question.length() > QLength) {
 			throw new Exception("Invalid question value");
 		}
 
