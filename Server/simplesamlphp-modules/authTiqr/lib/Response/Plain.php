@@ -8,7 +8,7 @@ require_once 'Tiqr/Response/Abstract.php';
  * @author Lineke Kerckhoffs-Willems <lineke@egeniq.com>
  *
  */
-class Response_Plain extends Tiqr_Response_Abstract
+class sspmod_authTiqr_Response_Plain extends Tiqr_Response_Abstract
 {
     /**
      * Get the Tiqr error response in the correct format

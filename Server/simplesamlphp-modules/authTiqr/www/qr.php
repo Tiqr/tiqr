@@ -18,4 +18,8 @@
  *
  */
 
- sspmod_authTiqr_Auth_Tiqr::generateAuthQR($_REQUEST["AuthState"]);
+if (!array_key_exists('AuthState', $_REQUEST)) {
+	throw new SimpleSAML_Error_BadRequest('Missing AuthState parameter.');
+}
+
+sspmod_authTiqr_Auth_Tiqr::generateAuthQR($_REQUEST["AuthState"]);

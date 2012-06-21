@@ -87,7 +87,7 @@ class Tiqr_StateStorage_File extends Tiqr_StateStorage_Abstract
      */
     protected function _stateFilename($key)
     {
-        return "/tmp/tiqr_state_".base64_encode($key);
+        return "/tmp/tiqr_state_".strtr(base64_encode($key), '+/', '-_');
     }
     
 }
