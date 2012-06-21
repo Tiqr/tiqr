@@ -81,8 +81,6 @@
 		D08F5C4D1278735100C63A3E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D08F5C4C1278735100C63A3E /* libiconv.dylib */; };
 		D0914436129BDC2E00C796AA /* NotificationRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = D0914435129BDC2E00C796AA /* NotificationRegistration.m */; };
 		D0914439129BF47300C796AA /* NSData+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = D0914438129BF47300C796AA /* NSData+Hex.m */; };
-		D09986B01355E005004A7E8D /* blocked.html in Resources */ = {isa = PBXBuildFile; fileRef = D09986AE1355E005004A7E8D /* blocked.html */; };
-		D09986B81355F862004A7E8D /* instructions.html in Resources */ = {isa = PBXBuildFile; fileRef = D0DD78BC13097304007BE820 /* instructions.html */; };
 		D09D79A813334F8700F3F0F6 /* EnrollmentChallengeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D09D79A713334F8700F3F0F6 /* EnrollmentChallengeTests.m */; };
 		D0A6F5CE1353356A000F9AE5 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6F5CD1353356A000F9AE5 /* MBProgressHUD.m */; };
 		D0B889561282D7E3003A534D /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B889541282D7E3003A534D /* StartViewController.m */; };
@@ -95,11 +93,11 @@
 		D0C54579130B4065008B807B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		D0C54582130B4066008B807B /* SecretStoreTests.h in Resources */ = {isa = PBXBuildFile; fileRef = D0C54581130B4066008B807B /* SecretStoreTests.h */; };
 		D0C54584130B4066008B807B /* SecretStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C54583130B4066008B807B /* SecretStoreTests.m */; };
+		D0D7200315930AB4008C7004 /* start.html in Resources */ = {isa = PBXBuildFile; fileRef = D0D7200215930AB4008C7004 /* start.html */; };
 		D0E58D671349FB4300A79052 /* FooterController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E58D661349FB4300A79052 /* FooterController.m */; };
 		D0E58D6A134A0EE700A79052 /* identities.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E58D69134A0EE700A79052 /* identities.png */; };
 		D0E58D70134A149C00A79052 /* IdentityEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E58D6F134A149C00A79052 /* IdentityEditViewController.m */; };
 		D0E9C08B134DC26A00DDCE4E /* stroomt-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E9C08A134DC26A00DDCE4E /* stroomt-logo@2x.png */; };
-		D0EBBA72134B524700CAAB58 /* welcome.html in Resources */ = {isa = PBXBuildFile; fileRef = D0EBBA74134B524700CAAB58 /* welcome.html */; };
 		D0EBBA79134B606300CAAB58 /* stroomt-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EBBA78134B606300CAAB58 /* stroomt-logo.png */; };
 		D0EBBA7D134B664B00CAAB58 /* ErrorChildView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0EBBA7C134B664B00CAAB58 /* ErrorChildView.xib */; };
 		D0EBBA7F134B669800CAAB58 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0EBBA7E134B669800CAAB58 /* ErrorView.xib */; };
@@ -238,8 +236,6 @@
 		D0914435129BDC2E00C796AA /* NotificationRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationRegistration.m; sourceTree = "<group>"; };
 		D0914437129BF47300C796AA /* NSData+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Hex.h"; sourceTree = "<group>"; };
 		D0914438129BF47300C796AA /* NSData+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Hex.m"; sourceTree = "<group>"; };
-		D09986AF1355E005004A7E8D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/blocked.html; sourceTree = "<group>"; };
-		D09986B11355E013004A7E8D /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = nl; path = nl.lproj/blocked.html; sourceTree = "<group>"; };
 		D09D79A613334F8700F3F0F6 /* EnrollmentChallengeTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnrollmentChallengeTests.h; sourceTree = "<group>"; };
 		D09D79A713334F8700F3F0F6 /* EnrollmentChallengeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnrollmentChallengeTests.m; sourceTree = "<group>"; };
 		D0A6F5CC1353356A000F9AE5 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -258,8 +254,7 @@
 		D0C54580130B4066008B807B /* LogicTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LogicTests-Prefix.pch"; sourceTree = "<group>"; };
 		D0C54581130B4066008B807B /* SecretStoreTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecretStoreTests.h; sourceTree = "<group>"; };
 		D0C54583130B4066008B807B /* SecretStoreTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecretStoreTests.m; sourceTree = "<group>"; };
-		D0DD78BD13097304007BE820 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = en; path = en.lproj/instructions.html; sourceTree = "<group>"; };
-		D0DD78BE13097304007BE820 /* nl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = nl; path = nl.lproj/instructions.html; sourceTree = "<group>"; };
+		D0D7200215930AB4008C7004 /* start.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = start.html; sourceTree = "<group>"; };
 		D0E58D651349FB4300A79052 /* FooterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooterController.h; sourceTree = "<group>"; };
 		D0E58D661349FB4300A79052 /* FooterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooterController.m; sourceTree = "<group>"; };
 		D0E58D681349FB5200A79052 /* FooterController-Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FooterController-Protected.h"; sourceTree = "<group>"; };
@@ -268,8 +263,6 @@
 		D0E58D6F134A149C00A79052 /* IdentityEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentityEditViewController.m; sourceTree = "<group>"; };
 		D0E58D71134A14BC00A79052 /* IdentityEditViewController-Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IdentityEditViewController-Protected.h"; sourceTree = "<group>"; };
 		D0E9C08A134DC26A00DDCE4E /* stroomt-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stroomt-logo@2x.png"; sourceTree = "<group>"; };
-		D0EBBA73134B524700CAAB58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/welcome.html; sourceTree = "<group>"; };
-		D0EBBA75134B524D00CAAB58 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = nl; path = nl.lproj/welcome.html; sourceTree = "<group>"; };
 		D0EBBA78134B606300CAAB58 /* stroomt-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stroomt-logo.png"; sourceTree = "<group>"; };
 		D0EBBA7A134B61BD00CAAB58 /* AboutViewController-Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AboutViewController-Protected.h"; sourceTree = "<group>"; };
 		D0EBBA7C134B664B00CAAB58 /* ErrorChildView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorChildView.xib; sourceTree = "<group>"; };
@@ -827,9 +820,7 @@
 			isa = PBXGroup;
 			children = (
 				D002E0261349F4D400071321 /* StartView.xib */,
-				D0DD78BC13097304007BE820 /* instructions.html */,
-				D0EBBA74134B524700CAAB58 /* welcome.html */,
-				D09986AE1355E005004A7E8D /* blocked.html */,
+				D0D7200215930AB4008C7004 /* start.html */,
 			);
 			name = Start;
 			path = HTML;
@@ -933,7 +924,6 @@
 				D0FF34EA1309462C004096E1 /* Settings.bundle in Resources */,
 				D025994413095F9B00F1DF9A /* Localizable.strings in Resources */,
 				D06AD591134095690050D75C /* PINView.xib in Resources */,
-				D0EBBA72134B524700CAAB58 /* welcome.html in Resources */,
 				D06AD590134082ED0050D75C /* animals.ttf in Resources */,
 				D019EDA113449F3500466A2B /* egeniq-logo.png in Resources */,
 				D019EDA213449F3500466A2B /* egeniq-logo@2x.png in Resources */,
@@ -946,8 +936,6 @@
 				D0EBBA96134C6A9700CAAB58 /* tiqr-bw-logo.png in Resources */,
 				D0EBBA97134C6A9700CAAB58 /* tiqr-bw-logo@2x.png in Resources */,
 				D0E9C08B134DC26A00DDCE4E /* stroomt-logo@2x.png in Resources */,
-				D09986B01355E005004A7E8D /* blocked.html in Resources */,
-				D09986B81355F862004A7E8D /* instructions.html in Resources */,
 				76A195AB155BBE1000A73D2D /* FooterChildView.xib in Resources */,
 				76A195AD155BBEF500A73D2D /* ScanView.xib in Resources */,
 				76A195AF155BC0C800A73D2D /* AuthenticationSummaryView.xib in Resources */,
@@ -958,6 +946,7 @@
 				76A195BC155BC8B000A73D2D /* EnrollmentSummaryView.xib in Resources */,
 				76A195BE155BCA0900A73D2D /* IdentityEditView.xib in Resources */,
 				76A195C0155BCACC00A73D2D /* AboutView.xib in Resources */,
+				D0D7200315930AB4008C7004 /* start.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1075,33 +1064,6 @@
 				D025994713095FA400F1DF9A /* nl */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		D09986AE1355E005004A7E8D /* blocked.html */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D09986AF1355E005004A7E8D /* en */,
-				D09986B11355E013004A7E8D /* nl */,
-			);
-			name = blocked.html;
-			sourceTree = "<group>";
-		};
-		D0DD78BC13097304007BE820 /* instructions.html */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D0DD78BD13097304007BE820 /* en */,
-				D0DD78BE13097304007BE820 /* nl */,
-			);
-			name = instructions.html;
-			sourceTree = "<group>";
-		};
-		D0EBBA74134B524700CAAB58 /* welcome.html */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D0EBBA73134B524700CAAB58 /* en */,
-				D0EBBA75134B524D00CAAB58 /* nl */,
-			);
-			name = welcome.html;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

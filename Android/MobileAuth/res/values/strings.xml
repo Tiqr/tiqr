@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="authenticate_tab">Authenticate</string>
-    <string name="identities_tab">Identities</string>
-    <string name="about_tab">About</string>
+
     <string name="app_name">tiqr</string>
     <string name="scan_button">Scan</string>
     <string name="authentication_title">Login</string>
@@ -64,8 +62,6 @@
     <string name="login_verify_intro">Please verify your pin: </string>
     <string name="successfully_logged_in">You have successfully logged in!</string>
     <string name="loggedin_with_account">You are logged in with the following account</string>
-    <string name="are_you_sure_you_want_to">Are you sure you want to ...?</string>
-    <string name="you_will_be_as">You will be ... as:</string>
     <string name="choose_password_title">Please select a PIN</string>
     <string name="choose_password_intro">Please choose a PIN to secure this identity and remember it.</string>
     <string name="passwords_dont_match_title">PINs don\'t match</string>
@@ -78,24 +74,14 @@
     <string name="powered_by_title">Powered by:</string>
     <string name="interaction_by_title">Interaction design:</string>
     <string name="acknowledgements_title">Acknowledgements:</string>
-    <string name="acknowledgements">
-        ZXing -
-        <a href="http://code.google.com/p/zxing/">http://code.google.com/p/zxing/</a>
-        \n
-        Glyphish -
-        <a href="http://glyphish.com">http://glyphish.com</a>
-    </string>
-    
+    <string name="acknowledgements">        ZXing -<a href="http://code.google.com/p/zxing/">http://code.google.com/p/zxing/</a>        \n
+        Glyphish -<a href="http://glyphish.com">http://glyphish.com</a></string>
     <string name="msg_default_status">Place a QR code inside the rectangle to scan it.</string>
-
     <string name="authentication_confirmation_title">Are you sure you want to login?</string>
     <string name="authentication_confirmation_description">You will be logged in as:</string>
-    
     <string name="authentication_pincode_title">Login</string>
-
     <string name="authentication_fallback_title">You appear to be offline</string>
     <string name="authentication_fallback_description">Don\'t worry! Click the QR tag on the\nwebsite. You will be asked to enter the\nfollowing one-time credentials:</string>
-
     <string name="error_auth_invalid_qr_code">Invalid authentication QR code.</string>
     <string name="error_auth_unknown_identity_provider">Unknown identity provider, please enroll first.</string>
     <string name="error_auth_unknown_identity">Unknown identity for service, please enroll first.</string>
@@ -103,12 +89,11 @@
     <string name="error_auth_invalid_key">Unable to login. Invalid key.</string>
     <string name="error_auth_invalid_challenge">Unable to login. Invalid challenge.</string>
     <string name="error_auth_unknown_error">An unknown error occurred. Please contact support.</string>
-    <string name="error_auth_invalid_request">Invalid authentication request. Please contact support.</string>                
-    <string name="error_auth_invalid_response">Invalid authentication response. Wrong PIN code? Try again.</string>                
+    <string name="error_auth_invalid_request">Invalid authentication request. Please contact support.</string>
+    <string name="error_auth_invalid_response">Invalid authentication response. Wrong PIN code? Try again.</string>
     <string name="error_auth_invalid_userid">Unknown or invalid user.</string>
     <string name="error_auth_invalid_account">Invalid account</string>
     <string name="error_auth_invalid_account_message">You tried to login with an invalid or unknown account. Please (re-)activate your account first.</string>
-    
     <string name="error_auth_account_blocked_title">Account blocked</string>
     <string name="error_auth_account_blocked_message">This account can no longer be used.</string>
     <string name="error_auth_invalid_challenge_title">Invalid challenge</string>
@@ -118,9 +103,7 @@
     <string name="error_auth_wrong_pin">Wrong PIN</string>
     <string name="error_auth_x_attempts_left">You supplied an incorrect PIN. You have %d attempts left. Please enter your PIN again. Check the verification icon for the last digit.</string>
     <string name="error_auth_one_attempt_left">You have one last attempt left. If you enter an incorrect PIN again all the accounts on this mobile phone will be blocked.</string>
-    
     <string name="error_auth_server_incompatible">The server is incompatible with this version of the app.</string>
-                    
     <string name="enrollment_confirmation_header_title">Account activation</string>
     <string name="enrollment_confirmation_title">Confirm account activation</string>
     <string name="enrollment_confirmation_description">Do you want to activate\n the following account?</string>
@@ -135,11 +118,32 @@
     <string name="error_enroll_failed_to_store_identity_provider">Failed to store identity provider. Please contact support.</string>
     <string name="error_enroll_failed_to_store_identity">Failed to store identity. Please contact support.</string>
     <string name="error_enroll_failed_to_generate_secret">Failed to generate identity secret. Please contact support.</string>
-    <string name="error_title">Error</string>
     <string name="error_device_incompatible_with_security_standards">Device is not compatible with required security standards.</string>
-    <string name="error_message">Error message</string>
-    <string name="error_title">Error title</string>
-    
-    <string name="www_tiqr_org">www.tiqr.org</string>
     <string name="provided_by">provided by:</string>
+    <string name="main_text_welcome">Using tiqr you can use your smartphone to easily and securely 
+login to several websites. <br />
+<br />
+The application does not yet have an active account. You need an 
+active account to use tiqr. You can find a a list of identity providers 
+at <a href="https://tiqr.org">tiqr.org</a>. <br />
+<br />
+After registering, you will receive an activation code and instructions for 
+activating your account. During the activation process you will need to scan 
+a QR tag. Press <b>Scan</b> if asked.</string>
+    <string name="main_text_instructions">Go to the website you want to login to and follow these steps: <ul>
+            <li>Scan the QR tag on the login screen of the website or service.</li>
+            <li>
+<i>If you have multiple identities, select your identity.</i>
+            </li>
+            <li>Confirm your identity (you may be asked to enter your PIN).</li>
+            <li>You are logged in!</li>
+        </ul>Press <b>Scan</b> to start the login process.</string>
+    <string name="main_text_blocked"><b>Now what?</b>
+<br />
+Ask your identity provider(s) for a new activation code. For a link to your 
+identity provider(s) view your identities (accessible from the top right). <br />
+<br />
+Together with your new activation code you will receive instructions for 
+reactivating your account. Press <b>Scan</b> if asked.</string>
+
 </resources>
