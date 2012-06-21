@@ -18,8 +18,6 @@ public class IncompatibilityDialog
         });
         
         AlertDialog alert = dialog.create();
-        alert.setTitle(R.string.error_title);
-        // Icon for AlertDialog
         alert.show();
     }
 }

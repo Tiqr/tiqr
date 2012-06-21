@@ -20,30 +20,16 @@ public class MainActivity extends TiqrActivity
         
         DbAdapter db = new DbAdapter(this);
         
-        if (db.identityCount()>0) {
-        
+        int contentResource = 0;
+        if (db.identityCount() > 0) {
         	showIdentityButton();
-        	loadContentsIntoWebView(R.raw.authentication_intro, R.id.webview);
-        	
+        	contentResource = R.string.main_text_instructions;
         } else {
         	hideIdentityButton();
-        	loadContentsIntoWebView(R.raw.welcome, R.id.webview);
+            contentResource = R.string.main_text_welcome;
         }
 
-       // Resources res = getResources(); // Resource object to get Drawables
-        
-        //Intent intent; // Reusable Intent for each tab
-
-        // Create an Intent to launch an Activity for the tab (to be reused)
-       // intent = new Intent().setClass(this, AuthenticationActivityGroup.class);
-
-        
-        // Do the same for the other tabs
-        //intent = new Intent().setClass(this, IdentityActivityGroup.class);
-       
-
-       // intent = new Intent().setClass(this, AboutActivity.class);
- 
+        loadContentsIntoWebView(contentResource,  R.id.webview);
     }
 
     public void onStart()
