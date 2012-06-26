@@ -38,7 +38,7 @@ class sspmod_authTiqr_Store_UserStorage extends Tiqr_UserStorage_GenericStore {
 
 
 	protected function _saveUser($userId, $data) {
-		$this->store->set($this->dataType, $userId, $data, 0);
+		$this->store->set($this->dataType, $userId, $data, NULL);
 
 		return true;
 	}

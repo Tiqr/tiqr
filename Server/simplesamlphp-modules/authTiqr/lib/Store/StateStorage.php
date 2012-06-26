@@ -28,6 +28,10 @@ class sspmod_authTiqr_Store_StateStorage extends Tiqr_StateStorage_Abstract {
 
 
 	public function setValue($key, $value, $expire = 0) {
+		if ($expire === 0) {
+			$expire = NULL;
+		}
+
 		$this->store->set($this->dataType, $key, $value, $expire);
 	}
 
