@@ -196,7 +196,7 @@ class Tiqr_Service
             $type = $options["devicestorage"]["type"];
             $storageOptions = $options["devicestorage"];
         } else {
-            $type = "file";
+            $type = "dummy";
             $storageOptions = array();
         }
         
