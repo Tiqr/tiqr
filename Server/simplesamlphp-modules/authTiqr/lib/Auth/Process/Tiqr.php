@@ -74,8 +74,6 @@ class sspmod_authTiqr_Auth_Process_Tiqr extends SimpleSAML_Auth_ProcessingFilter
         // @todo, this doesn't work; simplesamlphp mailinglist has been notified
         $session->registerLogoutHandler('sspmod_authTiqr_Auth_Process_Tiqr', 'logout');
         
-        $metadata = SimpleSAML_Metadata_MetaDataStorageHandler::getMetadataHandler();
-        
         $sessionId = $session->getSessionId();
               
         $server = sspmod_authTiqr_Auth_Tiqr::getServer();
