@@ -78,5 +78,12 @@ $config = array(
     //                                 "secretAttr" => 'tiqrSecret',
     //                                 "isBlockedAttr" => 'tiqrIsBlocked',
     //                                 "loginAttemptsAttr" => 'tiqrLoginAttempts',
-    //                          ),      
+    //                          ),
+
+    // "userstorage"       => array("type" => "pdo",
+    //                              "table" => "tiqruser",
+    //                              "dsn" => "mysql:dbname=tiqr;host=mysql.surfnet.nl",
+    //                              "username" => "tiqr",
+    //                              "password" => "*****"),
+
 );
