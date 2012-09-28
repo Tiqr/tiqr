@@ -49,7 +49,12 @@ $config = array(
     "maxTemporaryBlocks"     => 0, // defines number of temporary blocks before setting a permanent block, set to anything other then 0 for using temporary and permanent blocks
 
     "statestorage"        => array("type" => "file"),
-
+    // "statestorage"        => array( "type" => "pdo",
+    //                                 "table" => "tiqrstate",
+    //                                 "dsn" => "mysql:dbname=tiqr;host=mysql.surfnet.nl",
+    //                                 "username" => "tiqr",
+    //                                 "password" => "*****"),
+    
     "devicestorage"       => array("type"  => "tokenexchange",
                                    "url"   => "http://path/to/your/tokenexchange/server/",
                                    "appid" => "idOfYourApp"),
