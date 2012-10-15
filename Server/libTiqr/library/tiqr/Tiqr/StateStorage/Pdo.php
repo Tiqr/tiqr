@@ -1,4 +1,5 @@
 <?php 
+
 /**
  * This file is part of the tiqr project.
  * 
@@ -22,24 +23,24 @@
  * 
  */
 
+
 class Tiqr_StateStorage_Pdo extends Tiqr_StateStorage_Abstract
 {    
     private $handle = null;
     private $tablename;
         
-    
     private function keyExists($key)
     {
-        $query = "SELECT `key` FROM ".$this->tablename." WHERE `key`='$key'";
-        return $this->handle->query($query)->fetchColumn();
+        $sth = $this->handle->prepare("SELECT `key` FROM ".$this->tablename." WHERE `key` = ?");
+        $sth->execute(array($key));
+        return $sth->fetchColumn();
     }
     
     private function cleanExpired() {
-        
-        $query = "DELETE FROM ".$this->tablename." WHERE `expire`<".time();
-        $this->handle->query($query);
+        $sth = $this->handle->prepare("DELETE FROM ? WHERE `expire` < ?");
+        $sth->execute(array(time()));
     }
-            
+    
     /**
      * (non-PHPdoc)
      * @see library/tiqr/Tiqr/StateStorage/Tiqr_StateStorage_Abstract::setValue()
@@ -47,11 +48,11 @@ class Tiqr_StateStorage_Pdo extends Tiqr_StateStorage_Abstract
     public function setValue($key, $value, $expire=0)
     {
         if ($this->keyExists($key)) {
-            $query = "UPDATE ".$this->tablename." SET `value`='$value' WHERE `key`='$key";
+            $sth = $this->handle->prepare("UPDATE ".$this->tablename." SET `value` = ?, `expire` = ? WHERE `key` = ?");
         } else {
-            $query = "INSERT INTO ".$this->tablename." (`key`,`value`,`expire`) VALUES ('$key','".serialize($value)."','".(time()+$expire)."')";
+            $sth = $this->handle->prepare("INSERT INTO ".$this->tablename." (`value`,`expire`,`key`) VALUES (?,?,?)");
         }
-        return $this->handle->query($query);
+        $sth->execute(array(serialize($value),time()+$expire,$key));
     }
         
     /**
@@ -60,8 +61,8 @@ class Tiqr_StateStorage_Pdo extends Tiqr_StateStorage_Abstract
      */
     public function unsetValue($key)
     {
-        $query = "DELETE FROM ".$this->tablename." WHERE `key`='$key'";
-        return $this->handle->query($query);
+        $sth = $this->handle->prepare("DELETE FROM ".$this->tablename." WHERE `key` = ?");
+        $sth->execute(array($key));
     }
     
     /**
@@ -74,8 +75,9 @@ class Tiqr_StateStorage_Pdo extends Tiqr_StateStorage_Abstract
             $this->cleanExpired();
         }
         if ($this->keyExists($key)) {
-            $query = "SELECT `value` FROM ".$this->tablename." WHERE `key`='$key'";
-            $result = unserialize($this->handle->query($query)->fetchColumn());
+            $sth = $this->handle->prepare("SELECT `value` FROM ".$this->tablename." WHERE `key` = ?");
+            $sth->execute(array($key));
+            $result = unserialize($sth->fetchColumn());
             return  $result;
         }
         return NULL;
@@ -83,7 +85,6 @@ class Tiqr_StateStorage_Pdo extends Tiqr_StateStorage_Abstract
     
     public function __construct($config=array())
     {
-        parent::__construct($config);
         $this->tablename = $config['table'];
         $this->handle = new PDO($config['dsn'],$config['username'],$config['password']);
     }
