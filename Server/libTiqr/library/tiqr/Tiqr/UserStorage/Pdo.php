@@ -24,17 +24,14 @@
 
 
 /**
- * This user storage implementation implements a simple user storage using json files.
- * This is mostly for demonstration and development purposes. In a production environment
- * please supply your own implementation that hosts the data in your user database OR
- * in a secure (e.g. hardware encrypted) storage.
- * @author ivo
+ * This user storage implementation implements a user storage using PDO.
+ * It is usable for any database with a PDO driver
+ * 
+ * @author Patrick Honing <Patrick.Honing@han.nl>
  */
 class Tiqr_UserStorage_Pdo extends Tiqr_UserStorage_Abstract
 {
-//    protected $_path;
     private $handle = null;
-    private $errormsg = null;
     private $tablename;
     
     /**
@@ -48,186 +45,138 @@ class Tiqr_UserStorage_Pdo extends Tiqr_UserStorage_Abstract
         try {
             $this->handle = new PDO($config['dsn'],$config['username'],$config['password']);
         } catch (PDOException $e) {
-            $this->errormsg = $e->getMessage();
             return false;
         }
     }
 
-    /**
-     * (non-PHPdoc)
-     * @see simplesamlphp/modules/authTiqr/lib/User/sspmod_authTiqr_User_Interface::createUser()
-     */
     public function createUser($userId, $displayName)
     {
         if ($this->userExists($userId)) {
-            $query = "UPDATE ".$this->tablename." SET displayname='$displayName' WHERE userid='$userId'";
+            $sth = $this->handle->prepare("UPDATE ".$this->tablename." SET displayname = ? WHERE userid = ?");
         } else {
-            $query = "INSERT INTO ".$this->tablename." (userid,displayname) VALUES ('$userId','$displayName')";
+            $sth = $this->handle->prepare("INSERT INTO ".$this->tablename." (displayname,userid) VALUES (?,?)");
         }
-        
-        return $this->handle->query($query);
+        $sth->execute(array($displayName,$userId));
     }
     
-    /**
-     * (non-PHPdoc)
-     * @see simplesamlphp/modules/authTiqr/lib/User/sspmod_authTiqr_User_Interface::userExists()
-     */
     public function userExists($userId)
     {
-        $query = "SELECT userid FROM ".$this->tablename." WHERE userid='$userId'";
-        return $this->handle->query($query)->fetchColumn();
+        $sth = $this->handle->prepare("SELECT userid FROM ".$this->tablename." WHERE userid = ?");
+        $sth->execute(array($userId));
+        return $sth->fetchColumn();
     }
     
-    /**
-     * (non-PHPdoc)
-     * @see simplesamlphp/modules/authTiqr/lib/User/sspmod_authTiqr_User_Interface::getDisplayName()
-     */
     public function getDisplayName($userId)
     {
-        $query = "SELECT displayname FROM ".$this->tablename." WHERE userid='$userId'";
-        return $this->handle->query($query)->fetchColumn();
+        $sth = $this->handle->prepare("SELECT displayname FROM ".$this->tablename." WHERE userid = ?");
+        $sth->execute(array($userId));
+        return $sth->fetchColumn();
     }
     
-    /**
-     * (non-PHPdoc)
-     * @see simplesamlphp/modules/authTiqr/lib/User/sspmod_authTiqr_User_Interface::getSecret()
-     */
     protected function _getEncryptedSecret($userId)
     {
-        $query = "SELECT secret FROM ".$this->tablename." WHERE userid='$userId'";
-        return $this->handle->query($query)->fetchColumn();
+        $sth = $this->handle->prepare("SELECT secret FROM ".$this->tablename." WHERE userid = ?");
+        $sth->execute(array($userId));
+        return $sth->fetchColumn();
     }
     
-    /**
-     * (non-PHPdoc)
-     * @see simplesamlphp/modules/authTiqr/lib/User/sspmod_authTiqr_User_Interface::setSecret()
-     */
     protected function _setEncryptedSecret($userId, $secret)
     {
-        $query = "UPDATE ".$this->tablename." SET secret='$secret' WHERE userid='$userId'";
-        return $this->handle->query($query);
+        $sth = $this->handle->prepare("UPDATE ".$this->tablename." SET secret = ? WHERE userid = ?");
+        $sth->execute(array($secret,$userId));
     }
     
-    /**
-     * (non-PHPdoc)
-     * @see simplesamlphp/modules/authTiqr/lib/User/sspmod_authTiqr_User_Interface::getNotificationType()
-     */
     public function getNotificationType($userId)
     {
-        $query = "SELECT notificationtype FROM ".$this->tablename." WHERE userid='$userId'";
-        return $this->handle->query($query)->fetchColumn();
+        $sth = $this->handle->prepare("SELECT notificationtype FROM ".$this->tablename." WHERE userid = ?");
+        $sth->execute(array($userId));
+        return $sth->fetchColumn();
     }
     
-    /**
-     * (non-PHPdoc)
-     * @see simplesamlphp/modules/authTiqr/lib/User/sspmod_authTiqr_User_Interface::setNotificationType()
-     */
     public function setNotificationType($userId, $type)
     {
-        $query = "UPDATE ".$this->tablename." SET notificationtype='$type' WHERE userid='$userId'";
-        return $this->handle->query($query);
+        $sth = $this->handle->prepare("UPDATE ".$this->tablename." SET notificationtype = ? WHERE userid = ?");
+        $sth->execute(array($type,$userId));
     }
     
-    /**
-     * (non-PHPdoc)
-     * @see simplesamlphp/modules/authTiqr/lib/User/sspmod_authTiqr_User_Interface::getNotificationAddress()
-     */
     public function getNotificationAddress($userId)
     {
-        $query = "SELECT notificationaddress FROM ".$this->tablename." WHERE userid='$userId'";
-        return $this->handle->query($query)->fetchColumn();
+        $sth = $this->handle->prepare("SELECT notificationaddress FROM ".$this->tablename." WHERE userid = ?");
+        $sth->execute(array($userId));
+        return $sth->fetchColumn();
     }
     
-    /**
-     * (non-PHPdoc)
-     * @see simplesamlphp/modules/authTiqr/lib/User/sspmod_authTiqr_User_Interface::setNotificationAddress()
-     */
     public function setNotificationAddress($userId, $address)
     {
-        $query = "UPDATE ".$this->tablename." SET notificationaddress='$address' WHERE userid='$userId'";
-        return $this->handle->query($query);
+        $sth = $this->handle->prepare("UPDATE ".$this->tablename." SET notificationaddress = ?  WHERE userid = ?");
+        $sth->execute(array($address,$userId));
     }
     
-    /**
-     * (non-PHPdoc)
-     * @see simplesamlphp-module/authTiqr/lib/User/sspmod_authTiqr_User_Interface::getFailedLoginAttempts()
-     */
     public function getLoginAttempts($userId)
     {
-        $query = "SELECT loginattempts FROM ".$this->tablename." WHERE userid='$userId'";
-        return $this->handle->query($query)->fetchColumn();
+        $sth = $this->handle->prepare("SELECT loginattempts FROM ".$this->tablename." WHERE userid = ?");
+        $sth->execute(array($userId));
+        return $sth->fetchColumn();
     }
     
-    /**
-     * (non-PHPdoc)
-     * @see simplesamlphp-module/authTiqr/lib/User/sspmod_authTiqr_User_Interface::setFailedLoginAttempts()
-     */
     public function setLoginAttempts($userId, $amount)
     {
-        $query = "UPDATE ".$this->tablename." SET loginattempts='$amount' WHERE userid='$userId'";
-        return $this->handle->query($query);
+        $sth = $this->handle->prepare("UPDATE ".$this->tablename." SET loginattempts = ? WHERE userid = ?");
+        $sth->execute(array($amount,$userId));
     }
     
-    /**
-     * (non-PHPdoc)
-     * @see simplesamlphp-module/authTiqr/lib/User/sspmod_authTiqr_User_Interface::isBlocked()
-     */
     public function isBlocked($userId, $duration)
     {
-        $query = "SELECT blocked FROM ".$this->tablename." WHERE userid='$userId'";
-        return ($this->handle->query($query)->fetchColumn() == 1);
+        if ($this->userExists($userId)) {
+            $sth = $this->handle->prepare("SELECT blocked FROM ".$this->tablename." WHERE userid = ?");
+            $sth->execute(array($userId));
+            $blocked = ($sth->fetchColumn() == 1);
+            $timestamp = $this->getTemporaryBlockTimestamp($userId);
+            // if not blocked or block is expired, return false
+            if (!$blocked || (false !== $timestamp && false != $duration && (strtotime($timestamp) + duration * 60) < time())) {
+                return false;
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
     
-    /**
-     * (non-PHPdoc)
-     * @see simplesamlphp-module/authTiqr/lib/User/sspmod_authTiqr_User_Interface::block()
-     */
     public function setBlocked($userId, $blocked)
     {
-        $query = "UPDATE ".$this->tablename." SET blocked='".($blocked) ? "1" : "0"."' WHERE userid='$userId'";
-        return $this->handle->query($query);
+        $sth = $this->handle->prepare("UPDATE ".$this->tablename." SET blocked = ? WHERE userid = ?");
+        $sth->execute(array(
+                ($blocked) ? "1" : "0",
+                $userId
+        ));
     }
     
-    /**
-     * (non-PHPdoc)
-     * @see libTiqr/library/tiqr/Tiqr/UserStorage/Tiqr_UserStorage_Interface::setTemporaryBlockAttempts()
-     */
     public function setTemporaryBlockAttempts($userId, $amount) {
-        $query = "UPDATE ".$this->tablename." SET tmpblockattempts='$amount' WHERE userid='$userId'";
-        return $this->handle->query($query);
+        $sth = $this->handle->prepare("UPDATE ".$this->tablename." SET tmpblockattempts = ? WHERE userid = ?");
+        $sth->execute(array($amount,$userId));
     }
     
-    /**
-     * (non-PHPdoc)
-     * @see libTiqr/library/tiqr/Tiqr/UserStorage/Tiqr_UserStorage_Interface::getTemporaryBlockAttempts()
-     */
     public function getTemporaryBlockAttempts($userId) {
         if ($this->userExists($userId)) {
-            $query = "SELECT tmpblockattempts FROM ".$this->tablename." WHERE userid='$userId'";
-            return $this->handle->query($query)->fetchColumn();
+            $sth = $this->handle->prepare("SELECT tmpblockattempts FROM ".$this->tablename." WHERE userid = ?");
+            $sth->execute(array($userId));
+            return $sth->fetchColumn();
         }
         return 0;
     }
     
-    /**
-     * (non-PHPdoc)
-     * @see libTiqr/library/tiqr/Tiqr/UserStorage/Tiqr_UserStorage_Interface::setTemporaryBlockTimestamp()
-     */
     public function setTemporaryBlockTimestamp($userId, $timestamp)
     {
-        $query = "UPDATE ".$this->tablename." SET tmpblocktimestamp='$timestamp' WHERE userid='$userId'";
-        return $this->handle->query($query);
+        $sth = $this->handle->prepare("UPDATE ".$this->tablename." SET tmpblocktimestamp = ? WHERE userid = ?");
+        $sth->execute(array($timestamp,$userId));
     }
             
-    /**
-     * (non-PHPdoc)
-     * @see libTiqr/library/tiqr/Tiqr/UserStorage/Tiqr_UserStorage_Interface::getTemporaryBlockTimestamp()
-     */
     public function getTemporaryBlockTimestamp($userId)
     {
         if ($this->userExists($userId)) {
-            $query = "SELECT tmpblocktimestamp FROM ".$this->tablename." WHERE userid='$userId'";
-            $timestamp = $this->handle->query($query)->fetchColumn(); 
+            $sth = $this->handle->prepare("SELECT tmpblocktimestamp FROM ".$this->tablename." WHERE userid = ?");
+            $sth->execute(array($userId));
+            $timestamp = $sth->fetchColumn(); 
             if (null !== $timestamp) {
                 return $timestamp;
             }
