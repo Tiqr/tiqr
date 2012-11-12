@@ -47,6 +47,10 @@ class Tiqr_UserStorage
                 require_once("Tiqr/UserStorage/Ldap.php");
                 $instance = new Tiqr_UserStorage_Ldap($options);
                 break;
+            case "pdo":
+                require_once("Tiqr/UserStorage/Pdo.php");
+                $instance = new Tiqr_UserStorage_Pdo($options);
+                break;
             default: 
                 if (!isset($type)) {
                     throw new Exception('Class name not set');

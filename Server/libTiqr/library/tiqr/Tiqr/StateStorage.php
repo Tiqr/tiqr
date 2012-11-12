@@ -54,6 +54,10 @@ class Tiqr_StateStorage
                 require_once("Tiqr/StateStorage/Memcache.php");
                 $instance = new Tiqr_StateStorage_Memcache($options);
                 break;
+            case "pdo":
+                require_once("Tiqr/StateStorage/Pdo.php");
+                $instance = new Tiqr_StateStorage_Pdo($options);
+                break;
             default:
                 if (!isset($type)) {
                     throw new Exception('Class name not set');
