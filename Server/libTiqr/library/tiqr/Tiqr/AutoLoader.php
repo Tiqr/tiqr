@@ -1,5 +1,4 @@
 <?php
-
 class Tiqr_AutoLoader {
 
 	protected static $instance;
@@ -8,14 +7,12 @@ class Tiqr_AutoLoader {
 	protected $qrcodePath;
 	protected $zendPath;
 
-
 	protected function __construct($options) {
 		if ($options !== NULL) {
 			$this->setOptions($options);
 		}
 		spl_autoload_register(array(__CLASS__, 'autoload'));
 	}
-
 
 	public static function getInstance($options = NULL) {
 		if (null === self::$instance) {
@@ -24,7 +21,6 @@ class Tiqr_AutoLoader {
 
 		return self::$instance;
 	}
-
 
 	public static function autoload($className) {
 		if($className === NULL) {
@@ -50,7 +46,6 @@ class Tiqr_AutoLoader {
 		}
 	}
 
-
 	public function setOptions($options) {
 		if (isset($options["tiqr.path"])) {
 			$tiqr_dir = $options["tiqr.path"];
@@ -72,6 +67,7 @@ class Tiqr_AutoLoader {
 			$qrcode_dir = dirname(dirname(dirname(__FILE__))) . '/phpqrcode';
 			$qrcode_path = $qrcode_dir;
 		}
+
 		if (is_dir($qrcode_path)) {
 			$this->qrcodePath = $qrcode_path;
 		} else {
@@ -97,9 +93,8 @@ class Tiqr_AutoLoader {
 		set_include_path(implode(PATH_SEPARATOR, array(
 			$this->tiqrPath,
 			$this->zendPath,
-			//$this->qrcodePath,
+			$this->qrcodePath,
 			get_include_path(),
 		)));
 	}
-
 }
