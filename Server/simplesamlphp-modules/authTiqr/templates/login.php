@@ -24,32 +24,11 @@ $this->data['jquery'] = array('version' => '1.6', 'core' => true);
 $this->includeAtTemplateBase('includes/header.php');
 
 if (!$this->data['enroll']) {
-
-?>
-
-<script type="text/javascript">
-function verifyLogin() {
-  jQuery.get('<?php echo $this->data['verifyLoginUrl'] ?>', function(data) {
-      if (data == 'NO') {
-          window.setTimeout(verifyLogin, 1500);
-      } else if (data.substring(0, 4) == 'URL:') {
-          document.location.href = data.substring(4);
-      } else {
-          alert(<?php echo json_encode($this->t('{authTiqr:tiqr:verify_login_error}')); ?>);
-      }
-  });
+    $this->includeAtTemplateBase('authTiqr:includes/verify_login_url.php');
 }
 
-jQuery(document).ready(verifyLogin);
-</script>
-
-<?php
-
-}
-?>
-<?php 
-if ($this->data['errorcode'] !== NULL) {
-    include("inline_error.php");
+if (isset($this->data['errorcode'])) {
+    $this->includeAtTemplateBase("authTiqr:includes/inline_error.php");
 }
 ?>
 

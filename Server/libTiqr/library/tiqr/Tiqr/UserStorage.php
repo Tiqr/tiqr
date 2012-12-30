@@ -47,7 +47,18 @@ class Tiqr_UserStorage
                 require_once("Tiqr/UserStorage/Ldap.php");
                 $instance = new Tiqr_UserStorage_Ldap($options);
                 break;
+            case "pdo":
+                require_once("Tiqr/UserStorage/Pdo.php");
+                $instance = new Tiqr_UserStorage_Pdo($options);
+                break;
             default: 
+                if (!isset($type)) {
+                    throw new Exception('Class name not set');
+                } elseif (!class_exists($type)) {
+                    throw new Exception('Class not found: ' . var_export($type, TRUE));
+                } elseif (!is_subclass_of($type, 'Tiqr_UserStorage_Abstract')) {
+                    throw new Exception('Class ' . $type . ' not subclass of Tiqr_UserStorage_Abstract');
+                }
                 $instance = new $type($options);
         }
         

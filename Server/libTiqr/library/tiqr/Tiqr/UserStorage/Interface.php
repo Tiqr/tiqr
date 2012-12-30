@@ -117,9 +117,10 @@ interface Tiqr_UserStorage_Interface
     
     /**
      * Check if the user is allowed to login.
-     * @param $userId
+     * @param string $userId
+     * @param int $duration Duration of the block in minutes (for temporary blocks)
      */
-    public function isBlocked($userId);
+    public function isBlocked($userId, $duration);
     
     /**
      * Block the user account.
@@ -127,6 +128,32 @@ interface Tiqr_UserStorage_Interface
      * @param $blocked true to block, false to unblock
      */
     public function setBlocked($userId, $blocked);
+    
+    /**
+     * Set the number of times a temporary block was set during this session
+     * @param string $userId
+     * @param int $amount
+     */
+    public function setTemporaryBlockAttempts($userId, $amount);
+    
+    /**
+     * Get the number of times a temporary block was set during this session
+     * @param string $userId
+     */
+    public function getTemporaryBlockAttempts($userId);
+    
+    /**
+     * Set the timestamp for the temporary block
+     * @param string $userId
+     * @param string $timestamp
+     */
+    public function setTemporaryBlockTimestamp($userId, $timestamp);
+    
+    /**
+     * Get the temporary block timestamp
+     * @param string $userId
+     */
+    public function getTemporaryBlockTimestamp($userId);
 
     /**
      * Returns additional attributes for the given user.

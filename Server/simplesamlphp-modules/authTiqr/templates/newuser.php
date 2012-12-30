@@ -24,11 +24,8 @@ $this->data['autofocus'] = 'otp';
 
 $this->includeAtTemplateBase('includes/header.php');
 
-?>
-
-<?php
-if ($this->data['errorcode'] !== NULL) {
-    include("inline_error.php");
+if (isset($this->data['errorcode'])) {
+    $this->includeAtTemplateBase("authTiqr:includes/inline_error.php");
 }
 ?>
 

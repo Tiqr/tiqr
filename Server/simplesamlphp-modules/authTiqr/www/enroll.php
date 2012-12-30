@@ -19,10 +19,10 @@
  */
 
 $result = sspmod_authTiqr_Auth_Tiqr::processMobileEnrollment($_REQUEST);
-//$result = true;
 
-if ($result) {
-    echo "OK";
+if (is_array($result)) {
+    header('Content-type: application/json');
+    echo json_encode($result);
 } else {
-    echo "There was an error";
+    echo $result;
 }

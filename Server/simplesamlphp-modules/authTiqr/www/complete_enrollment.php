@@ -19,19 +19,15 @@
  *
  */
 
-
-$authStateId = $_REQUEST['AuthState'];
-
 sspmod_authTiqr_Auth_Tiqr::resetEnrollmentSession();
 
 $globalConfig = SimpleSAML_Configuration::getInstance();
 
 $t = new SimpleSAML_XHTML_Template($globalConfig, 'authTiqr:newuser_complete.php');
 
-$t->data['errorcode'] = NULL;
-$t->data['stateparams'] = array('AuthState' => $authStateId);
 if (isset($_REQUEST['AuthState'])) {
-    $t->data['loginUrl'] = SimpleSAML_Module::getModuleURL('authTiqr/login.php').'?'.http_build_query($t->data['stateparams']);
+    $t->data['stateparams'] = array('AuthState' => $_REQUEST['AuthState']);
+    $t->data['loginUrl'] = SimpleSAML_Module::getModuleURL('authTiqr/login.php', $t->data['stateparams']);
 }
 $t->show();
 exit();

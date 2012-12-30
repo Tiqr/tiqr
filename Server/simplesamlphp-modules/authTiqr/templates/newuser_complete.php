@@ -23,11 +23,8 @@ $this->data['header'] = $this->t('{authTiqr:tiqr:header_enrollment}');
 
 $this->includeAtTemplateBase('includes/header.php');
 
-?>
-
-<?php
-if ($this->data['errorcode'] !== NULL) {
-    include("inline_error.php");
+if (isset($this->data['errorcode'])) {
+    $this->includeAtTemplateBase("authTiqr:includes/inline_error.php");
 }
 ?>
 

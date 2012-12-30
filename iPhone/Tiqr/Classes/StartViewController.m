@@ -82,6 +82,7 @@
     self.errorController.view.hidden = YES;
     self.webView.frame = CGRectMake(0.0, 0.0, self.webView.frame.size.width, self.view.frame.size.height - self.footerController.view.frame.size.height);    
     
+    NSString *content = @"";
     if ([Identity allIdentitiesBlockedInManagedObjectContext:self.managedObjectContext]) {
         self.webView.frame = CGRectMake(0.0, self.errorController.view.frame.size.height, self.webView.frame.size.width, self.view.frame.size.height - self.errorController.view.frame.size.height - self.footerController.view.frame.size.height);
         self.errorController.view.hidden = NO;
@@ -89,19 +90,21 @@
         self.navigationItem.rightBarButtonItem = self.identitiesButtonItem;
         self.errorController.title = NSLocalizedString(@"error_auth_account_blocked_title", @"Accounts blocked error title");
         self.errorController.message = NSLocalizedString(@"to_many_attempts", @"Accounts blocked error message");        
-        NSURL *URL = [[NSBundle mainBundle] URLForResource:@"blocked" withExtension:@"html"];
-        [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
+        content = NSLocalizedString(@"main_text_blocked", @"");                
     } else if ([Identity countInManagedObjectContext:self.managedObjectContext] > 0) {
         self.title = NSLocalizedString(@"main_title_instructions", @"Instructions navigation title");
         self.navigationItem.rightBarButtonItem = self.identitiesButtonItem;
-        NSURL *URL = [[NSBundle mainBundle] URLForResource:@"instructions" withExtension:@"html"];
-        [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
+        content = NSLocalizedString(@"main_text_instructions", @"");        
     } else {
         self.title = NSLocalizedString(@"main_title_welcome", @"Welcome navigation title");
         self.navigationItem.rightBarButtonItem = nil;
-        NSURL *URL = [[NSBundle mainBundle] URLForResource:@"welcome" withExtension:@"html"];
-        [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
+        content = NSLocalizedString(@"main_text_welcome", @"");
     }    
+    
+    NSURL *URL = [[NSBundle mainBundle] URLForResource:@"start" withExtension:@"html"];
+    NSString *html = [NSString stringWithContentsOfURL:URL encoding:NSUTF8StringEncoding error:nil];
+    html = [NSString stringWithFormat:html, content];
+    [self.webView loadHTMLString:html baseURL:nil];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {

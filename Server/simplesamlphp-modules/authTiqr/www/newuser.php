@@ -46,8 +46,8 @@ if (isset($_REQUEST['AuthState'])) {
                 $displayNameAttribute = $config["enroll.cnAttribute"];
                 if (!isset($attributes[$uidAttribute]))
                     throw new Exception('User ID is missing');
-                $state["tickrUser"]["userId"] = $attributes[$uidAttribute][0];
-                $state["tickrUser"]["displayName"] = $attributes[$displayNameAttribute][0];
+                $state["tiqrUser"]["userId"] = $attributes[$uidAttribute][0];
+                $state["tiqrUser"]["displayName"] = $attributes[$displayNameAttribute][0];
             } else {
                 SimpleSAML_Auth_Default::initLogin(
                          $config["enroll.authsource"],
@@ -145,10 +145,10 @@ if ($template=="newuser_result.php") {
     $session->setData("String", "enroll_fullname", $displayName, 10);
     
     $t->data['qrUrl'] = SimpleSAML_Module::getModuleURL('authTiqr/qr_enroll.php');
-    $t->data['verifyEnrollUrl'] = SimpleSAML_Module::getModuleURL('authTiqr/verify_enrollment.php').'?'.http_build_query($t->data['stateparams']);
+    $t->data['verifyEnrollUrl'] = SimpleSAML_Module::getModuleURL('authTiqr/verify_enrollment.php', $t->data['stateparams']);
     
     if ($authState!=NULL) {
-        $t->data['loginUrl'] = SimpleSAML_Module::getModuleURL('authTiqr/login.php').'?'.http_build_query($t->data['stateparams']);
+        $t->data['loginUrl'] = SimpleSAML_Module::getModuleURL('authTiqr/login.php', $t->data['stateparams']);
     }
 }
 
