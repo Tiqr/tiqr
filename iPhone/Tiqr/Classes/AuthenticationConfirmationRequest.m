@@ -116,7 +116,6 @@ NSString *const TIQRACRAttemptsLeftErrorKey = @"AttempsLeftErrorKey";
             } else if ([attemptsLeft intValue] == 1) {
                 title = NSLocalizedString(@"error_auth_wrong_pin", @"INVALID_RESPONSE error title (1 attempt left)");
                 message = NSLocalizedString(@"error_auth_one_attempt_left", @"INVALID_RESPONSE error message (1 attempt left)");            
-                message = [NSString stringWithFormat:message];
             } else {
                 title = NSLocalizedString(@"error_auth_account_blocked_title", @"INVALID_RESPONSE error title (0 attempts left)");
                 message = NSLocalizedString(@"error_auth_account_blocked_message", @"INVALID_RESPONSE error message (0 attempts left)");            
