@@ -75,7 +75,7 @@ static NSMutableDictionary *iconsByClass = nil;
     [s drawAtPoint:CGPointMake(0, 0) withFont:font];
     
     icon = [UIGraphicsGetImageFromCurrentImageContext() retain];
-    [iconsByClass setObject:icon forKey:[self class]];
+    [iconsByClass setObject:icon forKey:(id <NSCopying>)[self class]];
     UIGraphicsEndImageContext();
   }
   return icon;
