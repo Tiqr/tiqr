@@ -110,6 +110,7 @@
     <string name="enrollment_success_title">Registratie succesvol</string>
     <string name="enrollment_success_message" formatted="false">U bent succesvol geregistreerd als %s voor %s</string>
     <string name="enrollment_failure_title">Registratie mislukt</string>
+    <string name="enrollment_failure_message">Er is een fout opgetreden tijdens registratie.</string>
     <string name="error_enroll_invalid_qr_code">Ongeldige registratie QR code.</string>
     <string name="error_enroll_connect_error">Kan geen verbinding maken met de registratieserver. Neem contact op met de website beheerder.</string>
     <string name="error_enroll_invalid_response">Ongeldig antwoord van de registratieserver. Neem contact op met de website beheerder.</string>

@@ -22,6 +22,8 @@
 		76A195BC155BC8B000A73D2D /* EnrollmentSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A195BA155BC8B000A73D2D /* EnrollmentSummaryView.xib */; };
 		76A195BE155BCA0900A73D2D /* IdentityEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A195BD155BCA0900A73D2D /* IdentityEditView.xib */; };
 		76A195C0155BCACC00A73D2D /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A195BF155BCACC00A73D2D /* AboutView.xib */; };
+		84AB218B168C4F23008C4A35 /* surfnet-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AB2189168C4F23008C4A35 /* surfnet-logo.png */; };
+		84AB218C168C4F23008C4A35 /* surfnet-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AB218A168C4F23008C4A35 /* surfnet-logo@2x.png */; };
 		922F08441289ABE700A33616 /* HOTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 922F08431289ABE700A33616 /* HOTP.m */; };
 		922F08471289ABFE00A33616 /* OCRAWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 922F08461289ABFE00A33616 /* OCRAWrapper.m */; };
 		924D6C5F13094DEC00F87B96 /* AuthenticationFallbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 924D6C5E13094DEC00F87B96 /* AuthenticationFallbackViewController.m */; };
@@ -149,6 +151,8 @@
 		76A195BA155BC8B000A73D2D /* EnrollmentSummaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnrollmentSummaryView.xib; sourceTree = "<group>"; };
 		76A195BD155BCA0900A73D2D /* IdentityEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IdentityEditView.xib; sourceTree = "<group>"; };
 		76A195BF155BCACC00A73D2D /* AboutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
+		84AB2189168C4F23008C4A35 /* surfnet-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "surfnet-logo.png"; sourceTree = "<group>"; };
+		84AB218A168C4F23008C4A35 /* surfnet-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "surfnet-logo@2x.png"; sourceTree = "<group>"; };
 		922F08421289ABE700A33616 /* HOTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HOTP.h; sourceTree = "<group>"; };
 		922F08431289ABE700A33616 /* HOTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOTP.m; sourceTree = "<group>"; };
 		922F08451289ABFE00A33616 /* OCRAWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCRAWrapper.h; sourceTree = "<group>"; };
@@ -497,6 +501,8 @@
 		D028BF8C13092834002EA560 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				84AB2189168C4F23008C4A35 /* surfnet-logo.png */,
+				84AB218A168C4F23008C4A35 /* surfnet-logo@2x.png */,
 				D0EBBA78134B606300CAAB58 /* stroomt-logo.png */,
 				D0E9C08A134DC26A00DDCE4E /* stroomt-logo@2x.png */,
 				D019ED9413449F3500466A2B /* egeniq-logo.png */,
@@ -946,6 +952,8 @@
 				76A195BC155BC8B000A73D2D /* EnrollmentSummaryView.xib in Resources */,
 				76A195BE155BCA0900A73D2D /* IdentityEditView.xib in Resources */,
 				76A195C0155BCACC00A73D2D /* AboutView.xib in Resources */,
+				84AB218B168C4F23008C4A35 /* surfnet-logo.png in Resources */,
+				84AB218C168C4F23008C4A35 /* surfnet-logo@2x.png in Resources */,
 				D0D7200315930AB4008C7004 /* start.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

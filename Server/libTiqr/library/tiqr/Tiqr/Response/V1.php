@@ -33,7 +33,7 @@ class Tiqr_Response_V1 extends Tiqr_Response_Abstract
     const RESPONSE_INVALID_REQUEST = 202;
     const RESPONSE_INVALID_CHALLENGE = 203;
     const RESPONSE_ACCOUNT_BLOCKED = 204;
-    const RESPONSE_ENROLLMENT_OK = 0;
+    const RESPONSE_ENROLLMENT_OK = 1;
     const RESPONSE_ENROLLMENT_ERROR = 101;
     
     /**
