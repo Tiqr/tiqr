@@ -138,7 +138,6 @@ NSString *const TIQRACRAttemptsLeftErrorKey = @"AttempsLeftErrorKey";
         [self.delegate authenticationConfirmationRequest:self didFailWithError:error];
 	}
     
-	[result release];	
     [connection release];
 }
 
@@ -150,7 +149,7 @@ NSString *const TIQRACRAttemptsLeftErrorKey = @"AttempsLeftErrorKey";
 	NSString *notificationToken = [NotificationRegistration sharedInstance].notificationToken;
 	NSString *escapedNotificationToken = [notificationToken stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSString *operation = @"login";
-    NSString *version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"AnimateLoginProtocolVersion"];
+    NSString *version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"TIQRLoginProtocolVersion"];
 	NSString *body = [NSString stringWithFormat:@"sessionKey=%@&userId=%@&response=%@&language=%@&notificationType=APNS&notificationAddress=%@&operation=%@&version=%@", escapedSessionKey, escapedUserId, escapedResponse, escapedLanguage, escapedNotificationToken, operation, version];
         
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.challenge.identityProvider.authenticationUrl]];
@@ -158,6 +157,7 @@ NSString *const TIQRACRAttemptsLeftErrorKey = @"AttempsLeftErrorKey";
 	[request setTimeoutInterval:5.0];
 	[request setHTTPMethod:@"POST"];
 	[request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     self.data = [NSMutableData data];
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];

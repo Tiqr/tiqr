@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>AnimateLoginProtocolVersion</key>
-	<string>1</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
@@ -62,6 +60,8 @@
 	<string>tiqrauth</string>
 	<key>TIQREnrollmentURLScheme</key>
 	<string>tiqrenroll</string>
+	<key>TIQRLoginProtocolVersion</key>
+	<string>1</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>animals.ttf</string>
