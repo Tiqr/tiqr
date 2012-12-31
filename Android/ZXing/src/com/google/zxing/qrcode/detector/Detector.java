@@ -25,6 +25,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.DetectorResult;
 import com.google.zxing.common.GridSampler;
 import com.google.zxing.common.PerspectiveTransform;
+import com.google.zxing.common.detector.MathUtils;
 import com.google.zxing.qrcode.decoder.Version;
 
 import java.util.Map;
@@ -44,11 +45,11 @@ public class Detector {
     this.image = image;
   }
 
-  protected BitMatrix getImage() {
+  protected final BitMatrix getImage() {
     return image;
   }
 
-  protected ResultPointCallback getResultPointCallback() {
+  protected final ResultPointCallback getResultPointCallback() {
     return resultPointCallback;
   }
 
@@ -70,7 +71,7 @@ public class Detector {
    * @throws NotFoundException if QR Code cannot be found
    * @throws FormatException if a QR Code cannot be decoded
    */
-  public DetectorResult detect(Map<DecodeHintType,?> hints) throws NotFoundException, FormatException {
+  public final DetectorResult detect(Map<DecodeHintType,?> hints) throws NotFoundException, FormatException {
 
     resultPointCallback = hints == null ? null :
         (ResultPointCallback) hints.get(DecodeHintType.NEED_RESULT_POINT_CALLBACK);
@@ -81,7 +82,7 @@ public class Detector {
     return processFinderPatternInfo(info);
   }
 
-  protected DetectorResult processFinderPatternInfo(FinderPatternInfo info)
+  protected final DetectorResult processFinderPatternInfo(FinderPatternInfo info)
       throws NotFoundException, FormatException {
 
     FinderPattern topLeft = info.getTopLeft();
@@ -139,11 +140,11 @@ public class Detector {
     return new DetectorResult(bits, points);
   }
 
-  public static PerspectiveTransform createTransform(ResultPoint topLeft,
-                                                     ResultPoint topRight,
-                                                     ResultPoint bottomLeft,
-                                                     ResultPoint alignmentPattern,
-                                                     int dimension) {
+  private static PerspectiveTransform createTransform(ResultPoint topLeft,
+                                                      ResultPoint topRight,
+                                                      ResultPoint bottomLeft,
+                                                      ResultPoint alignmentPattern,
+                                                      int dimension) {
     float dimMinusThree = (float) dimension - 3.5f;
     float bottomRightX;
     float bottomRightY;
@@ -193,12 +194,12 @@ public class Detector {
    * <p>Computes the dimension (number of modules on a size) of the QR Code based on the position
    * of the finder patterns and estimated module size.</p>
    */
-  protected static int computeDimension(ResultPoint topLeft,
-                                        ResultPoint topRight,
-                                        ResultPoint bottomLeft,
-                                        float moduleSize) throws NotFoundException {
-    int tltrCentersDimension = round(ResultPoint.distance(topLeft, topRight) / moduleSize);
-    int tlblCentersDimension = round(ResultPoint.distance(topLeft, bottomLeft) / moduleSize);
+  private static int computeDimension(ResultPoint topLeft,
+                                      ResultPoint topRight,
+                                      ResultPoint bottomLeft,
+                                      float moduleSize) throws NotFoundException {
+    int tltrCentersDimension = MathUtils.round(ResultPoint.distance(topLeft, topRight) / moduleSize);
+    int tlblCentersDimension = MathUtils.round(ResultPoint.distance(topLeft, bottomLeft) / moduleSize);
     int dimension = ((tltrCentersDimension + tlblCentersDimension) >> 1) + 7;
     switch (dimension & 0x03) { // mod 4
       case 0:
@@ -218,9 +219,9 @@ public class Detector {
    * <p>Computes an average estimated module size based on estimated derived from the positions
    * of the three finder patterns.</p>
    */
-  protected float calculateModuleSize(ResultPoint topLeft,
-                                      ResultPoint topRight,
-                                      ResultPoint bottomLeft) {
+  protected final float calculateModuleSize(ResultPoint topLeft,
+                                            ResultPoint topRight,
+                                            ResultPoint bottomLeft) {
     // Take the average
     return (calculateModuleSizeOneWay(topLeft, topRight) +
         calculateModuleSizeOneWay(topLeft, bottomLeft)) / 2.0f;
@@ -328,9 +329,7 @@ public class Detector {
       // color, advance to next state or end if we are in state 2 already
       if ((state == 1) == image.get(realX, realY)) {
         if (state == 2) {
-          int diffX = x - fromX;
-          int diffY = y - fromY;
-          return (float) Math.sqrt((double) (diffX * diffX + diffY * diffY));
+          return MathUtils.distance(x, y, fromX, fromY);
         }
         state++;
       }
@@ -348,9 +347,7 @@ public class Detector {
     // is "white" so this last point at (toX+xStep,toY) is the right ending. This is really a
     // small approximation; (toX+xStep,toY+yStep) might be really correct. Ignore this.
     if (state == 2) {
-      int diffX = toX + xstep - fromX;
-      int diffY = toY - fromY;
-      return (float) Math.sqrt((double) (diffX * diffX + diffY * diffY));
+      return MathUtils.distance(toX + xstep, toY, fromX, fromY);
     }
     // else we didn't find even black-white-black; no estimate is really possible
     return Float.NaN;
@@ -367,10 +364,10 @@ public class Detector {
    * @return {@link AlignmentPattern} if found, or null otherwise
    * @throws NotFoundException if an unexpected error occurs during detection
    */
-  protected AlignmentPattern findAlignmentInRegion(float overallEstModuleSize,
-                                                   int estAlignmentX,
-                                                   int estAlignmentY,
-                                                   float allowanceFactor)
+  protected final AlignmentPattern findAlignmentInRegion(float overallEstModuleSize,
+                                                         int estAlignmentX,
+                                                         int estAlignmentY,
+                                                         float allowanceFactor)
       throws NotFoundException {
     // Look for an alignment pattern (3 modules in size) around where it
     // should be
@@ -399,11 +396,4 @@ public class Detector {
     return alignmentFinder.find();
   }
 
-  /**
-   * Ends up being a bit faster than Math.round(). This merely rounds its argument to the nearest int,
-   * where x.5 rounds up.
-   */
-  private static int round(float d) {
-    return (int) (d + 0.5f);
-  }
 }

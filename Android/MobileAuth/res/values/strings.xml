@@ -110,6 +110,7 @@
     <string name="enrollment_success_title">Enrolment successful</string>
     <string name="enrollment_success_message" formatted="false">You\'ve been successfully enrolled as %s for %s</string>
     <string name="enrollment_failure_title">Enrolment failed</string>
+    <string name="enrollment_failure_message">An error occurred during enrollment</string>
     <string name="error_enroll_invalid_qr_code">Invalid enrolment QR code.</string>
     <string name="error_enroll_connect_error">Cannot connect to enrolment server. Please contact the website administrator.</string>
     <string name="error_enroll_invalid_response">Invalid enrolment server response. Please contact the website administrator.</string>

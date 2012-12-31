@@ -29,6 +29,16 @@
 
 #import "AuthenticationChallenge.h"
 
+typedef enum {
+    AuthenticationChallengeResponseCodeSuccess = 1,
+    AuthenticationChallengeResponseCodeFailure = 200,
+    AuthenticationChallengeResponseCodeInvalidUsernamePasswordPin = 201,
+    AuthenticationChallengeResponseCodeExpired = 202,
+    AuthenticationChallengeResponseCodeInvalidChallenge = 203,
+    AuthenticationChallengeResponseCodeAccountBlocked = 204,
+    AuthenticationChallengeResponseCodeInvalidRequest = 205
+} AuthenticationChallengeResponseCode;
+
 /**
  * Error domain.
  */

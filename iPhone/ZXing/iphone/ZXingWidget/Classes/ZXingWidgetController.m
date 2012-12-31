@@ -1,11 +1,12 @@
+// -*- mode:objc; c-basic-offset:2; indent-tabs-mode:nil -*-
 /**
- * Copyright 2009 Jeff Verkoeyen
+ * Copyright 2009-2012 ZXing authors All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *    http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -33,6 +34,7 @@
 @interface ZXingWidgetController ()
 
 @property BOOL showCancel;
+@property BOOL showLicense;
 @property BOOL oneDMode;
 @property BOOL isStatusBarHidden;
 
@@ -49,22 +51,29 @@
 #endif
 @synthesize result, delegate, soundToPlay;
 @synthesize overlayView;
-@synthesize oneDMode, showCancel, isStatusBarHidden;
+@synthesize oneDMode, showCancel, showLicense, isStatusBarHidden;
 @synthesize readers;
 
 
 - (id)initWithDelegate:(id<ZXingDelegate>)scanDelegate showCancel:(BOOL)shouldShowCancel OneDMode:(BOOL)shouldUseoOneDMode {
+  
+  return [self initWithDelegate:scanDelegate showCancel:shouldShowCancel OneDMode:shouldUseoOneDMode showLicense:YES];
+}
+
+- (id)initWithDelegate:(id<ZXingDelegate>)scanDelegate showCancel:(BOOL)shouldShowCancel OneDMode:(BOOL)shouldUseoOneDMode showLicense:(BOOL)shouldShowLicense {
   self = [super init];
   if (self) {
     [self setDelegate:scanDelegate];
     self.oneDMode = shouldUseoOneDMode;
     self.showCancel = shouldShowCancel;
+    self.showLicense = shouldShowLicense;
     self.wantsFullScreenLayout = YES;
     beepSound = -1;
     decoding = NO;
     OverlayView *theOverLayView = [[OverlayView alloc] initWithFrame:[UIScreen mainScreen].bounds 
                                                        cancelEnabled:showCancel 
-                                                            oneDMode:oneDMode];
+                                                            oneDMode:oneDMode
+                                                         showLicense:shouldShowLicense];
     [theOverLayView setDelegate:self];
     self.overlayView = theOverLayView;
     [theOverLayView release];
@@ -235,7 +244,7 @@
 
 - (void)decoder:(Decoder *)decoder
   decodingImage:(UIImage *)image
-     usingSubset:(UIImage *)subset {
+    usingSubset:(UIImage *)subset {
 }
 
 - (void)presentResultForString:(NSString *)resultString {
@@ -281,24 +290,45 @@
 }
 
 /*
-- (void)stopPreview:(NSNotification*)notification {
+  - (void)stopPreview:(NSNotification*)notification {
   // NSLog(@"stop preview");
-}
+  }
 
-- (void)notification:(NSNotification*)notification {
+  - (void)notification:(NSNotification*)notification {
   // NSLog(@"notification %@", notification.name);
-}
+  }
 */
 
 #pragma mark - 
 #pragma mark AVFoundation
 
+#include <sys/types.h>
+#include <sys/sysctl.h>
+
+// Gross, I know. But you can't use the device idiom because it's not iPad when running
+// in zoomed iphone mode but the camera still acts like an ipad.
+#if HAS_AVFF
+static bool isIPad() {
+  static int is_ipad = -1;
+  if (is_ipad < 0) {
+    size_t size;
+    sysctlbyname("hw.machine", NULL, &size, NULL, 0); // Get size of data to be returned.
+    char *name = malloc(size);
+    sysctlbyname("hw.machine", name, &size, NULL, 0);
+    NSString *machine = [NSString stringWithCString:name encoding:NSASCIIStringEncoding];
+    free(name);
+    is_ipad = [machine hasPrefix:@"iPad"];
+  }
+  return !!is_ipad;
+}
+#endif
+    
 - (void)initCapture {
 #if HAS_AVFF
+  AVCaptureDevice* inputDevice =
+    [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
   AVCaptureDeviceInput *captureInput =
-    [AVCaptureDeviceInput deviceInputWithDevice:
-            [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo] 
-                                          error:nil];
+    [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:nil];
   AVCaptureVideoDataOutput *captureOutput = [[AVCaptureVideoDataOutput alloc] init]; 
   captureOutput.alwaysDiscardsLateVideoFrames = YES; 
   [captureOutput setSampleBufferDelegate:self queue:dispatch_get_main_queue()];
@@ -307,7 +337,21 @@
   NSDictionary* videoSettings = [NSDictionary dictionaryWithObject:value forKey:key]; 
   [captureOutput setVideoSettings:videoSettings]; 
   self.captureSession = [[[AVCaptureSession alloc] init] autorelease];
-  self.captureSession.sessionPreset = AVCaptureSessionPresetMedium; // 480x360 on a 4
+
+  NSString* preset = 0;
+  if (NSClassFromString(@"NSOrderedSet") && // Proxy for "is this iOS 5" ...
+      [UIScreen mainScreen].scale > 1 &&
+      isIPad() && 
+      [inputDevice
+        supportsAVCaptureSessionPreset:AVCaptureSessionPresetiFrame960x540]) {
+    // NSLog(@"960");
+    preset = AVCaptureSessionPresetiFrame960x540;
+  }
+  if (!preset) {
+    // NSLog(@"MED");
+    preset = AVCaptureSessionPresetMedium;
+  }
+  self.captureSession.sessionPreset = preset;
 
   [self.captureSession addInput:captureInput];
   [self.captureSession addOutput:captureOutput];
@@ -316,40 +360,40 @@
 
 /*
   [[NSNotificationCenter defaultCenter]
-      addObserver:self
-         selector:@selector(stopPreview:)
-             name:AVCaptureSessionDidStopRunningNotification
-           object:self.captureSession];
+  addObserver:self
+  selector:@selector(stopPreview:)
+  name:AVCaptureSessionDidStopRunningNotification
+  object:self.captureSession];
 
   [[NSNotificationCenter defaultCenter]
-      addObserver:self
-         selector:@selector(notification:)
-             name:AVCaptureSessionDidStopRunningNotification
-           object:self.captureSession];
+  addObserver:self
+  selector:@selector(notification:)
+  name:AVCaptureSessionDidStopRunningNotification
+  object:self.captureSession];
 
   [[NSNotificationCenter defaultCenter]
-      addObserver:self
-         selector:@selector(notification:)
-             name:AVCaptureSessionRuntimeErrorNotification
-           object:self.captureSession];
+  addObserver:self
+  selector:@selector(notification:)
+  name:AVCaptureSessionRuntimeErrorNotification
+  object:self.captureSession];
 
   [[NSNotificationCenter defaultCenter]
-      addObserver:self
-         selector:@selector(notification:)
-             name:AVCaptureSessionDidStartRunningNotification
-           object:self.captureSession];
+  addObserver:self
+  selector:@selector(notification:)
+  name:AVCaptureSessionDidStartRunningNotification
+  object:self.captureSession];
 
   [[NSNotificationCenter defaultCenter]
-      addObserver:self
-         selector:@selector(notification:)
-             name:AVCaptureSessionWasInterruptedNotification
-           object:self.captureSession];
+  addObserver:self
+  selector:@selector(notification:)
+  name:AVCaptureSessionWasInterruptedNotification
+  object:self.captureSession];
 
   [[NSNotificationCenter defaultCenter]
-      addObserver:self
-         selector:@selector(notification:)
-             name:AVCaptureSessionInterruptionEndedNotification
-           object:self.captureSession];
+  addObserver:self
+  selector:@selector(notification:)
+  name:AVCaptureSessionInterruptionEndedNotification
+  object:self.captureSession];
 */
 
   if (!self.prevLayer) {
@@ -409,10 +453,12 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     cropRect.size.width = ONE_D_BAND_HEIGHT;
     // do a rotate
     CGImageRef croppedImg = CGImageCreateWithImageInRect(capture, cropRect);
+    CGImageRelease(capture);
     capture = [self CGImageRotated90:croppedImg];
     capture = [self CGImageRotated180:capture];
     //              UIImageWriteToSavedPhotosAlbum([UIImage imageWithCGImage:capture], nil, nil, nil);
     CGImageRelease(croppedImg);
+    CGImageRetain(capture);
     cropRect.origin.x = 0.0;
     cropRect.origin.y = 0.0;
     cropRect.size.width = CGImageGetWidth(capture);
@@ -463,15 +509,15 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
   [self.prevLayer removeFromSuperlayer];
 
 /*
-  // heebee jeebees here ... is iOS still writing into the layer?
-  if (self.prevLayer) {
-    layer.session = nil;
-    AVCaptureVideoPreviewLayer* layer = prevLayer;
-    [self.prevLayer retain];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 12000000000), dispatch_get_main_queue(), ^{
-        [layer release];
-    });
-  }
+// heebee jeebees here ... is iOS still writing into the layer?
+if (self.prevLayer) {
+layer.session = nil;
+AVCaptureVideoPreviewLayer* layer = prevLayer;
+[self.prevLayer retain];
+dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 12000000000), dispatch_get_main_queue(), ^{
+[layer release];
+});
+}
 */
 
   self.prevLayer = nil;

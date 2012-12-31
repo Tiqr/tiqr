@@ -224,7 +224,7 @@ public abstract class UPCEANReader extends OneDReader {
    * @return true iff string of digits passes the UPC/EAN checksum algorithm
    * @throws FormatException if the string does not contain only digits
    */
-  private static boolean checkStandardUPCEANChecksum(CharSequence s) throws FormatException {
+  static boolean checkStandardUPCEANChecksum(CharSequence s) throws FormatException {
     int length = s.length();
     if (length == 0) {
       return false;
@@ -271,11 +271,11 @@ public abstract class UPCEANReader extends OneDReader {
    * @return start/end horizontal offset of guard pattern, as an array of two ints
    * @throws NotFoundException if pattern is not found
    */
-  static int[] findGuardPattern(BitArray row,
-                                int rowOffset,
-                                boolean whiteFirst,
-                                int[] pattern,
-                                int[] counters) throws NotFoundException {
+  private static int[] findGuardPattern(BitArray row,
+                                        int rowOffset,
+                                        boolean whiteFirst,
+                                        int[] pattern,
+                                        int[] counters) throws NotFoundException {
     int patternLength = pattern.length;
     int width = row.getSize();
     boolean isWhite = whiteFirst;

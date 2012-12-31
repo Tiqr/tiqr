@@ -30,6 +30,7 @@
 #import "EnrollmentConfirmationRequest.h"
 #import "NotificationRegistration.h"
 #import "NSData+Hex.h"
+#import "JSONKit.h"
 
 NSString *const TIQRECRErrorDomain = @"org.tiqr.ecr";
 
@@ -61,15 +62,18 @@ NSString *const TIQRECRErrorDomain = @"org.tiqr.ecr";
 	NSString *escapedLanguage = [[[NSLocale preferredLanguages] objectAtIndex:0] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	NSString *notificationToken = [NotificationRegistration sharedInstance].notificationToken;
 	NSString *escapedNotificationToken = [notificationToken stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-	NSString *body = [NSString stringWithFormat:@"secret=%@&language=%@&notificationType=APNS&notificationAddress=%@", escapedSecret, escapedLanguage, escapedNotificationToken];
+    NSString *version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"TIQRLoginProtocolVersion"];
+    NSString *operation = @"register";
+	NSString *body = [NSString stringWithFormat:@"secret=%@&language=%@&notificationType=APNS&notificationAddress=%@&version=%@&operation=%@", escapedSecret, escapedLanguage, escapedNotificationToken, version, operation];
     
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.challenge.enrollmentUrl]];
 	[request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
 	[request setTimeoutInterval:5.0];
 	[request setHTTPMethod:@"POST"];
 	[request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
-    
-	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	self.data = [NSMutableData data];
 }
 
@@ -97,15 +101,28 @@ NSString *const TIQRECRErrorDomain = @"org.tiqr.ecr";
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	NSString *response = [[NSString alloc] initWithBytes:[self.data bytes] length:[self.data length] encoding:NSUTF8StringEncoding];
+    NSArray *result = [[JSONDecoder decoder] objectWithData:self.data];
     self.data = nil;
-	
-	if ([response isEqualToString:@"OK"]) {
+    
+    NSNumber *responseCode = [NSNumber numberWithInt:[[result valueForKey:@"responseCode"] intValue]];
+    if ([responseCode intValue] == EnrollmentChallengeResponseCodeSuccess || [responseCode intValue] == EnrollmentChallengeResponseCodeSuccessUsernameByServer) { 
         [self.delegate enrollmentConfirmationRequestDidFinish:self];
 	} else {
-        // TODO: server should return different error codes
-        NSString *title = NSLocalizedString(@"unkown_error", @"Unknown error title");
-        NSString *message = NSLocalizedString(@"unkown_enroll_error_message", @"Unknown error message");
+        NSString *title = NSLocalizedString(@"enroll_error_title", @"Enrollment error title");
+        NSString *message = nil;
+        NSString *serverMessage = [result valueForKey:@"message"];
+        if (serverMessage) {
+            message = serverMessage;
+        } else if ([responseCode intValue] == EnrollmentChallengeResponseCodeVerificationRequired) { 
+            message = NSLocalizedString(@"enroll_error_verification_needed", @"Account created, verification required error message"); 
+        } else if ([responseCode intValue] == EnrollmentChallengeResponseCodeFailureUsernameTaken) {
+            message = NSLocalizedString(@"enroll_error_username_taken", @"Enrollment username exists");
+        } else if ([responseCode intValue] == EnrollmentChallengeResponseCodeFailure) {
+            message = NSLocalizedString(@"unknown_enroll_error_message", @"Unknown error message");
+        } else {
+            message = NSLocalizedString(@"unknown_enroll_error_message", @"Unknown error message");
+        }
+        
         NSMutableDictionary *details = [NSMutableDictionary dictionary];
         [details setValue:title forKey:NSLocalizedDescriptionKey];
         [details setValue:message forKey:NSLocalizedFailureReasonErrorKey];    
@@ -114,7 +131,6 @@ NSString *const TIQRECRErrorDomain = @"org.tiqr.ecr";
         [self.delegate enrollmentConfirmationRequest:self didFailWithError:error];        
 	}
     
-	[response release];	
     [connection release];
 }
 

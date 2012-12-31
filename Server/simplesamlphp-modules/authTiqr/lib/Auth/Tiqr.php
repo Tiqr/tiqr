@@ -412,7 +412,7 @@ class sspmod_authTiqr_Auth_Tiqr
         }
         $server = self::getServer(); 
         $responseObj = self::getResponse();
-        
+
         $userId = $server->validateEnrollmentSecret($request["key"]);
         if ($userId !== false) {
             $store = self::getUserStorage();
@@ -470,10 +470,9 @@ class sspmod_authTiqr_Auth_Tiqr
     public static function getResponse()
     {
         // check if the client supports json, if not fallback to the plain text
-        if (isset($_SERVER['HTTP_ACCEPT']) && stristr('json', $_SERVER['HTTP_ACCEPT'])) {
+    	if (isset($_SERVER['HTTP_ACCEPT']) && stristr($_SERVER['HTTP_ACCEPT'], 'json')) {
             return Tiqr_Response_Abstract::createResponse();
-        }
-        else {
+        } else {
             return new sspmod_authTiqr_Response_Plain();
         }
     }

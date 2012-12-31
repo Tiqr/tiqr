@@ -60,6 +60,8 @@
 	<string>tiqrauth</string>
 	<key>TIQREnrollmentURLScheme</key>
 	<string>tiqrenroll</string>
+	<key>TIQRLoginProtocolVersion</key>
+	<string>1</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>animals.ttf</string>
