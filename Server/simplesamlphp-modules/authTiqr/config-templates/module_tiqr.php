@@ -26,7 +26,7 @@ $config = array(
     "auth.protocol"       => "protocol compiled into app",
     "enroll.protocol"     => "enroll protocol compiled in to app",
 
-    "ocra.suite"          => "OCRA-1:HOTP-SHA256-8:QH10-S",
+    "ocra.suite"          => "OCRA-1:HOTP-SHA1-6:QH10-S",
 
     "logoUrl"             => "http://path/to/your/idp/logo",
     "infoUrl"             => "http://path/to/your/info/page",
