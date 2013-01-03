@@ -137,26 +137,50 @@ public class AuthenticationConfirmationActivity extends AbstractConfirmationActi
      * @param response authentication response
      */
     private void _parseResponse(JSONObject response) {
-        try {
-            int responseCode = response.getInt("responseCode");
-            if (responseCode == AuthenticationChallengeResponseCodeSuccess) {
+        if (_getChallenge().getIdentityProvider().getVersion() >= 1.0f) {
+
+            // Parse JSON response
+            try {
+                int responseCode = response.getInt("responseCode");
+                if (responseCode == AuthenticationChallengeResponseCodeSuccess) {
+                    String message = getString(R.string.authentication_success_message, _getChallenge().getIdentity().getDisplayName(), _getChallenge().getIdentityProvider().getDisplayName());
+                    _showAlertWithMessage(getString(R.string.authentication_success_title), message, true, false);
+                } else {
+                    boolean retry = false;
+                    String message = getString(R.string.error_auth_unknown_error);
+                    if (responseCode == AuthenticationChallengeResponseCodeInvalidChallenge) {
+                        message = getString(R.string.error_auth_invalid_challenge);
+                    } else if (responseCode == AuthenticationChallengeResponseCodeInvalidRequest) {
+                        message = getString(R.string.error_auth_invalid_request);
+                    } else if (responseCode == AuthenticationChallengeResponseCodeInvalidUsernamePasswordPin) {
+                        message = getString(R.string.error_auth_invalid_userid);
+                    }
+
+                    _showAlertWithMessage(getString(R.string.authentication_failure_title), message, false, retry);
+                }
+            } catch (JSONException e) {
+                _showAlertWithMessage(getString(R.string.authentication_failure_title), getString(R.string.error_auth_invalid_challenge), false, false);
+            }
+        } else {
+            // Parse string response
+            if (response != null && response.equals("OK")) {
                 String message = getString(R.string.authentication_success_message, _getChallenge().getIdentity().getDisplayName(), _getChallenge().getIdentityProvider().getDisplayName());
                 _showAlertWithMessage(getString(R.string.authentication_success_title), message, true, false);
             } else {
-                boolean retry = false;
                 String message = getString(R.string.error_auth_unknown_error);
-                if (responseCode == AuthenticationChallengeResponseCodeInvalidChallenge) {
+                boolean retry = false;
+                if (response.equals("INVALID_CHALLENGE")) {
                     message = getString(R.string.error_auth_invalid_challenge);
-                } else if (responseCode == AuthenticationChallengeResponseCodeInvalidRequest) {
+                } else if (response.equals("INVALID_REQUEST")) {
                     message = getString(R.string.error_auth_invalid_request);
-                } else if (responseCode == AuthenticationChallengeResponseCodeInvalidUsernamePasswordPin) {
+                } else if (response.equals("INVALID_RESPONSE")) {
+                    message = getString(R.string.error_auth_invalid_response);
+                    retry = true;
+                } else if (response.equals("INVALID_USERID")) {
                     message = getString(R.string.error_auth_invalid_userid);
                 }
-
                 _showAlertWithMessage(getString(R.string.authentication_failure_title), message, false, retry);
             }
-        } catch (JSONException e) {
-            _showAlertWithMessage(getString(R.string.authentication_failure_title), getString(R.string.error_auth_invalid_challenge), false, false);
         }
     }
 
@@ -201,7 +225,10 @@ public class AuthenticationConfirmationActivity extends AbstractConfirmationActi
             nameValuePairs.add(new BasicNameValuePair("version", config.getTIQRLoginProtocolVersion()));
 
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, HTTP.UTF_8));
-            httppost.setHeader("ACCEPT", "application/json");
+
+            if (_getChallenge().getIdentityProvider().getVersion() >= 1.0f) {
+                httppost.setHeader("ACCEPT", "application/json");
+            }
 
             // Execute HTTP Post Request
             HttpResponse httpresponse = httpclient.execute(httppost);

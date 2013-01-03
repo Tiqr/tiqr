@@ -177,26 +177,36 @@ public class EnrollmentConfirmationActivity extends AbstractConfirmationActivity
             nameValuePairs.add(new BasicNameValuePair("version", config.getTIQRLoginProtocolVersion()));
 
             httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, HTTP.UTF_8));
-            httpPost.setHeader("ACCEPT", "application/json");
+            if (_getChallenge().getIdentityProvider().getVersion() >= 1.0f) {
+                httpPost.setHeader("ACCEPT", "application/json");
+            }
 
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpResponse httpResponse = httpClient.execute(httpPost);
-            JSONObject response = new JSONObject(EntityUtils.toString(httpResponse.getEntity()));
 
-            int responseCode = 0;
-            try {
-                responseCode = response.getInt("responseCode");
-            } catch (JSONException e) {
-                throw new UserException(getString(R.string.error_enroll_invalid_response));
-            }
+            if (_getChallenge().getIdentityProvider().getVersion() >= 1.0f) {
+                JSONObject response = new JSONObject(EntityUtils.toString(httpResponse.getEntity()));
 
-            if (responseCode != EnrollmentChallengeResponseCodeSuccess) {
+                int responseCode = 0;
                 try {
-                    String message = response.getString("message");
-                    throw new UserException(message);
+                    responseCode = response.getInt("responseCode");
                 } catch (JSONException e) {
-                    // TODO add strings for other exception possibilitys
-                    throw new UserException(getString(R.string.enrollment_failure_message));
+                    throw new UserException(getString(R.string.error_enroll_invalid_response));
+                }
+
+                if (responseCode != EnrollmentChallengeResponseCodeSuccess) {
+                    try {
+                        String message = response.getString("message");
+                        throw new UserException(message);
+                    } catch (JSONException e) {
+                        // TODO add strings for other exception possibilitys
+                        throw new UserException(getString(R.string.enrollment_failure_message));
+                    }
+                }
+            } else {
+                String response = EntityUtils.toString(httpResponse.getEntity());
+                if (!response.equals("OK")) {
+                    throw new UserException(response);
                 }
             }
         } catch (UserException ex) {
