@@ -47,6 +47,7 @@ class Tiqr_Service
     protected $_name = "";
     protected $_logoUrl = "";
     protected $_infoUrl = "";
+    protected $_protocolVersion = 0;
     
     protected $_stateStorage = NULL;
     protected $_deviceStorage = NULL;
@@ -180,6 +181,10 @@ class Tiqr_Service
 
         if (isset($options["infoUrl"])) {
             $this->_infoUrl = $options["infoUrl"];
+        }
+        
+        if (isset($options["protocolVersion"])) {
+            $this->_protocolVersion = $options["protocolVersion"];
         }
         
         if (isset($options["statestorage"])) {
@@ -446,7 +451,8 @@ class Tiqr_Service
                                      "infoUrl"           => $this->_infoUrl,
                                      "authenticationUrl" => $authenticationUrl,
                                      "ocraSuite"         => $this->_ocraSuite,
-                                     "enrollmentUrl"     => $enrollmentUrl
+                                     "enrollmentUrl"     => $enrollmentUrl,
+                                     "version"           => $this->_protocolVersion
                                ),
                           "identity"=>
                                array("identifier" =>$data["userId"],
