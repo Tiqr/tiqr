@@ -24,6 +24,7 @@
 		76A195C0155BCACC00A73D2D /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A195BF155BCACC00A73D2D /* AboutView.xib */; };
 		84AB218B168C4F23008C4A35 /* surfnet-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AB2189168C4F23008C4A35 /* surfnet-logo.png */; };
 		84AB218C168C4F23008C4A35 /* surfnet-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AB218A168C4F23008C4A35 /* surfnet-logo@2x.png */; };
+		84C55D4016959AA300F00DE7 /* Tiqr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84C55D3D16959AA300F00DE7 /* Tiqr.xcdatamodeld */; };
 		922F08441289ABE700A33616 /* HOTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 922F08431289ABE700A33616 /* HOTP.m */; };
 		922F08471289ABFE00A33616 /* OCRAWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 922F08461289ABFE00A33616 /* OCRAWrapper.m */; };
 		924D6C5F13094DEC00F87B96 /* AuthenticationFallbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 924D6C5E13094DEC00F87B96 /* AuthenticationFallbackViewController.m */; };
@@ -50,7 +51,6 @@
 		D028BFA213092834002EA560 /* cowbell.wav in Resources */ = {isa = PBXBuildFile; fileRef = D028BF8613092834002EA560 /* cowbell.wav */; };
 		D028BFB813092834002EA560 /* IdentityListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D028BF9F13092834002EA560 /* IdentityListView.xib */; };
 		D028BFC41309288A002EA560 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = D028BFC01309288A002EA560 /* Entitlements.plist */; };
-		D028BFC61309288A002EA560 /* Tiqr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D028BFC21309288A002EA560 /* Tiqr.xcdatamodeld */; };
 		D0352B6D128980D400184AD5 /* Identity+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0352B6C128980D400184AD5 /* Identity+Utils.m */; };
 		D0352BEC12898A7D00184AD5 /* IdentityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0352BEB12898A7D00184AD5 /* IdentityTableViewCell.m */; };
 		D0524F4812784A050072C1BA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0524F4712784A050072C1BA /* AudioToolbox.framework */; };
@@ -71,7 +71,6 @@
 		D06F86BD1331ED4F00C2C6FF /* Challenge.m in Sources */ = {isa = PBXBuildFile; fileRef = D0627E76127F0899004CF8D4 /* Challenge.m */; };
 		D06F86BE1331ED5500C2C6FF /* Identity+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D0352B6C128980D400184AD5 /* Identity+Utils.m */; };
 		D06F86C41331EE5600C2C6FF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06F86C31331EE5600C2C6FF /* CoreData.framework */; };
-		D06F86C51331F62700C2C6FF /* Tiqr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D028BFC21309288A002EA560 /* Tiqr.xcdatamodeld */; };
 		D076CEFF134F31C000FE762A /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D076CF00134F31C000FE762A /* MainWindow.xib */; };
 		D087B5031484EF45001E3545 /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D087B5001484EF20001E3545 /* libZXingWidget.a */; };
 		D088C7DE130BC60F006DE593 /* SecretStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F51625129A7A6E0013CF3A /* SecretStore.m */; };
@@ -153,6 +152,8 @@
 		76A195BF155BCACC00A73D2D /* AboutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
 		84AB2189168C4F23008C4A35 /* surfnet-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "surfnet-logo.png"; sourceTree = "<group>"; };
 		84AB218A168C4F23008C4A35 /* surfnet-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "surfnet-logo@2x.png"; sourceTree = "<group>"; };
+		84C55D3E16959AA300F00DE7 /* Tiqr 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Tiqr 2.xcdatamodel"; sourceTree = "<group>"; };
+		84C55D3F16959AA300F00DE7 /* Tiqr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tiqr.xcdatamodel; sourceTree = "<group>"; };
 		922F08421289ABE700A33616 /* HOTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HOTP.h; sourceTree = "<group>"; };
 		922F08431289ABE700A33616 /* HOTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOTP.m; sourceTree = "<group>"; };
 		922F08451289ABFE00A33616 /* OCRAWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCRAWrapper.h; sourceTree = "<group>"; };
@@ -197,7 +198,6 @@
 		D028BF9F13092834002EA560 /* IdentityListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdentityListView.xib; sourceTree = "<group>"; };
 		D028BFC01309288A002EA560 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		D028BFC11309288A002EA560 /* Tiqr-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Tiqr-Info.plist"; sourceTree = "<group>"; };
-		D028BFC21309288A002EA560 /* Tiqr.xcdatamodeld */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodeld; path = Tiqr.xcdatamodeld; sourceTree = "<group>"; };
 		D0352B6B128980D400184AD5 /* Identity+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Identity+Utils.h"; sourceTree = "<group>"; };
 		D0352B6C128980D400184AD5 /* Identity+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Identity+Utils.m"; sourceTree = "<group>"; };
 		D0352BEA12898A7D00184AD5 /* IdentityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentityTableViewCell.h; sourceTree = "<group>"; };
@@ -538,8 +538,8 @@
 			children = (
 				D028BFC01309288A002EA560 /* Entitlements.plist */,
 				D025994613095F9B00F1DF9A /* Localizable.strings */,
+				84C55D3D16959AA300F00DE7 /* Tiqr.xcdatamodeld */,
 				D028BFC11309288A002EA560 /* Tiqr-Info.plist */,
-				D028BFC21309288A002EA560 /* Tiqr.xcdatamodeld */,
 				D0FF34E91309462C004096E1 /* Settings.bundle */,
 			);
 			path = General;
@@ -1008,7 +1008,6 @@
 				D0F51626129A7A6E0013CF3A /* SecretStore.m in Sources */,
 				D0914436129BDC2E00C796AA /* NotificationRegistration.m in Sources */,
 				D0914439129BF47300C796AA /* NSData+Hex.m in Sources */,
-				D028BFC61309288A002EA560 /* Tiqr.xcdatamodeld in Sources */,
 				924D6C5F13094DEC00F87B96 /* AuthenticationFallbackViewController.m in Sources */,
 				924D6E3D130958A400F87B96 /* Reachability.m in Sources */,
 				92B92DE6132E1DD0004F390D /* OCRA.m in Sources */,
@@ -1031,6 +1030,7 @@
 				D0BE4B0E134B28D10045AF62 /* IdentityProvider.m in Sources */,
 				D0EBBA83134B670300CAAB58 /* ErrorViewController.m in Sources */,
 				D0A6F5CE1353356A000F9AE5 /* MBProgressHUD.m in Sources */,
+				84C55D4016959AA300F00DE7 /* Tiqr.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1048,7 +1048,6 @@
 				D06F86BC1331ED3500C2C6FF /* EnrollmentChallenge.m in Sources */,
 				D06F86BD1331ED4F00C2C6FF /* Challenge.m in Sources */,
 				D06F86BE1331ED5500C2C6FF /* Identity+Utils.m in Sources */,
-				D06F86C51331F62700C2C6FF /* Tiqr.xcdatamodeld in Sources */,
 				D09D79A813334F8700F3F0F6 /* EnrollmentChallengeTests.m in Sources */,
 				D016F8A71338C85300B997D9 /* JSONKit.m in Sources */,
 			);
@@ -1308,6 +1307,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		84C55D3D16959AA300F00DE7 /* Tiqr.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				84C55D3E16959AA300F00DE7 /* Tiqr 2.xcdatamodel */,
+				84C55D3F16959AA300F00DE7 /* Tiqr.xcdatamodel */,
+			);
+			currentVersion = 84C55D3E16959AA300F00DE7 /* Tiqr 2.xcdatamodel */;
+			path = Tiqr.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
 }
