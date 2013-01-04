@@ -105,9 +105,13 @@ public class EnrollmentChallenge extends Challenge {
             ip.setDisplayName(metadata.getString("displayName"));
             ip.setAuthenticationURL(metadata.getString("authenticationUrl"));
             ip.setInfoURL(metadata.getString("infoUrl"));
-            try {
-                ip.setVersion(Float.parseFloat(metadata.getString("version")));
-            } catch (NumberFormatException e) {
+            if (metadata.has("version")) {
+                try {
+                    ip.setVersion(Float.parseFloat(metadata.getString("version")));
+                } catch (NumberFormatException e) {
+                    ip.setVersion(0.0f);
+                }
+            } else {
                 ip.setVersion(0.0f);
             }
             if (metadata.has("ocraSuite")) {
