@@ -83,6 +83,7 @@
         identityProvider.infoUrl = self.challenge.identityProviderInfoUrl;
         identityProvider.ocraSuite = self.challenge.identityProviderOcraSuite;
 		identityProvider.logo = self.challenge.identityProviderLogo;
+        identityProvider.tiqrProtocolVersion = self.challenge.identityProviderTiqrProtocolVersion;
 	}
 	
 	Identity *identity = self.challenge.identity;
