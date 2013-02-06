@@ -71,7 +71,10 @@ NSString *const TIQRECRErrorDomain = @"org.tiqr.ecr";
 	[request setTimeoutInterval:5.0];
 	[request setHTTPMethod:@"POST"];
 	[request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    if (self.challenge.identityProviderTiqrProtocolVersion != nil && [self.challenge.identityProviderTiqrProtocolVersion intValue] >= 1) {
+        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    }
 
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	self.data = [NSMutableData data];
@@ -101,35 +104,58 @@ NSString *const TIQRECRErrorDomain = @"org.tiqr.ecr";
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSArray *result = [[JSONDecoder decoder] objectWithData:self.data];
-    self.data = nil;
-    
-    NSNumber *responseCode = [NSNumber numberWithInt:[[result valueForKey:@"responseCode"] intValue]];
-    if ([responseCode intValue] == EnrollmentChallengeResponseCodeSuccess || [responseCode intValue] == EnrollmentChallengeResponseCodeSuccessUsernameByServer) { 
-        [self.delegate enrollmentConfirmationRequestDidFinish:self];
-	} else {
-        NSString *title = NSLocalizedString(@"enroll_error_title", @"Enrollment error title");
-        NSString *message = nil;
-        NSString *serverMessage = [result valueForKey:@"message"];
-        if (serverMessage) {
-            message = serverMessage;
-        } else if ([responseCode intValue] == EnrollmentChallengeResponseCodeVerificationRequired) { 
-            message = NSLocalizedString(@"enroll_error_verification_needed", @"Account created, verification required error message"); 
-        } else if ([responseCode intValue] == EnrollmentChallengeResponseCodeFailureUsernameTaken) {
-            message = NSLocalizedString(@"enroll_error_username_taken", @"Enrollment username exists");
-        } else if ([responseCode intValue] == EnrollmentChallengeResponseCodeFailure) {
-            message = NSLocalizedString(@"unknown_enroll_error_message", @"Unknown error message");
+    if (self.challenge.identityProviderTiqrProtocolVersion != nil && [self.challenge.identityProviderTiqrProtocolVersion intValue] >= 1) {
+        // Parse the JSON result
+        NSArray *result = [[JSONDecoder decoder] objectWithData:self.data];
+        self.data = nil;
+        
+        NSNumber *responseCode = [NSNumber numberWithInt:[[result valueForKey:@"responseCode"] intValue]];
+        if ([responseCode intValue] == EnrollmentChallengeResponseCodeSuccess || [responseCode intValue] == EnrollmentChallengeResponseCodeSuccessUsernameByServer) {
+            [self.delegate enrollmentConfirmationRequestDidFinish:self];
         } else {
-            message = NSLocalizedString(@"unknown_enroll_error_message", @"Unknown error message");
+            NSString *title = NSLocalizedString(@"enroll_error_title", @"Enrollment error title");
+            NSString *message = nil;
+            NSString *serverMessage = [result valueForKey:@"message"];
+            if (serverMessage) {
+                message = serverMessage;
+            } else if ([responseCode intValue] == EnrollmentChallengeResponseCodeVerificationRequired) {
+                message = NSLocalizedString(@"enroll_error_verification_needed", @"Account created, verification required error message");
+            } else if ([responseCode intValue] == EnrollmentChallengeResponseCodeFailureUsernameTaken) {
+                message = NSLocalizedString(@"enroll_error_username_taken", @"Enrollment username exists");
+            } else if ([responseCode intValue] == EnrollmentChallengeResponseCodeFailure) {
+                message = NSLocalizedString(@"unknown_enroll_error_message", @"Unknown error message");
+            } else {
+                message = NSLocalizedString(@"unknown_enroll_error_message", @"Unknown error message");
+            }
+            
+            NSMutableDictionary *details = [NSMutableDictionary dictionary];
+            [details setValue:title forKey:NSLocalizedDescriptionKey];
+            [details setValue:message forKey:NSLocalizedFailureReasonErrorKey];
+            
+            NSError *error = [NSError errorWithDomain:TIQRECRErrorDomain code:TIQRECRUnknownError userInfo:details];
+            [self.delegate enrollmentConfirmationRequest:self didFailWithError:error];
+        }
+    } else {
+        // Parse string result
+        NSString *response = [[NSString alloc] initWithBytes:[self.data bytes] length:[self.data length] encoding:NSUTF8StringEncoding];
+        self.data = nil;
+        if ([response isEqualToString:@"OK"]) {
+            [self.delegate enrollmentConfirmationRequestDidFinish:self];
+        } else {
+            // TODO: server should return different error codes
+            NSString *title = NSLocalizedString(@"unknown_error", @"Unknown error title");
+            NSString *message = NSLocalizedString(@"unknown_enroll_error_message", @"Unknown error message");
+            
+            NSMutableDictionary *details = [NSMutableDictionary dictionary];
+            [details setValue:title forKey:NSLocalizedDescriptionKey];
+            [details setValue:message forKey:NSLocalizedFailureReasonErrorKey];
+            
+            NSError *error = [NSError errorWithDomain:TIQRECRErrorDomain code:TIQRECRUnknownError userInfo:details];
+            [self.delegate enrollmentConfirmationRequest:self didFailWithError:error];
         }
         
-        NSMutableDictionary *details = [NSMutableDictionary dictionary];
-        [details setValue:title forKey:NSLocalizedDescriptionKey];
-        [details setValue:message forKey:NSLocalizedFailureReasonErrorKey];    
-        
-        NSError *error = [NSError errorWithDomain:TIQRECRErrorDomain code:TIQRECRUnknownError userInfo:details];        
-        [self.delegate enrollmentConfirmationRequest:self didFailWithError:error];        
-	}
+        [response release];
+    }
     
     [connection release];
 }

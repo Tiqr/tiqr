@@ -38,6 +38,7 @@
 @property (nonatomic, copy) NSString *identityProviderInfoUrl;
 @property (nonatomic, copy) NSString *identityProviderOcraSuite;
 @property (nonatomic, copy) NSData *identityProviderLogo;
+@property (nonatomic, copy) NSNumber *identityProviderTiqrProtocolVersion;
 
 @property (nonatomic, copy) NSString *identityIdentifier;
 @property (nonatomic, copy) NSString *identityDisplayName;

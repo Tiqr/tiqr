@@ -90,7 +90,11 @@ public class AuthenticationPincodeActivity extends AbstractPincodeActivity {
         @Override
         public void handleMessage(Message msg) {
             try {
-                _parseResponse(new JSONObject(EntityUtils.toString(((HttpResponse)msg.obj).getEntity())));
+                if (_getChallenge().getIdentityProvider().getVersion() >= 1.0f) {
+                    _parseResponse(new JSONObject(EntityUtils.toString(((HttpResponse)msg.obj).getEntity())));
+                } else {
+                    _parseResponse(EntityUtils.toString(((HttpResponse)msg.obj).getEntity()));
+                }
                 progressDialog.cancel();
 
             } catch (JSONException e) {
@@ -177,7 +181,9 @@ public class AuthenticationPincodeActivity extends AbstractPincodeActivity {
             Config config = new Config(this);
             nameValuePairs.add(new BasicNameValuePair("version", config.getTIQRLoginProtocolVersion()));
 
-            httppost.addHeader("ACCEPT", "application/json");
+            if (_getChallenge().getIdentityProvider().getVersion() >= 1.0f) {
+                httppost.addHeader("ACCEPT", "application/json");
+            }
 
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, HTTP.UTF_8));
 
@@ -224,7 +230,67 @@ public class AuthenticationPincodeActivity extends AbstractPincodeActivity {
     }
 
     /**
-     * Parse authentication response from server.
+     * Parse authentication response form server. (plain string)
+     * 
+     * @param response authentication response
+     */
+    private void _parseResponse(String response) {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(pincode.getWindowToken(), 0);
+
+        int code = TIQRACRUnknownError;
+        String title = getString(R.string.unknown_error);
+        String message = getString(R.string.error_auth_unknown_error);
+        int attemptsLeft = -1;
+
+        if (response != null && response.equals("OK")) {
+            message = getString(R.string.authentication_success_message, _getChallenge().getIdentity().getDisplayName(), _getChallenge().getIdentityProvider().getDisplayName());
+            _showAuthenticationSummary(message);
+        } else {
+            if (response.equals("ACCOUNT_BLOCKED")) {
+                code = TIQRACRAccountBlockedError;
+                title = getString(R.string.error_auth_account_blocked_title);
+                message = getString(R.string.error_auth_account_blocked_message);
+            } else if (response.equals("INVALID_CHALLENGE")) {
+                code = TIQRACRInvalidChallengeError;
+                title = getString(R.string.error_auth_invalid_challenge_title);
+                message = getString(R.string.error_auth_invalid_challenge_message);
+            } else if (response.equals("INVALID_REQUEST")) {
+                code = TIQRACRInvalidRequestError;
+                title = getString(R.string.error_auth_invalid_request_title);
+                message = getString(R.string.error_auth_invalid_request_message);
+            } else if (response.substring(0, 17).equals("INVALID_RESPONSE:")) {
+                attemptsLeft = Integer.parseInt(response.substring(17, 18));
+                code = TIQRACRInvalidResponseError;
+                if (attemptsLeft > 1) {
+                    title = getString(R.string.error_auth_wrong_pin);
+                    message = String.format(getString(R.string.error_auth_x_attempts_left), attemptsLeft);
+                } else if (attemptsLeft == 1) {
+                    title = getString(R.string.error_auth_wrong_pin);
+                    message = getString(R.string.error_auth_one_attempt_left);
+                } else {
+                    title = getString(R.string.error_auth_account_blocked_title);
+                    message = getString(R.string.error_auth_account_blocked_message);
+                }
+            } else if (response.equals("INVALID_USERID")) {
+                code = TIQRACRInvalidUserError;
+                title = getString(R.string.error_auth_invalid_account);
+                message = getString(R.string.error_auth_invalid_account_message);
+            }
+
+            Map<String, Object> details = new HashMap<String, Object>();
+            details.put("title", title);
+            details.put("message", message);
+            if (attemptsLeft != -1) {
+                details.put("attemptsLeft", attemptsLeft);
+            }
+
+            _authenticationFailed(code, details);
+        }
+    }
+
+    /**
+     * Parse authentication response from server. (json)
      * 
      * @param response authentication response
      */
@@ -289,6 +355,7 @@ public class AuthenticationPincodeActivity extends AbstractPincodeActivity {
             details.put("message", message);
             _authenticationFailed(code, details);
         }
+
     }
 
     /**
