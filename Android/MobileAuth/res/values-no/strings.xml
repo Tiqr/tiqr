@@ -14,7 +14,7 @@
   <string name="authentication_fallback_button">OK</string>
   <string name="authentication_failure_title">Mislykket pålogging</string>
   <string name="authentication_success_title">Vellykket pålogging</string>
-  <string name="authentication_success_message">Du er pålogget som %s på %s</string>
+  <string name="authentication_success_message" formatted="false">Du er pålogget som %s på %s</string>
   <string name="account_ready">Din konto er klar til bruk</string>
   <string name="account_activated">Konto er aktivert!</string>
   <string name="enrollment_confirm_button">OK</string>
@@ -106,13 +106,13 @@
   <string name="enrollment_confirmation_title">Bekreft konto aktivering</string>
   <string name="enrollment_confirmation_description">Ønsker du å aktivere ⏎ følgende konto?</string>
   <string name="enrollment_success_title">Vellykket påmelding</string>
-  <string name="enrollment_success_message">Du er påmeldt som %s i %s</string>
+  <string name="enrollment_success_message" formatted="false">Du er påmeldt som %s i %s</string>
   <string name="enrollment_failure_title">Mislykket påmelding</string>
   <string name="error_enroll_invalid_qr_code">Ugyldig QR kode.</string>
   <string name="error_enroll_connect_error">Ingen forbindelse til påloggingstjener. Vennligst kontakt web administrator.</string>
   <string name="error_enroll_invalid_response">Ugyldig påloggingstjener respons.  Vennligst kontakt web administrator.</string>
   <string name="error_enroll_logo_error">Kan ikke laste ned service logo.  Vennligst kontakt web administrator.</string>
-  <string name="error_enroll_already_enrolled">Du er allerede påmeldt med identitet %s for tjenesten %s.</string>
+  <string name="error_enroll_already_enrolled" formatted="false">Du er allerede påmeldt med identitet %s for tjenesten %s.</string>
   <string name="error_enroll_failed_to_store_identity_provider">Kunne ikke lagre identitetstilbyder. Vennligst kontakt brukerstøtte.</string>
   <string name="error_enroll_failed_to_store_identity">Kunne ikke lagre identitet. Vennligst kontakt brukerstøtte.</string>
   <string name="error_enroll_failed_to_generate_secret">Kunne ikke generere hemmelighet. Vennligst kontakt brukerstøtte</string>
