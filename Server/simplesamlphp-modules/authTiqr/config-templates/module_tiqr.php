@@ -31,8 +31,6 @@ $config = array(
     "logoUrl"             => "http://path/to/your/idp/logo",
     "infoUrl"             => "http://path/to/your/info/page",
 
-	"protocolVersion"	  => 1,
-		
     "tiqr.path"           => "../../library/tiqr",
 
     "phpqrcode.path"      => "../../library/phpqrcode",

@@ -20,7 +20,6 @@
 /** 
  * @internal includes of utility classes
  */
-require_once("Tiqr/OCRAWrapper.php");
 require_once("Tiqr/StateStorage.php");
 require_once("Tiqr/DeviceStorage.php");
 require_once("Tiqr/Random.php");
@@ -84,12 +83,7 @@ class Tiqr_Service
      * The default OCRA Suite to use for authentication
      */
     const DEFAULT_OCRA_SUITE = "OCRA-1:HOTP-SHA1-6:QH10-S";
-    
-    /**
-     * The length of generated session keys
-     */
-    const SESSIONKEY_SIZE = 16;
-    
+      
     /**
      * Construct an instance of the Tiqr_Service. 
      * The server is configured using an array of options. All options have
@@ -144,8 +138,9 @@ class Tiqr_Service
      *                 supported types and their parameters.
      *  
      * @param array $options
+     * @param int $version The protocol version to use (defaults to the latest)
      */
-    public function __construct($options=array())
+    public function __construct($options=array(), $version = 2)
     {
         $this->_options = $options;
         
@@ -183,10 +178,6 @@ class Tiqr_Service
             $this->_infoUrl = $options["infoUrl"];
         }
         
-        if (isset($options["protocolVersion"])) {
-            $this->_protocolVersion = $options["protocolVersion"];
-        }
-        
         if (isset($options["statestorage"])) {
             $type = $options["statestorage"]["type"];
             $storageOptions = $options["statestorage"];
@@ -207,7 +198,13 @@ class Tiqr_Service
         
         $this->_deviceStorage = Tiqr_DeviceStorage::getStorage($type, $storageOptions);
         
-        $this->_ocraWrapper = new Tiqr_OCRAWrapper($this->_ocraSuite);
+        if ($this->_protocolVersion < 2) {
+            require_once("Tiqr/OATH/OCRAWrapper_v1.php");
+            $this->_ocraWrapper = new Tiqr_OCRAWrapper_v1($this->_ocraSuite);
+        } else {
+            require_once("Tiqr/OCRAWrapper.php");
+            $this->_ocraWrapper = new Tiqr_OCRAWrapper($this->_ocraSuite);
+        }
     }
     
     /**
@@ -451,8 +448,7 @@ class Tiqr_Service
                                      "infoUrl"           => $this->_infoUrl,
                                      "authenticationUrl" => $authenticationUrl,
                                      "ocraSuite"         => $this->_ocraSuite,
-                                     "enrollmentUrl"     => $enrollmentUrl,
-                                     "version"           => $this->_protocolVersion
+                                     "enrollmentUrl"     => $enrollmentUrl
                                ),
                           "identity"=>
                                array("identifier" =>$data["userId"],

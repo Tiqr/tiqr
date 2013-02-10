@@ -442,13 +442,26 @@ class sspmod_authTiqr_Auth_Tiqr
         return $responseObj->getEnrollmentErrorResponse();
     } 
     
+    public static function getProtocolVersion() 
+    {
+        if (isset($_SERVER["HTTP_X_TIQR_PROTOCOL_VERSION"])) {
+            // Client has sent the X-TIQR-Protocol-Version header
+            $protocolVersion = $_SERVER["HTTP_X_TIQR_PROTOCOL_VERSION"];
+        } else {
+            // Only the first client didn't have this header
+            $protocolVersion = 1;
+        }
+        
+        return $protocolVersion;
+    }
+    
     /**
      * @return Tiqr_Service
      */
     public static function getServer()
     {
         $config = SimpleSAML_Configuration::getConfig('module_tiqr.php')->toArray();
-        $server = new Tiqr_Service($config);
+        $server = new Tiqr_Service($config, self::getProtocolVersion());
 
         return $server;
     }
@@ -470,7 +483,7 @@ class sspmod_authTiqr_Auth_Tiqr
     public static function getResponse()
     {
         // check if the client supports json, if not fallback to the plain text
-    	if (isset($_SERVER['HTTP_ACCEPT']) && stristr($_SERVER['HTTP_ACCEPT'], 'json')) {
+    	if (self::getProtocolVersion() > 1) {
             return Tiqr_Response_Abstract::createResponse();
         } else {
             return new sspmod_authTiqr_Response_Plain();
