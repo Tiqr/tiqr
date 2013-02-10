@@ -1,5 +1,11 @@
 package org.tiqr.oath;
 
+/** 
+ * This code is disabled as testng.org is not part of Tiqr. 
+ * If you want to use testng for testing, you can uncomment this file
+ */
+
+/*
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -56,4 +62,4 @@ public class OCRATest {
                 { ocra5, key64, null, "33333333", null, null, timestamp, "24218844" }, { ocra5, key64, null, "44444444", null, null, timestamp, "36209546" }, };
     }
 
-}
+} */
