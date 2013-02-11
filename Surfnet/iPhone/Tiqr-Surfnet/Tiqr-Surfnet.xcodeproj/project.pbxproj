@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9264226116C951AD00DE5202 /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9264226016C951AD00DE5202 /* libZXingWidget.a */; };
+		9264226316C9552A00DE5202 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264226216C9552A00DE5202 /* Default-568h@2x.png */; };
 		92C0052913ED27B50078435E /* instructions.html in Resources */ = {isa = PBXBuildFile; fileRef = D0B5B7191368024C0034C0B7 /* instructions.html */; };
 		92C0052B13ED27C20078435E /* welcome.html in Resources */ = {isa = PBXBuildFile; fileRef = D0B5B71B1368024C0034C0B7 /* welcome.html */; };
 		92C0052C13ED27CC0078435E /* blocked.html in Resources */ = {isa = PBXBuildFile; fileRef = D0B5B7171368024C0034C0B7 /* blocked.html */; };
@@ -111,6 +112,7 @@
 
 /* Begin PBXFileReference section */
 		9264226016C951AD00DE5202 /* libZXingWidget.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libZXingWidget.a; path = "../Tiqr/ZXing/iphone/ZXingWidget/build/Release-iphoneos/libZXingWidget.a"; sourceTree = "<group>"; };
+		9264226216C9552A00DE5202 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D06976AD1508BE17008D7183 /* Tiqr 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Tiqr 2.xcdatamodel"; sourceTree = "<group>"; };
 		D06976AE1508BE17008D7183 /* Tiqr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tiqr.xcdatamodel; sourceTree = "<group>"; };
 		D076CF03134F31F900FE762A /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 		D0DF04DB134F261B00893290 = {
 			isa = PBXGroup;
 			children = (
+				9264226216C9552A00DE5202 /* Default-568h@2x.png */,
 				9264226016C951AD00DE5202 /* libZXingWidget.a */,
 				D0ECAF39134F290800374202 /* Tiqr */,
 				D0DF050F134F274F00893290 /* Surfnet */,
@@ -704,6 +707,7 @@
 				92C0052913ED27B50078435E /* instructions.html in Resources */,
 				92C0052B13ED27C20078435E /* welcome.html in Resources */,
 				92C0052C13ED27CC0078435E /* blocked.html in Resources */,
+				9264226316C9552A00DE5202 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
