@@ -118,6 +118,11 @@ enum {
 @property (nonatomic, copy, readonly) NSData *identityProviderLogo;
 
 /**
+ *  Tiqr Protocol version for Identity Provider
+ */
+@property (nonatomic, copy, readonly) NSNumber *identityProviderTiqrProtocolVersion;
+
+/**
  * The existing identity provider the matches the provider in the enrollment
  * challenge. Only set if the provider is already known.
  */

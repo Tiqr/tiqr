@@ -14,7 +14,7 @@
   <string name="authentication_fallback_button">OK</string>
   <string name="authentication_failure_title">Ynloch mislearre</string>
   <string name="authentication_success_title">Ynloch slagge</string>
-  <string name="authentication_success_message">Jo binne suksefol ynlocht as %s foar %s</string>
+  <string name="authentication_success_message" formatted="false">Jo binne suksefol ynlocht as %s foar %s</string>
   <string name="account_ready">Jo akkount is klear foar gebrûk</string>
   <string name="account_activated">Jo akkount is aktiveart!</string>
   <string name="enrollment_confirm_button">OK</string>
@@ -106,13 +106,13 @@
   <string name="enrollment_confirmation_title">Binne jo der wis fan dat jo josels registrearje wolle?</string>
   <string name="enrollment_confirmation_description">Jo wurde registreart as:</string>
   <string name="enrollment_success_title">Registraasje slagge</string>
-  <string name="enrollment_success_message">Jo binne registreart as %s foar %s</string>
+  <string name="enrollment_success_message" formatted="false">Jo binne registreart as %s foar %s</string>
   <string name="enrollment_failure_title">Registraasje mislearre</string>
   <string name="error_enroll_invalid_qr_code">Ûnjildiche QR registraasje koade.</string>
   <string name="error_enroll_connect_error">Kin gjin ferbining meitsje mei de registraasjeserver. Nim kontakt op mei de ynternetside behearder.</string>
   <string name="error_enroll_invalid_response">Ûnjildich antwurd fan de registraasjeserver. Nim kontakt op mei de ynternetside behearder.</string>
   <string name="error_enroll_logo_error">Kin it byldmerk fan de tsjinst net ophelje. Nim kontakt op mei de ynternetside behearder.</string>
-  <string name="error_enroll_already_enrolled">Jo hawwe de identiteit %s al ris registreart foar de tsjinst %s.</string>
+  <string name="error_enroll_already_enrolled" formatted="false">Jo hawwe de identiteit %s al ris registreart foar de tsjinst %s.</string>
   <string name="error_enroll_failed_to_store_identity_provider">Opslaan tsjinst mislearre. Nim kontakt op mei support.</string>
   <string name="error_enroll_failed_to_store_identity">Opslaan identeit mislearre. Nim kontakt op mei support.</string>
   <string name="error_enroll_failed_to_generate_secret">Oanmeitsje geheim mislearre. Nim kontakt op mei support.</string>

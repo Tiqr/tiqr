@@ -13,7 +13,9 @@ import org.tiqr.authenticator.general.AbstractActivityGroup;
 import org.tiqr.authenticator.general.ErrorActivity;
 import org.tiqr.authenticator.general.ErrorView;
 import org.tiqr.authenticator.security.Encryption;
+import org.tiqr.authenticator.security.OCRAProtocol;
 import org.tiqr.authenticator.security.OCRAWrapper;
+import org.tiqr.authenticator.security.OCRAWrapper_v1;
 import org.tiqr.authenticator.security.Secret;
 
 import android.app.Activity;
@@ -81,7 +83,14 @@ public class AuthenticationFallbackActivity extends Activity
 			Secret secret = Secret.secretForIdentity(challenge.getIdentity(), this);
 			SecretKey secretKey = secret.getSecret(sessionKey);
 
-            String otp = OCRAWrapper.generateOCRA(
+			OCRAProtocol ocra;
+			if (challenge.getProtocolVersion().equals("1")) {
+			    ocra = new OCRAWrapper_v1();
+			} else {
+			    ocra = new OCRAWrapper();
+			}
+			
+            String otp = ocra.generateOCRA(
                     challenge.getIdentityProvider().getOCRASuite(), 
                     secretKey.getEncoded(), 
                     challenge.getChallenge(), 

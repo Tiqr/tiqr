@@ -76,7 +76,7 @@ class sspmod_authTiqr_Auth_Process_Tiqr extends SimpleSAML_Auth_ProcessingFilter
         
         $sessionId = $session->getSessionId();
               
-        $server = sspmod_authTiqr_Auth_Tiqr::getServer();
+        $server = sspmod_authTiqr_Auth_Tiqr::getServer(false);
         $user = $server->getAuthenticatedUser($sessionId);
                                 
         if (!empty($user)) {
@@ -104,7 +104,7 @@ class sspmod_authTiqr_Auth_Process_Tiqr extends SimpleSAML_Auth_ProcessingFilter
     
     public static function logout()
     {
-        $server =  sspmod_authTiqr_Auth_Tiqr::getServer();
+        $server =  sspmod_authTiqr_Auth_Tiqr::getServer(false);
         $session = SimpleSAML_Session::getInstance();
         $sessionId = $session->getSessionId();
         $server->logout($sessionId);

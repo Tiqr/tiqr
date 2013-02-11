@@ -14,7 +14,7 @@
   <string name="authentication_fallback_button">U redu</string>
   <string name="authentication_failure_title">Neuspešna prijava</string>
   <string name="authentication_success_title">Uspešna prijava</string>
-  <string name="authentication_success_message">Upešno ste prijavljeni kao %s u %s</string>
+  <string name="authentication_success_message" formatted="false">Upešno ste prijavljeni kao %s u %s</string>
   <string name="account_ready">Vaš korisnički nalog je spreman za upotrebu</string>
   <string name="account_activated">Korisnički nalog je aktiviran!</string>
   <string name="enrollment_confirm_button">U redu</string>
@@ -106,13 +106,13 @@
   <string name="enrollment_confirmation_title">Potvrdite aktivaciju korisničkog naloga</string>
   <string name="enrollment_confirmation_description">Da li želite da aktivirate\nsledeći korisnički nalog?</string>
   <string name="enrollment_success_title">Uspešan upis</string>
-  <string name="enrollment_success_message">Uspešno ste upisani kao %s u %s</string>
+  <string name="enrollment_success_message" formatted="false">Uspešno ste upisani kao %s u %s</string>
   <string name="enrollment_failure_title">Neuspešan upis</string>
   <string name="error_enroll_invalid_qr_code">Pogrešan QR kod za upis.</string>
   <string name="error_enroll_connect_error">Nije moguće uspostaviti vezu sa serverom za upis. Kontaktirajte administratora web stranice.</string>
   <string name="error_enroll_invalid_response">Pogrešan odgovor za upis je primljen od servera. Kontaktirajte administratora web stranice.</string>
   <string name="error_enroll_logo_error">Nije moguće preuzeti logotip servisa. Kontaktirajte administratora web stranice.</string>
-  <string name="error_enroll_already_enrolled">Već ste upisani sa identitetom %s za uslugu %s.</string>
+  <string name="error_enroll_already_enrolled" formatted="false">Već ste upisani sa identitetom %s za uslugu %s.</string>
   <string name="error_enroll_failed_to_store_identity_provider">Nije moguće pohraniti davatelja identiteta. Kontaktirajte podršku.</string>
   <string name="error_enroll_failed_to_store_identity">Nije moguće sačuvati identitet. Kontaktirajte podršku.</string>
   <string name="error_enroll_failed_to_generate_secret">Generisanje sigurnosne tajne za identitet nije uspelo. Kontaktirajte podršku.</string>

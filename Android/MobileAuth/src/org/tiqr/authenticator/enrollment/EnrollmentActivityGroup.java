@@ -20,9 +20,10 @@ public class EnrollmentActivityGroup extends AbstractActivityGroup {
         super.onCreate(savedInstanceState);
         
         String rawChallenge = getIntent().getStringExtra("org.tiqr.rawChallenge");
+        String protocolVersion = getIntent().getStringExtra("org.tiqr.protocolVersion");
         
         try {
-        	onChallenge(rawChallenge);
+        	onChallenge(rawChallenge, protocolVersion);
         } catch (UserException ex) {
         	
         	// @todo we need to validate the challenge BEFORE we leave the scanner; this is too late so it looks weird.
@@ -57,9 +58,9 @@ public class EnrollmentActivityGroup extends AbstractActivityGroup {
      * @param rawChallenge
      * @throws UserException 
      */
-    public void onChallenge(String rawChallenge) throws UserException
+    public void onChallenge(String rawChallenge, String protocolVersion) throws UserException
     {
-    	EnrollmentChallenge challenge = new EnrollmentChallenge(rawChallenge, this);
+    	EnrollmentChallenge challenge = new EnrollmentChallenge(rawChallenge, this, protocolVersion);
         Intent intent = new Intent().setClass(this, EnrollmentConfirmationActivity.class);
         setChallenge(challenge);
         startChildActivity("EnrollmentConfirmationActivity", intent);  
