@@ -86,7 +86,7 @@ class sspmod_authTiqr_Auth_Tiqr
     {
         self::_validateAuthState($authStateId);
 
-        $server = self::getServer();
+        $server = self::getServer(false);
 
         $session = SimpleSAML_Session::getInstance();
         $sessionId = $session->getSessionId();
@@ -108,7 +108,7 @@ class sspmod_authTiqr_Auth_Tiqr
         if ($authStateId!=NULL) {
             self::_validateAuthState($authStateId);
         }
-        $server = self::getServer(); 
+        $server = self::getServer(false); 
 
         $session = SimpleSAML_Session::getInstance();
         $sessionId = $session->getSessionId(); 
@@ -126,7 +126,7 @@ class sspmod_authTiqr_Auth_Tiqr
     {
         $state = self::_validateAuthState($authStateId);
         
-        $server = self::getServer();
+        $server = self::getServer(false);
 
         $session = SimpleSAML_Session::getInstance();
         $sessionId = $session->getSessionId();
@@ -161,14 +161,14 @@ class sspmod_authTiqr_Auth_Tiqr
     
     public static function getAuthenticateUrl($sessionKey)
     {
-        $server = self::getServer();
+        $server = self::getServer(false);
        
         return $server->generateAuthURL($sessionKey);
     }
     
     public static function sendAuthNotification($authStateId)
     {
-        $server = self::getServer();
+        $server = self::getServer(false);
                 
         $state = self::_validateAuthState($authStateId);
                 
@@ -210,7 +210,7 @@ class sspmod_authTiqr_Auth_Tiqr
     
     public static function generateAuthQR($authStateId)
     {
-        $server = self::getServer();
+        $server = self::getServer(false);
                 
         $state = self::_validateAuthState($authStateId);
                          
@@ -219,7 +219,7 @@ class sspmod_authTiqr_Auth_Tiqr
 
     public static function resetEnrollmentSession()
     {
-        $server = self::getServer();
+        $server = self::getServer(false);
         $session = SimpleSAML_Session::getInstance();
         $sessionId = $session->getSessionId();
       
@@ -248,7 +248,7 @@ class sspmod_authTiqr_Auth_Tiqr
     
     public static function startAuthenticationSession($userId="", $state)
     {
-        $server = self::getServer();
+        $server = self::getServer(false);
         $session = SimpleSAML_Session::getInstance();
         $sessionId = $session->getSessionId();
         $spIdentifier = self::_getSpIdentifier($state);
@@ -258,7 +258,7 @@ class sspmod_authTiqr_Auth_Tiqr
     
     public static function generateEnrollmentQR()
     {
-        $server = self::getServer();
+        $server = self::getServer(false);
         
         $session = SimpleSAML_Session::getInstance();
         
@@ -305,7 +305,7 @@ class sspmod_authTiqr_Auth_Tiqr
         $responseObj = self::getResponse();
         
         try {
-            $server = self::getServer();
+            $server = self::getServer(true);
                 
             $store  = self::getUserStorage();
             $config = SimpleSAML_Configuration::getConfig('module_tiqr.php')->toArray();
@@ -390,7 +390,7 @@ class sspmod_authTiqr_Auth_Tiqr
 
         $authenticationUrl = SimpleSAML_Module::getModuleURL('authTiqr/post.php');
 
-        $server = self::getServer();
+        $server = self::getServer(true);
 
         $enrollmentSecret = $server->getEnrollmentSecret($request["key"]);
         
@@ -410,7 +410,7 @@ class sspmod_authTiqr_Auth_Tiqr
         if (!isset($request["key"])||!isset($request["secret"])) {
             return false;
         }
-        $server = self::getServer(); 
+        $server = self::getServer(true); 
         $responseObj = self::getResponse();
 
         $userId = $server->validateEnrollmentSecret($request["key"]);
@@ -442,14 +442,20 @@ class sspmod_authTiqr_Auth_Tiqr
         return $responseObj->getEnrollmentErrorResponse();
     } 
     
-    public static function getProtocolVersion() 
+    public static function getProtocolVersion($clientContext) 
     {
         if (isset($_SERVER["HTTP_X_TIQR_PROTOCOL_VERSION"])) {
             // Client has sent the X-TIQR-Protocol-Version header
             $protocolVersion = $_SERVER["HTTP_X_TIQR_PROTOCOL_VERSION"];
         } else {
-            // Only the first client didn't have this header
-            $protocolVersion = 1;
+            if ($clientContext) {
+                // Only the first client didn't have this header
+                $protocolVersion = 1;
+            } else {
+                // In not-client mode (e.g. generating qrs server side)
+                // We default to the latest protocol
+                $protocolVersion = 2;
+            }
         }
         
         return $protocolVersion;
@@ -458,10 +464,10 @@ class sspmod_authTiqr_Auth_Tiqr
     /**
      * @return Tiqr_Service
      */
-    public static function getServer()
+    public static function getServer($clientContext)
     {
         $config = SimpleSAML_Configuration::getConfig('module_tiqr.php')->toArray();
-        $server = new Tiqr_Service($config, self::getProtocolVersion());
+        $server = new Tiqr_Service($config, self::getProtocolVersion($clientContext));
 
         return $server;
     }
@@ -483,7 +489,7 @@ class sspmod_authTiqr_Auth_Tiqr
     public static function getResponse()
     {
         // check if the client supports json, if not fallback to the plain text
-    	if (self::getProtocolVersion() > 1) {
+    	if (self::getProtocolVersion(true) > 1) {
             return Tiqr_Response_Abstract::createResponse();
         } else {
             return new sspmod_authTiqr_Response_Plain();
