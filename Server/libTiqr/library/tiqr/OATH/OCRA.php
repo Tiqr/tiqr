@@ -441,7 +441,11 @@ class OATH_OCRA {
 
 		// The OCRA spec doesn't specify that the session data should be hexadecimal.
 		// However the reference implementation in the RFC does treat it as hex.
-		return bin2hex($bytes);
+		$session = bin2hex($bytes);
+		
+		$session = substr($session, 0, $s_length);
+		
+		return $session;
 	}
 
 
