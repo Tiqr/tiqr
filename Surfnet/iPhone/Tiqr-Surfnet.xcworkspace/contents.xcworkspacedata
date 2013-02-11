@@ -2,12 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Tiqr/ZXing/iphone/ZXingWidget/ZXingWidget.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Tiqr-Surfnet/Tiqr-Surfnet.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Tiqr/Tiqr/Tiqr.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Tiqr/ZXing/iphone/ZXingWidget/ZXingWidget.xcodeproj">
    </FileRef>
 </Workspace>

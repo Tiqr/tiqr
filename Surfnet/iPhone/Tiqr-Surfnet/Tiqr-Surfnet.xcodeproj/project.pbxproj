@@ -112,7 +112,7 @@
 
 /* Begin PBXFileReference section */
 		9264226016C951AD00DE5202 /* libZXingWidget.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libZXingWidget.a; path = "../Tiqr/ZXing/iphone/ZXingWidget/build/Release-iphoneos/libZXingWidget.a"; sourceTree = "<group>"; };
-		9264226216C9552A00DE5202 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9264226216C9552A00DE5202 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		D06976AD1508BE17008D7183 /* Tiqr 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Tiqr 2.xcdatamodel"; sourceTree = "<group>"; };
 		D06976AE1508BE17008D7183 /* Tiqr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tiqr.xcdatamodel; sourceTree = "<group>"; };
 		D076CF03134F31F900FE762A /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -333,6 +333,7 @@
 		D076CF1A134F4E1300FE762A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9264226216C9552A00DE5202 /* Default-568h@2x.png */,
 				D076CF21134F4E2900FE762A /* iTunesArtwork */,
 				D076CF1F134F4E2900FE762A /* Icon.png */,
 				D076CF20134F4E2900FE762A /* Icon@2x.png */,
@@ -349,7 +350,6 @@
 		D0DF04DB134F261B00893290 = {
 			isa = PBXGroup;
 			children = (
-				9264226216C9552A00DE5202 /* Default-568h@2x.png */,
 				9264226016C951AD00DE5202 /* libZXingWidget.a */,
 				D0ECAF39134F290800374202 /* Tiqr */,
 				D0DF050F134F274F00893290 /* Surfnet */,
