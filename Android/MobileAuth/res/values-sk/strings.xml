@@ -14,7 +14,7 @@
   <string name="authentication_fallback_button">OK</string>
   <string name="authentication_failure_title">Prihlásenie neúspešné</string>
   <string name="authentication_success_title">Prihlásenie úspešné</string>
-  <string name="authentication_success_message">Ste prihlásený ako %s k %s</string>
+  <string name="authentication_success_message" formatted="false">Ste prihlásený ako %s k %s</string>
   <string name="account_ready">Váš účet je pripravený</string>
   <string name="account_activated">Účet aktivovaný!</string>
   <string name="enrollment_confirm_button">OK</string>
@@ -106,13 +106,13 @@
   <string name="enrollment_confirmation_title">Potvrdiť aktiváciu účtu</string>
   <string name="enrollment_confirmation_description">Želáte si aktivovať⏎ nasledovný účet?</string>
   <string name="enrollment_success_title">Registrácia úspešná</string>
-  <string name="enrollment_success_message">Ste registrovaný/á ako %s k %s</string>
+  <string name="enrollment_success_message" formatted="false">Ste registrovaný/á ako %s k %s</string>
   <string name="enrollment_failure_title">Registrácia zlyhala</string>
   <string name="error_enroll_invalid_qr_code">Neplatný registračný QR kód</string>
   <string name="error_enroll_connect_error">Nemožno sa pripojiť k registračnému serveru. Kontaktujte, prosím, správcu web servera.</string>
   <string name="error_enroll_invalid_response">Neplatná reakcia registračného servera. Kontaktujte, prosím, správcu web servera.</string>
   <string name="error_enroll_logo_error">Nemožno pevziať logo služby. Kontaktujte, prosím, správcu web servera.</string>
-  <string name="error_enroll_already_enrolled">Už ste registrovaný/á ako %s k službe %s.</string>
+  <string name="error_enroll_already_enrolled" formatted="false">Už ste registrovaný/á ako %s k službe %s.</string>
   <string name="error_enroll_failed_to_store_identity_provider">Zlyhalo uloženie poskytovateľa identity. Kotaktujte, prosím, používateľskú podporu.</string>
   <string name="error_enroll_failed_to_store_identity">Zlyhalo uloženie identity. Kotaktujte, prosím, používateľskú podporu.</string>
   <string name="error_enroll_failed_to_generate_secret">Nepodarilo sa vytvoriť heslo pre identitu. Kontaktujte, prosím, používateľskú podporu.</string>

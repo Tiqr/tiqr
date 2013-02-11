@@ -10,8 +10,8 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 3. Neither the name of SURFnet bv nor the names of its contributors 
- *    may be used to endorse or promote products derived from this 
+ * 3. Neither the name of SURFnet bv nor the names of its contributors
+ *    may be used to endorse or promote products derived from this
  *    software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
@@ -32,41 +32,14 @@
 
 
 @implementation IdentityProvider
-@dynamic logo;
-@dynamic authenticationUrl;
-@dynamic identifier;
-@dynamic ocraSuite;
+
 @dynamic displayName;
 @dynamic infoUrl;
+@dynamic ocraSuite;
+@dynamic authenticationUrl;
+@dynamic identifier;
+@dynamic logo;
+@dynamic tiqrProtocolVersion;
 @dynamic identities;
-
-- (void)addIdentitiesObject:(Identity *)value {    
-    NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
-    [self willChangeValueForKey:@"identities" withSetMutation:NSKeyValueUnionSetMutation usingObjects:changedObjects];
-    [[self primitiveValueForKey:@"identities"] addObject:value];
-    [self didChangeValueForKey:@"identities" withSetMutation:NSKeyValueUnionSetMutation usingObjects:changedObjects];
-    [changedObjects release];
-}
-
-- (void)removeIdentitiesObject:(Identity *)value {
-    NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
-    [self willChangeValueForKey:@"identities" withSetMutation:NSKeyValueMinusSetMutation usingObjects:changedObjects];
-    [[self primitiveValueForKey:@"identities"] removeObject:value];
-    [self didChangeValueForKey:@"identities" withSetMutation:NSKeyValueMinusSetMutation usingObjects:changedObjects];
-    [changedObjects release];
-}
-
-- (void)addIdentities:(NSSet *)value {    
-    [self willChangeValueForKey:@"identities" withSetMutation:NSKeyValueUnionSetMutation usingObjects:value];
-    [[self primitiveValueForKey:@"identities"] unionSet:value];
-    [self didChangeValueForKey:@"identities" withSetMutation:NSKeyValueUnionSetMutation usingObjects:value];
-}
-
-- (void)removeIdentities:(NSSet *)value {
-    [self willChangeValueForKey:@"identities" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
-    [[self primitiveValueForKey:@"identities"] minusSet:value];
-    [self didChangeValueForKey:@"identities" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
-}
-
 
 @end

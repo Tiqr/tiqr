@@ -10,6 +10,7 @@ import java.util.Map;
 
 import javax.crypto.SecretKey;
 
+import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
@@ -34,7 +35,9 @@ import org.tiqr.authenticator.general.AbstractActivityGroup;
 import org.tiqr.authenticator.general.AbstractPincodeActivity;
 import org.tiqr.authenticator.general.ErrorActivity;
 import org.tiqr.authenticator.security.Encryption;
+import org.tiqr.authenticator.security.OCRAProtocol;
 import org.tiqr.authenticator.security.OCRAWrapper;
+import org.tiqr.authenticator.security.OCRAWrapper_v1;
 import org.tiqr.authenticator.security.Secret;
 
 import android.app.AlertDialog;
@@ -90,7 +93,13 @@ public class AuthenticationPincodeActivity extends AbstractPincodeActivity {
         @Override
         public void handleMessage(Message msg) {
             try {
-                _parseResponse(new JSONObject(EntityUtils.toString(((HttpResponse)msg.obj).getEntity())));
+                HttpResponse httpResponse = (HttpResponse)msg.obj;
+                Header versionHeader = httpResponse.getFirstHeader("X-TIQR-Protocol-Version");
+                if (versionHeader != null && versionHeader.getValue().equals("2")) {
+                    _parseResponse(new JSONObject(EntityUtils.toString(httpResponse.getEntity())));
+                } else {
+                    _parseResponse(EntityUtils.toString(httpResponse.getEntity()));
+                }
                 progressDialog.cancel();
 
             } catch (JSONException e) {
@@ -136,7 +145,13 @@ public class AuthenticationPincodeActivity extends AbstractPincodeActivity {
             // the json file.
             // will getSecret().getEncoded give us the same thing? Don't know
             // yet.
-            String otp = OCRAWrapper.generateOCRA(challenge.getIdentityProvider().getOCRASuite(), secretKey.getEncoded(), challenge.getChallenge(), challenge.getSessionKey());
+            OCRAProtocol ocra;
+            if (challenge.getProtocolVersion().equals("1")) {
+                ocra = new OCRAWrapper_v1();
+            } else {
+                ocra = new OCRAWrapper();
+            }
+            String otp = ocra.generateOCRA(challenge.getIdentityProvider().getOCRASuite(), secretKey.getEncoded(), challenge.getChallenge(), challenge.getSessionKey());
 
             _authenticateAtServer(otp);
         } catch (InvalidChallengeException e) {
@@ -175,9 +190,9 @@ public class AuthenticationPincodeActivity extends AbstractPincodeActivity {
             nameValuePairs.add(new BasicNameValuePair("operation", "login"));
 
             Config config = new Config(this);
-            nameValuePairs.add(new BasicNameValuePair("version", config.getTIQRLoginProtocolVersion()));
 
             httppost.addHeader("ACCEPT", "application/json");
+            httppost.addHeader("X-TIQR-Protocol-Version", config.getTIQRProtocolVersion());
 
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, HTTP.UTF_8));
 
@@ -224,7 +239,67 @@ public class AuthenticationPincodeActivity extends AbstractPincodeActivity {
     }
 
     /**
-     * Parse authentication response from server.
+     * Parse authentication response form server. (plain string)
+     * 
+     * @param response authentication response
+     */
+    private void _parseResponse(String response) {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(pincode.getWindowToken(), 0);
+
+        int code = TIQRACRUnknownError;
+        String title = getString(R.string.unknown_error);
+        String message = getString(R.string.error_auth_unknown_error);
+        int attemptsLeft = -1;
+
+        if (response != null && response.equals("OK")) {
+            message = getString(R.string.authentication_success_message, _getChallenge().getIdentity().getDisplayName(), _getChallenge().getIdentityProvider().getDisplayName());
+            _showAuthenticationSummary(message);
+        } else {
+            if (response.equals("ACCOUNT_BLOCKED")) {
+                code = TIQRACRAccountBlockedError;
+                title = getString(R.string.error_auth_account_blocked_title);
+                message = getString(R.string.error_auth_account_blocked_message);
+            } else if (response.equals("INVALID_CHALLENGE")) {
+                code = TIQRACRInvalidChallengeError;
+                title = getString(R.string.error_auth_invalid_challenge_title);
+                message = getString(R.string.error_auth_invalid_challenge_message);
+            } else if (response.equals("INVALID_REQUEST")) {
+                code = TIQRACRInvalidRequestError;
+                title = getString(R.string.error_auth_invalid_request_title);
+                message = getString(R.string.error_auth_invalid_request_message);
+            } else if (response.substring(0, 17).equals("INVALID_RESPONSE:")) {
+                attemptsLeft = Integer.parseInt(response.substring(17, 18));
+                code = TIQRACRInvalidResponseError;
+                if (attemptsLeft > 1) {
+                    title = getString(R.string.error_auth_wrong_pin);
+                    message = String.format(getString(R.string.error_auth_x_attempts_left), attemptsLeft);
+                } else if (attemptsLeft == 1) {
+                    title = getString(R.string.error_auth_wrong_pin);
+                    message = getString(R.string.error_auth_one_attempt_left);
+                } else {
+                    title = getString(R.string.error_auth_account_blocked_title);
+                    message = getString(R.string.error_auth_account_blocked_message);
+                }
+            } else if (response.equals("INVALID_USERID")) {
+                code = TIQRACRInvalidUserError;
+                title = getString(R.string.error_auth_invalid_account);
+                message = getString(R.string.error_auth_invalid_account_message);
+            }
+
+            Map<String, Object> details = new HashMap<String, Object>();
+            details.put("title", title);
+            details.put("message", message);
+            if (attemptsLeft != -1) {
+                details.put("attemptsLeft", attemptsLeft);
+            }
+
+            _authenticationFailed(code, details);
+        }
+    }
+
+    /**
+     * Parse authentication response from server. (json)
      * 
      * @param response authentication response
      */
@@ -242,53 +317,55 @@ public class AuthenticationPincodeActivity extends AbstractPincodeActivity {
             if (responseCode == AuthenticationChallengeResponseCodeSuccess) {
                 message = getString(R.string.authentication_success_message, _getChallenge().getIdentity().getDisplayName(), _getChallenge().getIdentityProvider().getDisplayName());
                 _showAuthenticationSummary(message);
-            } else if (responseCode == AuthenticationChallengeResponseCodeAccountBlocked) {
-                code = TIQRACRAccountBlockedError;
-                title = getString(R.string.error_auth_account_blocked_title);
-                message = getString(R.string.error_auth_account_blocked_message);
-            } else if (responseCode == AuthenticationChallengeResponseCodeInvalidChallenge) {
-                code = TIQRACRInvalidChallengeError;
-                title = getString(R.string.error_auth_invalid_challenge_title);
-                message = getString(R.string.error_auth_invalid_challenge_message);
-            } else if (responseCode == AuthenticationChallengeResponseCodeInvalidRequest) {
-                code = TIQRACRInvalidRequestError;
-                title = getString(R.string.error_auth_invalid_request_title);
-                message = getString(R.string.error_auth_invalid_request_message);
-            } else if (responseCode == AuthenticationChallengeResponseCodeInvalidUsernamePasswordPin) {
-                try {
-                    attemptsLeft = response.getInt("attemptsLeft");
-                    code = TIQRACRInvalidResponseError;
-                    if (attemptsLeft > 1) {
-                        title = getString(R.string.error_auth_wrong_pin);
-                        message = String.format(getString(R.string.error_auth_x_attempts_left), attemptsLeft);
-                    } else if (attemptsLeft == 1) {
-                        title = getString(R.string.error_auth_wrong_pin);
-                        message = getString(R.string.error_auth_one_attempt_left);
-                    } else {
-                        title = getString(R.string.error_auth_account_blocked_title);
-                        message = getString(R.string.error_auth_account_blocked_message);
+            } else { 
+                if (responseCode == AuthenticationChallengeResponseCodeAccountBlocked) {
+                    code = TIQRACRAccountBlockedError;
+                    title = getString(R.string.error_auth_account_blocked_title);
+                    message = getString(R.string.error_auth_account_blocked_message);
+                } else if (responseCode == AuthenticationChallengeResponseCodeInvalidChallenge) {
+                    code = TIQRACRInvalidChallengeError;
+                    title = getString(R.string.error_auth_invalid_challenge_title);
+                    message = getString(R.string.error_auth_invalid_challenge_message);
+                } else if (responseCode == AuthenticationChallengeResponseCodeInvalidRequest) {
+                    code = TIQRACRInvalidRequestError;
+                    title = getString(R.string.error_auth_invalid_request_title);
+                    message = getString(R.string.error_auth_invalid_request_message);
+                } else if (responseCode == AuthenticationChallengeResponseCodeInvalidUsernamePasswordPin) {
+                    try {
+                        attemptsLeft = response.getInt("attemptsLeft");
+                        code = TIQRACRInvalidResponseError;
+                        if (attemptsLeft > 1) {
+                            title = getString(R.string.error_auth_wrong_pin);
+                            message = String.format(getString(R.string.error_auth_x_attempts_left), attemptsLeft);
+                        } else if (attemptsLeft == 1) {
+                            title = getString(R.string.error_auth_wrong_pin);
+                            message = getString(R.string.error_auth_one_attempt_left);
+                        } else {
+                            title = getString(R.string.error_auth_account_blocked_title);
+                            message = getString(R.string.error_auth_account_blocked_message);
+                        }
+                    } catch (JSONException e) {
+                        code = TIQRACRInvalidUserError;
+                        title = getString(R.string.error_auth_invalid_account);
+                        message = getString(R.string.error_auth_invalid_account_message);
                     }
-                } catch (JSONException e) {
-                    code = TIQRACRInvalidUserError;
-                    title = getString(R.string.error_auth_invalid_account);
-                    message = getString(R.string.error_auth_invalid_account_message);
                 }
+    
+                Map<String, Object> details = new HashMap<String, Object>();
+                details.put("title", title);
+                details.put("message", message);
+                if (attemptsLeft != -1) {
+                    details.put("attemptsLeft", attemptsLeft);
+                }
+                _authenticationFailed(code, details);
             }
-
-            Map<String, Object> details = new HashMap<String, Object>();
-            details.put("title", title);
-            details.put("message", message);
-            if (attemptsLeft != -1) {
-                details.put("attemptsLeft", attemptsLeft);
-            }
-            _authenticationFailed(code, details);
-
         } catch (JSONException e) {
             Map<String, Object> details = new HashMap<String, Object>();
             details.put("title", title);
             details.put("message", message);
             _authenticationFailed(code, details);
         }
+
     }
 
     /**

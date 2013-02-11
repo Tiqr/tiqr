@@ -10,8 +10,8 @@
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- * 3. Neither the name of SURFnet bv nor the names of its contributors 
- *    may be used to endorse or promote products derived from this 
+ * 3. Neither the name of SURFnet bv nor the names of its contributors
+ *    may be used to endorse or promote products derived from this
  *    software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
@@ -32,22 +32,23 @@
 
 @class Identity;
 
-@interface IdentityProvider : NSManagedObject {
-@private
-}
-@property (nonatomic, retain) NSData * logo;
-@property (nonatomic, retain) NSString * authenticationUrl;
-@property (nonatomic, retain) NSString * identifier;
-@property (nonatomic, retain) NSString * ocraSuite;
+@interface IdentityProvider : NSManagedObject
+
 @property (nonatomic, retain) NSString * displayName;
 @property (nonatomic, retain) NSString * infoUrl;
-@property (nonatomic, retain) NSSet* identities;
-
+@property (nonatomic, retain) NSString * ocraSuite;
+@property (nonatomic, retain) NSString * authenticationUrl;
+@property (nonatomic, retain) NSString * identifier;
+@property (nonatomic, retain) NSData * logo;
+@property (nonatomic, retain) NSNumber * tiqrProtocolVersion;
+@property (nonatomic, retain) NSSet *identities;
 @end
 
 @interface IdentityProvider (CoreDataGeneratedAccessors)
+
 - (void)addIdentitiesObject:(Identity *)value;
 - (void)removeIdentitiesObject:(Identity *)value;
-- (void)addIdentities:(NSSet *)value;
-- (void)removeIdentities:(NSSet *)value;
+- (void)addIdentities:(NSSet *)values;
+- (void)removeIdentities:(NSSet *)values;
+
 @end

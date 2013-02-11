@@ -32,9 +32,9 @@ public class AuthenticationChallenge extends Challenge
      * 
      * @throws Exception
      */
-    public AuthenticationChallenge(String rawChallenge, Context context) throws UserException
+    public AuthenticationChallenge(String rawChallenge, Context context, String protocolVersion) throws UserException
     {
-        super(rawChallenge, context, true);
+        super(rawChallenge, context, protocolVersion, true);
     }
     
     /**
@@ -161,6 +161,13 @@ public class AuthenticationChallenge extends Challenge
         	_serviceProviderDisplayName = _getString(R.string.unknown);
         }
         _serviceProviderIdentifier = "";
+        
+        if (pathComponents.length > 4) {
+            _setProtocolVersion(pathComponents[4]);
+        } else {
+            // v1 qr without protocol version identifier
+            _setProtocolVersion("1");
+        }
         
         String returnURL = url.getQuery() == null || url.getQuery().length() == 0 ? null : url.getQuery();
         if (returnURL != null && returnURL.matches("^http(s)?://.*")) {

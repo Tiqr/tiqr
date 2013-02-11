@@ -8,6 +8,7 @@ import java.util.Locale;
 
 import javax.crypto.SecretKey;
 
+import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -28,7 +29,9 @@ import org.tiqr.authenticator.exceptions.InvalidChallengeException;
 import org.tiqr.authenticator.exceptions.SecurityFeaturesException;
 import org.tiqr.authenticator.general.AbstractActivityGroup;
 import org.tiqr.authenticator.general.AbstractConfirmationActivity;
+import org.tiqr.authenticator.security.OCRAProtocol;
 import org.tiqr.authenticator.security.OCRAWrapper;
+import org.tiqr.authenticator.security.OCRAWrapper_v1;
 import org.tiqr.authenticator.security.Secret;
 
 import android.content.Intent;
@@ -132,11 +135,39 @@ public class AuthenticationConfirmationActivity extends AbstractConfirmationActi
     }
 
     /**
+     * PArse authentication response from server. (string)
+     * 
+     * @param response authentication response
+     */
+    private void _parseResponse(String response) {
+        if (response != null && response.equals("OK")) {
+            String message = getString(R.string.authentication_success_message, _getChallenge().getIdentity().getDisplayName(), _getChallenge().getIdentityProvider().getDisplayName());
+            _showAlertWithMessage(getString(R.string.authentication_success_title), message, true, false);
+        } else {
+            String message = getString(R.string.error_auth_unknown_error);
+            boolean retry = false;
+            if (response.equals("INVALID_CHALLENGE")) {
+                message = getString(R.string.error_auth_invalid_challenge);
+            } else if (response.equals("INVALID_REQUEST")) {
+                message = getString(R.string.error_auth_invalid_request);
+            } else if (response.equals("INVALID_RESPONSE")) {
+                message = getString(R.string.error_auth_invalid_response);
+                retry = true;
+            } else if (response.equals("INVALID_USERID")) {
+                message = getString(R.string.error_auth_invalid_userid);
+            }
+            _showAlertWithMessage(getString(R.string.authentication_failure_title), message, false, retry);
+        }
+
+    }
+
+    /**
      * Parse authentication response from server.
      * 
      * @param response authentication response
      */
     private void _parseResponse(JSONObject response) {
+        // Parse JSON response
         try {
             int responseCode = response.getInt("responseCode");
             if (responseCode == AuthenticationChallengeResponseCodeSuccess) {
@@ -198,18 +229,24 @@ public class AuthenticationConfirmationActivity extends AbstractConfirmationActi
             nameValuePairs.add(new BasicNameValuePair("operation", "login"));
 
             Config config = new Config(this);
-            nameValuePairs.add(new BasicNameValuePair("version", config.getTIQRLoginProtocolVersion()));
 
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, HTTP.UTF_8));
+
             httppost.setHeader("ACCEPT", "application/json");
+            httppost.setHeader("X-TIQR-Protocol-Version", config.getTIQRProtocolVersion());
 
             // Execute HTTP Post Request
-            HttpResponse httpresponse = httpclient.execute(httppost);
-            try {
-                JSONObject serverResponse = new JSONObject(EntityUtils.toString(httpresponse.getEntity()));
-                _parseResponse(serverResponse);
-            } catch (Exception e) {
-                _showAlertWithMessage(getString(R.string.authentication_failure_title), getString(R.string.error_auth_invalid_challenge), false, true);
+            HttpResponse httpResponse = httpclient.execute(httppost);
+            Header versionHeader = httpResponse.getFirstHeader("X-TIQR-Protocol-Version");
+            if (versionHeader != null && versionHeader.getValue().equals("2")) {
+                try {
+                    JSONObject serverResponse = new JSONObject(EntityUtils.toString(httpResponse.getEntity()));
+                    _parseResponse(serverResponse);
+                } catch (Exception e) {
+                    _showAlertWithMessage(getString(R.string.authentication_failure_title), getString(R.string.error_auth_invalid_challenge), false, true);
+                }
+            } else { // v1 protocol (ascii)
+                _parseResponse(EntityUtils.toString(httpResponse.getEntity()));
             }
 
         } catch (ClientProtocolException e) {
@@ -241,7 +278,13 @@ public class AuthenticationConfirmationActivity extends AbstractConfirmationActi
             // the json file.
             // will getSecret().getEncoded give us the same thing? Don't know
             // yet.
-            String otp = OCRAWrapper.generateOCRA(challenge.getIdentityProvider().getOCRASuite(), secretKey.getEncoded(), challenge.getChallenge(), challenge.getSessionKey());
+            OCRAProtocol ocra;
+            if (challenge.getProtocolVersion().equals("1")) {
+                ocra = new OCRAWrapper_v1();
+            } else {
+                ocra = new OCRAWrapper();
+            }
+            String otp = ocra.generateOCRA(challenge.getIdentityProvider().getOCRASuite(), secretKey.getEncoded(), challenge.getChallenge(), challenge.getSessionKey());
 
             _authenticateAtServer(otp);
         } catch (InvalidChallengeException e) {

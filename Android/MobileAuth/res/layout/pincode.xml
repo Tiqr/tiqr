@@ -32,34 +32,35 @@
 		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			android:orientation="horizontal" android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:layout_weight="1">
-			<EditText android:id="@+id/pin1Field" android:layout_height="80px"
-				android:layout_width="80px" android:layout_centerHorizontal="true"
+			<EditText android:id="@+id/pin1Field" android:layout_height="80dp"
+				android:layout_width="80dp" 
 				android:layout_gravity="center_horizontal" android:gravity="center"
 				android:layout_weight="1" android:singleLine="true"
 				android:clickable="false" android:cursorVisible="false"
-				android:password="true" android:textSize="34px" />
-			<EditText android:id="@+id/pin2Field" android:layout_height="80px"
-				android:layout_width="80px" android:layout_centerHorizontal="true"
+				android:password="true" android:textSize="32dp" />
+			<EditText android:id="@+id/pin2Field" android:layout_height="80dp"
+				android:layout_width="80dp" 
 				android:layout_gravity="center_horizontal" android:gravity="center"
 				android:layout_weight="1" android:singleLine="true"
 				android:clickable="false" android:cursorVisible="false"
-				android:textSize="34px" />
-			<EditText android:id="@+id/pin3Field" android:layout_height="80px"
-				android:layout_width="80px" android:layout_centerHorizontal="true"
+				android:textSize="32dp" />
+			<EditText android:id="@+id/pin3Field" android:layout_height="80dp"
+				android:layout_width="80dp" 
 				android:layout_gravity="center_horizontal" android:gravity="center"
 				android:layout_weight="1" android:singleLine="true"
 				android:clickable="false" android:cursorVisible="false"
-				android:textSize="34px" />
-			<EditText android:id="@+id/pin4Field" android:layout_height="80px"
-				android:layout_width="80px" android:layout_centerHorizontal="true"
+				android:textSize="32dp" />
+			<EditText android:id="@+id/pin4Field" android:layout_height="80dp"
+				android:layout_width="80dp" 
 				android:layout_gravity="center_horizontal" android:gravity="center"
 				android:layout_weight="1" android:singleLine="true"
 				android:clickable="false" android:cursorVisible="false"
-				android:textSize="34px" />
+				android:textSize="32dp" />
 
-			<Button android:id="@+id/ok_button" android:layout_height="80px"
-				android:layout_width="80px" android:layout_gravity="right"
+			<Button android:id="@+id/ok_button" android:layout_height="80dp"
+				android:layout_width="80dp" android:layout_gravity="right"
 				android:text="@string/ok_button" android:enabled="false"
+				android:layout_weight="1"
 				android:onClick="process" />
 		</LinearLayout>
 	</LinearLayout>

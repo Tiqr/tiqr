@@ -20,9 +20,10 @@ public class AuthenticationActivityGroup extends AbstractActivityGroup
         super.onCreate(savedInstanceState);
         
         String rawChallenge = getIntent().getStringExtra("org.tiqr.rawChallenge");
+        String protocolVersion = getIntent().getStringExtra("org.tiqr.protocolVersion");
         
         try {
-        	onChallenge(rawChallenge);
+        	onChallenge(rawChallenge, protocolVersion);
         } catch (UserException ex) { // todo, we need to validate the challenge BEFORE we leave the scanner; this is too late so it looks weird.
                 new AlertDialog.Builder(this)
                     .setTitle(getString(R.string.authentication_failure_title))
@@ -45,10 +46,10 @@ public class AuthenticationActivityGroup extends AbstractActivityGroup
      * @param rawChallenge
      * @throws UserException 
      */
-    public void onChallenge(String rawChallenge) throws UserException
+    public void onChallenge(String rawChallenge, String protocolVersion) throws UserException
     {
     
-        AuthenticationChallenge challenge = new AuthenticationChallenge(rawChallenge, this);
+        AuthenticationChallenge challenge = new AuthenticationChallenge(rawChallenge, this, protocolVersion);
         setChallenge(challenge);
         
         if (challenge.getIdentity() == null) {
