@@ -8,6 +8,7 @@ import java.util.Locale;
 
 import javax.crypto.SecretKey;
 
+import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -235,16 +236,17 @@ public class AuthenticationConfirmationActivity extends AbstractConfirmationActi
             httppost.setHeader("X-TIQR-Protocol-Version", config.getTIQRProtocolVersion());
 
             // Execute HTTP Post Request
-            HttpResponse httpresponse = httpclient.execute(httppost);
-            if (httpresponse.getFirstHeader("X-TIQR-Protocol-Version").getValue().equals("2")) {
+            HttpResponse httpResponse = httpclient.execute(httppost);
+            Header versionHeader = httpResponse.getFirstHeader("X-TIQR-Protocol-Version");
+            if (versionHeader != null && versionHeader.getValue().equals("2")) {
                 try {
-                    JSONObject serverResponse = new JSONObject(EntityUtils.toString(httpresponse.getEntity()));
+                    JSONObject serverResponse = new JSONObject(EntityUtils.toString(httpResponse.getEntity()));
                     _parseResponse(serverResponse);
                 } catch (Exception e) {
                     _showAlertWithMessage(getString(R.string.authentication_failure_title), getString(R.string.error_auth_invalid_challenge), false, true);
                 }
             } else { // v1 protocol (ascii)
-                _parseResponse(EntityUtils.toString(httpresponse.getEntity()));
+                _parseResponse(EntityUtils.toString(httpResponse.getEntity()));
             }
 
         } catch (ClientProtocolException e) {

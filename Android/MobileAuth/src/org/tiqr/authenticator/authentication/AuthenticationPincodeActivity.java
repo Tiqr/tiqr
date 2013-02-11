@@ -10,6 +10,7 @@ import java.util.Map;
 
 import javax.crypto.SecretKey;
 
+import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
@@ -92,11 +93,12 @@ public class AuthenticationPincodeActivity extends AbstractPincodeActivity {
         @Override
         public void handleMessage(Message msg) {
             try {
-                HttpResponse response = (HttpResponse)msg.obj;
-                if (response.getFirstHeader("X-TIQR-Protocol-Version").getValue().equals("2")) {
-                    _parseResponse(new JSONObject(EntityUtils.toString(response.getEntity())));
+                HttpResponse httpResponse = (HttpResponse)msg.obj;
+                Header versionHeader = httpResponse.getFirstHeader("X-TIQR-Protocol-Version");
+                if (versionHeader != null && versionHeader.getValue().equals("2")) {
+                    _parseResponse(new JSONObject(EntityUtils.toString(httpResponse.getEntity())));
                 } else {
-                    _parseResponse(EntityUtils.toString(response.getEntity()));
+                    _parseResponse(EntityUtils.toString(httpResponse.getEntity()));
                 }
                 progressDialog.cancel();
 
