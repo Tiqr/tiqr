@@ -22,7 +22,9 @@ $result = sspmod_authTiqr_Auth_Tiqr::processMobileEnrollment($_REQUEST);
 
 if (is_array($result)) {
     header('Content-type: application/json');
+    header('X-TIQR-Protocol-Version:'.sspmod_authTiqr_Auth_Tiqr::getProtocolVersion(true));
     echo json_encode($result);
 } else {
+    // v1 ascii protocol, didn't use header yet.
     echo $result;
 }
