@@ -5,7 +5,7 @@ blackboxpath="../core/test/data/blackbox"
 if [ "$*" != "" ]; then
 	formats="$*"
 else
-	formats="ean13 ean8 upce upca qrcode"
+	formats="ean13 ean8 upce upca qrcode aztec"
 fi
 
 passed=0;
@@ -32,7 +32,7 @@ for format in $formats; do
 		tmp="${tmp%PNG}";
 		txt="${tmp}txt";
 		expected=`cat "$txt"`;
-		actual=`build/zxing $pic`;
+		actual=`$VALGRIND build/zxing $pic`;
 		if [ "$expected" == "$actual" ]; then
 			echo "passed."
 			passed=$((passed+1));

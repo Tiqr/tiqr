@@ -63,7 +63,6 @@
 		D06F86C41331EE5600C2C6FF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06F86C31331EE5600C2C6FF /* CoreData.framework */; };
 		D06F86C51331F62700C2C6FF /* Tiqr.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = D028BFC21309288A002EA560 /* Tiqr.xcdatamodel */; };
 		D076CEFF134F31C000FE762A /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D076CF00134F31C000FE762A /* MainWindow.xib */; };
-		D087B5031484EF45001E3545 /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D087B5001484EF20001E3545 /* libZXingWidget.a */; };
 		D088C7DE130BC60F006DE593 /* SecretStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F51625129A7A6E0013CF3A /* SecretStore.m */; };
 		D08BC9681344F6AF00F8D75B /* ScanViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D08BC9671344F6AF00F8D75B /* ScanViewController.mm */; };
 		D08C03261296A6450002849A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D08C03251296A6450002849A /* Security.framework */; };
@@ -114,23 +113,6 @@
 		D0FA39DD13446EEC001F8678 /* AuthenticationSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0FA39DB13446EEC001F8678 /* AuthenticationSummaryView.xib */; };
 		D0FF34EA1309462C004096E1 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D0FF34E91309462C004096E1 /* Settings.bundle */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		D087B4FF1484EF20001E3545 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D087B4FB1484EF20001E3545 /* ZXingWidget.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D;
-			remoteInfo = ZXingWidget;
-		};
-		D087B5011484EF38001E3545 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D087B4FB1484EF20001E3545 /* ZXingWidget.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = ZXingWidget;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -217,7 +199,6 @@
 		D06F86C31331EE5600C2C6FF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D076CF00134F31C000FE762A /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		D076CF2D134F5FD000FE762A /* StartViewController-Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "StartViewController-Protected.h"; sourceTree = "<group>"; };
-		D087B4FB1484EF20001E3545 /* ZXingWidget.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZXingWidget.xcodeproj; path = ../ZXing/ZXingWidget.xcodeproj; sourceTree = "<group>"; };
 		D08BC9661344F6AF00F8D75B /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
 		D08BC9671344F6AF00F8D75B /* ScanViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScanViewController.mm; sourceTree = "<group>"; };
 		D08BC96C134524AA00F8D75B /* ScanViewController-Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ScanViewController-Protected.h"; sourceTree = "<group>"; };
@@ -312,7 +293,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D087B5031484EF45001E3545 /* libZXingWidget.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -372,7 +352,6 @@
 		29B97314FDCFA39411CA2CEA /* MobileAuth */ = {
 			isa = PBXGroup;
 			children = (
-				D087B4FB1484EF20001E3545 /* ZXingWidget.xcodeproj */,
 				D016F8A31338C83C00B997D9 /* External */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				D028BF8313092834002EA560 /* Resources */,
@@ -635,14 +614,6 @@
 			name = "Core Data";
 			sourceTree = "<group>";
 		};
-		D087B4FC1484EF20001E3545 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D087B5001484EF20001E3545 /* libZXingWidget.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		D08BC9691345228400F8D75B /* Scan */ = {
 			isa = PBXGroup;
 			children = (
@@ -859,7 +830,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				D087B5021484EF38001E3545 /* PBXTargetDependency */,
 			);
 			name = Tiqr;
 			productName = MobileAuth;
@@ -906,12 +876,6 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* MobileAuth */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = D087B4FC1484EF20001E3545 /* Products */;
-					ProjectRef = D087B4FB1484EF20001E3545 /* ZXingWidget.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* Tiqr */,
@@ -919,16 +883,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		D087B5001484EF20001E3545 /* libZXingWidget.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libZXingWidget.a;
-			remoteRef = D087B4FF1484EF20001E3545 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1D60588D0D05DD3D006BFB54 /* Resources */ = {
@@ -1068,14 +1022,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D087B5021484EF38001E3545 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ZXingWidget;
-			targetProxy = D087B5011484EF38001E3545 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D001CD1313096F1400BB7657 /* AuthenticationFallbackView.xib */ = {

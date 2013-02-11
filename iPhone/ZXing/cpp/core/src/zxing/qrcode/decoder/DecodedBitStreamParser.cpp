@@ -196,7 +196,7 @@ void DecodedBitStreamParser::decodeByteSegment(Ref<BitSource> bits_,
     // give a hint.
     encoding = StringUtils::guessEncoding(readBytes, count, hints);
   } else {
-    encoding = currentCharacterSetECI->getEncodingName();
+    encoding = currentCharacterSetECI->name();
   }
   try {
     append(result, readBytes, nBytes, encoding.c_str());
@@ -275,6 +275,9 @@ void DecodedBitStreamParser::decodeAlphanumericSegment(Ref<BitSource> bits_,
   ostringstream bytes;
   // Read two characters at a time
   while (count > 1) {
+    if (bits.available() < 11) {
+      throw FormatException();
+    }
     int nextTwoCharsBits = bits.readBits(11);
     bytes << toAlphaNumericChar(nextTwoCharsBits / 45);
     bytes << toAlphaNumericChar(nextTwoCharsBits % 45);
@@ -282,6 +285,9 @@ void DecodedBitStreamParser::decodeAlphanumericSegment(Ref<BitSource> bits_,
   }
   if (count == 1) {
     // special case: one character left
+    if (bits.available() < 6) {
+      throw FormatException();
+    }
     bytes << toAlphaNumericChar(bits.readBits(6));
   }
   // See section 6.4.8.1, 6.4.8.2
@@ -324,7 +330,7 @@ namespace {
       int secondThirdBytes = bits.readBits(16);
       return ((firstByte & 0x1F) << 16) | secondThirdBytes;
     }
-    throw IllegalArgumentException("Bad ECI bits starting with byte " + firstByte);
+    throw FormatException();
   }
 }
 
