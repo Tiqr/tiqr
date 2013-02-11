@@ -203,6 +203,7 @@ public class CaptureActivity extends TiqrActivity implements SurfaceHolder.Callb
 		public void handleMessage(Message msg) {
     		Intent intent = new Intent(getApplicationContext(), AuthenticationActivityGroup.class);
         	intent.putExtra("org.tiqr.rawChallenge", ((Result)msg.obj).getText());
+        	intent.putExtra("org.tiqr.protocolVersion", "2");
         	startActivity(intent);
         	activityDialog.cancel();
 		}
@@ -213,6 +214,7 @@ public class CaptureActivity extends TiqrActivity implements SurfaceHolder.Callb
 		public void handleMessage(Message msg) {
     		Intent intent = new Intent(getApplicationContext(), EnrollmentActivityGroup.class);
         	intent.putExtra("org.tiqr.rawChallenge", ((Result)msg.obj).getText());
+        	intent.putExtra("org.tiqr.protocolVersion", "2");
         	startActivity(intent);
         	activityDialog.cancel();
     	}

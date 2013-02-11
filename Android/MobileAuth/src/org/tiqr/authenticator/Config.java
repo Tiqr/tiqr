@@ -13,8 +13,6 @@ public class Config {
 
     private final Context _context;
 
-    private String _tiqrLoginProtocolVersion;
-
     /**
      * Constructor.
      */
@@ -23,8 +21,9 @@ public class Config {
         _loadConfigurationFromDisk();
     }
 
-    public String getTIQRLoginProtocolVersion() {
-        return _tiqrLoginProtocolVersion;
+    public String getTIQRProtocolVersion() {
+        // this client prefers protocol v2. 
+        return "2";
     }
 
     /**
@@ -50,6 +49,5 @@ public class Config {
             // might not exist
         }
 
-        _tiqrLoginProtocolVersion = defaults.getProperty("TIQRLoginProtocolVersion");
     }
 }

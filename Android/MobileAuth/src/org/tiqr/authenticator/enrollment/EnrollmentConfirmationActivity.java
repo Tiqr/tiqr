@@ -174,17 +174,15 @@ public class EnrollmentConfirmationActivity extends AbstractConfirmationActivity
             nameValuePairs.add(new BasicNameValuePair("operation", "register"));
 
             Config config = new Config(this);
-            nameValuePairs.add(new BasicNameValuePair("version", config.getTIQRLoginProtocolVersion()));
 
             httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, HTTP.UTF_8));
-            if (_getChallenge().getIdentityProvider().getVersion() >= 1.0f) {
-                httpPost.setHeader("ACCEPT", "application/json");
-            }
+            httpPost.setHeader("ACCEPT", "application/json");
+            httpPost.setHeader("X-TIQR-Protocol-Version", config.getTIQRProtocolVersion());
 
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpResponse httpResponse = httpClient.execute(httpPost);
 
-            if (_getChallenge().getIdentityProvider().getVersion() >= 1.0f) {
+            if (httpResponse.getFirstHeader("X-TIQR-Protocol-Version").getValue().equals("2")) {
                 JSONObject response = new JSONObject(EntityUtils.toString(httpResponse.getEntity()));
 
                 int responseCode = 0;

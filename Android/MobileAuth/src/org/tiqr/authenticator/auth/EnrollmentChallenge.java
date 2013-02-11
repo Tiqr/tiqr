@@ -36,8 +36,8 @@ public class EnrollmentChallenge extends Challenge {
      * 
      * @throws Exception
      */
-    public EnrollmentChallenge(String rawChallenge, Context context) throws UserException {
-        this(rawChallenge, context, false);
+    public EnrollmentChallenge(String rawChallenge, Context context, String protocolVersion) throws UserException {
+        this(rawChallenge, context, protocolVersion, false);
     }
 
     /**
@@ -51,8 +51,8 @@ public class EnrollmentChallenge extends Challenge {
      * 
      * @throws Exception
      */
-    public EnrollmentChallenge(String rawChallenge, Context context, boolean allowLocalFiles) throws UserException {
-        super(rawChallenge, context, false);
+    public EnrollmentChallenge(String rawChallenge, Context context, String protocolVersion, boolean allowLocalFiles) throws UserException {
+        super(rawChallenge, context, protocolVersion, false);
         _allowLocalFiles = allowLocalFiles;
         _parseRawChallenge();
     }
@@ -105,15 +105,6 @@ public class EnrollmentChallenge extends Challenge {
             ip.setDisplayName(metadata.getString("displayName"));
             ip.setAuthenticationURL(metadata.getString("authenticationUrl"));
             ip.setInfoURL(metadata.getString("infoUrl"));
-            if (metadata.has("version")) {
-                try {
-                    ip.setVersion(Float.parseFloat(metadata.getString("version")));
-                } catch (NumberFormatException e) {
-                    ip.setVersion(0.0f);
-                }
-            } else {
-                ip.setVersion(0.0f);
-            }
             if (metadata.has("ocraSuite")) {
                 ip.setOCRASuite(metadata.getString("ocraSuite"));
             }
