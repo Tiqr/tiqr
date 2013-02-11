@@ -52,6 +52,7 @@ class Tiqr_Service
     protected $_deviceStorage = NULL;
 
     protected $_ocraWrapper;
+    protected $_ocraWrapper_v1;
     
     /**
      * Enrollment status codes
@@ -78,7 +79,7 @@ class Tiqr_Service
     const AUTH_RESULT_INVALID_RESPONSE  = 3;
     const AUTH_RESULT_INVALID_CHALLENGE = 4;
     const AUTH_RESULT_INVALID_USERID    = 5;
-
+    
     /**
      * The default OCRA Suite to use for authentication
      */
@@ -198,13 +199,13 @@ class Tiqr_Service
         
         $this->_deviceStorage = Tiqr_DeviceStorage::getStorage($type, $storageOptions);
         
-        if ($this->_protocolVersion < 2) {
-            require_once("Tiqr/OATH/OCRAWrapper_v1.php");
-            $this->_ocraWrapper = new Tiqr_OCRAWrapper_v1($this->_ocraSuite);
-        } else {
-            require_once("Tiqr/OCRAWrapper.php");
-            $this->_ocraWrapper = new Tiqr_OCRAWrapper($this->_ocraSuite);
-        }
+        $this->_protocolVersion = $version;
+        
+        require_once("Tiqr/OATH/OCRAWrapper_v1.php");
+        $this->_ocraWrapper_v1 = new Tiqr_OCRAWrapper_v1($this->_ocraSuite);
+
+        require_once("Tiqr/OCRAWrapper.php");
+        $this->_ocraWrapper = new Tiqr_OCRAWrapper($this->_ocraSuite);
     }
     
     /**
@@ -307,6 +308,7 @@ class Tiqr_Service
 
         $sessionKey = $this->_uniqueSessionKey("challenge");
     
+        // challenges are always generated using the latest ocrawrapper
         $challenge = $this->_ocraWrapper->generateChallenge();
         
         $data = array("sessionId"=>$sessionId, "challenge"=>$challenge, "spIdentifier" => $spIdentifier);
@@ -525,6 +527,15 @@ class Tiqr_Service
          return true;
     }
     
+    protected function _getProtocolSpecificOCRAWrapper()
+    {
+        if ($this->_protocolVersion < 2) {
+            return $this->_ocraWrapper_v1;
+        } else {
+            return $this->_ocraWrapper;
+        }
+    }
+    
     /**
      * Authenticate a user.
      * This method should be called when the phone posts a response to an
@@ -565,7 +576,7 @@ class Tiqr_Service
             return self::AUTH_RESULT_INVALID_USERID; // only allowed to authenticate against the user that's authenticated in the first factor
         }
         
-        $equal = $this->_ocraWrapper->verifyResponse($response, $userSecret, $challenge, $sessionKey);
+        $equal = $this->_getProtocolSpecificOCRAWrapper()->verifyResponse($response, $userSecret, $challenge, $sessionKey);
                 
         if ($equal) {
             $this->_stateStorage->setValue("authenticated_".$sessionId, $userId, self::LOGIN_EXPIRE);
@@ -653,7 +664,7 @@ class Tiqr_Service
         $spIdentifier = $state["spIdentifier"];
         
         // Last bit is the spIdentifier
-        return $this->_protocolAuth."://".(!is_null($userId)?urlencode($userId).'@':'').$this->getIdentifier()."/".$sessionKey."/".$challenge."/".urlencode($spIdentifier);
+        return $this->_protocolAuth."://".(!is_null($userId)?urlencode($userId).'@':'').$this->getIdentifier()."/".$sessionKey."/".$challenge."/".urlencode($spIdentifier)."/".$this->_protocolVersion;
     }
     
     /**

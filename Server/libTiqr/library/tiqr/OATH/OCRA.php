@@ -439,12 +439,9 @@ class OATH_OCRA {
 		$s_length = $this->SLength;
 		$bytes = self::generateRandomBytes($s_length);
 
-		$session = base64_encode($bytes);
-		// URL safe base64 encode
-		$session = rtrim(strtr($session, '+/', '-_'), '=');
-		$session = substr($session, 0, $s_length);
-
-		return $session;
+		// The OCRA spec doesn't specify that the session data should be hexadecimal.
+		// However the reference implementation in the RFC does treat it as hex.
+		return bin2hex($bytes);
 	}
 
 
