@@ -3,8 +3,8 @@ package org.tiqr.authenticator.security;
 import android.annotation.SuppressLint;
 import java.math.BigInteger;
 
-import org.openauthentication.ocra.OCRA;
 import org.tiqr.authenticator.exceptions.InvalidChallengeException;
+import org.tiqr.oath.OCRA_v1;
 
 /**
  * Old (flawed) implementation of an ocra wrapper using the old
@@ -44,7 +44,7 @@ public class OCRAWrapper_v1 implements OCRAProtocol
             challenge = challengeQuestion;
         }
         
-        String otp = OCRA.generateOCRA(
+        String otp = OCRA_v1.generateOCRA(
             ocraSuite, 
             Encryption.bytesToHexString(key), 
             "", 
