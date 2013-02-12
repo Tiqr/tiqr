@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		923BF1D916CAD0BA0030B47D /* FooterChildView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 923BF1D716CAD0BA0030B47D /* FooterChildView.xib */; };
+		923BF1DA16CAD0BA0030B47D /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 923BF1D816CAD0BA0030B47D /* AboutView.xib */; };
 		9264226316C9552A00DE5202 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264226216C9552A00DE5202 /* Default-568h@2x.png */; };
 		926423A716C967FC00DE5202 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 926422FC16C967FB00DE5202 /* AboutViewController.m */; };
 		926423A816C967FC00DE5202 /* AuthenticationChallenge.m in Sources */ = {isa = PBXBuildFile; fileRef = 926422FF16C967FB00DE5202 /* AuthenticationChallenge.m */; };
@@ -81,8 +83,6 @@
 		926423FA16C967FC00DE5202 /* StartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 926423A116C967FB00DE5202 /* StartView.xib */; };
 		9264240216C9683600DE5202 /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9264240116C9683600DE5202 /* libZXingWidget.a */; };
 		D076CF04134F31F900FE762A /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D076CF03134F31F900FE762A /* MainWindow.xib */; };
-		D076CF08134F329700FE762A /* FooterChildView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D076CF05134F329700FE762A /* FooterChildView.xib */; };
-		D076CF0D134F33CD00FE762A /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D076CF0A134F33CD00FE762A /* AboutView.xib */; };
 		D076CF16134F48E400FE762A /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = D076CF15134F48E400FE762A /* Entitlements.plist */; };
 		D076CF24134F4E2900FE762A /* Icon-Pad.png in Resources */ = {isa = PBXBuildFile; fileRef = D076CF1B134F4E2900FE762A /* Icon-Pad.png */; };
 		D076CF25134F4E2900FE762A /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = D076CF1C134F4E2900FE762A /* Icon-Small-50.png */; };
@@ -115,6 +115,8 @@
 		923BF1D016CAB6650030B47D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		923BF1D116CAB6720030B47D /* pt_PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt_PT; path = pt_PT.lproj/Localizable.strings; sourceTree = "<group>"; };
 		923BF1D216CAB6810030B47D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		923BF1D716CAD0BA0030B47D /* FooterChildView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FooterChildView.xib; sourceTree = "<group>"; };
+		923BF1D816CAD0BA0030B47D /* AboutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
 		9264226216C9552A00DE5202 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		926422FA16C967FB00DE5202 /* AboutViewController-Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AboutViewController-Protected.h"; sourceTree = "<group>"; };
 		926422FB16C967FB00DE5202 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -258,10 +260,6 @@
 		9264240116C9683600DE5202 /* libZXingWidget.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libZXingWidget.a; path = "../../../../../../Library/Developer/Xcode/DerivedData/Tiqr-Surfnet-clungtztxkpxrpcrqybotdrhjhiw/Build/Products/Debug-iphoneos/libZXingWidget.a"; sourceTree = "<group>"; };
 		9264240416C9689E00DE5202 /* OCRAProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCRAProtocol.h; sourceTree = "<group>"; };
 		D076CF03134F31F900FE762A /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		D076CF06134F329700FE762A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FooterChildView.xib; sourceTree = "<group>"; };
-		D076CF07134F329700FE762A /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/FooterChildView.xib; sourceTree = "<group>"; };
-		D076CF0B134F33CD00FE762A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AboutView.xib; sourceTree = "<group>"; };
-		D076CF0C134F33CD00FE762A /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/AboutView.xib; sourceTree = "<group>"; };
 		D076CF15134F48E400FE762A /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		D076CF1B134F4E2900FE762A /* Icon-Pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Pad.png"; sourceTree = "<group>"; };
 		D076CF1C134F4E2900FE762A /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
@@ -378,9 +376,6 @@
 				9264235016C967FB00DE5202 /* ScanViewController.mm */,
 				9264235116C967FB00DE5202 /* SecretStore.h */,
 				9264235216C967FB00DE5202 /* SecretStore.m */,
-				9264235316C967FB00DE5202 /* StartViewController-Protected.h */,
-				9264235416C967FB00DE5202 /* StartViewController.h */,
-				9264235516C967FB00DE5202 /* StartViewController.m */,
 				9264235616C967FB00DE5202 /* TiqrAppDelegate.h */,
 				9264235716C967FB00DE5202 /* TiqrAppDelegate.m */,
 			);
@@ -562,6 +557,9 @@
 				926422FA16C967FB00DE5202 /* AboutViewController-Protected.h */,
 				926422FB16C967FB00DE5202 /* AboutViewController.h */,
 				926422FC16C967FB00DE5202 /* AboutViewController.m */,
+				9264235316C967FB00DE5202 /* StartViewController-Protected.h */,
+				9264235416C967FB00DE5202 /* StartViewController.h */,
+				9264235516C967FB00DE5202 /* StartViewController.m */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -569,6 +567,8 @@
 		D076CF01134F31D300FE762A /* General */ = {
 			isa = PBXGroup;
 			children = (
+				923BF1D716CAD0BA0030B47D /* FooterChildView.xib */,
+				923BF1D816CAD0BA0030B47D /* AboutView.xib */,
 				D076CF15134F48E400FE762A /* Entitlements.plist */,
 				D0ECAF37134F28CC00374202 /* Tiqr-Info.plist */,
 			);
@@ -578,8 +578,6 @@
 		D076CF02134F31DD00FE762A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D076CF0A134F33CD00FE762A /* AboutView.xib */,
-				D076CF05134F329700FE762A /* FooterChildView.xib */,
 				D076CF03134F31F900FE762A /* MainWindow.xib */,
 			);
 			name = Views;
@@ -726,8 +724,6 @@
 			files = (
 				D0DF0584134F27B900893290 /* instructions.html in Resources */,
 				D076CF04134F31F900FE762A /* MainWindow.xib in Resources */,
-				D076CF08134F329700FE762A /* FooterChildView.xib in Resources */,
-				D076CF0D134F33CD00FE762A /* AboutView.xib in Resources */,
 				D076CF16134F48E400FE762A /* Entitlements.plist in Resources */,
 				D076CF24134F4E2900FE762A /* Icon-Pad.png in Resources */,
 				D076CF25134F4E2900FE762A /* Icon-Small-50.png in Resources */,
@@ -768,6 +764,8 @@
 				926423F816C967FC00DE5202 /* PINView.xib in Resources */,
 				926423F916C967FC00DE5202 /* ScanView.xib in Resources */,
 				926423FA16C967FC00DE5202 /* StartView.xib in Resources */,
+				923BF1D916CAD0BA0030B47D /* FooterChildView.xib in Resources */,
+				923BF1DA16CAD0BA0030B47D /* AboutView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -847,24 +845,6 @@
 				923BF1D216CAB6810030B47D /* sv */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		D076CF05134F329700FE762A /* FooterChildView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D076CF06134F329700FE762A /* en */,
-				D076CF07134F329700FE762A /* nl */,
-			);
-			name = FooterChildView.xib;
-			sourceTree = "<group>";
-		};
-		D076CF0A134F33CD00FE762A /* AboutView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D076CF0B134F33CD00FE762A /* en */,
-				D076CF0C134F33CD00FE762A /* nl */,
-			);
-			name = AboutView.xib;
 			sourceTree = "<group>";
 		};
 		D09986B21355EA2B004A7E8D /* blocked.html */ = {
