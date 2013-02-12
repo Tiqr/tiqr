@@ -38,6 +38,7 @@ NSString *const TIQRECRErrorDomain = @"org.tiqr.ecr";
 
 @property (nonatomic, retain) EnrollmentChallenge *challenge;
 @property (nonatomic, retain) NSMutableData *data;
+@property (nonatomic, copy) NSString *protocolVersion;
 
 @end
 
@@ -72,9 +73,8 @@ NSString *const TIQRECRErrorDomain = @"org.tiqr.ecr";
 	[request setHTTPMethod:@"POST"];
 	[request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
     
-    if (self.challenge.identityProviderTiqrProtocolVersion != nil && [self.challenge.identityProviderTiqrProtocolVersion intValue] >= 1) {
-        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    }
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:TIQR_PROTOCOL_VERSION forHTTPHeaderField:@"X-TIQR-Protocol-Version"];
 
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	self.data = [NSMutableData data];
@@ -82,6 +82,13 @@ NSString *const TIQRECRErrorDomain = @"org.tiqr.ecr";
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     [self.data setLength:0];
+    
+    NSDictionary* headers = [(NSHTTPURLResponse *)response allHeaderFields];
+    if ([headers objectForKey:@"X-TIQR-Protocol-Version"]) {
+        self.protocolVersion = [headers objectForKey:@"X-TIQR-Protocol-Version"];
+    } else {
+        self.protocolVersion = @"1";
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
@@ -104,7 +111,7 @@ NSString *const TIQRECRErrorDomain = @"org.tiqr.ecr";
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    if (self.challenge.identityProviderTiqrProtocolVersion != nil && [self.challenge.identityProviderTiqrProtocolVersion intValue] >= 1) {
+    if (self.protocolVersion != nil && [self.protocolVersion intValue] >= 2) {
         // Parse the JSON result
         NSArray *result = [[JSONDecoder decoder] objectWithData:self.data];
         self.data = nil;

@@ -72,7 +72,7 @@
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="157656594">
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="215728691">
 							<string key="name">Helvetica</string>
 							<string key="family">Helvetica</string>
 							<int key="traits">0</int>
@@ -100,7 +100,7 @@
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
-						<reference key="IBUIFontDescription" ref="157656594"/>
+						<reference key="IBUIFontDescription" ref="215728691"/>
 						<reference key="IBUIFont" ref="333636642"/>
 					</object>
 					<object class="IBUIButton" id="90182805">
@@ -129,7 +129,7 @@
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">tiqr-bw-logo.png</string>
 						</object>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="756878064">
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="528313594">
 							<string key="name">Helvetica-Bold</string>
 							<string key="family">Helvetica</string>
 							<int key="traits">2</int>
@@ -161,7 +161,7 @@
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">surfnet-logo.png</string>
 						</object>
-						<reference key="IBUIFontDescription" ref="756878064"/>
+						<reference key="IBUIFontDescription" ref="528313594"/>
 						<reference key="IBUIFont" ref="197634210"/>
 					</object>
 					<object class="IBUIButton" id="121242323">
@@ -182,7 +182,7 @@
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="797812691"/>
-						<reference key="IBUIFontDescription" ref="756878064"/>
+						<reference key="IBUIFontDescription" ref="528313594"/>
 						<reference key="IBUIFont" ref="197634210"/>
 					</object>
 				</object>

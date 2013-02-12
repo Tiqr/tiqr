@@ -27,11 +27,24 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "OCRAWrapper.h"
+#import "OCRAWrapper_v1.h"
 #import "NSData+Hex.h"
-#import "OCRA.h"
+#import "OCRA_v1.h"
 
-@implementation OCRAWrapper
+@implementation OCRAWrapper_v1
+
+- (BOOL) shouldIncludeSessionData: (NSString*)ocraSuite {
+    
+    
+    if(([ocraSuite rangeOfString:@":s" options:NSCaseInsensitiveSearch].location != NSNotFound) ||
+       ([ocraSuite rangeOfString:@":.*?:.*?\\-s" options:NSCaseInsensitiveSearch|NSRegularExpressionSearch].location != NSNotFound)) {
+        
+        return YES;
+        
+    }
+
+    return NO;
+}
 
 - (NSString*) numStrToHex: (NSString *)str {
     
@@ -45,7 +58,25 @@
                 sessionKey:(NSString*)sessionKey 
                      error:(NSError**)error {
     
-    return [OCRA generateOCRAForSuite:ocraSuite key:[secret hexStringValue] counter:@"" question:challengeQuestion password:@"" sessionInformation:sessionKey timestamp:@"" error:error];
+    // The reference implementation takes session data into account even if -S isn't specified in the suite. 
+    // We therefor explicitly pass "" if -S is not in the suite.
+    NSString *sessionData = @"";
+    
+    if ([self shouldIncludeSessionData:ocraSuite]) {
+        sessionData = sessionKey;
+    }       
+    
+    NSString* challenge;
+
+    if ([ocraSuite rangeOfString:@"qn" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        // Using numeric challenge questions, need to convert to hex first
+        challenge = [self numStrToHex: challengeQuestion];
+    } else {
+        // if qh, we're already dealing with hex
+        challenge = challengeQuestion;
+    }
+
+    return [OCRA_v1 generateOCRA:ocraSuite key:[secret hexStringValue] counter:@"" question:challenge password:@"" sessionInformation:sessionData timestamp:@"" error:error];
 }
 
 @end

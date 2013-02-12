@@ -27,18 +27,30 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "AuthenticationChallenge.h"
-#import "Challenge-Protected.h"
+#import <Foundation/Foundation.h>
+#import "OCRAProtocol.h"
 
-@interface AuthenticationChallenge ()
+/**
+ * Simple class for computing the HOTP response for an OCRA challenge.
+ */
+@interface OCRAWrapper_v1 : NSObject <OCRAProtocol>
 
-@property (nonatomic, retain) IdentityProvider *identityProvider;
-@property (nonatomic, retain) NSArray *identities;
-@property (nonatomic, copy) NSString *serviceProviderIdentifier;
-@property (nonatomic, copy) NSString *serviceProviderDisplayName;
-@property (nonatomic, copy) NSString *sessionKey;
-@property (nonatomic, copy) NSString *challenge;
-@property (nonatomic, copy) NSString *returnUrl;
-@property (nonatomic, copy) NSString *protocolVersion;
+/**
+ * Computes the HOTP response for the given OCRA challenge.
+ *
+ * @param ocraSuite  OCRA suite to use
+ * @param secret	 binary secret
+ * @param challenge	 numeric challenge
+ * @param sessionKey session key
+ *
+ * @return computed HOTP response
+ */
+- (NSString *)generateOCRA:(NSString*)ocraSuite
+                secret:(NSData *)secret 
+             challenge:(NSString*)challenge
+            sessionKey:(NSString*)sessionKey
+                 error:(NSError**)error;
+
 
 @end
+

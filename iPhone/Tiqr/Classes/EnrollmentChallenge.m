@@ -45,7 +45,7 @@ NSString *const TIQRECErrorDomain = @"org.tiqr.ec";
 @implementation EnrollmentChallenge
 
 @synthesize identityProviderIdentifier=identityProviderIdentifier_, identityProviderDisplayName=identityProviderDisplayName_, identityProviderAuthenticationUrl=identityProviderAuthenticationUrl_, identityProviderInfoUrl=indentityProviderInfoUrl_;
-@synthesize identityProviderOcraSuite=identityProviderOcraSuite_, identityProviderLogo=identityProviderLogo_, identityProvider=identityProvider_,identityProviderTiqrProtocolVersion=identityProviderTiqrProtocolVersion_;
+@synthesize identityProviderOcraSuite=identityProviderOcraSuite_, identityProviderLogo=identityProviderLogo_, identityProvider=identityProvider_;
 @synthesize identityIdentifier=identityIdentifier_, identityDisplayName=identityDisplayName_, identitySecret=identitySecret_, identityPIN=identityPIN_, identity=identity_;
 @synthesize enrollmentUrl=enrollmentUrl_;
 @synthesize returnUrl=returnUrl_;
@@ -93,7 +93,6 @@ NSString *const TIQRECErrorDomain = @"org.tiqr.ec";
 		self.identityProviderAuthenticationUrl = self.identityProvider.authenticationUrl;	
         self.identityProviderOcraSuite = self.identityProvider.ocraSuite;
 		self.identityProviderLogo = self.identityProvider.logo;
-        self.identityProviderTiqrProtocolVersion = self.identityProvider.tiqrProtocolVersion;
 	} else {
 		NSURL *logoUrl = [NSURL URLWithString:[[metadata objectForKey:@"logoUrl"] description]];		
 		NSError *error = nil;		
@@ -111,7 +110,6 @@ NSString *const TIQRECErrorDomain = @"org.tiqr.ec";
 		self.identityProviderInfoUrl = [[metadata objectForKey:@"infoUrl"] description];        
         self.identityProviderOcraSuite = [[metadata objectForKey:@"ocraSuite"] description];
 		self.identityProviderLogo = logo;
-        self.identityProviderTiqrProtocolVersion = [NSNumber numberWithInt:[[metadata objectForKey:@"version"] intValue]];
 	}	
 	
 	return YES;
@@ -232,7 +230,6 @@ NSString *const TIQRECErrorDomain = @"org.tiqr.ec";
     self.identityProviderInfoUrl = nil;
     self.identityProviderOcraSuite = nil;
     self.identityProviderLogo = nil;
-    self.identityProviderTiqrProtocolVersion = nil;
     self.identityProvider = nil;
     self.identityIdentifier = nil;
     self.identityDisplayName = nil;

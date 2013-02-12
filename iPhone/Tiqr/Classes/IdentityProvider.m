@@ -39,7 +39,6 @@
 @dynamic authenticationUrl;
 @dynamic identifier;
 @dynamic logo;
-@dynamic tiqrProtocolVersion;
 @dynamic identities;
 
 @end

@@ -27,18 +27,28 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "AuthenticationChallenge.h"
-#import "Challenge-Protected.h"
+#import <Foundation/Foundation.h>
 
-@interface AuthenticationChallenge ()
+enum {
+    OCRAServerIncompatibleError = 206
+};
 
-@property (nonatomic, retain) IdentityProvider *identityProvider;
-@property (nonatomic, retain) NSArray *identities;
-@property (nonatomic, copy) NSString *serviceProviderIdentifier;
-@property (nonatomic, copy) NSString *serviceProviderDisplayName;
-@property (nonatomic, copy) NSString *sessionKey;
-@property (nonatomic, copy) NSString *challenge;
-@property (nonatomic, copy) NSString *returnUrl;
-@property (nonatomic, copy) NSString *protocolVersion;
+@interface OCRA_v1 : NSObject {
+    
+}
+
+/**
+ * Generate OCRA response.
+ *
+ * @return computed response
+ */
++ (NSString *) generateOCRA:(NSString*) ocraSuite
+                        key:(NSString*) key
+                    counter:(NSString*) counter
+                   question:(NSString*) question
+                   password:(NSString*) password
+         sessionInformation:(NSString*) sessionInformation
+                  timestamp:(NSString*) timeStamp
+                      error:(NSError**) error;
 
 @end
