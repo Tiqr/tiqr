@@ -96,4 +96,9 @@ enum {
  */
 @property (nonatomic, copy, readonly) NSString *returnUrl;
 
+/**
+ * The prefered protocol version the the challenge requires
+ */
+@property (nonatomic, copy, readonly) NSString *protocolVersion;
+
 @end

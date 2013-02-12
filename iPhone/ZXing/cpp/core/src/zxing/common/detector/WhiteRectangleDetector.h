@@ -38,15 +38,18 @@ class WhiteRectangleDetector : public Counted {
     Ref<BitMatrix> image_;
     int width_;
     int height_;
+    int leftInit_;
+    int rightInit_;
+    int downInit_;
+    int upInit_;
 
   public:
     WhiteRectangleDetector(Ref<BitMatrix> image);
+    WhiteRectangleDetector(Ref<BitMatrix> image, int initSize, int x, int y);
     std::vector<Ref<ResultPoint> > detect();
 
   private: 
-    int round(float a);
     Ref<ResultPoint> getBlackPointOnSegment(float aX, float aY, float bX, float bY);
-    int distanceL2(float aX, float aY, float bX, float bY);
     std::vector<Ref<ResultPoint> > centerEdges(Ref<ResultPoint> y, Ref<ResultPoint> z,
                                     Ref<ResultPoint> x, Ref<ResultPoint> t);
     bool containsBlackPoint(int a, int b, int fixed, bool horizontal);

@@ -40,6 +40,7 @@ NSString *const TIQRACRAttemptsLeftErrorKey = @"AttempsLeftErrorKey";
 @property (nonatomic, retain) AuthenticationChallenge *challenge;
 @property (nonatomic, copy) NSString *response;
 @property (nonatomic, retain) NSMutableData *data;
+@property (nonatomic, copy) NSString *protocolVersion;
 
 @end
 
@@ -62,6 +63,13 @@ NSString *const TIQRACRAttemptsLeftErrorKey = @"AttempsLeftErrorKey";
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     [self.data setLength:0];
+    
+    NSDictionary* headers = [(NSHTTPURLResponse *)response allHeaderFields];
+    if ([headers objectForKey:@"X-TIQR-Protocol-Version"]) {
+        self.protocolVersion = [headers objectForKey:@"X-TIQR-Protocol-Version"];
+    } else {
+        self.protocolVersion = @"1";
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
@@ -84,7 +92,8 @@ NSString *const TIQRACRAttemptsLeftErrorKey = @"AttempsLeftErrorKey";
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    if (self.challenge.identityProvider.tiqrProtocolVersion != nil && [self.challenge.identityProvider.tiqrProtocolVersion intValue] >= 1) {
+
+    if (self.protocolVersion != nil && [self.protocolVersion intValue] > 1) {
         // Parse JSON result
         NSArray *result = [[JSONDecoder decoder] objectWithData:self.data];
         self.data = nil;
@@ -213,9 +222,8 @@ NSString *const TIQRACRAttemptsLeftErrorKey = @"AttempsLeftErrorKey";
 	[request setTimeoutInterval:5.0];
 	[request setHTTPMethod:@"POST"];
 	[request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
-    if (self.challenge.identityProvider.tiqrProtocolVersion != nil && [self.challenge.identityProvider.tiqrProtocolVersion intValue] >= 1) {
-        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    }
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:TIQR_PROTOCOL_VERSION forHTTPHeaderField:@"X-TIQR-Protocol-Version"];
     
     self.data = [NSMutableData data];
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];

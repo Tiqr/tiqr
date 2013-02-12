@@ -105,6 +105,12 @@ NSString *const TIQRACErrorDomain = @"org.tiqr.ac";
         self.serviceProviderDisplayName = NSLocalizedString(@"error_auth_unknown_identity_provider", @"Unknown");
     }
     self.serviceProviderIdentifier = @"";
+    
+    if ([url.pathComponents count] > 4) {
+        self.protocolVersion = [url.pathComponents objectAtIndex:4];
+    } else {
+        self.protocolVersion = @"1";
+    }
 
     NSString *regex = @"^http(s)?://.*";
     NSPredicate *protocolPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];

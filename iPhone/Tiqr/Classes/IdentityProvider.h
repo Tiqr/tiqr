@@ -40,7 +40,6 @@
 @property (nonatomic, retain) NSString * authenticationUrl;
 @property (nonatomic, retain) NSString * identifier;
 @property (nonatomic, retain) NSData * logo;
-@property (nonatomic, retain) NSNumber * tiqrProtocolVersion;
 @property (nonatomic, retain) NSSet *identities;
 @end
 
