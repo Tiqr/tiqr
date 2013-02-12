@@ -1,6 +1,6 @@
 <?php
 
-class OATH_OCRA {
+class OATH_OCRAParser {
 
 	private $key = NULL;
 
@@ -14,189 +14,27 @@ class OATH_OCRA {
 	private $CryptoFunctionTruncation = NULL;
 
 	private $C = FALSE;
-	private $CDataInput = NULL;
-
 	private $Q = FALSE;
 	private $QType = 'N';
 	private $QLength = 8;
-	private $QDataInput = NULL;
 
 	private $P = FALSE;
 	private $PType = 'SHA1';
 	private $PLength = 20;
-	private $PDataInput = NULL;
 
 	private $S = FALSE;
 	private $SLength = 64;
-	private $SDataInput = NULL;
 
 	private $T = FALSE;
 	private $TLength = 60; // 1M
-	private $TDataInput = NULL;
 	private $TPeriods = array('H' => 3600, 'M' => 60, 'S' => 1);
 
 	private $supportedHashFunctions = array('SHA1' => 20, 'SHA256' => 32, 'SHA512' => 64);
 
 
-	public function __construct($ocraSuite, $key = NULL, $counter = NULL, $question = NULL, $pin = NULL, $session = NULL, $timestamp = NULL) {
+	public function __construct($ocraSuite) {
 		$this->parseOCRASuite($ocraSuite);
-
-		if ($key !== NULL) {
-			$this->setKey($key);
-		}
-		if ($counter !== NULL) {
-			$this->setCounter($counter);
-		}
-		if ($question !== NULL) {
-			$this->setQuestion($question);
-		}
-		if ($pin !== NULL) {
-			$this->setPin($pin);
-		}
-		if ($session !== NULL) {
-			$this->setSessionInformation($session);
-		}
-		if ($timestamp !== NULL) {
-			$this->setTimestamp($timestamp);
-		}
 	}
-
-
-	public function setKey($key, $format = NULL) {
-		if (!is_string($key) || $key == "") {
-			throw new Exception('Invalid key value: ' . var_export($key, TRUE));
-		}
-
-		if ($format === NULL) {
-			$this->key = $key;
-		} elseif ($format == 'hexstring') {
-			$this->key = pack("H*", $key);
-		} else {
-			throw new Exception('Unknown input format: ' . var_export($format, TRUE));
-		}
-	}
-
-
-	public function setCounter($c) {
-		if (!$this->C) {
-			return;
-		}
-
-		if ((!is_string($c) && !is_integer($c))) {
-			throw new Exception('Invalid counter value: ' . var_export($c, TRUE));
-		}
-
-		if (!preg_match('/^\d+$/', $c) || $c < 0 || $c > pow(2, 64)) {
-			throw new Exception('Invalid counter value: ' . var_export($c, TRUE));
-		}
-
-		$c = pack('N*', $c);
-		$c = str_pad($c, 8, "\0", STR_PAD_LEFT);
-
-		$this->CDataInput = $c;
-	}
-
-
-	public function setQuestion($q) {
-		if ((!is_string($q) && !is_integer($q)) || $q == "") {
-			throw new Exception('Invalid question value');
-		}
-
-		$q_len = strlen($q);
-		if ($q_len < 4 || $q_len > $this->QLength) {
-			throw new Exception('Invalid question value length: ' . var_export($q_len, TRUE));
-		}
-
-		switch($this->QType) {
-			case 'A':
-				if (!preg_match('/^[A-z0-9]+$/', $q)) {
-					throw new Exception('Question not alphanumeric: ' . var_export($q, TRUE));
-				}
-				break;
-			case 'H':
-				if (!preg_match('/^[a-fA-F0-9]+$/', $q)) {
-					throw new Exception('Question not hexadecimal: ' . var_export($q, TRUE));
-				}
-				$q = pack('H*', $q);
-				break;
-			case 'N':
-				if (!preg_match('/^\d+$/', $q)) {
-					throw new Exception('Question not numeric: ' . var_export($q, TRUE));
-				}
-				$q = pack('H*', self::decStringToHexString($q));
-				break;
-			default:
-				throw new Exception('Unknown question type: ' . var_export($this->QType, TRUE));
-				break;
-		}
-
-		$q = str_pad($q, 128, "\0", STR_PAD_RIGHT);
-
-		$this->QDataInput = $q;
-	}
-
-
-	public function setPin($p, $format = NULL) {
-		if (!$this->P) {
-			return;
-		}
-
-		if ((!is_string($p) && !is_integer($p)) || $p == "") {
-			throw new Exception('Invalid PIN value');
-		}
-
-		$p_algo = $this->PType;
-		$p_length = $this->PLength;
-
-		if ($format === NULL) {
-			$p = self::hashFunction($p_algo, $p);
-		} elseif ($format == 'hexdigest') {
-			if (!preg_match('/^[a-fA-F0-9]+$/', $p) || strlen($p) != 2*$p_length) {
-				throw new Exception('Invalid PIN hexdigest value: ' . var_export($p, TRUE));
-			}
-
-			$p = pack('H*', $p);
-		} elseif ($format == 'digest') {
-			if (strlen($p) != $p_length) {
-				throw new Exception('Invalid PIN digest value length: ' . var_export($p, TRUE));
-			}
-		} else {
-			throw new Exception('Unsupported input format');
-		}
-
-		$this->PDataInput = $p;
-	}
-
-
-	public function setSessionInformation($s) {
-		if (!$this->S) {
-			return;
-		}
-
-		$s_len = strlen($s);
-		if ($s_len != $this->SLength) {
-			throw new Exception('Invalid session information value length: ' . var_export($s_len, TRUE));
-		}
-
-		$this->SDataInput = $s;
-	}
-
-
-	public function setTimestamp($t) {
-		if (!$this->T) {
-			return;
-		}
-
-		if (!preg_match('/^\d+$/', $t)) {
-			throw new Exception('Invalid value for timestamp: ' . var_export($t, TRUE));
-		}
-
-		$t = pack('N*', $t);
-		$t = str_pad($t, 8, "\0", STR_PAD_LEFT);
-
-		$this->TDataInput = $t;
-	}
-
 
 	/**
 	 * Inspired by https://github.com/bdauvergne/python-oath
@@ -337,71 +175,6 @@ class OATH_OCRA {
 		}
 	}
 
-
-	public function generateOCRA() {
-		if ($this->key === NULL) {
-			throw new Exception('Key not defined');
-		}
-
-		$msg = $this->OCRASuite . "\0";
-
-		if ($this->C) {
-			if ($this->CDataInput === NULL) {
-				throw new Exception('Counter not defined');
-			}
-
-			$msg .= $this->CDataInput;
-		}
-
-		if ($this->Q) {
-			if ($this->QDataInput === NULL) {
-				throw new Exception('Question not defined');
-			}
-
-			$msg .= $this->QDataInput;
-		}
-
-		if ($this->P) {
-			if ($this->PDataInput === NULL) {
-				throw new Exception('PIN not defined');
-			}
-
-			$msg .= $this->PDataInput;
-		}
-
-		if ($this->S) {
-			if ($this->SDataInput === NULL) {
-				throw new Exception('Session information not defined');
-			}
-
-			$msg .= $this->SDataInput;
-		}
-
-		if ($this->T) {
-			if ($this->TDataInput === NULL) {
-				$this->setTimestamp(intval(time() / $this->TLength));
-			}
-
-			$msg .= $this->TDataInput;
-		}
-
-		$raw_hash = self::cryptoFunction($this->CryptoFunctionHash, $this->key, $msg);
-
-		if ($this->CryptoFunctionTruncation) {
-			return self::hotpDec($raw_hash, $this->CryptoFunctionTruncation);
-		} else {
-			return self::hotpTruncatedValue($raw_hash);
-		}
-	}
-
-
-	public function verifyResponse($response) {
-		$expected_response = $this->generateOCRA();
-
-		return self::constEqual($expected_response, $response);
-	}
-
-
 	public function generateChallenge() {
 		$q_length = $this->QLength;
 		$q_type = $this->QType;
@@ -447,56 +220,6 @@ class OATH_OCRA {
 		
 		return $session;
 	}
-
-
-	public static function hotpTruncatedValue($raw) {
-		$offset = ord($raw[strlen($raw) - 1]) & 0xf;
-
-		$v = (ord($raw[$offset]) & 0x7f) << 24;
-		$v |= (ord($raw[$offset+1]) & 0xff) << 16;
-		$v |= (ord($raw[$offset+2]) & 0xff) << 8;
-		$v |= (ord($raw[$offset+3]) & 0xff);
-
-		return strval($v);
-	}
-
-
-	public static function hotpDec($raw, $length) {
-		$v = self::hotpTruncatedValue($raw);
-
-		return substr($v, strlen($v) - $length);
-	}
-
-
-	public static function hashFunction($algo, $data) {
-		$algo = strtolower($algo);
-
-		return hash($algo, $data, TRUE);
-	}
-
-
-	public static function cryptoFunction($algo, $key, $data) {
-		$algo = strtolower($algo);
-
-		return hash_hmac($algo, $data, $key, TRUE);
-	}
-
-
-	public static function decStringToHexString($number) {
-		$hex_digits = array(
-			'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-			'A', 'B', 'C', 'D', 'E', 'F'
-		);
-
-		$hex = '';
-		while ($number != '0') {
-			$hex = $hex_digits[bcmod($number, '16')] . $hex;
-			$number = bcdiv($number, '16', 0);
-		}
-
-		return $hex;
-	}
-
 
 	/**
 	 * Borrowed from SimpleSAMLPHP http://simplesamlphp.org/

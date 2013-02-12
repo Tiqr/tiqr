@@ -24,6 +24,10 @@ require_once("Tiqr/StateStorage.php");
 require_once("Tiqr/DeviceStorage.php");
 require_once("Tiqr/Random.php");
 
+require_once("Tiqr/OATH/OCRAWrapper.php");
+require_once("Tiqr/OATH/OCRAWrapper_v1.php");
+
+
 /** 
  * The main Tiqr Service class.
  * This is the class that an application interacts with to provide mobile 
@@ -200,11 +204,8 @@ class Tiqr_Service
         $this->_deviceStorage = Tiqr_DeviceStorage::getStorage($type, $storageOptions);
         
         $this->_protocolVersion = $version;
-        
-        require_once("Tiqr/OATH/OCRAWrapper_v1.php");
         $this->_ocraWrapper_v1 = new Tiqr_OCRAWrapper_v1($this->_ocraSuite);
 
-        require_once("Tiqr/OCRAWrapper.php");
         $this->_ocraWrapper = new Tiqr_OCRAWrapper($this->_ocraSuite);
     }
     

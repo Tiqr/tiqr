@@ -22,8 +22,9 @@
 /**
  * @internal includes
  */
-require_once("OATH/OCRA.php");
+require_once("OATH/OCRAParser.php");
 require_once("Tiqr/Random.php");
+require_once("Tiqr/OATH/OCRA.php");
 
 /**
  * A wrapper for the OCRA algorithm implementing just the features we support.
@@ -31,11 +32,12 @@ require_once("Tiqr/Random.php");
  */
 class Tiqr_OCRAWrapper
 {
-    private $ocra;
-
+    private $_ocraParser;
+    private $_ocraSuite;
 
     public function __construct($ocraSuite) {
-        $this->ocra = new OATH_OCRA($ocraSuite);
+        $this->_ocraSuite = $ocraSuite;
+        $this->_ocraParser = new OATH_OCRAParser($ocraSuite);
     }
 
 
@@ -46,7 +48,7 @@ class Tiqr_OCRAWrapper
      */
     public function generateChallenge()
     {
-        return $this->ocra->generateChallenge();
+        return $this->_ocraParser->generateChallenge();
     }
     
     /**
@@ -55,7 +57,7 @@ class Tiqr_OCRAWrapper
      */
     public function generateSessionKey()
     {
-        return $this->ocra->generateSessionInformation();
+        return $this->_ocraParser->generateSessionInformation();
     }
 
     /**
@@ -69,11 +71,7 @@ class Tiqr_OCRAWrapper
      */
     public function calculateResponse($secret, $challenge, $sessionKey)
     {
-        $this->ocra->setKey($secret, 'hexstring');
-        $this->ocra->setQuestion($challenge);
-        $this->ocra->setSessionInformation($sessionKey);
-        
-        return $this->ocra->generateOCRA();
+        return OCRA::generateOCRA($this->_ocraSuite, $secret, "", $challenge, "", $sessionKey, "");
     }
 
     /**
@@ -86,10 +84,8 @@ class Tiqr_OCRAWrapper
      */
     public function verifyResponse($response, $secret, $challenge, $sessionKey)
     {
-        $this->ocra->setKey($secret, 'hexstring');
-        $this->ocra->setQuestion($challenge);
-        $this->ocra->setSessionInformation($sessionKey);
-
-        return $this->ocra->verifyResponse($response);
+        $expected = OCRA::generateOCRA($this->_ocraSuite, $secret, "", $challenge, "", $sessionKey, "");
+        return $this->_ocraParser->constEqual($expected, $response);
+        
     }
 }
