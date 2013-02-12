@@ -112,6 +112,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		923BF1D016CAB6650030B47D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		923BF1D116CAB6720030B47D /* pt_PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt_PT; path = pt_PT.lproj/Localizable.strings; sourceTree = "<group>"; };
+		923BF1D216CAB6810030B47D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9264226216C9552A00DE5202 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		926422FA16C967FB00DE5202 /* AboutViewController-Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AboutViewController-Protected.h"; sourceTree = "<group>"; };
 		926422FB16C967FB00DE5202 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -702,6 +705,9 @@
 				ro,
 				sk,
 				sr,
+				it,
+				pt_PT,
+				sv,
 			);
 			mainGroup = D0DF04DB134F261B00893290;
 			productRefGroup = D0DF04E7134F261B00893290 /* Products */;
@@ -836,6 +842,9 @@
 				9264237C16C967FB00DE5202 /* ro */,
 				9264237E16C967FB00DE5202 /* sk */,
 				9264237F16C967FB00DE5202 /* sr */,
+				923BF1D016CAB6650030B47D /* it */,
+				923BF1D116CAB6720030B47D /* pt_PT */,
+				923BF1D216CAB6810030B47D /* sv */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
