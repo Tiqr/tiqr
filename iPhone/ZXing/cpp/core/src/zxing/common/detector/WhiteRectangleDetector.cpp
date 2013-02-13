@@ -1,3 +1,4 @@
+// -*- mode:c++; tab-width:2; indent-tabs-mode:nil; c-basic-offset:2 -*-
 /*
  *  WhiteRectangleDetector.cpp
  *  y_wmk
@@ -20,8 +21,10 @@
 
 #include <zxing/NotFoundException.h>
 #include <zxing/common/detector/WhiteRectangleDetector.h>
-#include <math.h>
+#include <zxing/common/detector/math_utils.h>
 #include <sstream>
+
+namespace math_utils = zxing::common::detector::math_utils;
 
 namespace zxing {
 using namespace std;
@@ -33,7 +36,31 @@ int WhiteRectangleDetector::CORR = 1;
 WhiteRectangleDetector::WhiteRectangleDetector(Ref<BitMatrix> image) : image_(image) {
   width_ = image->getWidth();
   height_ = image->getHeight();
-};
+  
+  leftInit_ = (width_ - INIT_SIZE) >> 1;
+  rightInit_ = (width_ + INIT_SIZE) >> 1;
+  upInit_ = (height_ - INIT_SIZE) >> 1;
+  downInit_ = (height_ + INIT_SIZE) >> 1;
+  
+  if (upInit_ < 0 || leftInit_ < 0 || downInit_ >= height_ || rightInit_ >= width_) {
+    throw NotFoundException("Invalid dimensions WhiteRectangleDetector");
+}
+}
+
+WhiteRectangleDetector::WhiteRectangleDetector(Ref<BitMatrix> image, int initSize, int x, int y) : image_(image) {
+  width_ = image->getWidth();
+  height_ = image->getHeight();
+  
+  int halfsize = initSize >> 1;
+  leftInit_ = x - halfsize;
+  rightInit_ = x + halfsize;
+  upInit_ = y - halfsize;
+  downInit_ = y + halfsize;
+  
+  if (upInit_ < 0 || leftInit_ < 0 || downInit_ >= height_ || rightInit_ >= width_) {
+    throw NotFoundException("Invalid dimensions WhiteRectangleDetector");
+  }
+}
 
 /**
  * <p>
@@ -50,13 +77,10 @@ WhiteRectangleDetector::WhiteRectangleDetector(Ref<BitMatrix> image) : image_(im
  * @throws NotFoundException if no Data Matrix Code can be found
 */
 std::vector<Ref<ResultPoint> > WhiteRectangleDetector::detect() {
-  int left = (width_ - INIT_SIZE) >> 1;
-  int right = (width_ + INIT_SIZE) >> 1;
-  int up = (height_ - INIT_SIZE) >> 1;
-  int down = (height_ + INIT_SIZE) >> 1;
-  if (up < 0 || left < 0 || down >= height_ || right >= width_) {
-    throw NotFoundException("Invalid dimensions WhiteRectangleDetector");
-  }
+  int left = leftInit_;
+  int right = rightInit_;
+  int up = upInit_;
+  int down = downInit_;
 
   bool sizeExceeded = false;
   bool aBlackPointFoundOnBorder = true;
@@ -201,21 +225,14 @@ std::vector<Ref<ResultPoint> > WhiteRectangleDetector::detect() {
   }
 }
 
-/**
- * Ends up being a bit faster than Math.round(). This merely rounds its
- * argument to the nearest int, where x.5 rounds up.
- */
-int WhiteRectangleDetector::round(float d) {
-  return (int) (d + 0.5f);
-}
-
 Ref<ResultPoint> WhiteRectangleDetector::getBlackPointOnSegment(float aX, float aY, float bX, float bY) {
-  int dist = distanceL2(aX, aY, bX, bY);
+  int dist = math_utils::round(math_utils::distance(aX, aY, bX, bY));
   float xStep = (bX - aX) / dist;
   float yStep = (bY - aY) / dist;
+
   for (int i = 0; i < dist; i++) {
-    int x = round(aX + i * xStep);
-    int y = round(aY + i * yStep);
+    int x = math_utils::round(aX + i * xStep);
+    int y = math_utils::round(aY + i * yStep);
     if (image_->get(x, y)) {
       Ref<ResultPoint> point(new ResultPoint(x, y));
       return point;
@@ -223,12 +240,6 @@ Ref<ResultPoint> WhiteRectangleDetector::getBlackPointOnSegment(float aX, float 
   }
   Ref<ResultPoint> point(NULL);
   return point;
-}
-
-int WhiteRectangleDetector::distanceL2(float aX, float aY, float bX, float bY) {
-  float xDiff = aX - bX;
-  float yDiff = aY - bY;
-  return round((float)sqrt(xDiff * xDiff + yDiff * yDiff));
 }
 
 /**

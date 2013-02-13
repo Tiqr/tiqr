@@ -1,7 +1,5 @@
+// -*- mode:c++; tab-width:2; indent-tabs-mode:nil; c-basic-offset:2 -*-
 /*
- *  Code39Reader.cpp
- *  ZXing
- *
  *  Copyright 2010 ZXing authors All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -206,17 +204,14 @@ namespace oned {
         counters[counterPosition]++;
       } else {
         if (counterPosition == patternLength - 1) {
-          if (toNarrowWidePattern(counters, countersLen) == ASTERISK_ENCODING) {
-            // Look for whitespace before start pattern, >= 50% of width of
-            // start pattern.
-            long double longPatternOffset =
-              fmaxl(0, patternStart - (i - patternStart) / 2);
-            if (row->isRange(longPatternOffset, patternStart, false)) {
-              int* resultValue = new int[2];
-              resultValue[0] = patternStart;
-              resultValue[1] = i;
-              return resultValue;
-            }
+          // Look for whitespace before start pattern, >= 50% of width of
+          // start pattern.
+          if (toNarrowWidePattern(counters, countersLen) == ASTERISK_ENCODING &&
+              row->isRange(std::max(0, patternStart - ((i - patternStart) >> 1)), patternStart, false)) {
+            int* resultValue = new int[2];
+            resultValue[0] = patternStart;
+            resultValue[1] = i;
+            return resultValue;
           }
           patternStart += counters[0] + counters[1];
           for (int y = 2; y < patternLength; y++) {

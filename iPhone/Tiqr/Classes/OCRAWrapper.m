@@ -33,50 +33,19 @@
 
 @implementation OCRAWrapper
 
-+ (BOOL) shouldIncludeSessionData: (NSString*)ocraSuite {
-    
-    
-    if(([ocraSuite rangeOfString:@":s" options:NSCaseInsensitiveSearch].location != NSNotFound) ||
-       ([ocraSuite rangeOfString:@":.*?:.*?\\-s" options:NSCaseInsensitiveSearch|NSRegularExpressionSearch].location != NSNotFound)) {
-        
-        return YES;
-        
-    }
-
-    return NO;
-}
-
-+ (NSString*) numStrToHex: (NSString *)str {
+- (NSString*) numStrToHex: (NSString *)str {
     
     NSDecimalNumber *bigNumberValue = [NSDecimalNumber decimalNumberWithString:str];
     return [NSString stringWithFormat:@"%X", [bigNumberValue intValue]];
 }
 
-+ (NSString *)generateOCRA:(NSString*)ocraSuite
+- (NSString *)generateOCRA:(NSString*)ocraSuite
                     secret: (NSData *)secret 
                  challenge:(NSString*)challengeQuestion
                 sessionKey:(NSString*)sessionKey 
                      error:(NSError**)error {
     
-    // The reference implementation takes session data into account even if -S isn't specified in the suite. 
-    // We therefor explicitly pass "" if -S is not in the suite.
-    NSString *sessionData = @"";
-    
-    if ([OCRAWrapper shouldIncludeSessionData:ocraSuite]) {
-        sessionData = sessionKey;
-    }       
-    
-    NSString* challenge;
-
-    if ([ocraSuite rangeOfString:@"qn" options:NSCaseInsensitiveSearch].location != NSNotFound) {
-        // Using numeric challenge questions, need to convert to hex first
-        challenge = [OCRAWrapper numStrToHex: challengeQuestion];
-    } else {
-        // if qh, we're already dealing with hex
-        challenge = challengeQuestion;
-    }
-
-    return [OCRA generateOCRA:ocraSuite key:[secret hexStringValue] counter:@"" question:challenge password:@"" sessionInformation:sessionData timestamp:@"" error:error];
+    return [OCRA generateOCRAForSuite:ocraSuite key:[secret hexStringValue] counter:@"" question:challengeQuestion password:@"" sessionInformation:sessionKey timestamp:@"" error:error];
 }
 
 @end

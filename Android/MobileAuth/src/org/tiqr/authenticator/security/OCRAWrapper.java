@@ -10,11 +10,14 @@ public class OCRAWrapper implements OCRAProtocol
         String otp;
 
         try {
-            OCRA ocra = new OCRA(ocraSuite);
-            ocra.setKey(key);
-            ocra.setQuestion(challengeQuestion);
-            ocra.setSessionInformation(sessionKey);
-            otp = ocra.generateOCRA();
+            otp = OCRA.generateOCRA(
+                    ocraSuite, 
+                    Encryption.bytesToHexString(key), 
+                    "", 
+                    challengeQuestion, 
+                    "", 
+                    sessionKey, 
+                    "");
         } catch (Exception e) {
             throw new InvalidChallengeException();
         }

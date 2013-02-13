@@ -39,5 +39,6 @@
 @property (nonatomic, copy) NSString *sessionKey;
 @property (nonatomic, copy) NSString *challenge;
 @property (nonatomic, copy) NSString *returnUrl;
+@property (nonatomic, copy) NSString *protocolVersion;
 
 @end

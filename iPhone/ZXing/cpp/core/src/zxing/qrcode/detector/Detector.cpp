@@ -27,9 +27,11 @@
 #include <zxing/qrcode/Version.h>
 #include <zxing/common/GridSampler.h>
 #include <zxing/DecodeHints.h>
-#include <cmath>
+#include <zxing/common/detector/math_utils.h>
 #include <sstream>
 #include <cstdlib>
+
+namespace math_utils = zxing::common::detector::math_utils;
 
 namespace zxing {
 namespace qrcode {
@@ -40,8 +42,12 @@ Detector::Detector(Ref<BitMatrix> image) :
     image_(image) {
 }
 
-Ref<BitMatrix> Detector::getImage() {
+Ref<BitMatrix> Detector::getImage() const {
    return image_;
+}
+
+Ref<ResultPointCallback> Detector::getResultPointCallback() const {
+   return callback_;
 }
 
 Ref<DetectorResult> Detector::detect(DecodeHints const& hints) {
@@ -106,7 +112,7 @@ Ref<DetectorResult> Detector::processFinderPatternInfo(Ref<FinderPatternInfo> in
     points[3].reset(alignmentPattern);
   }
 
-  Ref<DetectorResult> result(new DetectorResult(bits, points, transform));
+            Ref<DetectorResult> result(new DetectorResult(bits, points));
   return result;
 }
 
@@ -121,12 +127,14 @@ Ref<PerspectiveTransform> Detector::createTransform(Ref<ResultPoint> topLeft, Re
   if (alignmentPattern != 0) {
     bottomRightX = alignmentPattern->getX();
     bottomRightY = alignmentPattern->getY();
-    sourceBottomRightX = sourceBottomRightY = dimMinusThree - 3.0f;
+    sourceBottomRightX = dimMinusThree - 3.0f;
+    sourceBottomRightY = sourceBottomRightX;
   } else {
     // Don't have an alignment pattern, just make up the bottom-right point
     bottomRightX = (topRight->getX() - topLeft->getX()) + bottomLeft->getX();
     bottomRightY = (topRight->getY() - topLeft->getY()) + bottomLeft->getY();
-    sourceBottomRightX = sourceBottomRightY = dimMinusThree;
+    sourceBottomRightX = dimMinusThree;
+    sourceBottomRightY = dimMinusThree;
   }
 
   Ref<PerspectiveTransform> transform(PerspectiveTransform::quadrilateralToQuadrilateral(3.5f, 3.5f, dimMinusThree, 3.5f, sourceBottomRightX,
@@ -143,8 +151,10 @@ Ref<BitMatrix> Detector::sampleGrid(Ref<BitMatrix> image, int dimension, Ref<Per
 
 int Detector::computeDimension(Ref<ResultPoint> topLeft, Ref<ResultPoint> topRight, Ref<ResultPoint> bottomLeft,
                                float moduleSize) {
-  int tltrCentersDimension = int(FinderPatternFinder::distance(topLeft, topRight) / moduleSize + 0.5f);
-  int tlblCentersDimension = int(FinderPatternFinder::distance(topLeft, bottomLeft) / moduleSize + 0.5f);
+  int tltrCentersDimension =
+    math_utils::round(ResultPoint::distance(topLeft, topRight) / moduleSize);
+  int tlblCentersDimension =
+    math_utils::round(ResultPoint::distance(topLeft, bottomLeft) / moduleSize);
   int dimension = ((tltrCentersDimension + tlblCentersDimension) >> 1) + 7;
   switch (dimension & 0x03) { // mod 4
   case 0:
@@ -245,9 +255,7 @@ float Detector::sizeOfBlackWhiteBlackRun(int fromX, int fromY, int toX, int toY)
       // Does current pixel mean we have moved white to black or vice versa?
       if (!((state == 1) ^ image_->get(realX, realY))) {
         if (state == 2) {
-          int diffX = x - fromX;
-          int diffY = y - fromY;
-          return (float) sqrt((double) (diffX * diffX + diffY * diffY));
+          return math_utils::distance(x, y, fromX, fromY);
         }
         state++;
       }
@@ -265,9 +273,7 @@ float Detector::sizeOfBlackWhiteBlackRun(int fromX, int fromY, int toX, int toY)
     // is "white" so this last point at (toX+xStep,toY) is the right ending. This is really a
     // small approximation; (toX+xStep,toY+yStep) might be really correct. Ignore this.
     if (state == 2) {
-      int diffX = toX + xstep - fromX;
-      int diffY = toY - fromY;
-      return (float) sqrt((double) (diffX * diffX + diffY * diffY));
+      return math_utils::distance(toX + xstep, toY, fromX, fromY);
     }
     // else we didn't find even black-white-black; no estimate is really possible
     return NAN;

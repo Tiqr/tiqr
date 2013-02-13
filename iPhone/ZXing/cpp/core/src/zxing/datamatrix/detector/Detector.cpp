@@ -22,9 +22,11 @@
 #include <zxing/ResultPoint.h>
 #include <zxing/common/GridSampler.h>
 #include <zxing/datamatrix/detector/Detector.h>
-#include <cmath>
+#include <zxing/common/detector/math_utils.h>
 #include <sstream>
 #include <cstdlib>
+
+namespace math_utils = zxing::common::detector::math_utils;
 
 namespace zxing {
 namespace datamatrix {
@@ -232,7 +234,7 @@ Ref<DetectorResult> Detector::detect() {
   points[1].reset(bottomLeft);
   points[2].reset(correctedTopRight);
   points[3].reset(bottomRight);
-  Ref<DetectorResult> detectorResult(new DetectorResult(bits, points, transform));
+  Ref<DetectorResult> detectorResult(new DetectorResult(bits, points));
   return detectorResult;
 }
 
@@ -294,7 +296,7 @@ Ref<ResultPoint> Detector::correctTopRight(Ref<ResultPoint> bottomLeft,
   Ref<ResultPoint> c1(
       new ResultPoint(topRight->getX() + corr * cos, topRight->getY() + corr * sin));
 
-  corr = distance(bottomLeft, bottomRight) / (float) dimension;
+  corr = distance(bottomLeft, topLeft) / (float) dimension;
   norm = distance(bottomRight, topRight);
   cos = (topRight->getX() - bottomRight->getX()) / norm;
   sin = (topRight->getY() - bottomRight->getY()) / norm;
@@ -327,12 +329,8 @@ bool Detector::isValid(Ref<ResultPoint> p) {
       && p->getY() < image_->getHeight();
 }
 
-// L2 distance
 int Detector::distance(Ref<ResultPoint> a, Ref<ResultPoint> b) {
-  return round(
-      (float) sqrt(
-          (double) (a->getX() - b->getX()) * (a->getX() - b->getX())
-              + (a->getY() - b->getY()) * (a->getY() - b->getY())));
+  return math_utils::round(ResultPoint::distance(a, b));
 }
 
 Ref<ResultPointsAndTransitions> Detector::transitionsBetween(Ref<ResultPoint> from,

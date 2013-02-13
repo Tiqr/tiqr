@@ -30,6 +30,7 @@
 		924D6C5F13094DEC00F87B96 /* AuthenticationFallbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 924D6C5E13094DEC00F87B96 /* AuthenticationFallbackViewController.m */; };
 		924D6E3D130958A400F87B96 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 924D6E3C130958A400F87B96 /* Reachability.m */; };
 		924D6E4913095A6900F87B96 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924D6E4813095A6900F87B96 /* SystemConfiguration.framework */; };
+		9264034716C92C360032A4FE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264034616C92C360032A4FE /* Default-568h@2x.png */; };
 		92B92DE3132E114E004F390D /* OcraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B92DE2132E114D004F390D /* OcraTests.m */; };
 		92B92DE6132E1DD0004F390D /* OCRA.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B92DE5132E1DCE004F390D /* OCRA.m */; };
 		92B92DE7132E34CD004F390D /* OCRAWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 922F08461289ABFE00A33616 /* OCRAWrapper.m */; };
@@ -152,7 +153,6 @@
 		76A195BF155BCACC00A73D2D /* AboutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
 		84AB2189168C4F23008C4A35 /* surfnet-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "surfnet-logo.png"; sourceTree = "<group>"; };
 		84AB218A168C4F23008C4A35 /* surfnet-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "surfnet-logo@2x.png"; sourceTree = "<group>"; };
-		84C55D3E16959AA300F00DE7 /* Tiqr 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Tiqr 2.xcdatamodel"; sourceTree = "<group>"; };
 		84C55D3F16959AA300F00DE7 /* Tiqr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tiqr.xcdatamodel; sourceTree = "<group>"; };
 		922F08421289ABE700A33616 /* HOTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HOTP.h; sourceTree = "<group>"; };
 		922F08431289ABE700A33616 /* HOTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOTP.m; sourceTree = "<group>"; };
@@ -163,6 +163,16 @@
 		924D6E3B130958A400F87B96 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		924D6E3C130958A400F87B96 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		924D6E4813095A6900F87B96 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9264033E16C92B830032A4FE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9264033F16C92B920032A4FE /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9264034016C92B990032A4FE /* fy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fy; path = fy.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9264034116C92BA20032A4FE /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9264034216C92BB00032A4FE /* no */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = no; path = no.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9264034316C92BCC0032A4FE /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9264034416C92BDF0032A4FE /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9264034516C92BEB0032A4FE /* sr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sr; path = sr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9264034616C92C360032A4FE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		92829C8F16C92AC000D0F8BA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		92B92DE1132E114C004F390D /* OcraTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OcraTests.h; sourceTree = "<group>"; };
 		92B92DE2132E114D004F390D /* OcraTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OcraTests.m; sourceTree = "<group>"; };
 		92B92DE4132E1DCE004F390D /* OCRA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCRA.h; sourceTree = "<group>"; };
@@ -359,6 +369,7 @@
 		29B97314FDCFA39411CA2CEA /* MobileAuth */ = {
 			isa = PBXGroup;
 			children = (
+				9264034616C92C360032A4FE /* Default-568h@2x.png */,
 				D087B4FB1484EF20001E3545 /* ZXingWidget.xcodeproj */,
 				D016F8A31338C83C00B997D9 /* External */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -890,6 +901,15 @@
 				German,
 				nl,
 				en,
+				de,
+				es,
+				fr,
+				fy,
+				hr,
+				no,
+				ro,
+				sk,
+				sr,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* MobileAuth */;
 			projectDirPath = "";
@@ -955,6 +975,7 @@
 				84AB218B168C4F23008C4A35 /* surfnet-logo.png in Resources */,
 				84AB218C168C4F23008C4A35 /* surfnet-logo@2x.png in Resources */,
 				D0D7200315930AB4008C7004 /* start.html in Resources */,
+				9264034716C92C360032A4FE /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1069,6 +1090,15 @@
 			children = (
 				D025994513095F9B00F1DF9A /* en */,
 				D025994713095FA400F1DF9A /* nl */,
+				92829C8F16C92AC000D0F8BA /* de */,
+				9264033E16C92B830032A4FE /* es */,
+				9264033F16C92B920032A4FE /* fr */,
+				9264034016C92B990032A4FE /* fy */,
+				9264034116C92BA20032A4FE /* hr */,
+				9264034216C92BB00032A4FE /* no */,
+				9264034316C92BCC0032A4FE /* ro */,
+				9264034416C92BDF0032A4FE /* sk */,
+				9264034516C92BEB0032A4FE /* sr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1312,10 +1342,9 @@
 		84C55D3D16959AA300F00DE7 /* Tiqr.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				84C55D3E16959AA300F00DE7 /* Tiqr 2.xcdatamodel */,
 				84C55D3F16959AA300F00DE7 /* Tiqr.xcdatamodel */,
 			);
-			currentVersion = 84C55D3E16959AA300F00DE7 /* Tiqr 2.xcdatamodel */;
+			currentVersion = 84C55D3F16959AA300F00DE7 /* Tiqr.xcdatamodel */;
 			path = Tiqr.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

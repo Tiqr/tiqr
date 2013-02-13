@@ -31,10 +31,12 @@
 #import "AuthenticationSummaryViewController.h"
 #import "AuthenticationFallbackViewController.h"
 #import "OCRAWrapper.h"
+#import "OCRAWrapper_v1.h"
 #import "SecretStore.h"
 #import "MBProgressHUD.h"
 #import "Identity+Utils.h"
 #import "ErrorViewController.h"
+#import "OCRAProtocol.h"
 
 @interface AuthenticationPINViewController ()
 
@@ -125,8 +127,15 @@
 - (NSString *)calculateOTPResponseForPIN:(NSString *)PIN {
 	SecretStore *store = [SecretStore secretStoreForIdentity:self.challenge.identity.identifier identityProvider:self.challenge.identityProvider.identifier];
     
+    NSObject<OCRAProtocol> *ocra;
+    if (self.challenge.protocolVersion && [self.challenge.protocolVersion intValue] >= 2) {
+        ocra = [[OCRAWrapper alloc] init];
+    } else {
+        ocra = [[OCRAWrapper_v1 alloc] init];
+    }
+    
     NSError *error = nil;
-    NSString *response = [OCRAWrapper generateOCRA:self.challenge.identityProvider.ocraSuite secret:[store secretForPIN:PIN] challenge:self.challenge.challenge sessionKey:self.challenge.sessionKey error:&error];
+    NSString *response = [ocra generateOCRA:self.challenge.identityProvider.ocraSuite secret:[store secretForPIN:PIN] challenge:self.challenge.challenge sessionKey:self.challenge.sessionKey error:&error];
     if (response == nil) {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         UIViewController *viewController = [[ErrorViewController alloc] 

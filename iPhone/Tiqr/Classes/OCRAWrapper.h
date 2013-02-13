@@ -28,12 +28,12 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "OCRAProtocol.h"
 
 /**
  * Simple class for computing the HOTP response for an OCRA challenge.
  */
-@interface OCRAWrapper : NSObject {
-}
+@interface OCRAWrapper : NSObject <OCRAProtocol>
 
 /**
  * Computes the HOTP response for the given OCRA challenge.
@@ -45,7 +45,7 @@
  *
  * @return computed HOTP response
  */
-+ (NSString *)generateOCRA:(NSString*)ocraSuite
+- (NSString *)generateOCRA:(NSString*)ocraSuite
                 secret:(NSData *)secret 
              challenge:(NSString*)challenge
             sessionKey:(NSString*)sessionKey
