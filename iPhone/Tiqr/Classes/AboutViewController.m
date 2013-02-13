@@ -35,6 +35,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *tiqrProvidedByLabel;
 @property (nonatomic, retain) IBOutlet UILabel *developedByLabel;
 @property (nonatomic, retain) IBOutlet UILabel *interactionDesignLabel;
+@property (nonatomic, retain) IBOutlet UINavigationItem *barItem;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *doneButton;
 
 @end
 
@@ -58,7 +60,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = NSLocalizedString(@"about_title", @"About tiqr");
+    self.barItem.title = NSLocalizedString(@"about_title", @"About tiqr");
+    self.doneButton.title = NSLocalizedString(@"done_button", "Done");
     self.tiqrProvidedByLabel.text = NSLocalizedString(@"provided_by_title", @"tiqr is provided by:");
     self.developedByLabel.text = NSLocalizedString(@"developed_by_title", @"Developed by:");
     self.interactionDesignLabel.text = NSLocalizedString(@"interaction_by_title", @"Interaction design:");
@@ -76,7 +79,7 @@
 }
 
 - (IBAction)egeniq {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.egeniq.com/"]];    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.egeniq.com/?utm_source=tiqr&utm_medium=referral&utm_campaign=about"]];    
 }
 
 - (IBAction)stroomt {
