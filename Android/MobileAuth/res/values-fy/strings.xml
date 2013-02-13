@@ -108,6 +108,7 @@
   <string name="enrollment_success_title">Registraasje slagge</string>
   <string name="enrollment_success_message" formatted="false">Jo binne registreart as %s foar %s</string>
   <string name="enrollment_failure_title">Registraasje mislearre</string>
+  <string name="enrollment_failure_message">Registraasje mislearre</string>
   <string name="error_enroll_invalid_qr_code">Ûnjildiche QR registraasje koade.</string>
   <string name="error_enroll_connect_error">Kin gjin ferbining meitsje mei de registraasjeserver. Nim kontakt op mei de ynternetside behearder.</string>
   <string name="error_enroll_invalid_response">Ûnjildich antwurd fan de registraasjeserver. Nim kontakt op mei de ynternetside behearder.</string>

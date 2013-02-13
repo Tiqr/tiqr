@@ -108,6 +108,7 @@
   <string name="enrollment_success_title">Enregistrement réussi</string>
   <string name="enrollment_success_message" formatted="false">Vous êtes enregistré en tant que %s pour %s</string>
   <string name="enrollment_failure_title">Enregistrement échoué</string>
+  <string name="enrollment_failure_message">Une erreur s\'est passé lors de la registration</string>
   <string name="error_enroll_invalid_qr_code">Code QR d\'enregistrement invalide.</string>
   <string name="error_enroll_connect_error">Connexion au serveur d\'enregistrement impossible. Veuillez contacter l\'administrateur du site web.</string>
   <string name="error_enroll_invalid_response">Réponse du serveur d\'enregistrement invalide. Veuillez contacter l\'administrateur du site web.</string>

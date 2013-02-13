@@ -108,6 +108,7 @@
   <string name="enrollment_success_title">Uspješan upis</string>
   <string name="enrollment_success_message" formatted="false">Uspješno ste upisani kao %s u %s</string>
   <string name="enrollment_failure_title">Neuspješan upis</string>
+  <string name="enrollment_failure_message">Neuspješan upis</string>
   <string name="error_enroll_invalid_qr_code">Pogrešan QR kod za upis.</string>
   <string name="error_enroll_connect_error">Nije moguće uspostaviti vezu sa poslužiteljem za upis. Kontaktirajte administratora web stranice.</string>
   <string name="error_enroll_invalid_response">Pogrešan odgovor za upis zaprimljen od poslužitelja. Kontaktirajte administratora web stranice.</string>

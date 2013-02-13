@@ -108,6 +108,7 @@
   <string name="enrollment_success_title">Inregistrare reusita.</string>
   <string name="enrollment_success_message" formatted="false">Ati fost inregistrat cu succes drept %s pentru %s</string>
   <string name="enrollment_failure_title">Inregistrare esuata</string>
+  <string name="enrollment_failure_message">Inregistrare esuata</string>
   <string name="error_enroll_invalid_qr_code">QR code de inregistrare invalid.</string>
   <string name="error_enroll_connect_error">Conexiune la serverul de inregistrare nu este posibila. Va rugam sa contactati administratorul site-ului web.</string>
   <string name="error_enroll_invalid_response">Raspunsul serverului de inregistrare este invalid. Va rugam sa contactati administratorul site-ului web.</string>

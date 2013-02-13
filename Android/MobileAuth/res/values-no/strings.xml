@@ -108,6 +108,7 @@
   <string name="enrollment_success_title">Vellykket påmelding</string>
   <string name="enrollment_success_message" formatted="false">Du er påmeldt som %s i %s</string>
   <string name="enrollment_failure_title">Mislykket påmelding</string>
+  <string name="enrollment_failure_message">Mislykket påmelding</string>
   <string name="error_enroll_invalid_qr_code">Ugyldig QR kode.</string>
   <string name="error_enroll_connect_error">Ingen forbindelse til påloggingstjener. Vennligst kontakt web administrator.</string>
   <string name="error_enroll_invalid_response">Ugyldig påloggingstjener respons.  Vennligst kontakt web administrator.</string>

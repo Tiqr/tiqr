@@ -108,6 +108,7 @@
   <string name="enrollment_success_title">Registrácia úspešná</string>
   <string name="enrollment_success_message" formatted="false">Ste registrovaný/á ako %s k %s</string>
   <string name="enrollment_failure_title">Registrácia zlyhala</string>
+  <string name="enrollment_failure_message">Registrácia zlyhala</string>
   <string name="error_enroll_invalid_qr_code">Neplatný registračný QR kód</string>
   <string name="error_enroll_connect_error">Nemožno sa pripojiť k registračnému serveru. Kontaktujte, prosím, správcu web servera.</string>
   <string name="error_enroll_invalid_response">Neplatná reakcia registračného servera. Kontaktujte, prosím, správcu web servera.</string>
