@@ -35,7 +35,7 @@
   <string name="return_button">Inapoi</string>
   <string name="unknown">Necunoscut</string>
   <string name="unknown_error">Eroare necunoscuta</string>
-  <string name="no_identities">Nu aveti date de autentificare inca. ⏎ ⏎ Apasati butonul <b>menu</b> pentru a adauga o identitate.</string>
+  <string name="no_identities">Nu aveti date de autentificare inca. \n\nApasati butonul <b>menu</b> pentru a adauga o identitate.</string>
   <string name="to_service_provider">catre:</string>
   <string name="for_identity_provider">Pentru:</string>
   <string name="confirm_authentication">Sunteti sigur ca vreti sa va autentificati?</string>
@@ -64,7 +64,7 @@
   <string name="choose_password_title">Va rugam sa alegeti un cod PIN</string>
   <string name="choose_password_intro">Va rugam sa alegeti un cod PIN pentru a securiza aceasta identitate.</string>
   <string name="passwords_dont_match_title">Codurile PIN nu sunt aceleasi</string>
-  <string name="passwords_dont_match">Codurile PIN introduse nu sunt aceleasi. Incercati din nou.⏎ Alegeti un cod PIN pe care vi-l puteti aminti.</string>
+  <string name="passwords_dont_match">Codurile PIN introduse nu sunt aceleasi. Incercati din nou.\nAlegeti un cod PIN pe care vi-l puteti aminti.</string>
   <string name="password_incorrect">Cod PIN incorect.</string>
   <string name="enrolling">Inregistrare</string>
   <string name="authenticating">Autentificare</string>
@@ -79,7 +79,7 @@
   <string name="authentication_confirmation_description">Veti fi autentificat drept:</string>
   <string name="authentication_pincode_title">Autentificare:</string>
   <string name="authentication_fallback_title">Apareti a fi deconectat.</string>
-  <string name="authentication_fallback_description">Nu va faceti griji! Apasati codul QR pe ⏎ site-ul web. Veti fi rugat sa introduceti ⏎ urmatoarele informatii de acreditare de singura folosinta:</string>
+  <string name="authentication_fallback_description">Nu va faceti griji! Apasati codul QR pe \nsite-ul web. Veti fi rugat sa introduceti \nurmatoarele informatii de acreditare de singura folosinta:</string>
   <string name="error_auth_invalid_qr_code">Cod QR de autentificare invalid.</string>
   <string name="error_auth_unknown_identity_provider">Furnizor de identitate necunoscuta; va rugam inregistrati-va mai intai.</string>
   <string name="error_auth_unknown_identity">Identitate necunoscuta pt serviciu; va rugam inregistrati-va mai intai.</string>
@@ -99,7 +99,7 @@
   <string name="error_auth_invalid_request_title">Cerere invalida</string>
   <string name="error_auth_invalid_request_message">Serverul nu recunoaste cererea de autentificare. Va rugam contactati echipa de suport.</string>
   <string name="error_auth_wrong_pin">Cod PIN gresit</string>
-  <string name="error_auth_x_attempts_left">Ati furnizat un cod PIN incorect. Mai aveti %d incercari. Va rugam introduceti codul dumneavoastra PIN din nou. Controlati icon-ul de verificare pentru ultima cifra.</string>
+  <string name="error_auth_x_attempts_left" formatted="false">Ati furnizat un cod PIN incorect. Mai aveti %d incercari. Va rugam introduceti codul dumneavoastra PIN din nou. Controlati icon-ul de verificare pentru ultima cifra.</string>
   <string name="error_auth_one_attempt_left">Mai aveti o singura incercare. Daca introduceti un cod PIN incorect din nou, toate conturile de pe acest dispozitiv vor fi blocate.</string>
   <string name="error_auth_server_incompatible">Serverul este incompatibil cu versiunea de tiqr.</string>
   <string name="enrollment_confirmation_header_title">Activarea contului</string>

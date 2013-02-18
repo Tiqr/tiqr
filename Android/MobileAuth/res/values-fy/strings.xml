@@ -99,7 +99,7 @@
   <string name="error_auth_invalid_request_title">Ûnjildiche oanrop</string>
   <string name="error_auth_invalid_request_message">De server werkent jo ynloch fersyk net. Nim kontakt op mei support.</string>
   <string name="error_auth_wrong_pin">Ferkearde PIN</string>
-  <string name="error_auth_x_attempts_left">De opjane PIN is ferkeard. Jo hawwe noch %d pogingen. Fier nochris jo PIN yn. Tink dêrby om it kontrôle teken by it lêste sifer.</string>
+  <string name="error_auth_x_attempts_left" formatted="false">De opjane PIN is ferkeard. Jo hawwe noch %d pogingen. Fier nochris jo PIN yn. Tink dêrby om it kontrôle teken by it lêste sifer.</string>
   <string name="error_auth_one_attempt_left">Jo hawwe noch ien lêste poging. At jo wer in foute PIN ynfiere, wurde al jo tiqr akkounts op dit tastel blokkeart.</string>
   <string name="error_auth_server_incompatible">Dizze server is net geskikt foar dizze ferzje fan tiqr.</string>
   <string name="enrollment_confirmation_header_title">Akkount activearje</string>

@@ -99,7 +99,7 @@
   <string name="error_auth_invalid_request_title">Ongeldige aanroep</string>
   <string name="error_auth_invalid_request_message">De server herkent uw login verzoek niet. Neem contact op met support.</string>
   <string name="error_auth_wrong_pin">Verkeerde PIN</string>
-  <string name="error_auth_x_attempts_left">De opgegeven PIN is onjuist. U heeft nog %d pogingen. Voer nogmaals uw PIN in. Let hierbij op het controle teken bij het laatste cijfer.</string>
+  <string name="error_auth_x_attempts_left" formatted="false">De opgegeven PIN is onjuist. U heeft nog %d pogingen. Voer nogmaals uw PIN in. Let hierbij op het controle teken bij het laatste cijfer.</string>
   <string name="error_auth_one_attempt_left">U heeft nog één laatste poging. Als u weer een foute PIN invoert zullen alle tiqr accounts op dit toestel geblokkeerd worden.</string>
   <string name="error_auth_server_incompatible">De server is niet geschikt voor deze versie van tiqr.</string>
   <string name="enrollment_confirmation_header_title">Account activering</string>

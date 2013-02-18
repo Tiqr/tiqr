@@ -5,7 +5,7 @@
   <string name="authentication_title">Acceder</string>
   <string name="identity_title">Identidades</string>
   <string name="identity_blocked">Bloqueado</string>
-  <string name="identity_blocked_message">Atención: esta cuenta está bloqueada⏎y debe reactivarla</string>
+  <string name="identity_blocked_message">Atención: esta cuenta está bloqueada\ny debe reactivarla</string>
   <string name="confirm_enrollment_title">Confirmar el registro</string>
   <string name="confirm_authentication_title">Confirmar el acceso</string>
   <string name="select_identity_title">Seleccione una identidad</string>
@@ -35,7 +35,7 @@
   <string name="return_button">Volver</string>
   <string name="unknown">Ni idea</string>
   <string name="unknown_error">Vaya casque</string>
-  <string name="no_identities">Aún no tiene identidades.⏎ ⏎ Pulse <b>menú</b> para añadir una identidad.</string>
+  <string name="no_identities">Aún no tiene identidades.\n\nPulse <b>menú</b> para añadir una identidad.</string>
   <string name="to_service_provider">a:</string>
   <string name="for_identity_provider">Para:</string>
   <string name="confirm_authentication">¿Está seguro que quiere acceder?</string>
@@ -99,7 +99,7 @@
   <string name="error_auth_invalid_request_title">Petición errónea.</string>
   <string name="error_auth_invalid_request_message">El servidor no reconoce la petición de acceso. Por favor, busque ayuda.</string>
   <string name="error_auth_wrong_pin">PIN erróneo</string>
-  <string name="error_auth_x_attempts_left">Ha proporcionado un PIN incorrecto. Le quedan %d intentos. Por favor, vuelva a introducir su PIN. Compruebe el último dígito del icono de verificación. </string>
+  <string name="error_auth_x_attempts_left" formatted="false">Ha proporcionado un PIN incorrecto. Le quedan %d intentos. Por favor, vuelva a introducir su PIN. Compruebe el último dígito del icono de verificación. </string>
   <string name="error_auth_one_attempt_left">Solo le queda un intento. Si vuelve a usar un PIN incorrecto se bloquearán todas las cuentas en este dispositivo.</string>
   <string name="error_auth_server_incompatible">El servidor es incompatible con esta versión de tiqr.</string>
   <string name="enrollment_confirmation_header_title">Acctivación de la cuenta</string>

@@ -99,7 +99,7 @@
   <string name="error_auth_invalid_request_title">Demande invalide</string>
   <string name="error_auth_invalid_request_message">Le serveur ne reconnait pas la demande de connexion. Veuillez contacter le support.</string>
   <string name="error_auth_wrong_pin">Code PIN incorrecte</string>
-  <string name="error_auth_x_attempts_left">Vous avez entré un code PIN incorrect. Il vous reste encore %d essais. Entrez votre code PIN à nouveau. Utilisez l\'icône de vérification pour le dernier chiffre.</string>
+  <string name="error_auth_x_attempts_left" formatted="false">Vous avez entré un code PIN incorrect. Il vous reste encore %d essais. Entrez votre code PIN à nouveau. Utilisez l\'icône de vérification pour le dernier chiffre.</string>
   <string name="error_auth_one_attempt_left">Il vous reste un dernier essai. Si vous entrer encore un code PIN incorrecte, tous les comptes sur cet appareil vont être bloqués.</string>
   <string name="error_auth_server_incompatible">Le serveur est incompatible avec cette version de tiqr.</string>
   <string name="enrollment_confirmation_header_title">Activation du compte</string>

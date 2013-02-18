@@ -99,7 +99,7 @@
   <string name="error_auth_invalid_request_title">Neispravan zahtev</string>
   <string name="error_auth_invalid_request_message">Server ne prepoznaje zahtev za prijavu. Kontaktirajte podršku.</string>
   <string name="error_auth_wrong_pin">Neispravan PIN</string>
-  <string name="error_auth_x_attempts_left">Uneli ste neispravan PIN. Preostalo je %d pokušaja. Molimo ponovo unesite PIN kod. Proverite verifikacionu ikonicu za poslednju cifru.</string>
+  <string name="error_auth_x_attempts_left" formatted="false">Uneli ste neispravan PIN. Preostalo je %d pokušaja. Molimo ponovo unesite PIN kod. Proverite verifikacionu ikonicu za poslednju cifru.</string>
   <string name="error_auth_one_attempt_left">Preostao je još jedan pokušaj. Ukoliko ponovno unesete pogrešan PIN, svi korisnički nalozi na ovom uređaju će biti blokirani.</string>
   <string name="error_auth_server_incompatible">Server nije kompatibilan sa ovom verzijom tiqr-a.</string>
   <string name="enrollment_confirmation_header_title">Aktivacija korisničkog naloga</string>

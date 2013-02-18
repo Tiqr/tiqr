@@ -5,7 +5,7 @@
   <string name="authentication_title">Prihlásenie</string>
   <string name="identity_title">Identity</string>
   <string name="identity_blocked">Blokovaný</string>
-  <string name="identity_blocked_message">Upozornenie: tento účet je zablokovaný⏎ a musí byť znova aktivovaný.</string>
+  <string name="identity_blocked_message">Upozornenie: tento účet je zablokovaný\na musí byť znova aktivovaný.</string>
   <string name="confirm_enrollment_title">Potvrďte registráciu</string>
   <string name="confirm_authentication_title">Potvrďte prihlásenie</string>
   <string name="select_identity_title">Voľba identity</string>
@@ -30,12 +30,12 @@
   <string name="identifier_label">Používateľské ID:</string>
   <string name="fallback_identifier_label">Vaše ID je:</string>
   <string name="note_pin_not_verified_title">Poznámka: váš PIN zatiaľ nebol overený.</string>
-  <string name="note_pin_not_verified">Pokiaľ prihlásenie zlyhalo, skúste znova načítať QR kód⏎  a zadať správny PIN.</string>
+  <string name="note_pin_not_verified">Pokiaľ prihlásenie zlyhalo, skúste znova načítať QR kód\n a zadať správny PIN.</string>
   <string name="otp_label">Jednorázové heslo:</string>
   <string name="return_button">Späť</string>
   <string name="unknown">Nešpecifikovaný</string>
   <string name="unknown_error">Nešpecifikovaná chyba</string>
-  <string name="no_identities">Nemáte vytvorenú žiadnu identitu.⏎ ⏎ Zvoľte <b>menu</b> a pridajte identitu.</string>
+  <string name="no_identities">Nemáte vytvorenú žiadnu identitu.\n\nZvoľte <b>menu</b> a pridajte identitu.</string>
   <string name="to_service_provider">k:</string>
   <string name="for_identity_provider">Pre prístup k:</string>
   <string name="confirm_authentication">Skutočne sa chcete prihlásiť?</string>
@@ -64,7 +64,7 @@
   <string name="choose_password_title">Zvoľte si, prosím, PIN</string>
   <string name="choose_password_intro">Zvoľte si, prosím, PIN kód na zabezpečenie tejto identity.</string>
   <string name="passwords_dont_match_title">PIN kódy sa nezhodujú</string>
-  <string name="passwords_dont_match">PIN kódy sa nezhodujú. Opakujte zadanie, prosím.⏎ Zvoľte PIN kód, ktorý si dokážete zapamätať.</string>
+  <string name="passwords_dont_match">PIN kódy sa nezhodujú. Opakujte zadanie, prosím.\nZvoľte PIN kód, ktorý si dokážete zapamätať.</string>
   <string name="password_incorrect">Nesprávny PIN.</string>
   <string name="enrolling">Registrácia</string>
   <string name="authenticating">Autentifikácia</string>
@@ -79,7 +79,7 @@
   <string name="authentication_confirmation_description">Budete prihlásený/á ako:</string>
   <string name="authentication_pincode_title">Prihlásenie</string>
   <string name="authentication_fallback_title">Nedostupné sieťové pripojenie</string>
-  <string name="authentication_fallback_description">Kliknite na QR kód na web⏎ stránke. Na požiadanie zadajte ⏎ tieto jednorázové prístupové údaje:</string>
+  <string name="authentication_fallback_description">Kliknite na QR kód na web\nstránke. Na požiadanie zadajte \ntieto jednorázové prístupové údaje:</string>
   <string name="error_auth_invalid_qr_code">Neplatný QR kód.</string>
   <string name="error_auth_unknown_identity_provider">Neznámy poskytovateľ identity. Najskôr sa, prosím, registrujte.</string>
   <string name="error_auth_unknown_identity">Neznáma identita pre službu. Najskôr sa, prosím, registrujte.</string>
@@ -99,12 +99,12 @@
   <string name="error_auth_invalid_request_title">Neplatná požiadavka</string>
   <string name="error_auth_invalid_request_message">Server nerozpoznal prihlasovaciu požiadavku. Kontaktujte, prosím, používateľskú podporu.</string>
   <string name="error_auth_wrong_pin">Nesprávny PIN</string>
-  <string name="error_auth_x_attempts_left">Nesprávny PIN. Zostáva vám %d pokusov. Prosím, zadajte svoj PIN. Overte kontrolný piktogram každej práve zadanej číslice.</string>
+  <string name="error_auth_x_attempts_left" formatted="false">Nesprávny PIN. Zostáva vám %d pokusov. Prosím, zadajte svoj PIN. Overte kontrolný piktogram každej práve zadanej číslice.</string>
   <string name="error_auth_one_attempt_left">Máte posledný pokus. Ak opäť zadáte nesprávny PIN, všetky účty na tomto zariadení budú zablokované.</string>
   <string name="error_auth_server_incompatible">Server nepodporuje túto verziu tiqr.</string>
   <string name="enrollment_confirmation_header_title">Aktivácia účtu</string>
   <string name="enrollment_confirmation_title">Potvrdiť aktiváciu účtu</string>
-  <string name="enrollment_confirmation_description">Želáte si aktivovať⏎ nasledovný účet?</string>
+  <string name="enrollment_confirmation_description">Želáte si aktivovať\nnasledovný účet?</string>
   <string name="enrollment_success_title">Registrácia úspešná</string>
   <string name="enrollment_success_message" formatted="false">Ste registrovaný/á ako %s k %s</string>
   <string name="enrollment_failure_title">Registrácia zlyhala</string>
@@ -120,6 +120,6 @@
   <string name="error_device_incompatible_with_security_standards">Zariadenie nie je kompatibilné s požadovanými bezpečnostnými normami.</string>
   <string name="provided_by">poskytovateľ:</string>
   <string name="main_text_welcome"></string>
-  <string name="main_text_instructions">Zvoľte želanú službu a postupujte nasledovne: <ul>⏎ <li>Nasnímajte QR kód na prihlasovacej stránke služby.</li>⏎ <li>⏎ <i>Ak máte niekoľko identít, zvoľte si tú, s ktorou sa chcete prihlásiť.</i>⏎ </li>⏎ <li>Potvrďte identitu (budete musieť zadať svoj PIN).</li>⏎ <li>Ste prihlásený/á!</li>⏎ </ul> Potvrdením výzvy <b>Skenovať</b> zahájite proces prihlásenia.</string>
-  <string name="main_text_blocked"><b>A čo teraz?</b>⏎ <br></br>⏎ Požiadajte vášho poskytovateľa identity o nový aktivačný kód. Odkaz na váško ⏎ poskytovateľa identity nájdete v menu Identity (hore vľavo).<br></br>⏎ <br></br>⏎ Spolu s aktivačným kódom obdržíte pokyny ako znovu ⏎ aktivovať váš účet. Výzvu <b>Skenovať</b> potvrďte stlačením tlačítka.</string>
+  <string name="main_text_instructions">Zvoľte želanú službu a postupujte nasledovne: <ul>\n<li>Nasnímajte QR kód na prihlasovacej stránke služby.</li>\n<li>\n<i>Ak máte niekoľko identít, zvoľte si tú, s ktorou sa chcete prihlásiť.</i>\n</li>\n<li>Potvrďte identitu (budete musieť zadať svoj PIN).</li>\n<li>Ste prihlásený/á!</li>\n</ul> Potvrdením výzvy <b>Skenovať</b> zahájite proces prihlásenia.</string>
+  <string name="main_text_blocked"><b>A čo teraz?</b>\n<br></br>\nPožiadajte vášho poskytovateľa identity o nový aktivačný kód. Odkaz na váško \nposkytovateľa identity nájdete v menu Identity (hore vľavo).<br></br>\n<br></br>\nSpolu s aktivačným kódom obdržíte pokyny ako znovu \naktivovať váš účet. Výzvu <b>Skenovať</b> potvrďte stlačením tlačítka.</string>
 </resources>

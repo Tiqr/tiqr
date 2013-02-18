@@ -99,7 +99,7 @@
   <string name="error_auth_invalid_request_title">Napaka: \"Invalid request\"</string>
   <string name="error_auth_invalid_request_message">Strežnik ni prepoznal zahteve za prijavo. Kontaktirajte oddelek za pomoč uporabnikom.</string>
   <string name="error_auth_wrong_pin">Napačen PIN</string>
-  <string name="error_auth_x_attempts_left">Vpisali ste napačen PIN. Z vpisom lahko poskusite še %d krat. Ponovno poskusite z vpisom in preverite verifikacijsko ikono zadnje številke.</string>
+  <string name="error_auth_x_attempts_left" formatted="false">Vpisali ste napačen PIN. Z vpisom lahko poskusite še %d krat. Ponovno poskusite z vpisom in preverite verifikacijsko ikono zadnje številke.</string>
   <string name="error_auth_one_attempt_left">Imate zgolj še en poskus vpisa pravilnega PIN-a. V primeru napake, bo vaš račun blokiran.</string>
   <string name="error_auth_server_incompatible">Strežnik ni združljiv s to različico aplikacije tiqr.</string>
   <string name="enrollment_confirmation_header_title">Aktivacija računa</string>
