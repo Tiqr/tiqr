@@ -5,7 +5,7 @@
   <string name="authentication_title">Login</string>
   <string name="identity_title">Identitäten</string>
   <string name="identity_blocked">Blockiert</string>
-  <string name="identity_blocked_message">Warnung: dieses Konto ist blockiert⏎ und muss reaktiviert werden.</string>
+  <string name="identity_blocked_message">Warnung: dieses Konto ist blockiert\nund muss reaktiviert werden.</string>
   <string name="confirm_enrollment_title">Aktivierung bestätigen</string>
   <string name="confirm_authentication_title">Anmeldung bestätigen</string>
   <string name="select_identity_title">Benutzerkonto auswählen</string>
@@ -30,7 +30,7 @@
   <string name="identifier_label">Benutzer-ID:</string>
   <string name="fallback_identifier_label">Ihre ID ist:</string>
   <string name="note_pin_not_verified_title">Hinweis: Ihre PIN wurde noch nicht verifiziert.</string>
-  <string name="note_pin_not_verified">Wenn Sie sich mit den oben angezeigten Daten nicht anmelden können,⏎ scannen Sie noch einmal und geben Sie den korrekten PIN Code ein.</string>
+  <string name="note_pin_not_verified">Wenn Sie sich mit den oben angezeigten Daten nicht anmelden können,\nscannen Sie noch einmal und geben Sie den korrekten PIN Code ein.</string>
   <string name="otp_label">Einmalig gültiges Passwort:</string>
   <string name="return_button">Zurück</string>
   <string name="unknown">Unbekannt</string>
@@ -79,7 +79,7 @@
   <string name="authentication_confirmation_description">Sie melden sich an als:</string>
   <string name="authentication_pincode_title">Anmelden</string>
   <string name="authentication_fallback_title">Sie scheinen offline zu sein</string>
-  <string name="authentication_fallback_description">Keine Panik! Klicken Sie auf den QR Code auf der ⏎ Webseite. Daraufhin werden Sie aufgefordert, die folgenden ⏎ nur einmalig gültigen Daten einzugeben:</string>
+  <string name="authentication_fallback_description">Keine Panik! Klicken Sie auf den QR Code auf der \nWebseite. Daraufhin werden Sie aufgefordert, die folgenden \nnur einmalig gültigen Daten einzugeben:</string>
   <string name="error_auth_invalid_qr_code">Ungültiger QR Code für die Authentifizierung.</string>
   <string name="error_auth_unknown_identity_provider">Unbekannter Identitätsprovider; bitte registrieren Sie sich zuerst.</string>
   <string name="error_auth_unknown_identity">Unbekannte Identität; bitte registrieren Sie sich zuerst.</string>
@@ -104,10 +104,11 @@
   <string name="error_auth_server_incompatible">Der Server verwendet eine inkompatible Version von tiqr.</string>
   <string name="enrollment_confirmation_header_title">Aktivierung des Benutzerkontos</string>
   <string name="enrollment_confirmation_title">Aktivierung des Benutzerkontos bestätigen</string>
-  <string name="enrollment_confirmation_description">Möchten Sie das⏎ folgende Benutzerkonto aktivieren?</string>
+  <string name="enrollment_confirmation_description">Möchten Sie das\nfolgende Benutzerkonto aktivieren?</string>
   <string name="enrollment_success_title">Anmelden erfolgreich</string>
   <string name="enrollment_success_message" formatted="false">Sie sind erfolgereich angemeldet als %s bei %s</string>
   <string name="enrollment_failure_title">Anmeldefehler</string>
+  <string name="enrollment_failure_message">Anmeldefehler</string>
   <string name="error_enroll_invalid_qr_code">Ungültiger QR Registrierungscode.</string>
   <string name="error_enroll_connect_error">Fehler beim kontaktieren des Registrierungsservers; bitte kontaktieren Sie den Webmaster.</string>
   <string name="error_enroll_invalid_response">Ungültiges Registrierungsantwort; bitte kontaktieren Sie den Webmaster.</string>
