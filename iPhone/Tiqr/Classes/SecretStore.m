@@ -60,7 +60,8 @@
 	[data setObject:self.identityProviderIdentifier forKey:(id)kSecAttrService];
 	[data setObject:self.identityIdentifier forKey:(id)kSecAttrAccount];		
     [data setObject:encryptedSecret_ forKey:(id)kSecValueData];	
-	
+	[data setObject:(id)kSecAttrAccessibleWhenUnlocked forKey:(id)kSecAttrAccessible];
+
 	NSMutableDictionary *result = nil;
 	return SecItemAdd((CFDictionaryRef)data, (CFTypeRef *)&result) == noErr;
 }
