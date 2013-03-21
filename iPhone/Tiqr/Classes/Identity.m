@@ -34,6 +34,9 @@
 @implementation Identity
 @dynamic displayName;
 @dynamic identifier;
+@dynamic version;
+@dynamic salt;
+@dynamic initializationVector;
 @dynamic sortIndex;
 @dynamic blocked;
 @dynamic identityProvider;

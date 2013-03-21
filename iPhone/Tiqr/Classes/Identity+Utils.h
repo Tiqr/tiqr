@@ -90,4 +90,12 @@
  */
 + (void)blockAllIdentitiesInManagedObjectContext:(NSManagedObjectContext *)context;
 
+
+/**
+ * Upgrades the identity to use salt and initialization vector.
+ *
+ * NOTE: should be called with valid PIN only!
+ */
+- (BOOL)upgradeWithPIN:(NSString *)PIN;
+
 @end

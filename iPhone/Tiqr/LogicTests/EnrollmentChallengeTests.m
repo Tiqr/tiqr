@@ -39,13 +39,13 @@
 }
 
 - (void)insertData {
-    Service *service = [NSEntityDescription insertNewObjectForEntityForName:@"Service" inManagedObjectContext:managedObjectContext_];
+    IdentityProvider *service = [NSEntityDescription insertNewObjectForEntityForName:@"Service" inManagedObjectContext:managedObjectContext_];
     service.identifier = @"example.org";
     service.displayName = @"Dummy Service";
     service.authenticationUrl = @"http://example.org/auth/";
     
     Identity *identity = [NSEntityDescription insertNewObjectForEntityForName:@"Identity" inManagedObjectContext:managedObjectContext_];
-    identity.service = service;
+    identity.identityProvider = service;
     identity.identifier = @"john.doe";
     identity.displayName = @"John Doe";
     identity.sortIndex = [NSNumber numberWithInt:1];
@@ -92,25 +92,25 @@
     // invalid qr start
     EnrollmentChallenge *challenge = [[EnrollmentChallenge alloc] initWithRawChallenge:@"surfauth://http://example.org" managedObjectContext:managedObjectContext_ allowFiles:YES];
     STAssertFalse(challenge.valid, @"Should be false");
-    STAssertEqualObjects(@"Invalid enrollment QR code. Please contact the website administrator.", challenge.errorMessage, @"Should be equal");
+    STAssertEqualObjects(@"Invalid enrollment QR code. Please contact the website administrator.", challenge.error.localizedDescription, @"Should be equal");
     [challenge release];
     
     // invalid protocol
     challenge = [[EnrollmentChallenge alloc] initWithRawChallenge:@"surfenroll://xyz://example.org" managedObjectContext:managedObjectContext_ allowFiles:YES];
     STAssertFalse(challenge.valid, @"Should be false");
-    STAssertEqualObjects(@"Invalid enrollment QR code. Please contact the website administrator.", challenge.errorMessage, @"Should be equal");
+    STAssertEqualObjects(@"Invalid enrollment QR code. Please contact the website administrator.", challenge.error.localizedDescription, @"Should be equal");
     [challenge release];
 
     // no files allowed (default)
     challenge = [[EnrollmentChallenge alloc] initWithRawChallenge:@"surfenroll://file:something" managedObjectContext:managedObjectContext_];
     STAssertFalse(challenge.valid, @"Should be false");
-    STAssertEqualObjects(@"Invalid enrollment QR code. Please contact the website administrator.", challenge.errorMessage, @"Should be equal");
+    STAssertEqualObjects(@"Invalid enrollment QR code. Please contact the website administrator.", challenge.error.localizedDescription, @"Should be equal");
     [challenge release];
 
     // files allowed, but non existing
     challenge = [[EnrollmentChallenge alloc] initWithRawChallenge:@"surfenroll://file:does-not-exist" managedObjectContext:managedObjectContext_ allowFiles:YES];
     STAssertFalse(challenge.valid, @"Should be false");
-    STAssertEqualObjects(@"Cannot connect to enrollment server. Please contact the website administrator.", challenge.errorMessage, @"Should be equal");
+    STAssertEqualObjects(@"Cannot connect to enrollment server. Please contact the website administrator.", challenge.error.localizedDescription, @"Should be equal");
     [challenge release];
     
     
@@ -118,27 +118,27 @@
     
     challenge = [self createEnrollmentChallenge:@"..."];
     STAssertFalse(challenge.valid, @"Should be false");
-    STAssertEqualObjects(@"Invalid enrollment server response. Please contact the website administrator.", challenge.errorMessage, @"Should be equal");
+    STAssertEqualObjects(@"Invalid enrollment server response. Please contact the website administrator.", challenge.error.localizedDescription, @"Should be equal");
     
     challenge = [self createEnrollmentChallenge:@"{}"];
     STAssertFalse(challenge.valid, @"Should be false");
-    STAssertEqualObjects(@"Invalid enrollment server response. Please contact the website administrator.", challenge.errorMessage, @"Should be equal");    
+    STAssertEqualObjects(@"Invalid enrollment server response. Please contact the website administrator.", challenge.error.localizedDescription, @"Should be equal");
     
     challenge = [self createEnrollmentChallenge:[NSString stringWithFormat:@"{ \"service\": { \"identifier\": \"example.org\", \"displayName\": \"Dummy Service\", \"logoUrl\": \"%@\", \"authenticationUrl\": \"\" }, \"identity\": { \"identifier\": \"john.doe\", \"displayName\": \"John Doe\" } }", logoURL]];
     STAssertFalse(challenge.valid, @"Should be false");
-    STAssertEqualObjects(@"Invalid enrollment server response. Please contact the website administrator.", challenge.errorMessage, @"Should be equal");    
+    STAssertEqualObjects(@"Invalid enrollment server response. Please contact the website administrator.", challenge.error.localizedDescription, @"Should be equal");
 
     challenge = [self createEnrollmentChallenge:[NSString stringWithFormat:@"{ \"service\": { \"identifier\": \"example.org\", \"displayName\": \"Dummy Service\", \"logoUrl\": \"%@\", \"authenticationUrl\": \"\", \"enrollmentUrl\": \"http://example.org/enroll/\" } }", logoURL]];
     STAssertFalse(challenge.valid, @"Should be false");
-    STAssertEqualObjects(@"Invalid enrollment server response. Please contact the website administrator.", challenge.errorMessage, @"Should be equal");    
+    STAssertEqualObjects(@"Invalid enrollment server response. Please contact the website administrator.", challenge.error.localizedDescription, @"Should be equal");
 
     challenge = [self createEnrollmentChallenge:@"{ \"identity\": { \"identifier\": \"john.doe\", \"displayName\": \"John Doe\" } }"];
     STAssertFalse(challenge.valid, @"Should be false");
-    STAssertEqualObjects(@"Invalid enrollment server response. Please contact the website administrator.", challenge.errorMessage, @"Should be equal");    
+    STAssertEqualObjects(@"Invalid enrollment server response. Please contact the website administrator.", challenge.error.localizedDescription, @"Should be equal");
 
     challenge = [self createEnrollmentChallenge:@"{ \"service\": { \"identifier\": \"other.org\", \"displayName\": \"Other Dummy Service\", \"logoUrl\": \"\", \"authenticationUrl\": \"\", \"enrollmentUrl\": \"http://example.org/enroll/\" }, \"identity\": { \"identifier\": \"jane.doe\", \"displayName\": \"Jane Doe\" } }"];
     STAssertFalse(challenge.valid, @"Should be false");
-    STAssertEqualObjects(@"Cannot download service logo. Please contact the website administrator.", challenge.errorMessage, @"Should be equal");    
+    STAssertEqualObjects(@"Cannot download service logo. Please contact the website administrator.", challenge.error.localizedDescription, @"Should be equal");    
     
     
     

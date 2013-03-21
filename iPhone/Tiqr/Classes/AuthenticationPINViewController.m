@@ -42,6 +42,7 @@
 
 @property (nonatomic, retain) AuthenticationChallenge *challenge;
 @property (nonatomic, copy) NSString *response;
+@property (nonatomic, copy) NSString *PIN;
 
 @end
 
@@ -78,6 +79,14 @@
 }
 
 - (void)authenticationConfirmationRequestDidFinish:(AuthenticationConfirmationRequest *)request {
+    [self.challenge.identity upgradeWithPIN:self.PIN];
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        // Hmm, saving failed, but keychain has already been updated!
+        NSLog(@"Saving error after upgrade: %@", error);
+    }
+    self.PIN = nil;
+
 	[MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];    
     [request release];
     AuthenticationSummaryViewController *viewController = [[AuthenticationSummaryViewController alloc] initWithAuthenticationChallenge:self.challenge];
@@ -87,7 +96,9 @@
 }
 
 - (void)authenticationConfirmationRequest:(AuthenticationConfirmationRequest *)request didFailWithError:(NSError *)error {
-	[MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];    
+    self.PIN = nil;
+
+	[MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     [request release];
     
     switch ([error code]) {
@@ -135,7 +146,7 @@
     }
     
     NSError *error = nil;
-    NSString *response = [ocra generateOCRA:self.challenge.identityProvider.ocraSuite secret:[store secretForPIN:PIN] challenge:self.challenge.challenge sessionKey:self.challenge.sessionKey error:&error];
+    NSString *response = [ocra generateOCRA:self.challenge.identityProvider.ocraSuite secret:[store secretForPIN:PIN salt:self.challenge.identity.salt initializationVector:self.challenge.identity.initializationVector] challenge:self.challenge.challenge sessionKey:self.challenge.sessionKey error:&error];
     if (response == nil) {
         [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         UIViewController *viewController = [[ErrorViewController alloc] 
@@ -154,6 +165,7 @@
     if (self.response == nil) {
         return;
     }
+    self.PIN = PIN;
 
 	[MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];    
     AuthenticationConfirmationRequest *request = [[AuthenticationConfirmationRequest alloc] initWithAuthenticationChallenge:self.challenge response:self.response];
@@ -165,6 +177,7 @@
     self.challenge = nil;
     self.response = nil;
     self.managedObjectContext = nil;
+    self.PIN = nil;
     [super dealloc];
 }
 

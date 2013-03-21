@@ -38,6 +38,9 @@
 
 @property (nonatomic, retain) NSString * displayName;
 @property (nonatomic, retain) NSString * identifier;
+@property (nonatomic, retain) NSNumber * version;
+@property (nonatomic, retain) NSData * salt;
+@property (nonatomic, retain) NSData * initializationVector;
 @property (nonatomic, retain) NSNumber * sortIndex;
 @property (nonatomic, retain) NSNumber * blocked;
 @property (nonatomic, retain) IdentityProvider * identityProvider;
