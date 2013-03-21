@@ -59,8 +59,6 @@ enum {
 
 }
 
-- (id)initWithRawChallenge:(NSString *)challenge managedObjectContext:(NSManagedObjectContext *)context allowFiles:(BOOL)allowFiles;
-
 /**
  * Initialize the enrollment challenge handler.
  *
@@ -72,8 +70,7 @@ enum {
  *
  * @return EnrollmentChallenge
  */
-- (id)initWithRawChallenge:(NSString *)challenge managedObjectContext:(NSManagedObjectContext *)context;
-
+- (id)initWithRawChallenge:(NSString *)challenge managedObjectContext:(NSManagedObjectContext *)context allowFiles:(BOOL)allowFiles;
 
 /**
  * Initialize the enrollment challenge handler.

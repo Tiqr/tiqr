@@ -34,14 +34,16 @@
 - (void)testSecret {
     SecretStore *store = [SecretStore secretStoreForIdentity:@"john.doe@example.org" identityProvider:@"nl.surfmedia"];
     STAssertNotNil(store, @"Store should not be nil");
-    STAssertNil([store secretForPIN:@"12345"], @"Initial secret should be nil");
+    NSData *salt = [SecretStore generateSecret];
+    NSData *initializationVector = [SecretStore generateSecret];
+    STAssertNil([store secretForPIN:@"12345" salt:salt initializationVector:initializationVector], @"Initial secret should be nil");
     NSData *secret = [SecretStore generateSecret];
-    [store setSecret:secret PIN:@"12345"];
-    NSData *retrievedSecret = [store secretForPIN:@"12345"];
+    [store setSecret:secret PIN:@"12345" salt:salt initializationVector:initializationVector];
+    NSData *retrievedSecret = [store secretForPIN:@"12345" salt:salt initializationVector:initializationVector];
     STAssertNotNil(retrievedSecret, @"Retrieved secret should not be nil when correct PIN is used");    
     STAssertEquals([secret length], [retrievedSecret length], @"Length of secrets should match when correct PIN is used");    
     STAssertEqualObjects(secret, retrievedSecret, @"Retrieved secret should match original secret when correct PIN is used");
-    retrievedSecret = [store secretForPIN:@"54321"];   
+    retrievedSecret = [store secretForPIN:@"54321" salt:salt initializationVector:initializationVector];   
     STAssertNotNil(retrievedSecret, @"Retrieved secret should not be nil when wrong PIN is used");    
     STAssertEquals([secret length], [retrievedSecret length], @"Length of secrets should match when wrong PIN is used");    
     STAssertFalse([secret isEqual:retrievedSecret], @"Retrieved secret should not match original secret when wrong PIN is used");
