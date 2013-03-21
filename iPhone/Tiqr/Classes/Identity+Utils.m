@@ -28,6 +28,7 @@
  */
 
 #import "Identity+Utils.h"
+#import "SecretStore.h"
 
 @implementation Identity (Utils)
 
@@ -145,6 +146,29 @@
             identity.blocked = [NSNumber numberWithBool:YES];
         }
     }
+}
+
+- (BOOL)upgradeWithPIN:(NSString *)PIN {
+    if ([self.version integerValue] < 2) {
+        SecretStore *store = [SecretStore secretStoreForIdentity:self.identifier identityProvider:self.identityProvider.identifier];
+
+        NSData *secret = [store secretForPIN:PIN salt:nil initializationVector:nil];
+        if (!secret) {
+            return NO;
+        }
+        
+        NSData *salt = [SecretStore generateSecret];
+        NSData *initializationVector = [SecretStore generateSecret];
+        [store setSecret:secret PIN:PIN salt:salt initializationVector:initializationVector];
+
+        if ([store storeInKeychain]) {
+            self.salt = salt;
+            self.initializationVector = initializationVector;
+            self.version = @2;
+            return YES;
+        }
+    }
+    return NO;
 }
 
 @end

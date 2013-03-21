@@ -6,3 +6,5 @@
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
 #endif
+
+#define TIQR_PROTOCOL_VERSION @"2"

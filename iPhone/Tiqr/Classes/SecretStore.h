@@ -71,8 +71,10 @@
  *
  * @param secret secret
  * @param PIN    PIN
+ * @param salt   salt
+ * @param initializationVector  initializationVector
  */
-- (void)setSecret:(NSData *)secret PIN:(NSString *)PIN;
+- (void)setSecret:(NSData *)secret PIN:(NSString *)PIN salt:(NSData *)salt initializationVector:(NSData *)initializationVector;
 
 /**
  * Returns the decrypted secret, decrypted with the given PIN.
@@ -80,10 +82,12 @@
  * There is no way in telling if the PIN was correct or not.
  *
  * @param PIN PIN
+ * @param salt   salt
+ * @param initializationVector  initializationVector
  *
  * @return decrypted secret
  */
-- (NSData *)secretForPIN:(NSString *)PIN;
+- (NSData *)secretForPIN:(NSString *)PIN salt:(NSData *)salt initializationVector:(NSData *)initializationVector;
 
 /**
  * Stores the (new/updated) secret for this identity in the Keychain.

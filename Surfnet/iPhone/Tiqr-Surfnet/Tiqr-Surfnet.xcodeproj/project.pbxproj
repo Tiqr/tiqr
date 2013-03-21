@@ -49,7 +49,6 @@
 		926423CB16C967FC00DE5202 /* SecretStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9264235216C967FB00DE5202 /* SecretStore.m */; };
 		926423CC16C967FC00DE5202 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9264235516C967FB00DE5202 /* StartViewController.m */; };
 		926423CD16C967FC00DE5202 /* TiqrAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9264235716C967FB00DE5202 /* TiqrAppDelegate.m */; };
-		926423CE16C967FC00DE5202 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264235816C967FB00DE5202 /* Default-568h@2x.png */; };
 		926423CF16C967FC00DE5202 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9264235B16C967FB00DE5202 /* JSONKit.m */; };
 		926423D016C967FC00DE5202 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9264235D16C967FB00DE5202 /* MBProgressHUD.m */; };
 		926423D116C967FC00DE5202 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 9264235F16C967FB00DE5202 /* Reachability.m */; };
@@ -212,7 +211,7 @@
 		9264235516C967FB00DE5202 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		9264235616C967FB00DE5202 /* TiqrAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiqrAppDelegate.h; sourceTree = "<group>"; };
 		9264235716C967FB00DE5202 /* TiqrAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiqrAppDelegate.m; sourceTree = "<group>"; };
-		9264235816C967FB00DE5202 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9264235816C967FB00DE5202 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../Default-568h@2x.png"; sourceTree = "<group>"; };
 		9264235A16C967FB00DE5202 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		9264235B16C967FB00DE5202 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		9264235C16C967FB00DE5202 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -259,6 +258,7 @@
 		926423A116C967FB00DE5202 /* StartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartView.xib; sourceTree = "<group>"; };
 		9264240116C9683600DE5202 /* libZXingWidget.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libZXingWidget.a; path = "../../../../../../Library/Developer/Xcode/DerivedData/Tiqr-Surfnet-clungtztxkpxrpcrqybotdrhjhiw/Build/Products/Debug-iphoneos/libZXingWidget.a"; sourceTree = "<group>"; };
 		9264240416C9689E00DE5202 /* OCRAProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCRAProtocol.h; sourceTree = "<group>"; };
+		C7B96C7C16FAC171001EC65E /* Tiqr 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tiqr 2.xcdatamodel"; sourceTree = "<group>"; };
 		D076CF03134F31F900FE762A /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		D076CF15134F48E400FE762A /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		D076CF1B134F4E2900FE762A /* Icon-Pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Pad.png"; sourceTree = "<group>"; };
@@ -318,7 +318,6 @@
 			isa = PBXGroup;
 			children = (
 				926422F916C967FB00DE5202 /* Classes */,
-				9264235816C967FB00DE5202 /* Default-568h@2x.png */,
 				9264235916C967FB00DE5202 /* External */,
 				9264236C16C967FB00DE5202 /* Resources */,
 			);
@@ -429,6 +428,7 @@
 				9264237216C967FB00DE5202 /* Localizable.strings */,
 				9264237D16C967FB00DE5202 /* Settings.bundle */,
 				9264238116C967FB00DE5202 /* Tiqr.xcdatamodeld */,
+				9264235816C967FB00DE5202 /* Default-568h@2x.png */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -685,7 +685,7 @@
 		D0DF04DD134F261B00893290 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = D0DF04E0134F261B00893290 /* Build configuration list for PBXProject "Tiqr-Surfnet" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -736,7 +736,6 @@
 				D076CF2C134F4E2900FE762A /* surfnet-logo@2x.png in Resources */,
 				D09986B51355EA2B004A7E8D /* blocked.html in Resources */,
 				9264226316C9552A00DE5202 /* Default-568h@2x.png in Resources */,
-				926423CE16C967FC00DE5202 /* Default-568h@2x.png in Resources */,
 				926423D816C967FC00DE5202 /* cowbell.wav in Resources */,
 				926423D916C967FC00DE5202 /* animals.ttf in Resources */,
 				926423DA16C967FC00DE5202 /* Localizable.strings in Resources */,
@@ -869,16 +868,18 @@
 		D076CF17134F4C9D00FE762A /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7,
-					armv6,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
@@ -911,10 +912,11 @@
 		D0DF0505134F261C00893290 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7,
-					armv6,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -924,6 +926,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "-ObjC";
@@ -935,16 +938,18 @@
 		D0DF0506134F261C00893290 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7,
-					armv6,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
@@ -1023,9 +1028,10 @@
 		9264238116C967FB00DE5202 /* Tiqr.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				C7B96C7C16FAC171001EC65E /* Tiqr 2.xcdatamodel */,
 				9264238216C967FB00DE5202 /* Tiqr.xcdatamodel */,
 			);
-			currentVersion = 9264238216C967FB00DE5202 /* Tiqr.xcdatamodel */;
+			currentVersion = C7B96C7C16FAC171001EC65E /* Tiqr 2.xcdatamodel */;
 			path = Tiqr.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
