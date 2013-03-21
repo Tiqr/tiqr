@@ -24,7 +24,6 @@
 		76A195C0155BCACC00A73D2D /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A195BF155BCACC00A73D2D /* AboutView.xib */; };
 		84AB218B168C4F23008C4A35 /* surfnet-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AB2189168C4F23008C4A35 /* surfnet-logo.png */; };
 		84AB218C168C4F23008C4A35 /* surfnet-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AB218A168C4F23008C4A35 /* surfnet-logo@2x.png */; };
-		84C55D4016959AA300F00DE7 /* Tiqr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84C55D3D16959AA300F00DE7 /* Tiqr.xcdatamodeld */; };
 		922F08441289ABE700A33616 /* HOTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 922F08431289ABE700A33616 /* HOTP.m */; };
 		922F08471289ABFE00A33616 /* OCRAWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 922F08461289ABFE00A33616 /* OCRAWrapper.m */; };
 		924D6C5F13094DEC00F87B96 /* AuthenticationFallbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 924D6C5E13094DEC00F87B96 /* AuthenticationFallbackViewController.m */; };
@@ -38,6 +37,9 @@
 		C7B96C7516FAB642001EC65E /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7B96C6C16FAB3C7001EC65E /* libZXingWidget.a */; };
 		C7B96C7816FAB6E7001EC65E /* OCRAWrapper_v1.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B96C7716FAB6E7001EC65E /* OCRAWrapper_v1.m */; };
 		C7B96C7B16FAB70F001EC65E /* OCRA_v1.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B96C7A16FAB70F001EC65E /* OCRA_v1.m */; };
+		C7B96C7E16FB0C89001EC65E /* Identity.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BE4B0A134B28D00045AF62 /* Identity.m */; };
+		C7B96C8016FB0C8C001EC65E /* IdentityProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BE4B0D134B28D10045AF62 /* IdentityProvider.m */; };
+		C7B96C8416FB0D28001EC65E /* Tiqr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C7B96C8116FB0D28001EC65E /* Tiqr.xcdatamodeld */; };
 		D002E0201349D29A00071321 /* ErrorController.m in Sources */ = {isa = PBXBuildFile; fileRef = D002E01F1349D29A00071321 /* ErrorController.m */; };
 		D002E0251349F4D400071321 /* StartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D002E0261349F4D400071321 /* StartView.xib */; };
 		D00C69501280482600F6CE43 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00C694F1280482600F6CE43 /* CoreData.framework */; };
@@ -162,7 +164,6 @@
 		76A195BF155BCACC00A73D2D /* AboutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
 		84AB2189168C4F23008C4A35 /* surfnet-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "surfnet-logo.png"; sourceTree = "<group>"; };
 		84AB218A168C4F23008C4A35 /* surfnet-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "surfnet-logo@2x.png"; sourceTree = "<group>"; };
-		84C55D3F16959AA300F00DE7 /* Tiqr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tiqr.xcdatamodel; sourceTree = "<group>"; };
 		922F08421289ABE700A33616 /* HOTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HOTP.h; sourceTree = "<group>"; };
 		922F08431289ABE700A33616 /* HOTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOTP.m; sourceTree = "<group>"; };
 		922F08451289ABFE00A33616 /* OCRAWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCRAWrapper.h; sourceTree = "<group>"; };
@@ -190,6 +191,8 @@
 		C7B96C7716FAB6E7001EC65E /* OCRAWrapper_v1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCRAWrapper_v1.m; sourceTree = "<group>"; };
 		C7B96C7916FAB70F001EC65E /* OCRA_v1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCRA_v1.h; sourceTree = "<group>"; };
 		C7B96C7A16FAB70F001EC65E /* OCRA_v1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCRA_v1.m; sourceTree = "<group>"; };
+		C7B96C8216FB0D28001EC65E /* Tiqr 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Tiqr 2.xcdatamodel"; sourceTree = "<group>"; };
+		C7B96C8316FB0D28001EC65E /* Tiqr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tiqr.xcdatamodel; sourceTree = "<group>"; };
 		D002E01E1349D29A00071321 /* ErrorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorController.h; sourceTree = "<group>"; };
 		D002E01F1349D29A00071321 /* ErrorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorController.m; sourceTree = "<group>"; };
 		D002E0211349D39C00071321 /* ErrorController-Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ErrorController-Protected.h"; sourceTree = "<group>"; };
@@ -575,8 +578,8 @@
 			children = (
 				D028BFC01309288A002EA560 /* Entitlements.plist */,
 				D025994613095F9B00F1DF9A /* Localizable.strings */,
-				84C55D3D16959AA300F00DE7 /* Tiqr.xcdatamodeld */,
 				D028BFC11309288A002EA560 /* Tiqr-Info.plist */,
+				C7B96C8116FB0D28001EC65E /* Tiqr.xcdatamodeld */,
 				D0FF34E91309462C004096E1 /* Settings.bundle */,
 			);
 			path = General;
@@ -1077,9 +1080,9 @@
 				D0BE4B0E134B28D10045AF62 /* IdentityProvider.m in Sources */,
 				D0EBBA83134B670300CAAB58 /* ErrorViewController.m in Sources */,
 				D0A6F5CE1353356A000F9AE5 /* MBProgressHUD.m in Sources */,
-				84C55D4016959AA300F00DE7 /* Tiqr.xcdatamodeld in Sources */,
 				C7B96C7816FAB6E7001EC65E /* OCRAWrapper_v1.m in Sources */,
 				C7B96C7B16FAB70F001EC65E /* OCRA_v1.m in Sources */,
+				C7B96C8416FB0D28001EC65E /* Tiqr.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1099,6 +1102,8 @@
 				D06F86BE1331ED5500C2C6FF /* Identity+Utils.m in Sources */,
 				D09D79A813334F8700F3F0F6 /* EnrollmentChallengeTests.m in Sources */,
 				D016F8A71338C85300B997D9 /* JSONKit.m in Sources */,
+				C7B96C7E16FB0C89001EC65E /* Identity.m in Sources */,
+				C7B96C8016FB0C8C001EC65E /* IdentityProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1388,12 +1393,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		84C55D3D16959AA300F00DE7 /* Tiqr.xcdatamodeld */ = {
+		C7B96C8116FB0D28001EC65E /* Tiqr.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				84C55D3F16959AA300F00DE7 /* Tiqr.xcdatamodel */,
+				C7B96C8216FB0D28001EC65E /* Tiqr 2.xcdatamodel */,
+				C7B96C8316FB0D28001EC65E /* Tiqr.xcdatamodel */,
 			);
-			currentVersion = 84C55D3F16959AA300F00DE7 /* Tiqr.xcdatamodel */;
+			currentVersion = C7B96C8216FB0D28001EC65E /* Tiqr 2.xcdatamodel */;
 			path = Tiqr.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
