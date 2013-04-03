@@ -1,3 +1,0 @@
-<p>
-    Enrollment successful! Click <a href="<?php echo $this->loginURL ?>">here</a> to log in.
-</p>

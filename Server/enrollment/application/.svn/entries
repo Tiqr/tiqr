@@ -1,80 +1,0 @@
-10
-
-dir
-147
-https://svn.surfnet.nl/svn/tiqr/trunk/Server/enrollment/application
-https://svn.surfnet.nl/svn/tiqr
-
-
-
-2012-03-08T16:02:04.639453Z
-146
-petercv
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-5b51e652-636f-4e27-ac9e-bd9e99c16056
-
-layouts
-dir
-
-models
-dir
-
-Bootstrap.php
-file
-
-
-
-
-2012-05-09T12:40:00.000000Z
-59d5d25fe3b3c053a0bbf69b9d1801d8
-2012-01-24T13:53:20.575007Z
-136
-petercv
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-75
-
-controllers
-dir
-
-configs
-dir
-
-modules
-dir
-
-views
-dir
-
