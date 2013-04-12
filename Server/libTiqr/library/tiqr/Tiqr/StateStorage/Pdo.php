@@ -37,7 +37,7 @@ class Tiqr_StateStorage_Pdo extends Tiqr_StateStorage_Abstract
     }
     
     private function cleanExpired() {
-        $sth = $this->handle->prepare("DELETE FROM ? WHERE `expire` < ?");
+        $sth = $this->handle->prepare("DELETE FROM ".$this->tablename." WHERE `expire` < ?");
         $sth->execute(array(time()));
     }
     
