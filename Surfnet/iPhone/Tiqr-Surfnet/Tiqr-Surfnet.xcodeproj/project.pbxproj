@@ -112,7 +112,6 @@
 
 /* Begin PBXFileReference section */
 		923BF1D016CAB6650030B47D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
-		923BF1D116CAB6720030B47D /* pt_PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt_PT; path = pt_PT.lproj/Localizable.strings; sourceTree = "<group>"; };
 		923BF1D216CAB6810030B47D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		923BF1D716CAD0BA0030B47D /* FooterChildView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FooterChildView.xib; sourceTree = "<group>"; };
 		923BF1D816CAD0BA0030B47D /* AboutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
@@ -258,7 +257,9 @@
 		926423A116C967FB00DE5202 /* StartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartView.xib; sourceTree = "<group>"; };
 		9264240116C9683600DE5202 /* libZXingWidget.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libZXingWidget.a; path = "../../../../../../Library/Developer/Xcode/DerivedData/Tiqr-Surfnet-clungtztxkpxrpcrqybotdrhjhiw/Build/Products/Debug-iphoneos/libZXingWidget.a"; sourceTree = "<group>"; };
 		9264240416C9689E00DE5202 /* OCRAProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCRAProtocol.h; sourceTree = "<group>"; };
-		C7B96C7C16FAC171001EC65E /* Tiqr 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tiqr 2.xcdatamodel"; sourceTree = "<group>"; };
+		92AE3BB817312F2C00A7BD28 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
+		92AE3BB917312F3000A7BD28 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		C7B96C7C16FAC171001EC65E /* Tiqr 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Tiqr 2.xcdatamodel"; sourceTree = "<group>"; };
 		D076CF03134F31F900FE762A /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		D076CF15134F48E400FE762A /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		D076CF1B134F4E2900FE762A /* Icon-Pad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Pad.png"; sourceTree = "<group>"; };
@@ -699,13 +700,13 @@
 				fr,
 				fy,
 				hr,
-				no,
 				ro,
 				sk,
 				sr,
 				it,
-				pt_PT,
 				sv,
+				nb,
+				"pt-PT",
 			);
 			mainGroup = D0DF04DB134F261B00893290;
 			productRefGroup = D0DF04E7134F261B00893290 /* Products */;
@@ -835,13 +836,13 @@
 				9264237816C967FB00DE5202 /* fy */,
 				9264237916C967FB00DE5202 /* hr */,
 				9264237A16C967FB00DE5202 /* nl */,
-				9264237B16C967FB00DE5202 /* no */,
 				9264237C16C967FB00DE5202 /* ro */,
 				9264237E16C967FB00DE5202 /* sk */,
 				9264237F16C967FB00DE5202 /* sr */,
 				923BF1D016CAB6650030B47D /* it */,
-				923BF1D116CAB6720030B47D /* pt_PT */,
 				923BF1D216CAB6810030B47D /* sv */,
+				92AE3BB817312F2C00A7BD28 /* nb */,
+				92AE3BB917312F3000A7BD28 /* pt-PT */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
