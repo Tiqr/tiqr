@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E52A3CC17314C6300BDECE5 /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E52A3CB17314C6300BDECE5 /* libZXingWidget.a */; };
 		923BF1D916CAD0BA0030B47D /* FooterChildView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 923BF1D716CAD0BA0030B47D /* FooterChildView.xib */; };
 		923BF1DA16CAD0BA0030B47D /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 923BF1D816CAD0BA0030B47D /* AboutView.xib */; };
 		9264226316C9552A00DE5202 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9264226216C9552A00DE5202 /* Default-568h@2x.png */; };
@@ -80,7 +81,6 @@
 		926423F816C967FC00DE5202 /* PINView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9264239F16C967FB00DE5202 /* PINView.xib */; };
 		926423F916C967FC00DE5202 /* ScanView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 926423A016C967FB00DE5202 /* ScanView.xib */; };
 		926423FA16C967FC00DE5202 /* StartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 926423A116C967FB00DE5202 /* StartView.xib */; };
-		9264240216C9683600DE5202 /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9264240116C9683600DE5202 /* libZXingWidget.a */; };
 		D076CF04134F31F900FE762A /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D076CF03134F31F900FE762A /* MainWindow.xib */; };
 		D076CF16134F48E400FE762A /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = D076CF15134F48E400FE762A /* Entitlements.plist */; };
 		D076CF24134F4E2900FE762A /* Icon-Pad.png in Resources */ = {isa = PBXBuildFile; fileRef = D076CF1B134F4E2900FE762A /* Icon-Pad.png */; };
@@ -112,6 +112,7 @@
 
 /* Begin PBXFileReference section */
 		5E52A3CA17313F4900BDECE5 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5E52A3CB17314C6300BDECE5 /* libZXingWidget.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libZXingWidget.a; path = "../../../../../Library/Developer/Xcode/DerivedData/Tiqr-Surfnet-askpeutogcnketfbkwmhqdpexggw/Build/Products/Debug-iphoneos/libZXingWidget.a"; sourceTree = "<group>"; };
 		923BF1D016CAB6650030B47D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		923BF1D216CAB6810030B47D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		923BF1D716CAD0BA0030B47D /* FooterChildView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FooterChildView.xib; sourceTree = "<group>"; };
@@ -295,7 +296,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9264240216C9683600DE5202 /* libZXingWidget.a in Frameworks */,
+				5E52A3CC17314C6300BDECE5 /* libZXingWidget.a in Frameworks */,
 				D0B2E0CD1358C0F600125C34 /* AudioToolbox.framework in Frameworks */,
 				D0B2E0CB1358C0EF00125C34 /* AddressBookUI.framework in Frameworks */,
 				D0B2E0C71358C07C00125C34 /* AddressBook.framework in Frameworks */,
@@ -604,6 +605,7 @@
 		D0DF04DB134F261B00893290 = {
 			isa = PBXGroup;
 			children = (
+				5E52A3CB17314C6300BDECE5 /* libZXingWidget.a */,
 				926422F816C967FB00DE5202 /* Tiqr */,
 				D0DF050F134F274F00893290 /* Surfnet */,
 				D0DF04E9134F261B00893290 /* Frameworks */,
@@ -905,7 +907,10 @@
 					"\"$(SRCROOT)/../../../iPhone/ZXing/cpp/core/src/**",
 				);
 				INFOPLIST_FILE = "Resources/Tiqr-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/Tiqr-Surfnet-askpeutogcnketfbkwmhqdpexggw/Build/Products/Debug-iphoneos\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -976,7 +981,10 @@
 					"\"$(SRCROOT)/../../../iPhone/ZXing/cpp/core/src/**",
 				);
 				INFOPLIST_FILE = "Resources/Tiqr-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/Tiqr-Surfnet-askpeutogcnketfbkwmhqdpexggw/Build/Products/Debug-iphoneos\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -995,7 +1003,10 @@
 					"\"$(SRCROOT)/../../../iPhone/ZXing/cpp/core/src/**",
 				);
 				INFOPLIST_FILE = "Resources/Tiqr-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/Tiqr-Surfnet-askpeutogcnketfbkwmhqdpexggw/Build/Products/Debug-iphoneos\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
