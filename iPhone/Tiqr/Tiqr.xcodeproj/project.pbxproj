@@ -12,6 +12,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
+		5EE4873617313F2A00762BBE /* Tiqr-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D028BFC11309288A002EA560 /* Tiqr-Info.plist */; };
 		76A195AB155BBE1000A73D2D /* FooterChildView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A195AA155BBE1000A73D2D /* FooterChildView.xib */; };
 		76A195AD155BBEF500A73D2D /* ScanView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A195AC155BBEF500A73D2D /* ScanView.xib */; };
 		76A195AF155BC0C800A73D2D /* AuthenticationSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A195AE155BC0C800A73D2D /* AuthenticationSummaryView.xib */; };
@@ -152,6 +153,8 @@
 		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AB4B0D9B1048005BE974 /* Tiqr_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tiqr_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		5EE4873317313F1000762BBE /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5EE4873517313F2A00762BBE /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76A195AA155BBE1000A73D2D /* FooterChildView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FooterChildView.xib; sourceTree = "<group>"; };
 		76A195AC155BBEF500A73D2D /* ScanView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanView.xib; sourceTree = "<group>"; };
 		76A195AE155BC0C800A73D2D /* AuthenticationSummaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthenticationSummaryView.xib; sourceTree = "<group>"; };
@@ -932,6 +935,7 @@
 				ro,
 				sk,
 				sr,
+				sl,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* MobileAuth */;
 			projectDirPath = "";
@@ -1005,6 +1009,7 @@
 				84AB218C168C4F23008C4A35 /* surfnet-logo@2x.png in Resources */,
 				D0D7200315930AB4008C7004 /* start.html in Resources */,
 				9264034716C92C360032A4FE /* Default-568h@2x.png in Resources */,
+				5EE4873617313F2A00762BBE /* Tiqr-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1132,6 +1137,8 @@
 				9264034316C92BCC0032A4FE /* ro */,
 				9264034416C92BDF0032A4FE /* sk */,
 				9264034516C92BEB0032A4FE /* sr */,
+				5EE4873317313F1000762BBE /* nb */,
+				5EE4873517313F2A00762BBE /* sl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
