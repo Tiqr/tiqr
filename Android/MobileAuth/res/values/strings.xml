@@ -103,6 +103,7 @@
     <string name="error_auth_invalid_request_title">Invalid request</string>
     <string name="error_auth_invalid_request_message">The server doesn\'t recognize the login request. Please contact support.</string>
     <string name="error_auth_wrong_pin">Wrong PIN</string>
+    <string name="error_auth_infinite_attempts_left">You supplied an incorrect PIN. Please enter your PIN again. Check the verification icon for the last digit.</string>
     <string name="error_auth_x_attempts_left" formatted="false">You supplied an incorrect PIN. You have %d attempts left. Please enter your PIN again. Check the verification icon for the last digit.</string>
     <string name="error_auth_one_attempt_left">You have one last attempt left. If you enter an incorrect PIN again all the accounts on this device will be blocked.</string>
     <string name="error_auth_server_incompatible">The server is incompatible with this version of tiqr.</string>

@@ -121,7 +121,7 @@
         }            
         case TIQRACRInvalidResponseError: {
             NSNumber *attemptsLeft = [[error userInfo] objectForKey:TIQRACRAttemptsLeftErrorKey];
-            if ([attemptsLeft intValue] == 0) {
+            if (attemptsLeft != nil && [attemptsLeft intValue] == 0) {
                 [Identity blockAllIdentitiesInManagedObjectContext:self.managedObjectContext];
                 [self.managedObjectContext save:nil];
                 UIViewController *viewController = [[ErrorViewController alloc] initWithTitle:self.title errorTitle:[error localizedDescription] errorMessage:[error localizedFailureReason]];
