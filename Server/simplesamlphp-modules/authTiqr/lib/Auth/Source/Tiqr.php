@@ -79,7 +79,7 @@ class sspmod_authTiqr_Auth_Source_Tiqr extends SimpleSAML_Auth_Source {
 
         $id = SimpleSAML_Auth_State::saveState($state, sspmod_authTiqr_Auth_Tiqr::STAGEID);
 
-        $server =  sspmod_authTiqr_Auth_Tiqr::getServer();
+        $server =  sspmod_authTiqr_Auth_Tiqr::getServer(false);
         
         $session = SimpleSAML_Session::getInstance();
         $sessionId = $session->getSessionId();
@@ -110,7 +110,7 @@ class sspmod_authTiqr_Auth_Source_Tiqr extends SimpleSAML_Auth_Source {
      */   
     public function logout(&$state) 
     {
-        $server =  sspmod_authTiqr_Auth_Tiqr::getServer();
+        $server =  sspmod_authTiqr_Auth_Tiqr::getServer(false);
         $session = SimpleSAML_Session::getInstance();
         $sessionId = $session->getSessionId();
         $server->logout($sessionId);

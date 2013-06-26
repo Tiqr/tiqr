@@ -59,8 +59,6 @@ enum {
 
 }
 
-- (id)initWithRawChallenge:(NSString *)challenge managedObjectContext:(NSManagedObjectContext *)context allowFiles:(BOOL)allowFiles;
-
 /**
  * Initialize the enrollment challenge handler.
  *
@@ -72,8 +70,7 @@ enum {
  *
  * @return EnrollmentChallenge
  */
-- (id)initWithRawChallenge:(NSString *)challenge managedObjectContext:(NSManagedObjectContext *)context;
-
+- (id)initWithRawChallenge:(NSString *)challenge managedObjectContext:(NSManagedObjectContext *)context allowFiles:(BOOL)allowFiles;
 
 /**
  * Initialize the enrollment challenge handler.
@@ -116,11 +113,6 @@ enum {
  * Binary data for the identity provider logo.
  */
 @property (nonatomic, copy, readonly) NSData *identityProviderLogo;
-
-/**
- *  Tiqr Protocol version for Identity Provider
- */
-@property (nonatomic, copy, readonly) NSNumber *identityProviderTiqrProtocolVersion;
 
 /**
  * The existing identity provider the matches the provider in the enrollment

@@ -1,7 +1,0 @@
-K 13
-svn:externals
-V 116
-cpp -r 2053 http://zxing.googlecode.com/svn/trunk/cpp/
-iphone -r 2053 http://zxing.googlecode.com/svn/trunk/iphone/
-
-END

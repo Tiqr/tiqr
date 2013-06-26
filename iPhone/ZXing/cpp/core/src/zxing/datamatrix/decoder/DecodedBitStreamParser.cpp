@@ -1,3 +1,4 @@
+// -*- mode:c++; tab-width:2; indent-tabs-mode:nil; c-basic-offset:2 -*-
 /*
  *  DecodedBitStreamParser.cpp
  *  zxing
@@ -141,9 +142,7 @@ int DecodedBitStreamParser::decodeAsciiSegment(Ref<BitSource> bits, ostringstrea
       // Ignore this symbol for now
     } else if (oneByte >= 242) { // Not to be used in ASCII encodation
       // ... but work around encoders that end with 254, latch back to ASCII
-      if (oneByte == 254 && bits->available() == 0) {
-        // Ignore
-      } else {
+      if (oneByte != 254 || bits->available() != 0) {
         throw FormatException("Not to be used in ASCII encodation");
       }
     }
@@ -157,7 +156,7 @@ void DecodedBitStreamParser::decodeC40Segment(Ref<BitSource> bits, ostringstream
   // TODO(bbrown): The Upper Shift with C40 doesn't work in the 4 value scenario all the time
   bool upperShift = false;
 
-  int* cValues = new int[3];
+  int cValues[3];
   int shift = 0;
   do {
     // If there is only one byte left then it will be encoded as ASCII
@@ -234,7 +233,7 @@ void DecodedBitStreamParser::decodeTextSegment(Ref<BitSource> bits, ostringstrea
   // TODO(bbrown): The Upper Shift with Text doesn't work in the 4 value scenario all the time
   bool upperShift = false;
 
-  int* cValues = new int[3];
+  int cValues[3];
   int shift = 0;
   do {
     // If there is only one byte left then it will be encoded as ASCII
@@ -310,7 +309,7 @@ void DecodedBitStreamParser::decodeAnsiX12Segment(Ref<BitSource> bits, ostringst
   // Three ANSI X12 values are encoded in a 16-bit value as
   // (1600 * C1) + (40 * C2) + C3 + 1
 
-  int* cValues = new int[3];
+  int cValues[3];
   do {
     // If there is only one byte left then it will be encoded as ASCII
     if (bits->available() == 8) {
@@ -344,7 +343,7 @@ void DecodedBitStreamParser::decodeAnsiX12Segment(Ref<BitSource> bits, ostringst
   } while (bits->available() > 0);
 }
 
-void DecodedBitStreamParser::parseTwoBytes(int firstByte, int secondByte, int*& result) {
+void DecodedBitStreamParser::parseTwoBytes(int firstByte, int secondByte, int* result) {
   int fullBitValue = (firstByte << 8) + secondByte - 1;
   int temp = fullBitValue / 1600;
   result[0] = temp;

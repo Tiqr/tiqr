@@ -39,13 +39,13 @@ GreyscaleRotatedLuminanceSource::GreyscaleRotatedLuminanceSource(unsigned char* 
 // The API asks for rows, but we're rotated, so we return columns.
 unsigned char* GreyscaleRotatedLuminanceSource::getRow(int y, unsigned char* row) {
   if (y < 0 || y >= getHeight()) {
-    throw IllegalArgumentException("Requested row is outside the image: " + y);
+    throw IllegalArgumentException("Requested row is outside the image.");
   }
   int width = getWidth();
   if (row == NULL) {
     row = new unsigned char[width];
   }
-  int offset = (left_ * dataWidth_) + (dataWidth_ - (y + top_));
+  int offset = (left_ * dataWidth_) + (dataWidth_ - 1 - (y + top_));
   for (int x = 0; x < width; x++) {
     row[x] = greyData_[offset];
     offset += dataWidth_;

@@ -83,8 +83,7 @@
         identityProvider.infoUrl = self.challenge.identityProviderInfoUrl;
         identityProvider.ocraSuite = self.challenge.identityProviderOcraSuite;
 		identityProvider.logo = self.challenge.identityProviderLogo;
-        identityProvider.tiqrProtocolVersion = self.challenge.identityProviderTiqrProtocolVersion;
-	}
+  	}
 	
 	Identity *identity = self.challenge.identity;
     if (identity == nil) {
@@ -92,6 +91,8 @@
         identity.identifier = self.challenge.identityIdentifier;
         identity.sortIndex = [NSNumber numberWithInt:[Identity maxSortIndexInManagedObjectContext:context] + 1];		
         identity.identityProvider = identityProvider;
+        identity.version = @2;
+        identity.salt = [SecretStore generateSecret];
     }
     
 	identity.displayName = self.challenge.identityDisplayName;
@@ -116,7 +117,7 @@
 
 - (BOOL)storeSecret {
     SecretStore *store = [SecretStore secretStoreForIdentity:self.challenge.identityIdentifier identityProvider:self.challenge.identityProviderIdentifier];	
-    [store setSecret:self.challenge.identitySecret PIN:self.challenge.identityPIN];
+    [store setSecret:self.challenge.identitySecret PIN:self.challenge.identityPIN salt:self.challenge.identity.salt initializationVector:self.challenge.identity.initializationVector];
     return [store storeInKeychain];
 }
 

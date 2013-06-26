@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.crypto.SecretKey;
 
+import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -188,6 +189,8 @@ public class EnrollmentPincodeVerificationActivity extends AbstractPincodeActivi
 
     /**
      * Send enrollment request to server.
+     * TODO: this is an almost exact duplicate from the same code in 
+     * EnrollmentConfirmationActivity.java. Should be merged.
      */
     private void _sendEnrollmentRequest(SecretKey secret) throws UserException {
         try {
@@ -206,17 +209,17 @@ public class EnrollmentPincodeVerificationActivity extends AbstractPincodeActivi
 
             nameValuePairs.add(new BasicNameValuePair("operation", "register"));
             Config config = new Config(this);
-            nameValuePairs.add(new BasicNameValuePair("version", config.getTIQRLoginProtocolVersion()));
-
-            if (_getChallenge().getIdentityProvider().getVersion() >= 1.0f) {
-                httpPost.setHeader("ACCEPT", "application/json");
-            }
+      
+            httpPost.setHeader("ACCEPT", "application/json");
+            httpPost.setHeader("X-TIQR-Protocol-Version", config.getTIQRProtocolVersion());
+            
             httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, HTTP.UTF_8));
 
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpResponse httpResponse = httpClient.execute(httpPost);
 
-            if (_getChallenge().getIdentityProvider().getVersion() >= 1.0f) {
+            Header versionHeader = httpResponse.getFirstHeader("X-TIQR-Protocol-Version");
+            if (versionHeader != null && versionHeader.getValue().equals("2")) {
                 JSONObject response = new JSONObject(EntityUtils.toString(httpResponse.getEntity()));
 
                 int responseCode = 0;
@@ -231,7 +234,7 @@ public class EnrollmentPincodeVerificationActivity extends AbstractPincodeActivi
                         String message = response.getString("message");
                         throw new UserException(message);
                     } catch (JSONException e) {
-                        // TODO add strings for other exception possibilitys
+                        // TODO add strings for other exception possibilities
                         throw new UserException(getString(R.string.enrollment_failure_message));
                     }
                 }

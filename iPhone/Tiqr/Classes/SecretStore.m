@@ -31,6 +31,7 @@
 
 #import <Security/Security.h>
 #import <CommonCrypto/CommonHMAC.h>
+#import <CommonCrypto/CommonKeyDerivation.h>
 
 @implementation SecretStore
 
@@ -59,7 +60,8 @@
 	[data setObject:self.identityProviderIdentifier forKey:(id)kSecAttrService];
 	[data setObject:self.identityIdentifier forKey:(id)kSecAttrAccount];		
     [data setObject:encryptedSecret_ forKey:(id)kSecValueData];	
-	
+	[data setObject:(id)kSecAttrAccessibleWhenUnlocked forKey:(id)kSecAttrAccessible];
+
 	NSMutableDictionary *result = nil;
 	return SecItemAdd((CFDictionaryRef)data, (CFTypeRef *)&result) == noErr;
 }
@@ -103,11 +105,33 @@
 	return self;
 }
 
-- (NSString *)keyForPIN:(NSString *)PIN {
-    return PIN;
+- (NSString *)keyForPIN:(NSString *)PIN salt:(NSData *)salt {
+    // For backwards compatability
+    if (!salt) {
+        return PIN;
+    }
+
+    NSData *PINData = [PIN dataUsingEncoding:NSUTF8StringEncoding];
+ 
+    // How many rounds to use so that it takes 0.1s ?
+    int rounds = 32894; // Calculated using: CCCalibratePBKDF(kCCPBKDF2, PINData.length, saltData.length, kCCPRFHmacAlgSHA256, 32, 100);
+
+    // Open CommonKeyDerivation.h for help
+    unsigned char key[32];
+    int result = CCKeyDerivationPBKDF(kCCPBKDF2, PINData.bytes, PINData.length, salt.bytes, salt.length, kCCPRFHmacAlgSHA256, rounds, key, 32);
+    if (result == kCCParamError) {
+        NSLog(@"Error %d deriving key", result);
+        return nil;
+    }
+
+    NSMutableString *keyString = [[NSMutableString alloc] init];
+    for (int i = 0; i < 32; ++i) {
+        [keyString appendFormat:@"%02x", key[i]];
+    }
+    return keyString;
 }
 
-- (NSData *)encrypt:(NSData *)data key:(NSString *)key {
+- (NSData *)encrypt:(NSData *)data key:(NSString *)key initializationVector:(NSData *)initializationVector {
     // 'key' should be 32 bytes for AES256, will be null-padded otherwise
     char keyBuffer[kChosenCipherKeySize + 1]; // room for terminator (unused)
     bzero(keyBuffer, sizeof(keyBuffer)); // fill with zeros (for padding)
@@ -123,12 +147,18 @@
 
     // encrypt
     size_t numBytesEncrypted = 0;
+
+    // check initialization vector length
+    if ([initializationVector length] < kCCBlockSizeAES128) {
+        initializationVector = nil;
+    }
+
     CCCryptorStatus result = CCCrypt(kCCEncrypt, 
                                      kCCAlgorithmAES128, 
                                      0, 
                                      keyBuffer, 
                                      kChosenCipherKeySize,
-                                     NULL, // initialization vector (optional)
+                                     initializationVector ? [initializationVector bytes] : NULL, // initialization vector (optional)
                                      [data bytes], // input
                                      [data length],
                                      buffer, // output
@@ -144,7 +174,7 @@
     return nil;
 }
 
-- (NSData *)decrypt:(NSData *)data key:(NSString *)key {
+- (NSData *)decrypt:(NSData *)data key:(NSString *)key initializationVector:(NSData *)initializationVector {
     // 'key' should be 32 bytes for AES256, will be null-padded otherwise
     char keyBuffer[kChosenCipherKeySize + 1]; // room for terminator (unused)
     bzero(keyBuffer, sizeof(keyBuffer)); // fill with zeros (for padding)
@@ -160,12 +190,18 @@
 
     // decrypt
     size_t numBytesDecrypted = 0;
-    CCCryptorStatus result = CCCrypt(kCCDecrypt, 
+
+    // check initialization vector length
+    if ([initializationVector length] < kCCBlockSizeAES128) {
+        initializationVector = nil;
+    }
+    
+    CCCryptorStatus result = CCCrypt(kCCDecrypt,
                                      kCCAlgorithmAES128, 
                                      0, 
                                      keyBuffer, 
                                      kChosenCipherKeySize,
-                                     NULL, // initialization vector (optional)
+                                     initializationVector ? [initializationVector bytes] : NULL, // initialization vector (optional)
                                      [data bytes], // input
                                      [data length],
                                      buffer, // output
@@ -181,19 +217,19 @@
     return nil;
 }
 
-- (void)setSecret:(NSData *)secret PIN:(NSString *)PIN {
+- (void)setSecret:(NSData *)secret PIN:(NSString *)PIN salt:(NSData *)salt initializationVector:(NSData *)initializationVector {
     [encryptedSecret_ release];
-    NSString *key = [self keyForPIN:PIN];    
-    encryptedSecret_ = [[self encrypt:secret key:key] retain];
+    NSString *key = [self keyForPIN:PIN salt:salt];
+    encryptedSecret_ = [[self encrypt:secret key:key initializationVector:initializationVector] retain];
 }
 
-- (NSData *)secretForPIN:(NSString *)PIN {
+- (NSData *)secretForPIN:(NSString *)PIN salt:(NSData *)salt initializationVector:(NSData *)initializationVector {
     if (encryptedSecret_ == nil) {
         return nil;
     }
     
-    NSString *key = [self keyForPIN:PIN];
-    NSData *result = [self decrypt:encryptedSecret_ key:key];
+    NSString *key = [self keyForPIN:PIN salt:salt];
+    NSData *result = [self decrypt:encryptedSecret_ key:key initializationVector:initializationVector];
     return result;
 }
 

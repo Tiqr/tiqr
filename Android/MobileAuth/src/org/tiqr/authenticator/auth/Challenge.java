@@ -20,6 +20,7 @@ public abstract class Challenge
     private IdentityProvider _identityProvider;
     private Identity _identity;
     private String _returnURL;
+    private String _protocolVersion;
    
     /**
      * Constructs a new challenge. The given raw challenge will immediately
@@ -27,14 +28,16 @@ public abstract class Challenge
      * 
      * @param rawChallenge raw challenge
      * @param context      Android context
+     * @param String       protocolVersion
      * @param parse        immediately start parsing?
      * 
      * @throws Exception
      */
-    public Challenge(String rawChallenge, Context context, boolean parse) throws UserException
+    public Challenge(String rawChallenge, Context context, String protocolVersion, boolean parse) throws UserException
     {
         _rawChallenge = rawChallenge;
         _context = context;
+        _setProtocolVersion(protocolVersion);
         
         if (parse) {
             _parseRawChallenge();
@@ -89,6 +92,14 @@ public abstract class Challenge
         _identity = identity;
     }
     
+    public String getProtocolVersion() {
+        return _protocolVersion;
+    }
+
+    protected void _setProtocolVersion(String _protocolVersion) {
+        this._protocolVersion = _protocolVersion;
+    }
+
     /**
      * Returns the identity for this challenge, might be null.
      * 

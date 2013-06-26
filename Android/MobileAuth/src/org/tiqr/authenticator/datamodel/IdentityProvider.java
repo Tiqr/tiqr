@@ -15,7 +15,6 @@ public class IdentityProvider {
     private String _authenticationURL;
     private String _infoURL;
     private String _ocraSuite = null;
-    private float _version = 0.0f;
 
     // The default version is compatible with old moby dick servers that don't specify a
     // suite. Default is to use an SHA1 hash
@@ -167,21 +166,5 @@ public class IdentityProvider {
 
     public void setOCRASuite(String ocraSuite) {
         _ocraSuite = ocraSuite;
-    }
-
-    /**
-     * Retrieve the version for this server
-     * 
-     * @return the version number
-     */
-    public float getVersion() {
-        return _version;
-    }
-
-    /**
-     * @param float the version for the service
-     */
-    public void setVersion(float version) {
-        _version = version;
     }
 }

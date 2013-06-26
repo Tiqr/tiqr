@@ -74,7 +74,7 @@
 - (id)init {
     self = [super initWithNibName:@"ScanView" bundle:nil];
     if (self) {
-        self.title = @"Scan";
+        self.title = NSLocalizedString(@"scan_window", @"Scan window title");
         self.navigationItem.hidesBackButton = YES;        
         self.decoding = NO;
         

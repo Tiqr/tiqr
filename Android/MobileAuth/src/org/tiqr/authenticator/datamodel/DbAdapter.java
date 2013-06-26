@@ -22,7 +22,6 @@ public class DbAdapter {
     public static final String INFO_URL = "infoUrl";
     public static final String AUTHENTICATION_URL = "authenticationUrl";
     public static final String OCRA_SUITE = "ocraSuite";
-    public static final String VERSION = "version";
 
     private static final String DATABASE_NAME = "identities.db";
     private static final String TABLE_IDENTITY = "identity";
@@ -30,7 +29,7 @@ public class DbAdapter {
 
     private static final String JOIN_IDENTITY_IDENTITYPROVIDER = TABLE_IDENTITY + " JOIN " + TABLE_IDENTITYPROVIDER + " ON " + TABLE_IDENTITY + "." + IDENTITYPROVIDER + " = " + TABLE_IDENTITYPROVIDER + "." + ROWID;
 
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 4;
 
     private final Context _ctx;
 
@@ -52,7 +51,7 @@ public class DbAdapter {
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("CREATE TABLE " + TABLE_IDENTITYPROVIDER + " (" + ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + DISPLAY_NAME + " TEXT NOT NULL, " + IDENTIFIER + " TEXT NOT NULL, " + AUTHENTICATION_URL + " TEXT NOT NULL, "
-                    + OCRA_SUITE + " TEXT NOT NULL, " + INFO_URL + " TEXT NOT NULL, " + LOGO + " BINARY, " + VERSION + " FLOAT);");
+                    + OCRA_SUITE + " TEXT NOT NULL, " + INFO_URL + " TEXT NOT NULL, " + LOGO + " BINARY);");
 
             db.execSQL("CREATE TABLE " + TABLE_IDENTITY + " (" + ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + BLOCKED + " INTEGER NOT NULL DEFAULT 0, " + DISPLAY_NAME + " TEXT NOT NULL, " + IDENTIFIER + " TEXT NOT NULL, "
                     + IDENTITYPROVIDER + " INTEGER NOT NULL, " + SORT_INDEX + " INTEGER NOT NULL);");
@@ -61,6 +60,8 @@ public class DbAdapter {
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            // WARNING! TODO. Dropping identities is not an acceptable migration path. 
+            // But since we are at level 4 since first release, and still are, this code isn't used yet.
             Log.w("DbAdapter", "Upgrading database from version " + oldVersion + " to " + newVersion + ", which will destroy all old data");
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_IDENTITY);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_IDENTITYPROVIDER);
@@ -349,8 +350,7 @@ public class DbAdapter {
         values.put(OCRA_SUITE, identityProvider.getOCRASuite());
         values.put(LOGO, identityProvider.getLogoData());
         values.put(INFO_URL, identityProvider.getInfoURL());
-        values.put(VERSION, identityProvider.getVersion());
-
+ 
         long id = _db.insert(TABLE_IDENTITYPROVIDER, null, values);
         if (id != -1) {
             identityProvider.setId(id);
@@ -375,8 +375,7 @@ public class DbAdapter {
         values.put(OCRA_SUITE, identityProvider.getOCRASuite());
         values.put(LOGO, identityProvider.getLogoData());
         values.put(INFO_URL, identityProvider.getInfoURL());
-        values.put(VERSION, identityProvider.getVersion());
-
+ 
         return _db.update(TABLE_IDENTITYPROVIDER, values, ROWID + " = ?", new String[] { String.valueOf(identityProvider.getId()) }) > 0;
     }
 
@@ -411,8 +410,7 @@ public class DbAdapter {
             int ocraSuiteColumn = cursor.getColumnIndex(DbAdapter.OCRA_SUITE);
             int logoColumn = cursor.getColumnIndex(DbAdapter.LOGO);
             int infoURLColumn = cursor.getColumnIndex(DbAdapter.INFO_URL);
-            int versionColumn = cursor.getColumnIndex(DbAdapter.VERSION);
-
+      
             do {
                 IdentityProvider ip = new IdentityProvider();
                 ip.setId(cursor.getInt(rowIdColumn));
@@ -422,7 +420,6 @@ public class DbAdapter {
                 ip.setOCRASuite(cursor.getString(ocraSuiteColumn));
                 ip.setLogoData(cursor.getBlob(logoColumn));
                 ip.setInfoURL(cursor.getString(infoURLColumn));
-                ip.setVersion(cursor.getFloat(versionColumn));
                 identityproviders.add(ip);
             } while (cursor.moveToNext());
         }
@@ -441,7 +438,7 @@ public class DbAdapter {
      * @return cursor object for identity provider
      */
     public Cursor getIdentityProviderByIdentifier(String identifier) throws SQLException {
-        Cursor cursor = _db.query(TABLE_IDENTITYPROVIDER, new String[] { ROWID, DISPLAY_NAME, IDENTIFIER, AUTHENTICATION_URL, OCRA_SUITE, LOGO, INFO_URL, VERSION }, IDENTIFIER + " = ?", new String[] { identifier }, null, null, null);
+        Cursor cursor = _db.query(TABLE_IDENTITYPROVIDER, new String[] { ROWID, DISPLAY_NAME, IDENTIFIER, AUTHENTICATION_URL, OCRA_SUITE, LOGO, INFO_URL }, IDENTIFIER + " = ?", new String[] { identifier }, null, null, null);
 
         if (cursor != null) {
             cursor.moveToFirst();
@@ -461,7 +458,7 @@ public class DbAdapter {
         builder.setTables(JOIN_IDENTITY_IDENTITYPROVIDER);
 
         Cursor cursor = builder.query(_db, new String[] { TABLE_IDENTITYPROVIDER + "." + ROWID, TABLE_IDENTITYPROVIDER + "." + DISPLAY_NAME, TABLE_IDENTITYPROVIDER + "." + IDENTIFIER, TABLE_IDENTITYPROVIDER + "." + AUTHENTICATION_URL,
-                TABLE_IDENTITYPROVIDER + "." + OCRA_SUITE, TABLE_IDENTITYPROVIDER + "." + INFO_URL, TABLE_IDENTITYPROVIDER + "." + LOGO, TABLE_IDENTITYPROVIDER + "." + VERSION, }, TABLE_IDENTITY + "." + ROWID + " = ?",
+                TABLE_IDENTITYPROVIDER + "." + OCRA_SUITE, TABLE_IDENTITYPROVIDER + "." + INFO_URL, TABLE_IDENTITYPROVIDER + "." + LOGO, }, TABLE_IDENTITY + "." + ROWID + " = ?",
                 new String[] { String.valueOf(identity_id) }, null, null, SORT_INDEX);
 
         IdentityProvider[] identityProviders = _createIdentityProviderObjectsForCursor(cursor);

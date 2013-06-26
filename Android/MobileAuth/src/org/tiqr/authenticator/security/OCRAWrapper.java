@@ -3,18 +3,21 @@ package org.tiqr.authenticator.security;
 import org.tiqr.oath.OCRA;
 import org.tiqr.authenticator.exceptions.InvalidChallengeException;
 
-public class OCRAWrapper
+public class OCRAWrapper implements OCRAProtocol
 {
-    public static String generateOCRA(String ocraSuite, byte[] key, String challengeQuestion, String sessionKey) throws InvalidChallengeException
+    public String generateOCRA(String ocraSuite, byte[] key, String challengeQuestion, String sessionKey) throws InvalidChallengeException
     {
         String otp;
 
         try {
-            OCRA ocra = new OCRA(ocraSuite);
-            ocra.setKey(key);
-            ocra.setQuestion(challengeQuestion);
-            ocra.setSessionInformation(sessionKey);
-            otp = ocra.generateOCRA();
+            otp = OCRA.generateOCRA(
+                    ocraSuite, 
+                    Encryption.bytesToHexString(key), 
+                    "", 
+                    challengeQuestion, 
+                    "", 
+                    sessionKey, 
+                    "");
         } catch (Exception e) {
             throw new InvalidChallengeException();
         }
