@@ -59,14 +59,15 @@ public class AuthenticationPincodeActivity extends AbstractPincodeActivity {
     public static final int TIQRACRInvalidResponseError = 303;
     public static final int TIQRACRInvalidUserError = 304;
     public static final int TIQRACRAccountBlockedError = 305;
+    public static final int TIQRACRAccountBlockedErrorTemporary = 306;
 
     private static final int AuthenticationChallengeResponseCodeSuccess = 1;
     private static final int AuthenticationChallengeResponseCodeFailure = 200;
     private static final int AuthenticationChallengeResponseCodeInvalidUsernamePasswordPin = 201;
-    private static final int AuthenticationChallengeResponseCodeExpired = 202;
     private static final int AuthenticationChallengeResponseCodeInvalidChallenge = 203;
     private static final int AuthenticationChallengeResponseCodeAccountBlocked = 204;
-    private static final int AuthenticationChallengeResponseCodeInvalidRequest = 205;
+    private static final int AuthenticationChallengeResponseCodeInvalidRequest = 202;
+    private static final int AuthenticationChallengeResponseCodeInvalidUser = 205;
 
     /**
      * When the ok button has been pressed, user has entered the pin
@@ -319,9 +320,16 @@ public class AuthenticationPincodeActivity extends AbstractPincodeActivity {
                 _showAuthenticationSummary(message);
             } else { 
                 if (responseCode == AuthenticationChallengeResponseCodeAccountBlocked) {
-                    code = TIQRACRAccountBlockedError;
-                    title = getString(R.string.error_auth_account_blocked_title);
-                    message = getString(R.string.error_auth_account_blocked_message);
+                    if (response.has("duration")) {
+                        int duration = response.getInt("duration");
+                        code = TIQRACRAccountBlockedErrorTemporary;
+                        title = getString(R.string.error_auth_account_blocked_temporary_title);
+                        message = String.format(getString(R.string.error_auth_account_blocked_temporary_message), duration);
+                    } else {
+                        code = TIQRACRAccountBlockedError;
+                        title = getString(R.string.error_auth_account_blocked_title);
+                        message = getString(R.string.error_auth_account_blocked_message);
+                    }
                 } else if (responseCode == AuthenticationChallengeResponseCodeInvalidChallenge) {
                     code = TIQRACRInvalidChallengeError;
                     title = getString(R.string.error_auth_invalid_challenge_title);
@@ -331,24 +339,22 @@ public class AuthenticationPincodeActivity extends AbstractPincodeActivity {
                     title = getString(R.string.error_auth_invalid_request_title);
                     message = getString(R.string.error_auth_invalid_request_message);
                 } else if (responseCode == AuthenticationChallengeResponseCodeInvalidUsernamePasswordPin) {
-                    try {
-                        attemptsLeft = response.getInt("attemptsLeft");
-                        code = TIQRACRInvalidResponseError;
-                        if (attemptsLeft > 1) {
-                            title = getString(R.string.error_auth_wrong_pin);
-                            message = String.format(getString(R.string.error_auth_x_attempts_left), attemptsLeft);
-                        } else if (attemptsLeft == 1) {
-                            title = getString(R.string.error_auth_wrong_pin);
-                            message = getString(R.string.error_auth_one_attempt_left);
-                        } else {
-                            title = getString(R.string.error_auth_account_blocked_title);
-                            message = getString(R.string.error_auth_account_blocked_message);
-                        }
-                    } catch (JSONException e) {
-                        code = TIQRACRInvalidUserError;
-                        title = getString(R.string.error_auth_invalid_account);
-                        message = getString(R.string.error_auth_invalid_account_message);
+                    attemptsLeft = response.getInt("attemptsLeft");
+                    code = TIQRACRInvalidResponseError;
+                    if (attemptsLeft > 1) {
+                        title = getString(R.string.error_auth_wrong_pin);
+                        message = String.format(getString(R.string.error_auth_x_attempts_left), attemptsLeft);
+                    } else if (attemptsLeft == 1) {
+                        title = getString(R.string.error_auth_wrong_pin);
+                        message = getString(R.string.error_auth_one_attempt_left);
+                    } else {
+                        title = getString(R.string.error_auth_account_blocked_title);
+                        message = getString(R.string.error_auth_account_blocked_message);
                     }
+                } else if (responseCode == AuthenticationChallengeResponseCodeInvalidUser) {
+                    code = TIQRACRInvalidUserError;
+                    title = getString(R.string.error_auth_invalid_account);
+                    message = getString(R.string.error_auth_invalid_account_message); 
                 }
     
                 Map<String, Object> details = new HashMap<String, Object>();
@@ -382,7 +388,7 @@ public class AuthenticationPincodeActivity extends AbstractPincodeActivity {
             case TIQRACRConnectionError:
                 _showFallbackActivity();
                 break;
-
+                
             case TIQRACRAccountBlockedError:
                 _getChallenge().getIdentity().setBlocked(true);
                 db.updateIdentity(_getChallenge().getIdentity());
