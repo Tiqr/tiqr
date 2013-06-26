@@ -97,6 +97,8 @@
     <string name="error_auth_server_incompatible">De server is niet geschikt voor deze versie van tiqr.</string>
     <string name="error_auth_account_blocked_title">Account geblokkeerd</string>
     <string name="error_auth_account_blocked_message">Dit account is niet langer geldig.</string>
+    <string name="error_auth_account_blocked_temporary_title">Dit account is tijdelijk geblokkeerd.</string>
+    <string name="error_auth_account_blocked_temporary_message">Dit account is voor %d minuten geblokkeerd.</string>
     <string name="error_auth_invalid_challenge_title">Ongeldig verzoek</string>
     <string name="error_auth_invalid_challenge_message">De gescande QR code is ongeldig of verlopen. Probeer het opnieuw.</string>
     <string name="error_auth_invalid_request_title">Ongeldige aanroep</string>

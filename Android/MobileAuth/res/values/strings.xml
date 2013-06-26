@@ -96,6 +96,8 @@
     <string name="error_auth_invalid_account_message">You tried to log in with an invalid or unknown account. Please (re-)activate your account first.</string>
     <string name="error_auth_account_blocked_title">Account blocked</string>
     <string name="error_auth_account_blocked_message">This account can no longer be used.</string>
+    <string name="error_auth_account_blocked_temporary_title">This account has been blocked temprorarily.</string>
+    <string name="error_auth_account_blocked_temporary_message">This account has been blocked for %d minutes.</string>
     <string name="error_auth_invalid_challenge_title">Invalid challenge</string>
     <string name="error_auth_invalid_challenge_message">The scanned QR code is invalid or has expired. Please try again.</string>
     <string name="error_auth_invalid_request_title">Invalid request</string>
