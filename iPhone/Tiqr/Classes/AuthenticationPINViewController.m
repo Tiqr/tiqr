@@ -92,6 +92,12 @@
         case TIQRACRConnectionError:
             [self showFallback];
             break;
+        case TIQRACRAccountBlockedErrorTemporary: {
+            UIViewController *viewController = [[ErrorViewController alloc] initWithTitle:self.title errorTitle:[error localizedDescription] errorMessage:[error localizedFailureReason]];
+            [self.navigationController pushViewController:viewController animated:YES];
+            [viewController release];
+            break;
+        }
         case TIQRACRAccountBlockedError: {
             self.challenge.identity.blocked = [NSNumber numberWithBool:YES];
             [self.managedObjectContext save:nil];
