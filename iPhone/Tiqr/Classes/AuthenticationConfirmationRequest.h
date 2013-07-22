@@ -33,10 +33,10 @@ typedef enum {
     AuthenticationChallengeResponseCodeSuccess = 1,
     AuthenticationChallengeResponseCodeFailure = 200,
     AuthenticationChallengeResponseCodeInvalidUsernamePasswordPin = 201,
-    AuthenticationChallengeResponseCodeExpired = 202,
+    AuthenticationChallengeResponseCodeInvalidUser = 205,
     AuthenticationChallengeResponseCodeInvalidChallenge = 203,
     AuthenticationChallengeResponseCodeAccountBlocked = 204,
-    AuthenticationChallengeResponseCodeInvalidRequest = 205
+    AuthenticationChallengeResponseCodeInvalidRequest = 202,
 } AuthenticationChallengeResponseCode;
 
 /**
@@ -58,7 +58,8 @@ enum {
     TIQRACRInvalidRequestError = 302,
     TIQRACRInvalidResponseError = 303,
     TIQRACRInvalidUserError = 304,
-    TIQRACRAccountBlockedError = 305
+    TIQRACRAccountBlockedError = 305,
+    TIQRACRAccountBlockedErrorTemporary = 306
 };
 
 @class AuthenticationConfirmationRequest;

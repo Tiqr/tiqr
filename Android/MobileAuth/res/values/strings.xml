@@ -96,11 +96,14 @@
     <string name="error_auth_invalid_account_message">You tried to log in with an invalid or unknown account. Please (re-)activate your account first.</string>
     <string name="error_auth_account_blocked_title">Account blocked</string>
     <string name="error_auth_account_blocked_message">This account can no longer be used.</string>
+    <string name="error_auth_account_blocked_temporary_title">This account has been blocked temprorarily.</string>
+    <string name="error_auth_account_blocked_temporary_message">This account has been blocked for %d minutes.</string>
     <string name="error_auth_invalid_challenge_title">Invalid challenge</string>
     <string name="error_auth_invalid_challenge_message">The scanned QR code is invalid or has expired. Please try again.</string>
     <string name="error_auth_invalid_request_title">Invalid request</string>
     <string name="error_auth_invalid_request_message">The server doesn\'t recognize the login request. Please contact support.</string>
     <string name="error_auth_wrong_pin">Wrong PIN</string>
+    <string name="error_auth_infinite_attempts_left">You supplied an incorrect PIN. Please enter your PIN again. Check the verification icon for the last digit.</string>
     <string name="error_auth_x_attempts_left" formatted="false">You supplied an incorrect PIN. You have %d attempts left. Please enter your PIN again. Check the verification icon for the last digit.</string>
     <string name="error_auth_one_attempt_left">You have one last attempt left. If you enter an incorrect PIN again all the accounts on this device will be blocked.</string>
     <string name="error_auth_server_incompatible">The server is incompatible with this version of tiqr.</string>
