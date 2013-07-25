@@ -124,7 +124,7 @@
     <string name="error_enroll_failed_to_generate_secret">Failed to generate identity secret. Please contact support.</string>
     <string name="error_device_incompatible_with_security_standards">Device is not compatible with required security standards.</string>
     <string name="provided_by">provided by:</string>
-    <string name="main_text_welcome">Using tiqr you can use your smartphone to easily and securely 
+    <string name="main_text_welcome"><Data><![CDATA[<html><body>Using tiqr you can use your smartphone to easily and securely 
 log in to several websites. <br />
 <br />
 The application does not yet have an active account. You need an 
@@ -133,15 +133,15 @@ at <a href="https://tiqr.org">tiqr.org</a>. <br />
 <br />
 After registering, you will receive an activation code and instructions for 
 activating your account. During the activation process you will need to scan 
-a QR code. Press <b>Scan</b> if asked.</string>
-    <string name="main_text_instructions">Go to the website you want to log in to and follow these steps: <ul>
+a QR code. Press <b>Scan</b> if asked.</body></html> ]]> </Data></string>
+    <string name="main_text_instructions"><Data><![CDATA[<html><body>Go to the website you want to log in to and follow these steps: <ul>
             <li>Scan the QR code on the login screen of the website or service.</li>
             <li>
 <i>If you have multiple identities, select your identity.</i>
             </li>
             <li>Confirm your identity (you will have to enter your PIN).</li>
             <li>You are logged in!</li>
-        </ul>Press <b>Scan</b> to start the login process.</string>
+        </ul>Press <b>Scan</b> to start the login process.</body></html> ]]> </Data></string>
     <string name="main_text_blocked"><b>Now what?</b>
 <br />
 Ask your identity provider(s) for a new activation code. For a link to your 

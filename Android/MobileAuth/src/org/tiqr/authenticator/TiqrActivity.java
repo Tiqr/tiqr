@@ -87,10 +87,8 @@ public class TiqrActivity extends Activity {
 	}
 	
 	public void loadContentsIntoWebView(int contentResourceId, int webviewResourceId) {
-    	WebView webView = (WebView)findViewById(R.id.webview);
-        InputStream stream = getResources().openRawResource(R.raw.start);
-	    String data = getInputStreamContents(stream);
-	    data = String.format(data, getString(contentResourceId));
+    	WebView webView = (WebView)findViewById(webviewResourceId);
+	    String data = getString(contentResourceId);
 	    webView.loadData(data, "text/html", "utf-8");
 	}
 	
