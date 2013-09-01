@@ -62,7 +62,7 @@ static NotificationRegistration *sharedInstance = nil;
 
 	NSString *url = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"SANotificationRegistrationURL"];
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
-	[request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
+	[request setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
 	[request setTimeoutInterval:15.0];
 	[request setHTTPMethod:@"POST"];
 	[request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
