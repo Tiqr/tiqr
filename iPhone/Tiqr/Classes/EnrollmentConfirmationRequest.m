@@ -68,7 +68,7 @@ NSString *const TIQRECRErrorDomain = @"org.tiqr.ecr";
 	NSString *body = [NSString stringWithFormat:@"secret=%@&language=%@&notificationType=APNS&notificationAddress=%@&version=%@&operation=%@", escapedSecret, escapedLanguage, escapedNotificationToken, version, operation];
     
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:self.challenge.enrollmentUrl]];
-	[request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
+	[request setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
 	[request setTimeoutInterval:5.0];
 	[request setHTTPMethod:@"POST"];
 	[request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
