@@ -146,6 +146,10 @@
 
     // fetch key data
     [key getCString:keyBuffer maxLength:sizeof(keyBuffer) encoding:NSASCIIStringEncoding];
+    
+    // iOS getCString truncates keyBuffer to maxLength. and replaces the first character with a 0
+    // To ensure upgrading from iOS6 to 7 works. Do the same.
+    keyBuffer[0] = 0;
 
     // For block ciphers, the output size will always be less than or 
 	// equal to the input size plus the size of one block.
@@ -196,6 +200,10 @@
     
     // fetch key data
     [key getCString:keyBuffer maxLength:sizeof(keyBuffer) encoding:NSUTF8StringEncoding];
+    
+    // iOS getCString truncates keyBuffer to maxLength. and replaces the first character with a 0
+    // To ensure upgrading from iOS6 to 7 works. Do the same.
+    keyBuffer[0] = 0;
     
     // For block ciphers, the output size will always be less than or 
 	// equal to the input size plus the size of one block.
