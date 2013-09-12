@@ -133,7 +133,15 @@
 
 - (NSData *)encrypt:(NSData *)data key:(NSString *)key initializationVector:(NSData *)initializationVector {
     // 'key' should be 32 bytes for AES256, will be null-padded otherwise
-    char keyBuffer[kChosenCipherKeySize + 1]; // room for terminator (unused)
+    
+    // There was an error in the conversion of the input key to a C-string using getCString; the buffer supplied was too small;
+    // in iOS6 this resulted in truncation of the string during conversion so in the end it worked; in iOS7 the behaviour of getCString changed, so it now returns an error if the buffer supplied is too small.
+    // The net result of this was that the same key was always used for encryption/decryption and the PIN was not used at all.
+    
+    // Note: there is another error here; the input key is an ASCII string with a hexadecimal representation of the key;
+    // That should be converted to a byte array (unsigned char[]) before being used as input to CCCrypt, but the doesn't happen.
+    // A separate issue for fixing this is still open because this is more complicated to fix since it requires migration of existing identities
+    char keyBuffer[kChosenCipherKeySize * 2 + 1]; // room for terminator (unused)
     bzero(keyBuffer, sizeof(keyBuffer)); // fill with zeros (for padding)
 
     // fetch key data
@@ -176,7 +184,14 @@
 
 - (NSData *)decrypt:(NSData *)data key:(NSString *)key initializationVector:(NSData *)initializationVector {
     // 'key' should be 32 bytes for AES256, will be null-padded otherwise
-    char keyBuffer[kChosenCipherKeySize + 1]; // room for terminator (unused)
+    // There was an error in the conversion of the input key to a C-string using getCString; the buffer supplied was too small;
+    // in iOS6 this resulted in truncation of the string during conversion so in the end it worked; in iOS7 the behaviour of getCString changed, so it now returns an error if the buffer supplied is too small.
+    // The net result of this was that the same key was always used for encryption/decryption and the PIN was not used at all.
+    
+    // Note: there is another error here; the input key is an ASCII string with a hexadecimal representation of the key;
+    // That should be converted to a byte array (unsigned char[]) before being used as input to CCCrypt, but the doesn't happen.
+    // A separate issue for fixing this is still open because this is more complicated to fix since it requires migration of existing identities
+    char keyBuffer[kChosenCipherKeySize * 2 + 1]; // room for terminator (unused)
     bzero(keyBuffer, sizeof(keyBuffer)); // fill with zeros (for padding)
     
     // fetch key data
