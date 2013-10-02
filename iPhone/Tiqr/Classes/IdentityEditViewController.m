@@ -64,6 +64,10 @@
     [super viewDidLoad];
     
     [self.deleteButton setTitle:NSLocalizedString(@"delete_button", @"Delete") forState:UIControlStateNormal];
+    self.deleteButton.layer.borderWidth = 1;
+    self.deleteButton.layer.borderColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:1 alpha:1].CGColor;
+    self.deleteButton.layer.cornerRadius = 4;
+    
     self.blockedWarningLabel.text = NSLocalizedString(@"identity_blocked_message", @"Warning this account is blocked and needs to be reactivated.");
     
     self.title = NSLocalizedString(@"account_details_title", @"Account details navigation title");

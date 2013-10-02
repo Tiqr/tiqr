@@ -69,7 +69,9 @@
     self.rememberPinLabel.text = NSLocalizedString(@"remember_pincode_notice", @"Remember your PIN, it cannot be changed!");
     
     self.title = NSLocalizedString(@"account_activation_title", @"Account activation title");
-    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)] autorelease];        
+    UIBarButtonItem *backButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)] autorelease];
+    backButton.tintColor = [UIColor colorWithRed:0.0f green:122.0/255.0 blue:1 alpha:1];
+    self.navigationItem.leftBarButtonItem = backButton;
     
     self.identityProviderLogoImageView.image = [[UIImage alloc] initWithData:self.challenge.identityProviderLogo];
     self.identityDisplayNameLabel.text = self.challenge.identityDisplayName;

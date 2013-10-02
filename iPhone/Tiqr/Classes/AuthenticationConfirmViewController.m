@@ -64,6 +64,9 @@
     self.loggedInAsLabel.text = NSLocalizedString(@"you_will_be_logged_in_as", @"You will be logged in as:");
     self.toLabel.text = NSLocalizedString(@"to_service_provider", @"to:");
     [self.okButton setTitle:NSLocalizedString(@"ok_button", @"OK") forState:UIControlStateNormal];
+    self.okButton.layer.borderWidth = 1;
+    self.okButton.layer.borderColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:1 alpha:1].CGColor;
+    self.okButton.layer.cornerRadius = 4;
     
     self.title = NSLocalizedString(@"authentication_title", @"Login title");
     self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"confirm_authentication_title", @"Authentication confirm back button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];        

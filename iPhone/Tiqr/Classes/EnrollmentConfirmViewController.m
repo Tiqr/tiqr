@@ -64,6 +64,9 @@
     self.activateAccountLabel.text = NSLocalizedString(@"activate_following_account", @"Do you want to activate the following account");
     self.enrollDomainLabel.text = NSLocalizedString(@"enroll_following_domain", @"You will enroll to the following domain");
     [self.okButton setTitle:NSLocalizedString(@"ok_button", @"OK") forState:UIControlStateNormal];
+    self.okButton.layer.borderWidth = 1;
+    self.okButton.layer.borderColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:1 alpha:1].CGColor;
+    self.okButton.layer.cornerRadius = 4;
     
     self.title = NSLocalizedString(@"enrollment_confirmation_header_title", @"Account activation title");
     self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"enrollment_confirmation_title", @"Enrollment confirm back button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];        
