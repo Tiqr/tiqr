@@ -50,7 +50,6 @@
     if (self != nil) {
         self.title = title;
         UIBarButtonItem *backBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)] autorelease];
-        backBarButtonItem.tintColor = [UIColor whiteColor];
         self.navigationItem.leftBarButtonItem = backBarButtonItem;
         
         self.errorController = [[[ErrorController alloc] init] autorelease];

@@ -89,7 +89,11 @@
 	self.identityIdentifierLabel.text = self.challenge.identity.identifier;
     self.oneTimePasswordLabel.text = self.response; 
     
-    [self.footerController addToView:self.view];    
+    [self.footerController addToView:self.view];
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 
 - (void)done {

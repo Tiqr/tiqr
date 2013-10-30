@@ -79,6 +79,10 @@
     if ([self.identity.blocked boolValue]) {
         self.blockedWarningLabel.hidden = NO;
     }
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

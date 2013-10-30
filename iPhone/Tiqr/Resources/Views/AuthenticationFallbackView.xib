@@ -29,7 +29,7 @@
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </tableView>
                 <view contentMode="scaleToFill" id="41">
-                    <rect key="frame" x="0.0" y="64" width="320" height="164"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="164"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="You appear to be offline" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="43" userLabel="Title Label">
@@ -58,45 +58,45 @@
                     <color key="backgroundColor" red="0.096289385039999995" green="0.0" blue="0.64795918370000005" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Identity Identifier" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="24">
-                    <rect key="frame" x="20" y="219" width="280" height="22"/>
+                    <rect key="frame" x="20" y="155" width="280" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="OTP" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="35">
-                    <rect key="frame" x="20" y="288" width="280" height="22"/>
+                    <rect key="frame" x="20" y="224" width="280" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Your ID is:" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="36">
-                    <rect key="frame" x="20" y="190" width="280" height="21"/>
+                    <rect key="frame" x="20" y="126" width="280" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Your one-time login code is:" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="37">
-                    <rect key="frame" x="20" y="259" width="280" height="21"/>
+                    <rect key="frame" x="20" y="195" width="280" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Note: your PIN has not been verified yet." textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="45">
-                    <rect key="frame" x="20" y="337" width="280" height="21"/>
+                    <rect key="frame" x="20" y="273" width="280" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="12"/>
                     <color key="textColor" red="0.096289385039999995" green="0.0" blue="0.64795918370000005" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="If you can't login with the credentials above, scan again and enter the correct PIN code." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="10" id="47">
-                    <rect key="frame" x="20" y="355" width="280" height="37"/>
+                    <rect key="frame" x="20" y="291" width="280" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Oblique" family="Helvetica" pointSize="12"/>
                     <color key="textColor" red="0.096289385039999995" green="0.0" blue="0.64795918370000005" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view hidden="YES" contentMode="scaleToFill" id="40" userLabel="Footer View Placeholder">
-                    <rect key="frame" x="0.0" y="400" width="320" height="80"/>
+                    <rect key="frame" x="0.0" y="336" width="320" height="80"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>

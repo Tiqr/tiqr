@@ -74,7 +74,6 @@
     
     self.title = NSLocalizedString(@"authentication_title", @"Login title");
     UIBarButtonItem *backButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)] autorelease];
-    backButton.tintColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = backButton;
     
 	self.identityProviderLogoImageView.image = [[UIImage alloc] initWithData:self.challenge.identityProvider.logo];
@@ -86,6 +85,10 @@
     if (self.challenge.returnUrl != nil) {
         [self.returnButton setTitle:NSLocalizedString(@"return_button", @"Return to button title") forState:UIControlStateNormal];
         self.returnButton.hidden = NO;
+    }
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     
     [self.footerController addToView:self.view];

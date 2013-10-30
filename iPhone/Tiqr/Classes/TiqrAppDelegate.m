@@ -86,8 +86,10 @@
     [self.window addSubview:self.navigationController.view];
     [self.window makeKeyAndVisible];
     
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:182.0/255.0 green:198.0/255.0 blue:72.0/255.0 alpha:1.0];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    if ([self.navigationController.navigationBar respondsToSelector:@selector(barTintColor)]) {
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:182.0/255.0 green:198.0/255.0 blue:72.0/255.0 alpha:1.0];
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    }
 
 	NSDictionary *info = [launchOptions valueForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
 	if (info != nil) {

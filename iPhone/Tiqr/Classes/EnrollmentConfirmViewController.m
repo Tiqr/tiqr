@@ -75,6 +75,10 @@
     self.identityDisplayNameLabel.text = self.challenge.identityDisplayName;
     self.identityProviderDisplayNameLabel.text = self.challenge.identityProviderDisplayName;
     self.enrollmentURLDomainLabel.text = [[NSURL URLWithString:self.challenge.enrollmentUrl] host];
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 
 - (void)ok {

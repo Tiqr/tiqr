@@ -76,6 +76,10 @@
 	self.identityProviderDisplayNameLabel.text = self.challenge.identityProvider.displayName;	
 	self.serviceProviderDisplayNameLabel.text = self.challenge.serviceProviderDisplayName;
 	self.serviceProviderIdentifierLabel.text = self.challenge.serviceProviderIdentifier;
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 
 - (void)ok {
