@@ -86,7 +86,11 @@
     self.pin1Field.font = [UIFont fontWithName:@"Afrika Wildlife B Mammals2" size:24.0];
     self.pin2Field.font = [UIFont fontWithName:@"Afrika Wildlife B Mammals2" size:24.0];
     self.pin3Field.font = [UIFont fontWithName:@"Afrika Wildlife B Mammals2" size:24.0];    
-    self.pin4Field.font = [UIFont fontWithName:@"Afrika Wildlife B Mammals2" size:24.0];  
+    self.pin4Field.font = [UIFont fontWithName:@"Afrika Wildlife B Mammals2" size:24.0];
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     
     self.errorController.view.hidden = YES;
     [self.errorController addToView:self.view];

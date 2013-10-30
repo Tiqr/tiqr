@@ -74,7 +74,7 @@
     
     self.title = NSLocalizedString(@"authentication_title", @"Login title");
     UIBarButtonItem *backButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)] autorelease];
-    backButton.tintColor = [UIColor colorWithRed:0.0f green:122.0/255.0 blue:1 alpha:1];
+    backButton.tintColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = backButton;
     
 	self.identityProviderLogoImageView.image = [[UIImage alloc] initWithData:self.challenge.identityProvider.logo];

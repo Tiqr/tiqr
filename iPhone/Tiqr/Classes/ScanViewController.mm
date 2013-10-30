@@ -138,6 +138,9 @@
     [UIView setAnimationDelay:3.0];
     self.instructionsView.alpha = 0.7;
     [UIView commitAnimations];
+    
+    UIViewController *viewController = [[ErrorViewController alloc] initWithTitle:@"title" errorTitle:@"errortitle" errorMessage:@"error message"];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

@@ -49,7 +49,9 @@
     self = [super initWithNibName:@"ErrorView" bundle:nil];
     if (self != nil) {
         self.title = title;
-        self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)] autorelease];        
+        UIBarButtonItem *backBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)] autorelease];
+        backBarButtonItem.tintColor = [UIColor whiteColor];
+        self.navigationItem.leftBarButtonItem = backBarButtonItem;
         
         self.errorController = [[[ErrorController alloc] init] autorelease];
         self.errorController.title = errorTitle;
@@ -65,6 +67,10 @@
     [super viewDidLoad];
     [self.errorController addToView:self.view];
     [self.footerController addToView:self.view];
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 
 - (void)done {

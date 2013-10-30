@@ -52,8 +52,9 @@
     self = [super initWithNibName:@"IdentityListView" bundle:nil];
     if (self != nil) {
         self.title = NSLocalizedString(@"your_accounts", @"Accounts navigation item title");
-        self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"accounts", @"Accounts back button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];                
-        self.navigationItem.rightBarButtonItem = self.editButtonItem;	
+        self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"accounts", @"Accounts back button title") style:UIBarButtonItemStylePlain target:nil action:nil] autorelease];
+        self.editButtonItem.tintColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+        self.navigationItem.rightBarButtonItem = self.editButtonItem;
     }
     
     return self;
