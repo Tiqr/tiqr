@@ -269,6 +269,9 @@ public class AuthenticationPincodeActivity extends AbstractPincodeActivity {
                 code = TIQRACRInvalidRequestError;
                 title = getString(R.string.error_auth_invalid_request_title);
                 message = getString(R.string.error_auth_invalid_request_message);
+            } else if (response.equals("INVALID_RESPONSE")) {
+            	code = TIQRACRInvalidResponseError;
+            	message = getString(R.string.error_auth_invalid_response);
             } else if (response.substring(0, 17).equals("INVALID_RESPONSE:")) {
                 attemptsLeft = Integer.parseInt(response.substring(17, 18));
                 code = TIQRACRInvalidResponseError;
@@ -396,15 +399,21 @@ public class AuthenticationPincodeActivity extends AbstractPincodeActivity {
                 break;
 
             case TIQRACRInvalidResponseError:
-                int attemptsLeft = ((Integer)details.get("attemptsLeft")).intValue();
-                if (attemptsLeft == 0) {
-                    db.blockAllIdentities();
-                    _showErrorActivity(details);
+            	if (details.containsKey("attemptsLeft")) { 
+            		int attemptsLeft = ((Integer)details.get("attemptsLeft")).intValue();
+            		if (attemptsLeft == 0) {
+            			db.blockAllIdentities();
+            			_showErrorActivity(details);
+            		} else {
+            			_clear();
+            			_showErrorView(details);
+            			_initHiddenPincodeField();
+            		}
                 } else {
-                    _clear();
-                    _showErrorView(details);
-                    _initHiddenPincodeField();
-                }
+        			_clear();
+        			_showErrorView(details);
+        			_initHiddenPincodeField();
+        		}
                 break;
             default:
                 _showErrorActivity(details);
