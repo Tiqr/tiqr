@@ -52,11 +52,18 @@
     self = [super initWithNibName:@"IdentityListView" bundle:nil];
     if (self != nil) {
         self.title = NSLocalizedString(@"your_accounts", @"Accounts navigation item title");
-        self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"accounts", @"Accounts back button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];                
-        self.navigationItem.rightBarButtonItem = self.editButtonItem;	
+        self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"accounts", @"Accounts back button title") style:UIBarButtonItemStylePlain target:nil action:nil] autorelease];
+        self.navigationItem.rightBarButtonItem = self.editButtonItem;
     }
     
     return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 
 - (void)done {
@@ -199,7 +206,7 @@
     [sortDescriptor release];
     [sortDescriptors release];
     
-    NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
+    NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     fetchedResultsController.delegate = self;
     self.fetchedResultsController = fetchedResultsController;
     

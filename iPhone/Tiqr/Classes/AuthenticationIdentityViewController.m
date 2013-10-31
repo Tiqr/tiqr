@@ -62,7 +62,11 @@
     self.selectAccountLabel.text = NSLocalizedString(@"select_identity_title", @"Select Identity");
     
     self.title = NSLocalizedString(@"authentication_title", @"Login title");
-    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"identity_title", @"Identity select back button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];        
+    self.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"identity_title", @"Identity select back button title") style:UIBarButtonItemStyleBordered target:nil action:nil] autorelease];
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
