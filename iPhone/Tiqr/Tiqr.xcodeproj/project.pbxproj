@@ -155,6 +155,7 @@
 		29B97316FDCFA39411CA2CEA /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		5EE4873317313F1000762BBE /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5EE4873517313F2A00762BBE /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5EF2476318EAA8B300E8BE8C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76A195AA155BBE1000A73D2D /* FooterChildView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FooterChildView.xib; sourceTree = "<group>"; };
 		76A195AC155BBEF500A73D2D /* ScanView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanView.xib; sourceTree = "<group>"; };
 		76A195AE155BC0C800A73D2D /* AuthenticationSummaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthenticationSummaryView.xib; sourceTree = "<group>"; };
@@ -935,6 +936,7 @@
 				sk,
 				sr,
 				sl,
+				ja,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* MobileAuth */;
 			projectDirPath = "";
@@ -1137,6 +1139,7 @@
 				9264034516C92BEB0032A4FE /* sr */,
 				5EE4873317313F1000762BBE /* nb */,
 				5EE4873517313F2A00762BBE /* sl */,
+				5EF2476318EAA8B300E8BE8C /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
