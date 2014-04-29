@@ -83,7 +83,7 @@
         [scanViewController release];
     }
 
-    [self.window addSubview:self.navigationController.view];
+    [self.window setRootViewController:self.navigationController];
     [self.window makeKeyAndVisible];
     
     if ([self.navigationController.navigationBar respondsToSelector:@selector(barTintColor)]) {
