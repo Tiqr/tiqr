@@ -36,7 +36,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *developedByLabel;
 @property (nonatomic, retain) IBOutlet UILabel *interactionDesignLabel;
 @property (nonatomic, retain) IBOutlet UINavigationItem *barItem;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *doneButton;
+@property (nonatomic, retain) IBOutlet UIButton *okButton;
 
 @end
 
@@ -46,6 +46,7 @@
 @synthesize tiqrProvidedByLabel=tiqrProvidedByLabel_;
 @synthesize developedByLabel=developedByLabel_;
 @synthesize interactionDesignLabel=interactionDesignLabel_;
+@synthesize okButton=okButton_;
 
 - (id)init {
     
@@ -61,10 +62,14 @@
     [super viewDidLoad];
     
     self.barItem.title = NSLocalizedString(@"about_title", @"About tiqr");
-    self.doneButton.title = NSLocalizedString(@"done_button", "Done");
     self.tiqrProvidedByLabel.text = NSLocalizedString(@"provided_by_title", @"tiqr is provided by:");
     self.developedByLabel.text = NSLocalizedString(@"developed_by_title", @"Developed by:");
     self.interactionDesignLabel.text = NSLocalizedString(@"interaction_by_title", @"Interaction design:");
+    
+    [self.okButton setTitle:NSLocalizedString(@"ok_button", @"OK") forState:UIControlStateNormal];
+    self.okButton.layer.borderWidth = 1;
+    self.okButton.layer.borderColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:1 alpha:1].CGColor;
+    self.okButton.layer.cornerRadius = 4;
     
     NSString *version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
     self.versionLabel.text = [self.versionLabel.text stringByAppendingFormat:@" %@", version];

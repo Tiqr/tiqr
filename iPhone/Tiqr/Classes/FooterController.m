@@ -73,7 +73,7 @@
 - (void)about {
     UIViewController *viewController = [[AboutViewController alloc] init];
     TiqrAppDelegate *delegate = (TiqrAppDelegate *)[UIApplication sharedApplication].delegate;
-    [delegate.navigationController presentModalViewController:viewController animated:YES];
+    [delegate.navigationController presentViewController:viewController animated:YES completion:nil];
     [viewController release];
 }
 
