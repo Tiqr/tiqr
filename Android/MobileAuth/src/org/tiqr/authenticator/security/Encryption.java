@@ -1,10 +1,13 @@
 package org.tiqr.authenticator.security;
 
+import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
+import java.util.Arrays;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -14,6 +17,7 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.ShortBufferException;
+import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -21,7 +25,7 @@ import org.tiqr.authenticator.exceptions.SecurityFeaturesException;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
+import android.util.Log;
 import biz.source_code.base64Coder.Base64Coder;
 
 /**
@@ -45,6 +49,7 @@ public class Encryption
     private static final String MASTER_KEY_ALGORITHM = "HMACSHA256";
     private static final int CIPHER_KEY_ITERATIONS = 1500;
     private static final int CIPHER_KEY_SIZE = 16;
+    private static final int IV_LENGTH = 16;
     private static final String CIPHER_TRANSFORMATION = "AES/CBC/NoPadding";
     
     
@@ -80,28 +85,42 @@ public class Encryption
      * Encrypt a plaintext using the method defined in CIPHER_TRANSFORMATION.
      * Depending on the transformation, you may need to pass text in correct
      * blocksize (current implementation should be multiples of 16 bytes)
+     * 
+     * Returns a tuple with the ciphertext and randomly generated iv.
+     * 
      * @param text
      * @param key
      * @return
      * @throws SecurityFeaturesException
      */
-    public static byte[] encrypt(byte[] text, Key key) throws SecurityFeaturesException
+    public static CipherPayload encrypt(byte[] text, Key key) throws SecurityFeaturesException
     {
         try {
             Cipher cipher = Cipher.getInstance(CIPHER_TRANSFORMATION);
                         
-            cipher.init(Cipher.ENCRYPT_MODE, key);
+            byte [] generatedIV = generateIv();
+            cipher.init(Cipher.ENCRYPT_MODE, key, new IvParameterSpec(generatedIV));
+            byte [] iv = cipher.getIV();
+                        
+            /* Some versions of Android don't actually set the IV in that case
+             * so we'll test for that and log it, but return the iv that the system
+             * says is the one that's been used */
+            if (! Arrays.equals(generatedIV, iv)) {
+                Log.i("encryption", "Not able to set random IV on this system.");
+            }
             
             byte[] cipherText = new byte[cipher.getOutputSize(text.length)];
             int ctLength = cipher.update(text, 0, text.length, cipherText, 0);
             ctLength += cipher.doFinal(cipherText, ctLength);
-            return cipherText;
+            return new CipherPayload (cipherText, iv);
         } catch (NoSuchAlgorithmException e) {
         } catch (NoSuchPaddingException e) {
         } catch (InvalidKeyException e) {
         } catch (ShortBufferException e) {
         } catch (IllegalBlockSizeException e) {
         } catch (BadPaddingException e) {
+        } catch (NoSuchProviderException e) {
+        } catch (InvalidAlgorithmParameterException e) {
         }
         
         // If any of these fail, we're dealing with a device that can't handle our level of encryption
@@ -110,22 +129,28 @@ public class Encryption
     }
     
     /**
-     * Decrypts the plaintext according to CIPHER_TRANSFORMATION.
+     * Decrypts the ciphertext according to CIPHER_TRANSFORMATION.
      * Note that if the cipher transformation defines a padding scheme, then the decrypted
      * string will have padding bytes (length will be a multiple of 16). Since we know
      * the length of what we encoded, we should use substrings to retrieve the result from 
      * what decrypt returns to us.
-     * @param text
+     * @param payload is both the ciphertext and iv, or if no iv, payload.iv is null
      * @param key
      * @return
      * @throws InvalidKeyException
      * @throws SecurityFeaturesException
      */
-    public static byte[] decrypt(byte[] original, Key key) throws InvalidKeyException, SecurityFeaturesException 
+    public static byte[] decrypt(CipherPayload payload, Key key) throws InvalidKeyException, SecurityFeaturesException 
     {
+    	byte [] original = payload.cipherText;
+    	byte [] iv       = payload.iv;
         try {
             Cipher cipher = Cipher.getInstance(CIPHER_TRANSFORMATION);
-            cipher.init(Cipher.DECRYPT_MODE, key);
+            if (iv != null) {
+                cipher.init(Cipher.DECRYPT_MODE, key, new IvParameterSpec(iv));
+            } else { // handle old key types
+                cipher.init(Cipher.DECRYPT_MODE, key);
+            }
        //     byte[] original = Base64Coder.decode(text);
             byte[] plainText = new byte[cipher.getOutputSize(original.length)];
             int ptLength = cipher.update(original, 0, original.length, plainText, 0);
@@ -150,8 +175,10 @@ public class Encryption
         } catch (BadPaddingException e) {
             // Probably a wrong PIN
             throw new InvalidKeyException();
+        } catch (InvalidAlgorithmParameterException e) {
+            // IV was messed up
+            throw new InvalidKeyException();
         }
-     
     }
     
     /**
@@ -282,6 +309,13 @@ public class Encryption
             sb.append(sTemp.toUpperCase());   
         }   
         return sb.toString();   
-    }  
+    } 
+    
+    private static byte[] generateIv() throws NoSuchAlgorithmException, NoSuchProviderException {
+    	SecureRandom random = SecureRandom.getInstance(RANDOM_ALGORITHM);
+    	byte[] iv = new byte[IV_LENGTH];
+    	random.nextBytes(iv);
+    	return iv;
+    }
 
 }

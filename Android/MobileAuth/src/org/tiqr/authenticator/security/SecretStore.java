@@ -12,7 +12,9 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 
 import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 
+import biz.source_code.base64Coder.Base64Coder;
 import android.content.Context;
 import android.util.Log;
 
@@ -22,6 +24,7 @@ public class SecretStore
     private String _filenameKeyStore = "MobileAuthDb.kstore";
     private Context _ctx;
     private boolean _initialized = false;
+    private final static String IV_SUFFIX = "-org.tiqr.iv";
     
     public SecretStore(Context ctx)
     {
@@ -111,13 +114,24 @@ public class SecretStore
         return result;
     }
     
-    public SecretKey getSecretKey(String identity, SecretKey sessionKey)
+    public CipherPayload getSecretKey(String identity, SecretKey sessionKey)
     {
         _initializeKeyStore(sessionKey);
         
         try {
-            SecretKeyEntry entry = (SecretKeyEntry)_keyStore.getEntry(identity, new KeyStore.PasswordProtection(_sessionKeyToCharArray(sessionKey)));
-            return entry.getSecretKey();
+        	SecretKeyEntry ctEntry = (SecretKeyEntry)_keyStore.getEntry(identity, new KeyStore.PasswordProtection(_sessionKeyToCharArray(sessionKey)));
+        	SecretKeyEntry ivEntry = (SecretKeyEntry)_keyStore.getEntry(identity + IV_SUFFIX, new KeyStore.PasswordProtection(_sessionKeyToCharArray(sessionKey)));
+        	byte[] ivBytes;
+        	// For old keys, we don't store the IV:
+        	if (ivEntry == null || ivEntry.getSecretKey() == null) {
+        		ivBytes = null;
+        	    Log.i("encryption", "No IV found for: " + identity);
+        	} else {
+        	    ivBytes = ivEntry.getSecretKey().getEncoded();
+        	    Log.i("encryption", "IV for: " + identity + " is " + new String(Base64Coder.encode(ivBytes))); ;
+        	}
+        	return new CipherPayload(ctEntry.getSecretKey().getEncoded(),ivBytes);
+      
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -127,14 +141,19 @@ public class SecretStore
         
     }
     
-    public void setSecretKey(String identity, SecretKey key, SecretKey sessionKey)
+    public void setSecretKey(String identity, CipherPayload civ, SecretKey sessionKey)
     {
         _initializeKeyStore(sessionKey);
         
-        KeyStore.SecretKeyEntry entry = new KeyStore.SecretKeyEntry(key);
+        SecretKeySpec cipherText =  new SecretKeySpec(civ.cipherText, "RAW");
+        KeyStore.SecretKeyEntry ctEntry = new KeyStore.SecretKeyEntry(cipherText);
+        
+        SecretKeySpec iv =  new SecretKeySpec(civ.iv, "RAW");
+        KeyStore.SecretKeyEntry ivEntry = new KeyStore.SecretKeyEntry(iv);
         
         try {
-            _keyStore.setEntry(identity, entry, new KeyStore.PasswordProtection(_sessionKeyToCharArray(sessionKey)));
+        	 _keyStore.setEntry(identity,            ctEntry, new KeyStore.PasswordProtection(_sessionKeyToCharArray(sessionKey)));            
+        	 _keyStore.setEntry(identity + IV_SUFFIX, ivEntry, new KeyStore.PasswordProtection(_sessionKeyToCharArray(sessionKey)));
             
             _saveKeyStore(sessionKey);
             
