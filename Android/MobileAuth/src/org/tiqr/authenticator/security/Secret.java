@@ -34,9 +34,9 @@ public class Secret
     
     public SecretKey getSecret(SecretKey sessionKey) throws InvalidKeyException, SecurityFeaturesException
     {        
-        if (_secret==null) {
-        	_loadFromKeyStore(sessionKey);
-        } 
+        if (_secret == null) {
+            _loadFromKeyStore(sessionKey);
+        }
         return _secret;
     }
     
