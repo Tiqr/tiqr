@@ -311,11 +311,12 @@ public class Encryption
         return sb.toString();   
     } 
     
-    private static byte[] generateIv() throws NoSuchAlgorithmException, NoSuchProviderException {
-    	SecureRandom random = SecureRandom.getInstance(RANDOM_ALGORITHM);
-    	byte[] iv = new byte[IV_LENGTH];
-    	random.nextBytes(iv);
-    	return iv;
+    private static byte[] generateIv() throws NoSuchAlgorithmException,
+            NoSuchProviderException {
+        SecureRandom random = SecureRandom.getInstance(RANDOM_ALGORITHM);
+        byte[] iv = new byte[IV_LENGTH];
+        random.nextBytes(iv);
+        return iv;
     }
 
 }
