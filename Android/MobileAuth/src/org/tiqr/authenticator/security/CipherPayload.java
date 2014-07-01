@@ -8,6 +8,6 @@ public class CipherPayload
 	CipherPayload (byte [] encryptedText, byte[] initializationVector) 
 	{
 		cipherText = encryptedText;
-	    iv = initializationVector;
+		iv = initializationVector;
 	}
 }
