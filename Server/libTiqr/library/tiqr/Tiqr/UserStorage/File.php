@@ -34,9 +34,9 @@ class Tiqr_UserStorage_File extends Tiqr_UserStorage_GenericStore
      * Create an instance
      * @param $config
      */
-    public function __construct($config)
+    public function __construct($config, $secretconfig = array())
     {
-        parent::__construct($config);
+        parent::__construct($config, $secretconfig);
         $this->_path = $config["path"];
     }
 

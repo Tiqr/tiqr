@@ -33,35 +33,39 @@ class Tiqr_UserStorage
      *                       instance. See the documentation
      *                       in the UserStorage/ subdirectory for
      *                       options per type.
+     * @param array $secretoptions  The options to pass to the secret storage
+     *                              instance. See the documentation
+     *                              in the UserSecretStorage/ subdirectory for
+     *                              options per type.
      *
      * @return Tiqr_UserStorage_Interface
+     *
+     * @throws Exception
      */
-    public static function getStorage($type="file", $options=array())
+    public static function getStorage($type="file", $options=array(), $secretoptions=array())
     {
         switch ($type) {
             case "file":
                 require_once("Tiqr/UserStorage/File.php");
-                $instance = new Tiqr_UserStorage_File($options);
+                $instance = new Tiqr_UserStorage_File($options, $secretoptions);
                 break;
             case "ldap":
                 require_once("Tiqr/UserStorage/Ldap.php");
-                $instance = new Tiqr_UserStorage_Ldap($options);
+                $instance = new Tiqr_UserStorage_Ldap($options, $secretoptions);
                 break;
             case "pdo":
                 require_once("Tiqr/UserStorage/Pdo.php");
-                $instance = new Tiqr_UserStorage_Pdo($options);
+                $instance = new Tiqr_UserStorage_Pdo($options, $secretoptions);
                 break;
             default: 
                 if (!isset($type)) {
                     throw new Exception('Class name not set');
                 } elseif (!class_exists($type)) {
                     throw new Exception('Class not found: ' . var_export($type, TRUE));
-                } elseif (!is_subclass_of($type, 'Tiqr_UserStorage_Abstract')) {
-                    throw new Exception('Class ' . $type . ' not subclass of Tiqr_UserStorage_Abstract');
                 }
-                $instance = new $type($options);
+                $instance = new $type($options, $secretoptions);
         }
-        
+
         return $instance;
     }
 }

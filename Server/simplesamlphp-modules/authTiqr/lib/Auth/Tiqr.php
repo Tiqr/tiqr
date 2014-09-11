@@ -64,7 +64,7 @@ class sspmod_authTiqr_Auth_Tiqr
     {
         if (self::$_userStorage == null) {
             $config = SimpleSAML_Configuration::getConfig('module_tiqr.php')->toArray();
-            self::$_userStorage = Tiqr_UserStorage::getStorage($config["userstorage"]["type"], $config["userstorage"]);
+            self::$_userStorage = Tiqr_UserStorage::getStorage($config["userstorage"]["type"], $config["userstorage"], (isset($config['usersecretstorage']) ? $config['usersecretstorage'] : array()));
         }
         
         return self::$_userStorage;

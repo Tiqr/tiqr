@@ -62,8 +62,8 @@ $config = array(
                                    "appid" => "idOfYourApp"),
 
     "userstorage"         => array("type" => "file", "path" => "../../users", "encryption" => array('type' => 'dummy')),
-    
-    // "userstorage"         =>  array("type" => "ldap", 
+
+    // "userstorage"         =>  array("type" => "ldap",
     //                                 "encryption" => array('type' => 'dummy')
     //                                 "host" => "ldap.surfnet.nl",
     //                                 "username" => "cn=Admin,ou=Persons,ou=Office,dc=SURFnet,dc=NL",
@@ -87,5 +87,32 @@ $config = array(
     //                              "dsn" => "mysql:dbname=tiqr;host=mysql.surfnet.nl",
     //                              "username" => "tiqr",
     //                              "password" => "*****"),
+
+    // same as userstorage, but also possible to use an external oath service for storage
+    "usersecretstorage"   => array("type" => "file", "path" => "../../users/secrets"),
+
+    // "usersecretstorage"   =>  array("type" => "ldap",
+    //                                 "host" => "ldap.surfnet.nl",
+    //                                 "username" => "cn=Admin,ou=Persons,ou=Office,dc=SURFnet,dc=NL",
+    //                                 "password" => "*****",
+    //                                 "bindRequiresDn" => true,
+    //                                 "accountDomainName" => "surfnet.nl",
+    //                                 "baseDn" => "dc=surfnet,dc=nl",
+    //                                 "userClass" => 'organizationalPerson',
+    //                                 "dnPattern" =>  "cn=%s,ou=Persons,ou=Office,dc=surfnet,dc=nl",
+    //                                 "idAttr" => 'cn',
+    //                                 "secretAttr" => 'tiqrSecret',
+    //                          ),
+
+    // "usersecretstorage" => array("type" => "pdo",
+    //                              "table" => "tiqrusersecret",
+    //                              "dsn" => "mysql:dbname=tiqr;host=mysql.surfnet.nl",
+    //                              "username" => "tiqr",
+    //                              "password" => "*****"),
+
+    // if you use this, the oathservice will also be used to generate ocra challenges and validate them
+    //"usersecretstorage"   => array("type" => "oathservice",
+    //                               "apiURL" => "http://example.com/",
+    //                               "consumerKey" => "43290843902890"),
 
 );
