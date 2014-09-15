@@ -207,8 +207,8 @@ class Tiqr_Service
         $this->_ocraWrapper = new Tiqr_OCRAWrapper($this->_ocraSuite);
 
         $type = 'tiqr';
-        if (isset($options['usersecretstorage']) && $options['usersecretstorage']['type'] == 'oathservice') {
-            $type = 'oathservice';
+        if (isset($options['usersecretstorage']) && $options['usersecretstorage']['type'] == 'oathserviceclient') {
+            $type = 'oathserviceclient';
         }
         $ocraConfig = array();
         switch ($type) {
@@ -216,7 +216,7 @@ class Tiqr_Service
                 $ocraConfig['ocra.suite'] = $this->_ocraSuite;
                 $ocraConfig['protocolVersion'] = $version;
                 break;
-            case 'oathservice':
+            case 'oathserviceclient':
                 $ocraConfig = $options['usersecretstorage'];
                 break;
         }
@@ -581,10 +581,11 @@ class Tiqr_Service
             return self::AUTH_RESULT_INVALID_USERID; // only allowed to authenticate against the user that's authenticated in the first factor
         }
 
-        if (stristr(get_class($this->_ocraService), 'oathservice')) {
-            $equal = $this->_ocraService->verifyResponse($response, $userId, $challenge, $sessionKey);
+        $method = $this->_ocraService->getVerificationMethodName();
+        if ($method == 'verifyResponseWithUserId') {
+            $equal = $this->_ocraService->$method($response, $userId, $challenge, $sessionKey);
         } else {
-            $equal = $this->_ocraService->verifyResponse($response, $userSecret, $challenge, $sessionKey);
+            $equal = $this->_ocraService->$method($response, $userSecret, $challenge, $sessionKey);
         }
 
         if ($equal) {
@@ -597,7 +598,7 @@ class Tiqr_Service
         }
         return self::AUTH_RESULT_INVALID_RESPONSE;
     }
-    
+
     /**
      * Log the user out.
      * @param String $sessionId The application's session identifier (defaults

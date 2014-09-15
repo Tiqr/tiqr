@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of the tiqr project.
  *
@@ -19,31 +18,16 @@
  */
 
 /**
- * The interface that defines what a ocra service class should implement.
- *
- * The interface defines the generation of the ocra challenge.
+ * The abstract class that defines what a ocra service class should implement.
  *
  * @author lineke
  *
  */
-interface Tiqr_OcraService_Interface
+abstract class Tiqr_OcraService_Abstract implements Tiqr_OcraService_Interface
 {
     /**
-     * Construct a ocra service class
-     *
-     * @param array $config The configuration that a specific user class may use.
-     */
-    public function __construct($config);
-
-    /**
-     * Get the ocra challenge
-     *
-     * @return string The challenge
-     */
-    public function generateChallenge();
-
-    /**
      * Verify the response
+     * Override in child class to implement this method if this is the verification method to use
      *
      * @param string $response
      * @param string $userSecret
@@ -52,10 +36,14 @@ interface Tiqr_OcraService_Interface
      *
      * @return boolean True if response matches, false otherwise
      */
-    public function verifyResponseWithSecret($response, $userSecret, $challenge, $sessionKey);
+    public function verifyResponseWithSecret($response, $userSecret, $challenge, $sessionKey)
+    {
+
+    }
 
     /**
      * Verify the response
+     * Override in child class to implement this method if this is the verification method to use
      *
      * @param string $response
      * @param string $userId
@@ -64,12 +52,18 @@ interface Tiqr_OcraService_Interface
      *
      * @return boolean True if response matches, false otherwise
      */
-    public function verifyResponseWithUserId($response, $userId, $challenge, $sessionKey);
+    public function verifyResponseWithUserId($response, $userId, $challenge, $sessionKey)
+    {
+
+    }
 
     /**
      * Returns which method name to use to verify the response (verifyResponseWithSecret or verifyResponseWithUserId)
      *
      * @return string
      */
-    public function getVerificationMethodName();
+    public function getVerificationMethodName()
+    {
+        return 'verifyResponseWithSecret';
+    }
 }

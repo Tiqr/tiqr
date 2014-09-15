@@ -111,7 +111,7 @@ $config = array(
     //                              "password" => "*****"),
 
     // if you use this, the oathservice will also be used to generate ocra challenges and validate them
-    //"usersecretstorage"   => array("type" => "oathservice",
+    //"usersecretstorage"   => array("type" => "oathserviceclient",
     //                               "apiURL" => "http://example.com/",
     //                               "consumerKey" => "43290843902890"),
 

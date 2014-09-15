@@ -55,7 +55,7 @@ class Tiqr_API_Client
 
         $result = $this->callAPI($resource, $method, $data, $headers);
 
-        if (2 == substr($result->code,0,1)) {
+        if (2 == substr($result->code, 0, 1)) {
             return $result;
         } elseif (is_object($result->body)) {
             throw new Exception($result->body->message, $result->code);

@@ -26,7 +26,7 @@ require_once('Tiqr/API/Client.php');
  * @author lineke
  *
  */
-class Tiqr_OcraService_Oathservice implements Tiqr_OcraService_Interface
+class Tiqr_OcraService_OathServiceClient extends Tiqr_OcraService_Abstract
 {
     protected $_apiClient;
 
@@ -60,18 +60,29 @@ class Tiqr_OcraService_Oathservice implements Tiqr_OcraService_Interface
      * Verify the response
      *
      * @param string $response
-     * @param string $user
+     * @param string $userId
      * @param string $challenge
      * @param string $sessionKey
      *
      * @return boolean True if response matches, false otherwise
      */
-    public function verifyResponse($response, $user, $challenge, $sessionKey)
+    public function verifyResponseWithUserId($response, $userId, $challenge, $sessionKey)
     {
-        $result = $this->_apiClient->call('/oath/validate/ocra?response='.$response.'&challenge='.$challenge.'&userId='.$user.'&sessionKey='.$sessionKey);
-        if ($result->code == '204') {
+        try {
+            $result = $this->_apiClient->call('/oath/validate/ocra?response='.urlencode($response).'&challenge='.urlencode($challenge).'&userId='.urlencode($userId).'&sessionKey='.urlencode($sessionKey));
             return true;
+        } catch (Exception $e) {
+            return false;
         }
-        return false;
+    }
+
+    /**
+     * Returns which method name to use to verify the response (verifyResponseWithSecret or verifyResponseWithUserId)
+     *
+     * @return string
+     */
+    public function getVerificationMethodName()
+    {
+        return 'verifyResponseWithUserId';
     }
 }

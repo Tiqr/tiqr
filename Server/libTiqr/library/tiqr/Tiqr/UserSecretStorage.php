@@ -51,9 +51,9 @@ class Tiqr_UserSecretStorage
                 require_once("Tiqr/UserSecretStorage/Pdo.php");
                 $instance = new Tiqr_UserSecretStorage_Pdo($options);
                 break;
-            case "oathservice":
-                require_once("Tiqr/UserSecretStorage/Oathservice.php");
-                $instance = new Tiqr_UserSecretStorage_Oathservice($options);
+            case "oathserviceclient":
+                require_once("Tiqr/UserSecretStorage/OathServiceClient.php");
+                $instance = new Tiqr_UserSecretStorage_OathServiceClient($options);
                 break;
             default: 
                 if (!isset($type)) {

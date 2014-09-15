@@ -22,7 +22,7 @@ require_once('Tiqr/API/Client.php');
 /**
  * OATHService storage for user's secret
  */
-class Tiqr_UserSecretStorage_Oathservice implements Tiqr_UserSecretStorage_Interface
+class Tiqr_UserSecretStorage_OathServiceClient implements Tiqr_UserSecretStorage_Interface
 {
     protected $_apiClient;
 
@@ -59,6 +59,6 @@ class Tiqr_UserSecretStorage_Oathservice implements Tiqr_UserSecretStorage_Inter
      */
     public function setUserSecret($userId, $secret)
     {
-        $this->_apiClient->call('/secrets/'.$userId, 'POST', array('secret' => $secret));
+        $this->_apiClient->call('/secrets/'.urlencode($userId), 'POST', array('secret' => $secret));
     }
 }

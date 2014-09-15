@@ -27,7 +27,7 @@ require_once("Tiqr/OATH/OCRAWrapper_v1.php");
  * @author lineke
  *
  */
-class Tiqr_OcraService_Tiqr implements Tiqr_OcraService_Interface
+class Tiqr_OcraService_Tiqr extends Tiqr_OcraService_Abstract
 {
     protected $_ocraSuite;
     protected $_ocraWrapper;
@@ -75,14 +75,14 @@ class Tiqr_OcraService_Tiqr implements Tiqr_OcraService_Interface
      * Verify the response
      *
      * @param string $response
-     * @param string $user
+     * @param string $userSecret
      * @param string $challenge
      * @param string $sessionKey
      *
      * @return boolean True if response matches, false otherwise
      */
-    public function verifyResponse($response, $user, $challenge, $sessionKey)
+    public function verifyResponseWithSecret($response, $userSecret, $challenge, $sessionKey)
     {
-        return $this->_getProtocolSpecificOCRAWrapper()->verifyResponse($response, $user, $challenge, $sessionKey);
+        return $this->_getProtocolSpecificOCRAWrapper()->verifyResponse($response, $userSecret, $challenge, $sessionKey);
     }
 }

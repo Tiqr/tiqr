@@ -41,9 +41,9 @@ class Tiqr_OcraService
                 require_once("Tiqr/OcraService/Tiqr.php");
                 $instance = new Tiqr_OcraService_Tiqr($options);
                 break;
-            case "oathservice":
-                require_once("Tiqr/OcraService/Oathservice.php");
-                $instance = new Tiqr_OcraService_Oathservice($options);
+            case "oathserviceclient":
+                require_once("Tiqr/OcraService/OathServiceClient.php");
+                $instance = new Tiqr_OcraService_OathServiceClient($options);
                 break;
             default:
                 if (!isset($type)) {

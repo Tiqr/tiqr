@@ -63,9 +63,29 @@ abstract class Tiqr_UserStorage_Abstract implements Tiqr_UserStorage_Interface
      * @param String $userId
      * @return String The user's secret
      */
+    protected function _getEncryptedSecret($userId)
+    {
+        return $this->_userSecretStorage->getUserSecret($userId);
+    }
+
+    /**
+     * Store a secret for a user.
+     * @param String $userId
+     * @param String $secret
+     */
+    protected function _setEncryptedSecret($userId, $secret)
+    {
+        $this->_userSecretStorage->setUserSecret($userId, $secret);
+    }
+
+    /**
+     * Get the user's secret
+     * @param String $userId
+     * @return String The user's secret
+     */
     public final function getSecret($userId)
     {
-        $encryptedSecret = $this->_userSecretStorage->getUserSecret($userId);
+        $encryptedSecret = $this->_getEncryptedSecret($userId);
         return $this->_getEncryption()->decrypt($encryptedSecret);
     }
 
@@ -77,7 +97,7 @@ abstract class Tiqr_UserStorage_Abstract implements Tiqr_UserStorage_Interface
     public final function setSecret($userId, $secret)
     {
         $encryptedSecret = $this->_getEncryption()->encrypt($secret);
-        $this->_userSecretStorage->setUserSecret($userId, $encryptedSecret);
+        $this->_setEncryptedSecret($userId, $encryptedSecret);
     }
 
     /**
