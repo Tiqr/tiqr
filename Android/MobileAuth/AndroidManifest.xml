@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="org.tiqr.authenticator" android:versionCode="3" android:versionName="1.2">
+	package="org.tiqr.authenticator" android:versionCode="4" android:versionName="2.1.1">
     <!-- Only this application can receive the messages and registration result -->    
     <permission android:name="org.tiqr.authenticator.permission.C2D_MESSAGE" android:protectionLevel="signature" />
     <uses-permission android:name="org.tiqr.authenticator.permission.C2D_MESSAGE" />
