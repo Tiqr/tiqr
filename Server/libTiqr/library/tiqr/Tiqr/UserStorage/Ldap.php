@@ -120,15 +120,14 @@ class Tiqr_UserStorage_Ldap extends Tiqr_UserStorage_Abstract
      * @param array
      */
     protected $_attributes;
-
     
     /**
      * Create an instance
      * @param $config
      */
-    public function __construct($config)
+    public function __construct($config, $secretconfig = array())
     {
-	parent::__construct($config);
+	    parent::__construct($config, $secretconfig);
 
         $this->_userClass = isset($config['userClass']) ? $config['userClass'] : "tiqrPerson";
         $this->_dnPattern = isset($config['dnPattern']) ? $config['dnPattern'] : "%s";        
@@ -163,7 +162,7 @@ class Tiqr_UserStorage_Ldap extends Tiqr_UserStorage_Abstract
      * 
      * @return mixed LDAP attribute value
      */
-    private function _getLDAPAttribute($entry, $attribName, $index=0)
+    protected function _getLDAPAttribute($entry, $attribName, $index=0)
     {
         $attribName = strtolower($attribName);
         
@@ -183,7 +182,7 @@ class Tiqr_UserStorage_Ldap extends Tiqr_UserStorage_Abstract
      * @param string $attribName Attribute name.
      * @param mixed  $value      Value.
      */
-    private function _setLDAPAttribute(&$entry, $attribName, $value)
+    protected function _setLDAPAttribute(&$entry, $attribName, $value)
     {
         $attribName = strtolower($attribName);
         Zend_Ldap_Attribute::setAttribute($entry, $attribName, $value);        
@@ -262,29 +261,6 @@ class Tiqr_UserStorage_Ldap extends Tiqr_UserStorage_Abstract
         }
         return NULL;
     }
-    
-    /**
-     * (non-PHPdoc)
-     * @see simplesamlphp/modules/authTiqr/lib/User/sspmod_authTiqr_User_Interface::getSecret()
-     */
-    protected function _getEncryptedSecret($userId)
-    {
-        if ($user = $this->_loadUser($userId)) {
-            return $this->_getLDAPAttribute($user, $this->_secretAttr);
-        }
-        return NULL;
-    }
-
-    /**
-     * (non-PHPdoc)
-     * @see simplesamlphp/modules/authTiqr/lib/User/sspmod_authTiqr_User_Interface::setSecret()
-     */
-    protected function _setEncryptedSecret($userId, $secret)
-    {
-        $user = $this->_loadUser($userId);
-        $this->_setLDAPAttribute($user, $this->_secretAttr, $secret);
-        $this->_saveUser($userId, $user);
-    } 
     
     /**
      * (non-PHPdoc)

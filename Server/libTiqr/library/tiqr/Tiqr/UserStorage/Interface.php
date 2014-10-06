@@ -36,9 +36,10 @@ interface Tiqr_UserStorage_Interface
 {
     /**
      * Construct a user class
-     * @param $config The configuration that a specific user class may use.
+     * @param array $config         The configuration that a specific user class may use.
+     * @param array $secretconfig   The configuration for storing the user's secret, fallback to $config if not available
      */
-    public function __construct($config);
+    public function __construct($config, $secretconfig = array());
     
     /**
      * Store a new user with a certain displayName.
@@ -67,14 +68,14 @@ interface Tiqr_UserStorage_Interface
      * @return String The user's secret
      */
     public function getSecret($userId);
-    
+
     /**
      * Store a secret for a user.
      * @param String $userId
      * @param String $secret
      */
     public function setSecret($userId, $secret);
-    
+
     /**
      * Get the type of device notifications a user supports 
      * @param String $userId

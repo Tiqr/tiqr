@@ -17,7 +17,7 @@
  * @copyright (C) 2010-2012 SURFnet BV
  * 
  * Create SQL table (MySQL):
- * CREATE TABLE `tiqruser` (`userid` varchar(10) PRIMARY KEY, `displayname` varchar(45),`secret` varchar(100),`blocked` int,`loginattempts` int,
+ * CREATE TABLE `tiqruser` (`userid` varchar(10) PRIMARY KEY, `displayname` varchar(45),`blocked` int,`loginattempts` int,
  * `tmpblockattempts` int,`tmpblocktimestamp` varchar(45) default NULL,`notificationtype` varchar(10),`notificationaddress` varchar(45))
  * 
  */
@@ -31,16 +31,17 @@
  */
 class Tiqr_UserStorage_Pdo extends Tiqr_UserStorage_Abstract
 {
-    private $handle = null;
-    private $tablename;
+    protected $handle = null;
+    protected $tablename;
     
     /**
      * Create an instance
-     * @param $config
+     * @param array $config
+     * @param array $secretconfig
      */
-    public function __construct($config)
+    public function __construct($config, $secretconfig = array())
     {
-        parent::__construct($config);
+        parent::__construct($config, $secretconfig);
         $this->tablename = $config['table'];
         try {
             $this->handle = new PDO($config['dsn'],$config['username'],$config['password']);
@@ -57,6 +58,7 @@ class Tiqr_UserStorage_Pdo extends Tiqr_UserStorage_Abstract
             $sth = $this->handle->prepare("INSERT INTO ".$this->tablename." (displayname,userid) VALUES (?,?)");
         }
         $sth->execute(array($displayName,$userId));
+        return $this->userExists($userId);
     }
     
     public function userExists($userId)
@@ -72,20 +74,7 @@ class Tiqr_UserStorage_Pdo extends Tiqr_UserStorage_Abstract
         $sth->execute(array($userId));
         return $sth->fetchColumn();
     }
-    
-    protected function _getEncryptedSecret($userId)
-    {
-        $sth = $this->handle->prepare("SELECT secret FROM ".$this->tablename." WHERE userid = ?");
-        $sth->execute(array($userId));
-        return $sth->fetchColumn();
-    }
-    
-    protected function _setEncryptedSecret($userId, $secret)
-    {
-        $sth = $this->handle->prepare("UPDATE ".$this->tablename." SET secret = ? WHERE userid = ?");
-        $sth->execute(array($secret,$userId));
-    }
-    
+
     public function getNotificationType($userId)
     {
         $sth = $this->handle->prepare("SELECT notificationtype FROM ".$this->tablename." WHERE userid = ?");

@@ -68,32 +68,7 @@ abstract class Tiqr_UserStorage_GenericStore extends Tiqr_UserStorage_Abstract
         }
         return NULL;
     }
-    
-    /**
-     * (non-PHPdoc)
-     * @see simplesamlphp/modules/authTiqr/lib/User/sspmod_authTiqr_User_Interface::getSecret()
-     */
-    protected function _getEncryptedSecret($userId)
-    {
-        if ($data = $this->_loadUser($userId)) {
-            if (isset($data["secret"])) {
-                return $data["secret"];
-            }
-        }
-        return NULL;
-    }
 
-    /**
-     * (non-PHPdoc)
-     * @see simplesamlphp/modules/authTiqr/lib/User/sspmod_authTiqr_User_Interface::setSecret()
-     */
-    protected function _setEncryptedSecret($userId, $secret)
-    {
-        $data = $this->_loadUser($userId);
-        $data["secret"] = $secret;
-        $this->_saveUser($userId, $data);
-    } 
-    
     /**
      * (non-PHPdoc)
      * @see simplesamlphp/modules/authTiqr/lib/User/sspmod_authTiqr_User_Interface::getNotificationType()
