@@ -91,14 +91,14 @@ class sspmod_authTiqr_Auth_Source_Tiqr extends SimpleSAML_Auth_Source {
             $url = SimpleSAML_Module::getModuleURL('authTiqr/login.php');
             SimpleSAML_Utilities::redirect($url, array('AuthState' => $id));
         } else {
-    
+            $userStorage = sspmod_authTiqr_Auth_Tiqr::getUserStorage();
             $attributes = array(
                 'uid' => array($user),
-                'displayName' => array(sspmod_authTiqr_User::getStorage()->getDisplayName($user)),
+                'displayName' => array($userStorage->getDisplayName($user)),
             );
             
-            $attributes = array_merge($attributes, sspmod_authTiqr_User::getStorage()->getAdditionalAttributes($user));						
-			
+            $attributes = array_merge($attributes, $userStorage->getAdditionalAttributes($user));
+
             $state['Attributes'] = $attributes;
         }
     }    
