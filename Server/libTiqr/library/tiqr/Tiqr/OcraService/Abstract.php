@@ -17,6 +17,8 @@
  * @copyright (C) 2010-2012 SURFnet BV
  */
 
+require_once("Tiqr/OcraService/Interface.php");
+
 /**
  * The abstract class that defines what a ocra service class should implement.
  *

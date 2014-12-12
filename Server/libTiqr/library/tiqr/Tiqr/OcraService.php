@@ -17,6 +17,8 @@
  * @copyright (C) 2010-2012 SURFnet BV
  */
 
+require_once("Tiqr/OcraService/Abstract.php");
+
 /**
  * Class implementing a factory to retrieve the ocra service to use
  *
