@@ -38,7 +38,7 @@ class Tiqr_UserSecretStorage_Pdo extends Tiqr_UserStorage_Pdo implements Tiqr_Us
      */
     public function __construct($config, $secretconfig = array())
     {
-        $this->tablename = $config['table'];
+        $this->tablename = isset($config['table']) ? $config['table'] : 'tiqrusersecret';
         try {
             $this->handle = new PDO($config['dsn'],$config['username'],$config['password']);
         } catch (PDOException $e) {
