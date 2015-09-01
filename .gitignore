@@ -1,9 +1,1 @@
-.DS_Store
-xcuserdata
-project.xcworkspace
-
-# for testing purposes libs are installed but we don't need them in git
-Server/simplesamlphp-demo/Zend
-Server/simplesamlphp-demo/phpqrcode/
-Server/simplesamlphp-demo/simplesamlphp/
-Server/simplesamlphp-demo/tiqr
+_site
