@@ -4,7 +4,5 @@
 @import "{{ site.theme }}";
 
 body {
-  background: $body-background url("../images/bck_theme.gif") 0 0;
+  background: #000000 url("../images/bck_theme.gif") no-repeat left top;
 }
-
-
