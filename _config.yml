@@ -1,1 +1,8 @@
 theme: jekyll-theme-hacker
+
+title: [tiqr docs]
+description: [Documentation for tiqr authentication]
+
+github:
+  zip_url: http://example.com/download.zip
+

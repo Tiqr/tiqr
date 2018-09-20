@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # tiqr docs
 
 ## Repositories
@@ -41,3 +45,7 @@ Also installable with [composer](https://getcomposer.org) through packagist pack
 - https://github.com/SURFnet/tiqr-server-zendframework
 - https://github.com/SURFnet/tiqr-server-enrollment
 - https://github.com/SURFnet/stepup-tiqr-poc
+
+## Howto
+
+- [Push notifications](./push.md).
