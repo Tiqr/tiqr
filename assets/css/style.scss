@@ -3,3 +3,8 @@
 
 @import "{{ site.theme }}";
 
+body {
+  background: $body-background url("../images/bck_theme.gif") 0 0;
+}
+
+
