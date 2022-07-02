@@ -1,5 +1,7 @@
 # tiqr
 
+This repository has been archived.
+
 This repository used to contain all source code for the tiqr project, but is now used for documentation via the [wiki](https://github.com/SURFnet/tiqr/wiki).
 
 All contents of the original tiqr repository (all client and server components) have been moved to separate repositories. You can find them in the https://github.com/surfnet account.
